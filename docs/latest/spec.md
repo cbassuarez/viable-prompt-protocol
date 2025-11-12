@@ -2,6 +2,8 @@
 title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 permalink: /latest/spec/
 ---
+{% include version-switcher.html %}
+
 # Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 
 I. Command line grammar (must be line 1, column 1)
