@@ -1,0 +1,2 @@
+!<g> extra text on the first line should fail
+Subsequent content…
