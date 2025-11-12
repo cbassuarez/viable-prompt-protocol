@@ -1,0 +1,6 @@
+!<g>
+!<q> --minor
+!<o> --correct --<q>
+!<c> --incorrect --major
+!<e> --<g>
+!<e_o>
