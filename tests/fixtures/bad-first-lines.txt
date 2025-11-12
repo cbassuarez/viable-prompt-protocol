@@ -1,0 +1,5 @@
+<g>
+!<g> text on same line
+!<x>
+!<q> --CORRECT
+!<o> --correct --<wrong>
