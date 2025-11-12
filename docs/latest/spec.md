@@ -1,4 +1,3 @@
-Technical Specifications
 I. Command line grammar (must be line 1, column 1)
 ---
 
