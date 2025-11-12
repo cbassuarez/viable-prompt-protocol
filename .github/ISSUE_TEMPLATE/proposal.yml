@@ -1,0 +1,22 @@
+name: Proposal (substantial change)
+description: Propose a significant spec change for discussion before PR.
+labels: ["proposal"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this change necessary?
+    validations: { required: true }
+  - type: textarea
+    id: design
+    attributes:
+      label: Design / Spec draft
+      description: Provide concrete wording and examples.
+      render: markdown
+    validations: { required: true }
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Compatibility notes, migration, risks.
