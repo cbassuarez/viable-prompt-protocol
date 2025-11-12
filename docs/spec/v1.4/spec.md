@@ -1,14 +1,14 @@
 ---
 title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 permalink: /spec/v1.4/spec/
-canonical_url: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec/
+canonical_url: {{ '/latest/spec/' | absolute_url }}
 ---
 # Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 I. Command line grammar (must be line 1, column 1)
 ---
 {% include version-switcher.html %}
+> **You’re viewing v1.4.** For the canonical page see **[Latest Spec]({{ '/latest/spec/' | relative_url }})**.
 
-> **You’re viewing v1.4.** For the canonical page see **[Latest Spec](/latest/spec/)**.
 **Form**  
 `!<tag> [--modifier ...]`
 
