@@ -1,10 +1,14 @@
 title: Viable Prompt Protocol
 description: Bang-tagged, closed-loop prompting (constructivist–cybernetic)
 theme: minima
+url: "https://cbassuarez.github.io"         # GitHub Pages user/org root
+baseurl: "/viable-prompt-protocol"          # repo name with leading slash
+permalink: pretty 
 markdown: kramdown
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from  
 defaults:
   - scope: { path: "" }
     values: { layout: "page" }
