@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest an enhancement to VPP, the validator, or docs.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      placeholder: What limitation or gap are you addressing?
+    validations: { required: true }
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: Briefly describe the change; include examples if helpful.
+    validations: { required: true }
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: Spec (protocol)
+        - label: Parser/Validator
+        - label: Docs/Examples
+        - label: CI/Automation
