@@ -1,4 +1,4 @@
-# 06 — Compliance Footer
+# VI. Compliance Footer
 
 Append to **every** assistant message (one line, machine-readable):
 
