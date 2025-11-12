@@ -1,10 +1,12 @@
 # Viable Prompt Protocol (VPP)
 
-[![Spec Version](https://img.shields.io/badge/spec-v1.4-blue)](docs/spec/v1.4/spec.md)
+[![Spec](https://img.shields.io/badge/spec-v1.4-blue)](docs/spec/v1.4/spec.md)
 [![License](https://img.shields.io/badge/license-MIT%20%2B%20CC%20BY%204.0-black)](#license)
-<!-- [![CI](https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml) -->
+[![CI](https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/ci.yml)
+[![Pages](https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/pages.yml/badge.svg)](https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/pages.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-informational)](https://cbassuarez.github.io/viable-prompt-protocol/)
 [![CDN Latest](https://img.shields.io/badge/cdn-latest-success)](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/latest/spec.md)
+[![CDN v1.4](https://img.shields.io/badge/cdn-v1.4-success)](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md)
 
 A compact, testable protocol for tagged, closed-loop prompting (constructivist–cybernetic).  
 **Bang-tag grammar** for users, **mirrored tags** for assistants, flexible loop, explicit escapes, and a machine-readable compliance footer.
