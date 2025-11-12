@@ -1,0 +1,10 @@
+title: Viable Prompt Protocol
+description: Bang-tagged, closed-loop prompting (constructivist–cybernetic)
+theme: minima
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  - scope: { path: "" }
+    values: { layout: "page" }
