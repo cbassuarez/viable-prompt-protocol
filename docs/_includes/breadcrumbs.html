@@ -1,0 +1,9 @@
+<nav aria-label="Breadcrumbs" class="vpp-breadcrumbs">
+  <a href="/">Home</a>
+  {% assign segs = page.url | split: '/' | reject: '' %}
+  {% assign path = '' %}
+  {% for s in segs %}
+    {% assign path = path | append: '/' | append: s | append: '/' %}
+    &nbsp;/&nbsp;<a href="{{ path }}">{{ s }}</a>
+  {% endfor %}
+</nav>
