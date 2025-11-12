@@ -1,0 +1,15 @@
+name: Question
+description: Ask about adopting or using VPP.
+labels: ["question"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      placeholder: Where and how are you adopting VPP?
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: VPP version
+      placeholder: v1.4
