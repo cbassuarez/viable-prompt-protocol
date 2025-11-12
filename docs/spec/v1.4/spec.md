@@ -1,4 +1,7 @@
-Technical Specifications
+---
+title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
+---
+# Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 I. Command line grammar (must be line 1, column 1)
 ---
 
