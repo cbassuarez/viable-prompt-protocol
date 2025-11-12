@@ -7,7 +7,7 @@ canonical_url: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.h
 I. Command line grammar (must be line 1, column 1)
 ---
 {% include version-switcher.html %}
-> **You’re viewing v1.4.** For the canonical page see **[Latest Spec]({{ '/latest/spec/' | relative_url }})**.
+> **You’re viewing v1.4.** For the canonical page see **[Latest Spec](https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.html)**.
 
 **Form**  
 `!<tag> [--modifier ...]`
