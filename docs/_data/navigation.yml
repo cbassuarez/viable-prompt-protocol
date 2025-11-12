@@ -1,0 +1,12 @@
+vpp:
+  - title: "Latest Spec"
+    url: /latest/spec/
+  - title: "Version v1.4"
+    url: /spec/v1.4/spec/
+    children:
+      - title: "Header Snippet"
+        url: /spec/v1.4/header-snippet.txt
+  - title: "Examples (End-to-End)"
+    url: /spec/v1.4/examples/end-to-end/
+  - title: "Adoption — OpenAI"
+    url: /adoption/openai/
