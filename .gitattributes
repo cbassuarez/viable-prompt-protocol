@@ -1,0 +1,19 @@
+# Viable Prompt Protocol — Git attributes
+
+# Normalize line endings
+* text=auto eol=lf
+
+# Treat docs/spec as documentation for linguist stats
+docs/** linguist-documentation
+spec/** linguist-documentation
+
+# Ensure diffs for lockfiles remain readable
+package-lock.json -diff
+pnpm-lock.yaml   -diff
+yarn.lock        -diff
+
+# Jekyll site output is never tracked
+_site/** export-ignore
+
+# Preserve executable bit for scripts
+scripts/*.mjs eol=lf
