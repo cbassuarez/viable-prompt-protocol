@@ -1,5 +1,6 @@
 ---
 title: Viable Prompt Protocol (VPP)
+permalink: /
 ---
 
 - **Latest spec**: [docs/latest/spec.md](./latest/spec.md)  
