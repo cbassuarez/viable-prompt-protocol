@@ -1,0 +1,15 @@
+{
+  "name": "Viable Prompt Protocol",
+  "short": "VPP",
+  "version": "1.4.0",
+  "latest": "v1.4",
+  "cdn": {
+    "spec_latest": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/latest/spec.md",
+    "spec_v1_4": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md",
+    "header_latest": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/header-snippet.txt"
+  },
+  "license": {
+    "code": "MIT",
+    "docs_examples": "CC-BY-4.0"
+  }
+}
