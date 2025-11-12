@@ -1,0 +1,44 @@
+name: Bug report
+description: Report a problem with the protocol, parser, docs, or site.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened? One or two sentences.
+      placeholder: Parser rejects valid line-1 input...
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Include the exact first line and minimal transcript if applicable.
+      render: shell
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations: { required: true }
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: VPP version
+      placeholder: v1.4
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: Area
+      options:
+        - label: Grammar/Regex (line 1)
+        - label: Modifiers
+        - label: Loop/Escapes
+        - label: Guardrails
+        - label: Footer
+        - label: Docs/Website
