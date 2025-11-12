@@ -1,0 +1,8 @@
+---
+# Only the main Sass file needs front matter
+---
+@import "minimal-mistakes/skins/default";
+@import "minimal-mistakes";
+
+/* Optional overrides — if you want your custom styles, put them in _sass/custom.scss and import: */
+@import "custom";
