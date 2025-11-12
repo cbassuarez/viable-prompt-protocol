@@ -1,0 +1,44 @@
+---
+---
+
+/* Minimal Mistakes override tokens + high contrast */
+:root {
+  --vpp-accent: #0a84ff;
+}
+
+html[data-theme="dark"] {
+  --mm-text-color: #e6e6e6;
+  --mm-background-color: #0f0f10;
+}
+
+/* Copy button */
+.vpp-copy {
+  font-size: .8rem;
+  padding: .2rem .5rem;
+  cursor: pointer;
+}
+
+/* Theme toggle button */
+.vpp-theme-toggle {
+  margin-left: auto;
+  padding: .25rem .5rem;
+}
+
+/* Admonitions via Kramdown classes (no plugin) */
+.notice--info, .notice--warning, .notice--success {
+  border-left: 4px solid var(--vpp-accent);
+  padding: .75rem 1rem;
+  background: rgba(10,132,255,.06);
+}
+
+/* Breadcrumbs */
+.vpp-breadcrumbs {
+  font-size: .85rem;
+  margin-bottom: .5rem;
+}
+
+/* Print-friendly: hide chrome */
+@media print {
+  .masthead, .sidebar, .page__footer, .vpp-version-switcher { display: none !important; }
+  .page { margin: 0; }
+}
