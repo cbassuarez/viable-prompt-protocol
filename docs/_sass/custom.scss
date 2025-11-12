@@ -1,0 +1,5 @@
+/* High-contrast + small polish from your previous custom.css */
+:root { --vpp-accent:#0a84ff; }
+.vpp-copy{font-size:.8rem;padding:.2rem .5rem;cursor:pointer;}
+.vpp-breadcrumbs{font-size:.85rem;margin-bottom:.5rem;}
+@media print{ .masthead,.sidebar,.page__footer,.vpp-version-switcher{display:none!important} .page{margin:0} }
