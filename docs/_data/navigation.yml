@@ -1,8 +1,8 @@
 vpp:
   - title: "Latest Spec"
-    url: /latest/spec/
+    url: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.html
   - title: "Version v1.4"
-    url: /spec/v1.4/spec/
+    url: https://cbassuarez.github.io/viable-prompt-protocol/spec/v1.4/spec/
     children:
       - title: "Header Snippet"
         url: /spec/v1.4/header-snippet.txt
