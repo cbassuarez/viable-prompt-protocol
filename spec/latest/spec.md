@@ -1,0 +1,18 @@
+{ "protocol": { "version": "1.4", "sections": { "I": { "title": "Command line grammar", "form": "! [--modifier ...]", "tags": { "user_side": ["g", "q", "o", "c", "o_f", "e", "e_o"], "assistant_reply": ["g", "q", "o", "c", "o_f"] },
+ "modifiers": { "base": ["--correct", "--incorrect"], "severity": ["--minor", "--major"], "pipeline": "--" },
+ "valid_with": { "o_correct_tag": "! --correct --", "e_tag": "! --" },
+ "rules": { "line_1_only": true, "later_lines_ignored": true },
+ "regex": "^!<(g|q|o|c|o_f|e|e_o)>(?:\s+--(?:correct|incorrect|minor|major|g|q|o|c|o_f|e|e_o))\s*$" },
+ "II": { "title": "Mirror rule", "description": "Assistant mirrors user tag except for escape forms.", "mapping": { "!": "", "!": "", "!": "", "!": "", "!<o_f>": "<o_f>", "! --": "", "!<e_o>": "" } },
+ "III": { "title": "Modifiers → deterministic actions", "incorrect": { "q": "return with a re-factored question set", "c": "return targeting deltas from prior ", "o": "either first (diagnose) or corrected ", "g": "return trimmed to concept-only", "o_f": "return listing blockers to finality", "e_tag": "ask minimum extra info for then proceed", "e_o": "proceed with and list assumptions" },
+ "severity": { "minor": "keep scope; ≤25 questions per ", "major": "allow reframing; ≤25 questions" },
+ "correct": { "q_c": "proceed with same tag, shorter", "g": "accept grounding; conceptual only", "o": "if --, start pipeline; else reply with ", "o_f": "finalize and close loop", "e_eo": "proceed with minimal friction" },
+ "conflict_handling": "If mutually exclusive modifiers appear, return with one-line error and valid example." },
+ "IV": { "title": "Loop discipline & escapes", "loop": " <g> → <q> → <o> → <c> … → <o_f>", "escape_after_cycles": 3, "user_shortcuts": { "e_tag": "declare new locus starting at ", "e_o": "skip straight to ; assumptions explicit" } },
+ "V": { "title": "Hallucination guardrails", "rules": [ "Browse & cite authoritative sources when external facts matter.", "If sources unavailable: abstain and provide evidence.", "Otherwise proceed with marked assumptions." ] },
+ "VI": { "title": "Tag contracts", "contracts": { "g": "conceptual only; snippets allowed; no full files/modules", "q": "broad; uncertainty-reducing; structured answers", "o": "deliverable as if final; include Assumptions/Citations/Tests", "c": "finer-order; delta-seeking", "o_f": "publishable; rationale + checklist" } },
+ "VII": { "title": "Noncompliance & recovery", "rule": "If wrong tag emitted, assistant re-emits correct tag with one-line footer note only." },
+ "VIII": { "title": "Compliance footer", "format": "[Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions= | Cycle=/3 | Locus=<name?>]", "example": "Tag=o_1" },
+ "IX": { "title": "Protocol unit tests", "tests": [ "Grammar pass: line-1 matches regex; later lines ignored.", "Mirror pass: ! yields , except escapes.", "Modifier pass: conflicts -> failure; ≤25-question cap.", "Guardrail pass: facts -> cite; unavailability -> abstain.", "Budget pass: conceptual; includes metadata.", "Cycle pass: after 3 cycles, propose escape." ] },
+ "X": { "title": "Deployment & hosting", "header_snippet": "Bang-tag protocol. User sends ! on line 1 (g,q,o,c,o_f,e,e_o)... Full spec: [CDN link].", "full_spec_url": "https://cdn.example.com/protocol/v1.4.md", "assumptions": [ "Locus naming free-form; default generic.", "Tag index _n counts instances per locus." ],
+ "tests": { "A": { "input": "! --", "expected": "" }, "B": { "input": "!<e_o>", "expected": "" }, "C": { "input": "! --correct --", "expected": "" }, "D": { "input": "! --correct --incorrect", "expected": "" } } } } } }
