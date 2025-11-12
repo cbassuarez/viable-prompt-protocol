@@ -24,7 +24,7 @@ Only the first line is parsed; later bangs are ignored as content.
 Loop is flexible: g→q→o→c→…→o_f (any order/length).
 After 3 cycles I propose !<e> --<tag> or !<e_o>.
 Every reply ends with: [Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>].
-Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md
+Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
 
 
