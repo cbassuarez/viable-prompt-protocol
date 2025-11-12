@@ -1,0 +1,3 @@
+!<g>
+This is a valid transcript where only the first line is parsed.
+Later lines may include bangs like !<q> that are treated as content.
