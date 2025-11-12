@@ -1,7 +1,7 @@
 ---
 title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
-permalink: /spec/v1.4/spec/
-canonical_url: "{{ '/latest/spec/' | absolute_url }}"
+permalink: https://cbassuarez.github.io/viable-prompt-protocol/spec/v1.4/spec/
+canonical_url: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.html
 ---
 # Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 I. Command line grammar (must be line 1, column 1)
