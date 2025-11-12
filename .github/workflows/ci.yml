@@ -1,0 +1,22 @@
+name: CI
+on:
+  push: { branches: [ main ] }
+  pull_request:
+jobs:
+  lint-links-spell-and-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Markdownlint
+        run: npx markdownlint-cli2 **/*.md
+      - name: Lychee link check
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress --max-concurrency 4 --accept 200,206 --exclude-mail --timeout 20s "**/*.md"
+      - name: Spellcheck
+        run: npx cspell --no-progress "docs/**/*.md" "spec/**/*.md" "README.md"
+      - name: Parser tests
+        run: node scripts/test-transcripts.mjs
