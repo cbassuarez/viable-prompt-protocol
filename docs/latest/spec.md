@@ -1,9 +1,3 @@
----
-title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
-permalink: /latest/spec/
----
-{% include version-switcher.html %}
-
 # Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 
 I. Command line grammar (must be line 1, column 1)
@@ -199,3 +193,9 @@ None external; derived from this session’s rules.
 | **B** | `!<e_o>` | reply begins with `<o>` and lists explicit assumptions |
 | **C** | `!<o> --correct --<q>` | reply begins with `<q>` |
 | **D** | `!<q> --correct --incorrect` | reply `<c>` with single-line conflict error + valid example |
+
+---
+title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
+permalink: /latest/spec/
+---
+{% include version-switcher.html %}
