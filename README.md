@@ -44,6 +44,17 @@ Or fetch via CDN:
 ## Contributing
 PRs welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md). Issues templates provided.
 
+## Local development
+Requires Node 20 (see `.nvmrc`).
+```
+npm i -g markdownlint-cli2 cspell
+npx markdownlint-cli2 **/*.md
+npx cspell --no-progress "docs/**/*.md" "spec/**/*.md" "README.md"
+node scripts/test-transcripts.mjs
+node tests/parser.spec.mjs
+```
+
+
 ## License
 - **Code**: MIT (`LICENSE-MIT`)
 - **Docs & Examples**: CC BY 4.0 (`LICENSE-CC-BY-4.0`)
