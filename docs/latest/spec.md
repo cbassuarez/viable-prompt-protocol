@@ -1,5 +1,6 @@
 ---
 title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
+permalink: /latest/spec/
 ---
 # Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 
