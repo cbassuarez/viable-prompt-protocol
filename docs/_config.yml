@@ -1,20 +1,21 @@
- title: Viable Prompt Protocol
- description: Bang-tagged, closed-loop prompting (constructivist–cybernetic)
+title: Viable Prompt Protocol
+description: Bang-tagged, closed-loop prompting (constructivist–cybernetic)
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: "default"
 url: "https://cbassuarez.github.io"
 baseurl: "/viable-prompt-protocol"
 permalink: pretty
- markdown: kramdown
- plugins:
-   - jekyll-seo-tag
-   - jekyll-sitemap
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-include-cache
   - jekyll-remote-theme
- defaults:
-  - scope: { path: "" }
+defaults:
+  - scope:
+      path: ""
     values:
       layout: single
       sidebar:
-        nav: "vpp"     # left sticky sidebar
-      toc: true        # TOC at top
+        nav: "vpp"      # left sticky sidebar
+      toc: true         # TOC at top
