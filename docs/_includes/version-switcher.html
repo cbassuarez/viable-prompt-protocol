@@ -2,7 +2,7 @@
   <label for="vpp-version">Version:</label>
   <select id="vpp-version" aria-label="Switch version"
           onchange="if(this.value) location.href=this.value;">
-    <option value="https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.html">Latest</option>
-    <option value="https:/cbassuarez.github.io/viable-prompt-protocol/spec/v1.4/spec/" selected>v1.4</option>
+    <option value="{{ '/latest/spec/' | relative_url }}">Latest</option>
+    <option value="{{ '/spec/v1.4/spec/' | relative_url }}" selected>v1.4</option>
   </select>
 </div>
