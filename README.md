@@ -50,7 +50,7 @@ Or fetch via CDN:
 - CI runs markdown lint, link check, spellcheck, and parser tests.
 
 ## Contributing
-PRs welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md). Issues templates provided.
+PRs welcome. Please see [CONTRIBUTING.md](contributing.md). Issues templates provided.
 
 ## Local development
 Requires Node 20 (see `.nvmrc`).
