@@ -1,7 +1,7 @@
 ---
 title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
 permalink: https://cbassuarez.github.io/viable-prompt-protocol/spec/v1.4/spec/
-canonical_url: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.html
+canonical_url: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec/
 layout: single
 sidebar:
   nav: "vpp"
