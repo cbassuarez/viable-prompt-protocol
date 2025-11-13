@@ -175,10 +175,10 @@ X. Deployment & hosting
 
 **Short header (for ChatGPT instructions panel)** — keep concise:
 
-> “Bang-tag protocol. User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o). I mirror the tag (except !<e> --<tag> → <tag>, !<e_o> → <o>). <g> is concept-only; <o> includes assumptions/citations/tests. After 3 cycles suggest !<e> --<tag> or !<e_o>. Full spec: [CDN link].”
+> “Bang-tag protocol. User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o). I mirror the tag (except !<e> --<tag> → <tag>, !<e_o> → <o>). <g> is concept-only; <o> includes assumptions/citations/tests. After 3 cycles suggest !<e> --<tag> or !<e_o>. Full spec: [CDN.jsDelivr.net](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md).”
 
 **Full spec URL (placeholder):**  
-`https://cdn.example.com/protocol/v1.4.md`  
+`https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md`  
 (Include extended examples and sample chats at the CDN.)
 
 ---
