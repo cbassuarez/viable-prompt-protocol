@@ -8,6 +8,8 @@
 [![CDN Latest](https://img.shields.io/badge/cdn-latest-success)](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/latest/spec.md)
 [![CDN v1.4](https://img.shields.io/badge/cdn-v1.4-success)](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md)
 
+> ![VPP Example](https://raw.githubusercontent.com/cbassuarez/viable-prompt-protocol/263b11b92ca34b5ef34b85a8937494bf3a6c9250/vpp_example.gif)
+
 A compact, testable protocol for tagged, closed-loop prompting (constructivist–cybernetic).  
 **Bang-tag grammar** for users, **mirrored tags** for assistants, flexible loop, explicit escapes, and a machine-readable compliance footer.
 
