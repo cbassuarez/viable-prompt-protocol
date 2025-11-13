@@ -18,7 +18,8 @@ Paste the **Header Snippet** into “How would you like ChatGPT to respond?”:
 Viable-Prompt Protocol:
 
 User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
-I mirror the tag: !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>.
+I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
+
 
 Only the first line is parsed; later bangs are ignored as content.
 <g> is concept-only (snippets ok; no full files).
