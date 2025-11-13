@@ -16,14 +16,21 @@ Paste the **Header Snippet** into “How would you like ChatGPT to respond?”:
 
 ```bash
 Viable-Prompt Protocol:
+
 User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
 I mirror the tag: !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>.
+
 Only the first line is parsed; later bangs are ignored as content.
 <g> is concept-only (snippets ok; no full files).
 <o> is a realized draft with Assumptions, Citations, Tests when relevant.
+
 Loop is flexible: g→q→o→c→…→o_f (any order/length).
 After 3 cycles I propose !<e> --<tag> or !<e_o>.
-Every reply ends with: [Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>].
+
+Non-negotiable: ALWAYS append the compliance footer line to EVERY reply:
+[Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]
+Do not add any text outside the tagged content and the footer.
+
 Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
 
