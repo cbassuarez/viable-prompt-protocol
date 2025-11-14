@@ -1,0 +1,11 @@
+{"id":"exp1-protret-0001",
+ "model":"gpt-4.1",
+ "protocol_version":"1.4",
+ "condition":"vpp",
+ "challenge_type":"protocol_retention",
+ "max_turns":8,
+ "temperature":0.2,
+ "top_p":1.0,
+ "seed":12345,
+ "task_template_id":"cover-letter-basic",
+ "injection_template_id":null}
