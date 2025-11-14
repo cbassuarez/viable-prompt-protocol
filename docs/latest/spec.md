@@ -166,7 +166,11 @@ X. Deployment & hosting
 
 **Short header (for ChatGPT instructions panel)** — keep concise:
 
-> “Bang-tag protocol. User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o). I mirror the tag (except !<e> --<tag> → <tag>, !<e_o> → <o>). <g> is concept-only; <o> includes assumptions/citations/tests. After 3 cycles suggest !<e> --<tag> or !<e_o>. Full spec: [CDN.jsDelivr.net](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md).”
+> “Viable-Prompt Protocol (VPP). User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o). I mirror the tag (except !<e> --<tag> → <tag>, !<e_o> → <o>). <g> is concept-only; <o> includes assumptions/citations/tests. <q> is rough-context question/probing/diagnostic only. Ask general questions when appropriate.
+<c> is a fine-context locum questioning/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
+<o_f> is the final, desired output with Assumptions, Citations, Tests when relevant. Any <o> could be <o_f>.
+<e> is an escape tag, which is paired with a modifier tag to escape to another part in the loop (e.g. !<e> --<g>). Special case <e_o> escapes to <o> immediately.
+Loop is flexible: g→q→o→c→…→o_f (any order/length).After 3 cycles suggest !<e> --<tag> or !<e_o>. Full spec: [CDN.jsDelivr.net](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md).”
 
 **Full spec URL (placeholder):**  
 `https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md`  
