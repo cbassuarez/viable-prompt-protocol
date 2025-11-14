@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cbassuarez.github.io/viable-prompt-protocol/corpus/v1.4/session.schema.json",
+  "title": "VPP Session",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "protocol_version",
+    "meta",
+    "label",
+    "failure_modes",
+    "turns"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "protocol_version": { "type": "string", "minLength": 1 },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model",
+        "provider",
+        "condition",
+        "challenge_type",
+        "created_at",
+        "task_template_id",
+        "injection_template_id",
+        "seed"
+      ],
+      "properties": {
+        "model": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "minLength": 1 },
+        "condition": { "type": "string", "minLength": 1 },
+        "challenge_type": { "type": "string", "minLength": 1 },
+        "created_at": { "type": "string", "format": "date-time" },
+        "task_template_id": { "type": ["string", "null"] },
+        "injection_template_id": { "type": ["string", "null"] },
+        "seed": { "type": ["integer", "null"] }
+      }
+    },
+    "label": { "enum": ["good", "bad"] },
+    "failure_modes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "turns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "turn_index",
+          "role",
+          "raw_header",
+          "tag",
+          "modifiers",
+          "body",
+          "footer",
+          "parsed_footer"
+        ],
+        "properties": {
+          "turn_index": { "type": "integer", "minimum": 0 },
+          "role": { "enum": ["user", "assistant"] },
+          "raw_header": { "type": ["string", "null"] },
+          "tag": { "type": ["string", "null"], "enum": ["g", "q", "o", "c", "o_f", "e", "e_o", null] },
+          "modifiers": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "body": { "type": "string" },
+          "footer": { "type": ["string", "null"] },
+          "parsed_footer": { "type": ["object", "null"] }
+        }
+      }
+    }
+  }
+}
