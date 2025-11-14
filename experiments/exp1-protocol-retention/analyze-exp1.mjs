@@ -14,6 +14,46 @@ const EXPECTED_HEADINGS = [
   "Metrics & reporting"
 ];
 
+// Exp1 instrumentation note: the original analyzer treated tags like "!<g>" (user
+// commands) and "<g>" (assistant mirrors) as distinct values because the
+// serialized turns omit assistant `tag` fields. That formatting quirk was a
+// confounding measurement artifact—the model mirrored tags correctly, but our
+// metrics compared raw headers verbatim and reported 0% adherence. We normalize
+// tags before computing metrics so the experiment measures protocol retention
+// rather than logging conventions.
+
+const DEBUG_TAGS = false;
+
+function getEffectiveTag(turn) {
+  if (!turn) return null;
+
+  if (typeof turn.tag === "string" && turn.tag.trim().length > 0) {
+    return turn.tag.trim().toLowerCase();
+  }
+
+  if (typeof turn.raw_header === "string") {
+    const header = turn.raw_header.trim();
+    const match = header.match(/^!?<([a-z_]+)>$/i);
+    if (match && match[1]) {
+      return match[1].toLowerCase();
+    }
+  }
+
+  return null;
+}
+
+function normalizeSessionTags(session) {
+  if (!session || !Array.isArray(session.turns)) return;
+  for (const turn of session.turns) {
+    const effective = getEffectiveTag(turn);
+    if (effective && (!turn.tag || turn.tag.trim().length === 0)) {
+      // Non-destructive normalization keeps old corpus files intact while
+      // ensuring in-memory metrics operate on the semantic tag value.
+      turn.tag = effective;
+    }
+  }
+}
+
 function loadSessions() {
   if (!fs.existsSync(SESSIONS_DIR)) {
     console.error(`Sessions directory not found: ${SESSIONS_DIR}`);
@@ -29,6 +69,7 @@ function loadSessions() {
     try {
       const raw = fs.readFileSync(filePath, "utf8");
       const data = JSON.parse(raw);
+      normalizeSessionTags(data);
       sessions.push(data);
     } catch (err) {
       console.warn(`Skipping ${path.basename(filePath)} due to read/parse error: ${err.message}`);
@@ -108,15 +149,16 @@ function analyzeSession(session) {
       .slice(0, turn.turn_index)
       .reverse()
       .find(candidate => candidate.role === "user");
-    if (
-      prevUser &&
-      typeof prevUser.tag === "string" &&
-      prevUser.tag.length > 0 &&
-      typeof turn.tag === "string" &&
-      turn.tag.length > 0
-    ) {
+    const assistantTag = getEffectiveTag(turn);
+    const userTag = getEffectiveTag(prevUser);
+    if (assistantTag && userTag) {
       comparablePairs += 1;
-      if (prevUser.tag === turn.tag) {
+      if (DEBUG_TAGS) {
+        console.debug(
+          `[tag-debug] user ${prevUser?.raw_header ?? "<none>"}/${userTag} -> assistant ${turn.raw_header}/${assistantTag}`
+        );
+      }
+      if (assistantTag === userTag) {
         mirroredPairs += 1;
       }
     }
@@ -131,8 +173,8 @@ function analyzeSession(session) {
     return turn.parsed_footer && turn.parsed_footer.version === "v1.4";
   }).length;
 
-  const firstAssistantG = assistantTurns.find(turn => turn.tag === "g");
-  const lastAssistantO = [...assistantTurns].reverse().find(turn => turn.tag === "o");
+  const firstAssistantG = assistantTurns.find(turn => getEffectiveTag(turn) === "g");
+  const lastAssistantO = [...assistantTurns].reverse().find(turn => getEffectiveTag(turn) === "o");
 
   const premature = hasPrematureProtocol(firstAssistantG);
   const finalOk = finalProtocolInOrder(lastAssistantO);
