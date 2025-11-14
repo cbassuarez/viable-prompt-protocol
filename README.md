@@ -27,7 +27,7 @@ Only the first line is parsed; later bangs are ignored as content.
 <g> is concept-only (snippets ok; no full files).
 <o> is a realized draft with Assumptions, Citations, Tests when relevant. 
 <q> is rough-context question/probing/diagnostic only. Ask general questions when appropriate.
-<c> is a fine-context locum questionin/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
+<c> is a fine-context locum questioning/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
 <o_f> is the final, desired output with Assumptions, Citations, Tests when relevant. Any <o> could be <o_f>.
 <e> is an escape tag, which is paired with a modifier tag to escape to another part in the loop (e.g. !<e> --<g>). Special case <e_o> escapes to <o> immediately.
 Loop is flexible: g→q→o→c→…→o_f (any order/length).
