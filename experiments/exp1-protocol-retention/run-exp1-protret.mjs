@@ -276,8 +276,10 @@ async function callModel(messages, config) {
     model: config.model,
     input: messages,
     temperature: config.temperature,
-    top_p: config.top_p,
-    seed: config.seed
+    top_p: config.top_p
+    // NOTE: seed is intentionally not sent; the Responses API currently
+    // rejects an unknown 'seed' parameter. We still keep it in config/meta
+    // for bookkeeping.
   });
   const assistantText = extractAssistantText(response);
   return { response, assistantText };
