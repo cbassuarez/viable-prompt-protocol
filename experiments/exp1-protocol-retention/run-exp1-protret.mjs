@@ -151,7 +151,7 @@ function buildSystemMessage(headerSnippet) {
   ].join("\n\n");
   return {
     role: "system",
-    content: [{ type: "text", text }]
+    content: [{ type: "input_text", text }]
   };
 }
 
@@ -181,7 +181,7 @@ function buildInitialMessages(config, headerSnippet) {
   const userText = `${initial.raw_header}\n${initial.body}`;
   const userMessage = {
     role: "user",
-    content: [{ type: "text", text: userText }]
+    content: [{ type: "input_text", text: userText }]
   };
   return [systemMessage, userMessage];
 }
@@ -319,7 +319,7 @@ async function runSession(config) {
   });
   messages.push({
     role: "assistant",
-    content: [{ type: "text", text: assistantText }]
+    content: [{ type: "input_text", text: assistantText }]
   });
 
   while (turnIndex < config.max_turns) {
@@ -339,7 +339,7 @@ async function runSession(config) {
     });
     messages.push({
       role: "user",
-      content: [{ type: "text", text: userMessageText }]
+      content: [{ type: "input_text", text: userMessageText }]
     });
 
     const { assistantText: assistantReply } = await callModel(messages, config);
@@ -356,7 +356,7 @@ async function runSession(config) {
     });
     messages.push({
       role: "assistant",
-      content: [{ type: "text", text: assistantReply }]
+      content: [{ type: "input_text", text: assistantReply }]
     });
   }
 
