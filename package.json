@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "run:exp1-protret": "node experiments/exp1-protocol-retention/run-exp1-protret.mjs"
+    "run:exp1-protret": "node experiments/exp1-protocol-retention/run-exp1-protret.mjs",
+    "test:corpus": "node scripts/validate-corpus.mjs",
+    "analyze:exp1": "node experiments/exp1-protocol-retention/analyze-exp1.mjs"
   },
   "dependencies": {
+<<<<<<< HEAD
     "openai": "^4.104.0"
+=======
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "openai": "^4.54.0"
+>>>>>>> f40fa7f064598b5f46c88e10138b7d1113dcf612
   }
 }
