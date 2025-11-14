@@ -151,7 +151,7 @@ function buildSystemMessage(headerSnippet) {
   ].join("\n\n");
   return {
     role: "system",
-    content: [{ type: "input_text", text }]
+    content: text
   };
 }
 
@@ -181,7 +181,7 @@ function buildInitialMessages(config, headerSnippet) {
   const userText = `${initial.raw_header}\n${initial.body}`;
   const userMessage = {
     role: "user",
-    content: [{ type: "input_text", text: userText }]
+    content: userText
   };
   return [systemMessage, userMessage];
 }
@@ -272,17 +272,17 @@ function extractAssistantText(response) {
 }
 
 async function callModel(messages, config) {
-  const response = await openai.responses.create({
+  const completion = await openai.chat.completions.create({
     model: config.model,
-    input: messages,
+    messages,
     temperature: config.temperature,
     top_p: config.top_p
-    // NOTE: seed is intentionally not sent; the Responses API currently
-    // rejects an unknown 'seed' parameter. We still keep it in config/meta
-    // for bookkeeping.
   });
-  const assistantText = extractAssistantText(response);
-  return { response, assistantText };
+
+  const assistantText =
+    completion.choices?.[0]?.message?.content ?? "";
+
+  return { response: completion, assistantText };
 }
 
 async function runSession(config) {
@@ -319,7 +319,7 @@ async function runSession(config) {
   });
   messages.push({
     role: "assistant",
-    content: [{ type: "input_text", text: assistantText }]
+    content: assistantText
   });
 
   while (turnIndex < config.max_turns) {
@@ -339,7 +339,7 @@ async function runSession(config) {
     });
     messages.push({
       role: "user",
-      content: [{ type: "input_text", text: userMessageText }]
+      content: userMessageText
     });
 
     const { assistantText: assistantReply } = await callModel(messages, config);
@@ -356,7 +356,7 @@ async function runSession(config) {
     });
     messages.push({
       role: "assistant",
-      content: [{ type: "input_text", text: assistantReply }]
+      content: assistantReply
     });
   }
 
