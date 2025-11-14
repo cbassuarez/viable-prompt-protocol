@@ -126,7 +126,16 @@ function parseAssistantMessage(text) {
         modifiers = parsed.modifiers;
       }
     }
+
+    // Fallback: assistant-style headers like "<g>", "<o>", "<o_f>"
+    if (!tag) {
+      const m = raw_header.match(/^<([a-z_]+)>$/i);
+      if (m) {
+        tag = m[1]; // e.g., "g", "o", "o_f"
+      }
+    }
   }
+
   if (!Array.isArray(modifiers)) {
     modifiers = [];
   } else {
