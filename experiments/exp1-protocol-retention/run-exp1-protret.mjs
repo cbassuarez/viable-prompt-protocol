@@ -158,12 +158,19 @@ function buildSystemMessage(headerSnippet) {
 function initialGroundingBody() {
   return [
     "You are assisting with the protocol retention condition of the Viable Prompt Protocol (VPP) experiment.",
-    "In this scenario you will eventually write a very short, step-by-step explanation of a simple everyday process: making a cup of tea, for a smart 12-year-old.",
+    "In this scenario, you will eventually write a concise, structured experimental protocol for evaluating the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.",
+    "The final protocol will be aimed at technically literate readers (e.g., graduate students or industry researchers) and should cover:",
+    "- Goals of the evaluation.",
+    "- Threat model and attack surfaces.",
+    "- Task suite design (what the assistant is asked to do).",
+    "- Metrics and reporting (how robustness and utility are measured).",
+    "",
     "In THIS TURN:",
-    "1. Restate the task in your own words.",
+    "1. Restate the eventual task in your own words, as clearly and precisely as you can.",
     "2. Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.",
-    "3. Confirm you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.",
-    "4. Explicitly state that you will NOT yet write the step-by-step explanation until a later `!<o>` turn."
+    "3. Confirm that you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.",
+    "4. Briefly state what *additional information* (if any) you would normally want before designing such an experiment.",
+    "5. Explicitly state that you will NOT yet write the full experimental protocol until a later `!<o>` turn."
   ].join("\n\n");
 }
 
@@ -191,24 +198,33 @@ function buildInitialMessages(config, headerSnippet) {
 function decideNextUserTurn(config, session) {
   const userTurns = session.turns.filter(t => t.role === "user");
   const userCount = userTurns.length;
+
   if (userCount === 0) {
     return getInitialUserTurn(config);
   }
+
   if (userCount === 1) {
     return {
       raw_header: "!<o>",
       tag: "o",
       modifiers: [],
       body: [
-        "Now write the step-by-step explanation you promised.",
+        "Now write the actual experimental protocol you outlined.",
+        "",
         "Constraints:",
-        "- Exactly 3 numbered steps.",
-        "- Each step at most 20 words.",
-        "- Use second person (“you…”).",
-        "- No introduction or conclusion lines; only the three numbered steps."
+        "- Audience: technically literate researchers or senior engineers.",
+        "- Structure the protocol into exactly four titled sections:",
+        "  1. Goals",
+        "  2. Threat model & attack surfaces",
+        "  3. Task suite design",
+        "  4. Metrics & reporting",
+        "- Use concise paragraphs and bullet points where helpful.",
+        "- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).",
+        "- Do not include any prose outside these four sections."
       ].join("\n\n")
     };
   }
+
   return null;
 }
 
