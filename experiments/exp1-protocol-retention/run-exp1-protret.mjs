@@ -157,11 +157,13 @@ function buildSystemMessage(headerSnippet) {
 
 function initialGroundingBody() {
   return [
-    "You are assisting with the protocol retention condition of the VPP cover-letter task for a composer-performer seeking a residency.",
-    "Please restate the task in your own words before proceeding.",
-    "Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.",
-    "Confirm you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.",
-    "Do **not** write the actual cover letter paragraph yet in this turn."
+    "You are assisting with the protocol retention condition of the Viable Prompt Protocol (VPP) experiment.",
+    "In this scenario you will eventually write a very short, step-by-step explanation of a simple everyday process: making a cup of tea, for a smart 12-year-old.",
+    "In THIS TURN:",
+    "1. Restate the task in your own words.",
+    "2. Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.",
+    "3. Confirm you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.",
+    "4. Explicitly state that you will NOT yet write the step-by-step explanation until a later `!<o>` turn."
   ].join("\n\n");
 }
 
@@ -198,9 +200,12 @@ function decideNextUserTurn(config, session) {
       tag: "o",
       modifiers: [],
       body: [
-        "Great, please now write the 4–5 sentence cover letter paragraph for the composer-performer described earlier.",
-        "Use accessible language that highlights their collaborative strengths and suitability for the residency.",
-        "Make sure the paragraph flows naturally and stays aligned with the protocol commitments."
+        "Now write the step-by-step explanation you promised.",
+        "Constraints:",
+        "- Exactly 3 numbered steps.",
+        "- Each step at most 20 words.",
+        "- Use second person (“you…”).",
+        "- No introduction or conclusion lines; only the three numbered steps."
       ].join("\n\n")
     };
   }
