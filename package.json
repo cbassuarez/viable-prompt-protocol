@@ -1,0 +1,11 @@
+{
+  "name": "viable-prompt-protocol",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "run:exp1-protret": "node experiments/exp1-protocol-retention/run-exp1-protret.mjs"
+  },
+  "dependencies": {
+    "openai": "^4.54.0"
+  }
+}
