@@ -227,10 +227,21 @@ function decideNextUserTurn(config, session) {
 
   return null;
 }
+function ensureUniqueSessionId(baseId) {
+  let candidate = baseId;
+  let counter = 1;
+  while (fs.existsSync(path.join(SESSIONS_DIR, `${candidate}.json`))) {
+    const suffix = String(counter).padStart(3, "0");
+    candidate = `${baseId}-${suffix}`;
+    counter += 1;
+  }
+  return candidate;
+}
 
 function createEmptySession(config) {
+  const uniqueId = ensureUniqueSessionId(config.id);
   return {
-    id: config.id,
+    id: uniqueId,
     protocol_version: config.protocol_version,
     meta: {
       model: config.model,
