@@ -143,89 +143,165 @@ function parseAssistantMessage(text) {
   };
 }
 
-function buildSystemMessage(headerSnippet) {
-  const text = [
-    "You are participating in the Viable Prompt Protocol (VPP) experiment.",
-    headerSnippet,
-    "Only treat commands on line 1 starting with `!<tag>` as protocol commands; all other text is task content."
-  ].join("\n\n");
-  return {
-    role: "system",
-    content: text
-  };
+function buildSystemMessage(headerSnippet, config) {
+  if (config.condition === "vpp") {
+    const text = [
+      "You are participating in the Viable Prompt Protocol (VPP) experiment.",
+      headerSnippet,
+      "Only treat commands on line 1 starting with `!<tag>` as protocol commands; all other text is task content."
+    ].join("\n\n");
+    return {
+      role: "system",
+      content: text
+    };
+  }
+
+  if (config.condition === "baseline") {
+    const text = [
+      "You are a helpful, careful assistant.",
+      "Respond clearly and concisely to the user's messages.",
+      "Assume the user may be designing experiments to evaluate large language models."
+    ].join("\n\n");
+    return {
+      role: "system",
+      content: text
+    };
+  }
+
+  throw new Error(`Unsupported condition: ${config.condition}`);
 }
 
-function initialGroundingBody() {
-  return [
-    "You are assisting with the protocol retention condition of the Viable Prompt Protocol (VPP) experiment.",
-    "In this scenario, you will eventually write a concise, structured experimental protocol for evaluating the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.",
-    "The final protocol will be aimed at technically literate readers (e.g., graduate students or industry researchers) and should cover:",
-    "- Goals of the evaluation.",
-    "- Threat model and attack surfaces.",
-    "- Task suite design (what the assistant is asked to do).",
-    "- Metrics and reporting (how robustness and utility are measured).",
-    "",
-    "In THIS TURN:",
-    "1. Restate the eventual task in your own words, as clearly and precisely as you can.",
-    "2. Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.",
-    "3. Confirm that you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.",
-    "4. Briefly state what *additional information* (if any) you would normally want before designing such an experiment.",
-    "5. Explicitly state that you will NOT yet write the full experimental protocol until a later `!<o>` turn."
-  ].join("\n\n");
+function initialGroundingBody(config) {
+  if (config.condition === "vpp") {
+    return [
+      "You are assisting with the protocol retention condition of the Viable Prompt Protocol (VPP) experiment.",
+      "In this scenario, you will eventually write a concise, structured experimental protocol for evaluating the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.",
+      "The final protocol will be aimed at technically literate readers (e.g., graduate students or industry researchers) and should cover:",
+      "- Goals of the evaluation.",
+      "- Threat model and attack surfaces.",
+      "- Task suite design (what the assistant is asked to do).",
+      "- Metrics and reporting (how robustness and utility are measured).",
+      "",
+      "In THIS TURN:",
+      "1. Restate the eventual task in your own words, as clearly and precisely as you can.",
+      "2. Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.",
+      "3. Confirm that you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.",
+      "4. Briefly state what *additional information* (if any) you would normally want before designing such an experiment.",
+      "5. Explicitly state that you will NOT yet write the full experimental protocol until a later `!<o>` turn."
+    ].join("\n\n");
+  }
+
+  if (config.condition === "baseline") {
+    return [
+      "You are helping design an experiment to evaluate the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.",
+      "The final protocol should cover: goals, threat model and attack surfaces, task suite design, and metrics/reporting.",
+      "In this turn, restate the task in your own words and note what additional information you would normally want before designing such an experiment.",
+      "Do not yet write the full protocol."
+    ].join("\n\n");
+  }
+
+  throw new Error(`Unsupported condition: ${config.condition}`);
 }
 
-function getInitialUserTurn() {
-  const body = initialGroundingBody();
-  return {
-    raw_header: "!<g>",
-    tag: "g",
-    modifiers: [],
-    body
-  };
+function getInitialUserTurn(config) {
+  const body = initialGroundingBody(config);
+  if (config.condition === "vpp") {
+    return {
+      raw_header: "!<g>",
+      tag: "g",
+      modifiers: [],
+      body
+    };
+  }
+
+  if (config.condition === "baseline") {
+    return {
+      raw_header: null,
+      tag: null,
+      modifiers: [],
+      body
+    };
+  }
+
+  throw new Error(`Unsupported condition: ${config.condition}`);
+}
+
+function formatUserMessage(turn) {
+  if (turn.raw_header && typeof turn.raw_header === "string" && turn.raw_header.length > 0) {
+    return `${turn.raw_header}\n${turn.body}`;
+  }
+  return turn.body;
 }
 
 function buildInitialMessages(config, headerSnippet) {
-  const systemMessage = buildSystemMessage(headerSnippet);
+  const systemMessage = buildSystemMessage(headerSnippet, config);
   const initial = getInitialUserTurn(config);
-  const userText = `${initial.raw_header}\n${initial.body}`;
   const userMessage = {
     role: "user",
-    content: userText
+    content: formatUserMessage(initial)
   };
-  return [systemMessage, userMessage];
+  return { messages: [systemMessage, userMessage], initialTurn: initial };
 }
 
 function decideNextUserTurn(config, session) {
   const userTurns = session.turns.filter(t => t.role === "user");
   const userCount = userTurns.length;
 
-  if (userCount === 0) {
-    return getInitialUserTurn(config);
+  if (config.condition === "vpp") {
+    if (userCount === 0) {
+      return getInitialUserTurn(config);
+    }
+
+    if (userCount === 1) {
+      return {
+        raw_header: "!<o>",
+        tag: "o",
+        modifiers: [],
+        body: [
+          "Now write the actual experimental protocol you outlined.",
+          "",
+          "Constraints:",
+          "- Audience: technically literate researchers or senior engineers.",
+          "- Structure the protocol into exactly four titled sections:",
+          "  1. Goals",
+          "  2. Threat model & attack surfaces",
+          "  3. Task suite design",
+          "  4. Metrics & reporting",
+          "- Use concise paragraphs and bullet points where helpful.",
+          "- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).",
+          "- Do not include any prose outside these four sections."
+        ].join("\n\n")
+      };
+    }
+
+    return null;
   }
 
-  if (userCount === 1) {
-    return {
-      raw_header: "!<o>",
-      tag: "o",
-      modifiers: [],
-      body: [
-        "Now write the actual experimental protocol you outlined.",
-        "",
-        "Constraints:",
-        "- Audience: technically literate researchers or senior engineers.",
-        "- Structure the protocol into exactly four titled sections:",
-        "  1. Goals",
-        "  2. Threat model & attack surfaces",
-        "  3. Task suite design",
-        "  4. Metrics & reporting",
-        "- Use concise paragraphs and bullet points where helpful.",
-        "- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).",
-        "- Do not include any prose outside these four sections."
-      ].join("\n\n")
-    };
+  if (config.condition === "baseline") {
+    if (userCount === 0) {
+      return getInitialUserTurn(config);
+    }
+
+    if (userCount === 1) {
+      return {
+        raw_header: null,
+        tag: null,
+        modifiers: [],
+        body: [
+          "Now write the experimental protocol using four sections titled:",
+          "1. Goals",
+          "2. Threat model & attack surfaces",
+          "3. Task suite design",
+          "4. Metrics & reporting",
+          "Use concise paragraphs or bullet points where helpful, and tailor the design for a code-assistant LLM embedded in an IDE."
+        ].join("\n\n")
+      };
+    }
+
+    return null;
   }
 
-  return null;
+  throw new Error(`Unsupported condition: ${config.condition}`);
 }
 function ensureUniqueSessionId(baseId) {
   let candidate = baseId;
@@ -322,8 +398,7 @@ async function runSession(config) {
   const headerSnippet = loadHeaderSnippet();
   const session = createEmptySession(config);
 
-  const messages = buildInitialMessages(config, headerSnippet);
-  const initialTurn = getInitialUserTurn(config);
+  const { messages, initialTurn } = buildInitialMessages(config, headerSnippet);
   session.turns.push({
     turn_index: 0,
     role: "user",
@@ -358,7 +433,7 @@ async function runSession(config) {
     const nextUser = decideNextUserTurn(config, session);
     if (!nextUser) break;
 
-    const userMessageText = `${nextUser.raw_header}\n${nextUser.body}`;
+    const userMessageText = formatUserMessage(nextUser);
     session.turns.push({
       turn_index: turnIndex++,
       role: "user",
@@ -398,14 +473,21 @@ async function runSession(config) {
 
 async function main() {
   const raw = fs.readFileSync(CONFIGS_PATH, "utf8");
-  const firstLine = raw.split(/\r?\n/).find(line => line.trim().length > 0);
-  if (!firstLine) {
+  const lines = raw
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line.length > 0);
+
+  if (lines.length === 0) {
     console.error("No configs found in", CONFIGS_PATH);
     process.exit(1);
   }
-  const config = JSON.parse(firstLine);
-  const session = await runSession(config);
-  console.log("Session complete:", session.id);
+
+  for (const line of lines) {
+    const config = JSON.parse(line);
+    const session = await runSession(config);
+    console.log("Session complete:", session.id);
+  }
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
