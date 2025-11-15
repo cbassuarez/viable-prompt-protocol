@@ -1,5 +1,4 @@
-<!-- markdownlint-disable MD013 MD046 MD003 MD013 MD034 -->
-
+<!-- markdownlint-disable MD013 MD046 MD003 MD013 MD034 MD022 -->
 ---
 title: 'FAQ'
 ---
