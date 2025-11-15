@@ -5,7 +5,9 @@
   "scripts": {
     "run:exp1-protret": "node experiments/exp1-protocol-retention/run-exp1-protret.mjs",
     "test:corpus": "node scripts/validate-corpus.mjs",
-    "analyze:exp1": "node experiments/exp1-protocol-retention/analyze-exp1.mjs"
+    "analyze:exp1": "node experiments/exp1-protocol-retention/analyze-exp1.mjs",
+    "run:exp2-promptinj": "node experiments/exp2-prompt-injection/run-exp2-promptinj.mjs",
+    "analyze:exp2": "node experiments/exp2-prompt-injection/analyze-exp2.mjs"
   },
   "dependencies": {
     "openai": "^4.54.0"
