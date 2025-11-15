@@ -1,10 +1,16 @@
 import { defineConfig } from 'vitepress';
+import markdownItKatex from 'markdown-it-katex';
 
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
   description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
   base: '/viable-prompt-protocol/',
   lastUpdated: true,
+  markdown: {
+    config: (md) => {
+      md.use(markdownItKatex);
+    }
+  },
   editLink: {
     pattern: 'https://github.com/cbassuarez/viable-prompt-protocol/edit/main/website/docs/:path'
   },
@@ -54,6 +60,7 @@ export default defineConfig({
           text: 'Experiments',
           items: [
             { text: 'Overview', link: '/experiments/' },
+            { text: 'Summary', link: '/experiments/summary' },
             { text: 'Exp-01', link: '/experiments/exp-01' },
             { text: 'Exp-02', link: '/experiments/exp-02' },
             { text: 'Exp-01b', link: '/experiments/exp-01b' }
