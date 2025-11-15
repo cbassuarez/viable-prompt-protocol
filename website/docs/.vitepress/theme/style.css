@@ -116,6 +116,7 @@ pre,
 .vpp-hero-snippet-block {
   min-width: 0px;
   max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
