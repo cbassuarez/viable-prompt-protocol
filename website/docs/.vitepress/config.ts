@@ -62,7 +62,8 @@ export default defineConfig({
             { text: 'Summary', link: '/experiments/summary' },
             { text: 'Exp-01', link: '/experiments/exp-01' },
             { text: 'Exp-02', link: '/experiments/exp-02' },
-            { text: 'Exp-01b', link: '/experiments/exp-01b' }
+            { text: 'Exp-01b', link: '/experiments/exp-01b' },
+            { text: 'Exp-03', link: '/experiments/exp-03' }
           ]
         }
       ],
