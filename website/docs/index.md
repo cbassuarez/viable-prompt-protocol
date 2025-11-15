@@ -24,7 +24,12 @@ hero:
   <p class="vpp-hero-lede">Structure every LLM exchange with explicit tags, modifiers, and a compliance footer.</p>
   <p class="vpp-hero-tagline">Deterministic scaffolding for research-grade prompt engineering.</p>
   <div class="vpp-hero-actions">
-    <a class="vpp-hero-button vpp-hero-button--brand" href="https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md">Read the normative spec</a>
+    <a
+      class="vpp-hero-button vpp-hero-button--brand"
+      href="https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md"
+    >
+      Read the normative spec
+    </a>
     <a class="vpp-hero-button" href="/guide/">Browse the protocol guide</a>
     <a class="vpp-hero-button" href="https://github.com/cbassuarez/viable-prompt-protocol">View on GitHub</a>
   </div>
@@ -39,8 +44,10 @@ hero:
 ```text
 Viable-Prompt Protocol:
 
-User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
-I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
+User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect,
+--minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
+I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag>
+and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
 
 Only the first line is parsed; later bangs are ignored as content.
 <g> is concept-only (snippets ok; no full files).
@@ -48,7 +55,8 @@ Only the first line is parsed; later bangs are ignored as content.
 <q> is rough-context question/probing/diagnostic only. Ask general questions when appropriate.
 <c> is a fine-context locum questioning/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
 <o_f> is the final, desired output with Assumptions, Citations, Tests when relevant. Any <o> could be <o_f>.
-<e> is an escape tag, which is paired with a modifier tag to escape to another part in the loop (e.g. !<e> --<g>).  Special case <e_o> escapes to <o> immediately.
+<e> is an escape tag, which is paired with a modifier tag to escape to another part in
+the loop (e.g. !<e> --<g>).  Special case <e_o> escapes to <o> immediately.
 Loop is flexible: g→q→o→c→…→o_f (any order/length).
 After 3 cycles I propose !<e> --<tag> or !<e_o>.
 
@@ -72,18 +80,18 @@ Every assistant turn mirrors the tag and ends with a compliance footer.
   `<o_f>` for final delivery, and `<e>` / `<e_o>` for escape conditions.
 - Modifiers refine expectations: `--correct`, `--incorrect`, `--minor`, `--major`, `--<tag>`, and custom flags
   such as `--assumptions=3`.
-- The compliance footer keeps transcripts auditable with `[Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n> |
-  Cycle=<i>/3 | Locus=<name?>]`.
+- The compliance footer keeps transcripts auditable with
+  `[Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]`.
 
 The [protocol guide](/guide/) elaborates on pipelines, loci, and recovery strategies.
 The [FAQ](/faq/) captures pragmatic adoption questions.
 
 ## Machine-readable assets
 
-- **Normative spec:** <https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md>
-- **Versioned archive:** [`docs/spec/v1.4/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/docs/spec/v1.4)
-- **Header snippet:** <https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/header-snippet.txt>
-- **Parser schema:** [`spec/latest/spec.md`](https://github.com/cbassuarez/viable-prompt-protocol/blob/main/spec/latest/spec.md)
+- **Normative spec:** [Latest spec][latest-spec]
+- **Versioned archive:** [`docs/spec/v1.4/`][spec-archive]
+- **Header snippet:** [Header snippet][header-snippet]
+- **Parser schema:** [`spec/latest/spec.md`][parser-schema]
 
 These paths back the CDN mirrors used by downstream tooling, so they remain stable across releases.
 
@@ -104,9 +112,10 @@ These paths back the CDN mirrors used by downstream tooling, so they remain stab
 
 This repository ships with strict automation to keep transcripts and docs trustworthy:
 
-- `npx markdownlint-cli2 **/*.md` enforces formatting across specs, guides, and corpus notes.
-- `npx cspell --no-progress "docs/**/*.md" "spec/**/*.md" "website/docs/**/*.md" "README.md"` protects terminology and
-  protocol jargon.
+- `npx markdownlint-cli2 **/*.md` enforces formatting across specs, guides, and corpus
+  notes.
+- `npx cspell --no-progress "docs/**/*.md" "spec/**/*.md" "website/docs/**/*.md" "README.md"`
+  protects terminology and protocol jargon.
 - `node scripts/test-transcripts.mjs` validates transcript fixtures against the parser schema.
 - GitHub Pages builds this VitePress site via `npm run docs:build`, ensuring the public docs match the main branch.
 
@@ -114,10 +123,19 @@ See the [Validator & CI page](/validator/) for details on extending these checks
 
 ## Adoption workflow
 
-1. Fetch the [header snippet](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/header-snippet.txt)
-   and paste it into a fresh conversation.
+1. Fetch the [header snippet][header-snippet] and paste it into a fresh conversation.
 2. Issue `!<g>` or `!<q>` on line 1 to begin the first cycle.
 3. Track cycles with the compliance footer and use modifiers to steer corrections.
 4. Close with `!<o_f>` once the deliverable is production-ready.
 
-Share corpus additions or protocol findings by opening a pull request—automation validates transcripts and docs before merge.
+Share corpus additions or protocol findings by opening a pull request—automation
+validates transcripts and docs before merge.
+
+[latest-spec]:
+  https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
+[spec-archive]:
+  https://github.com/cbassuarez/viable-prompt-protocol/tree/main/docs/spec/v1.4
+[header-snippet]:
+  https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/header-snippet.txt
+[parser-schema]:
+  https://github.com/cbassuarez/viable-prompt-protocol/blob/main/spec/latest/spec.md
