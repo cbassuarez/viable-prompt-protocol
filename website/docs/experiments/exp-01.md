@@ -1,10 +1,11 @@
+<!-- markdownlint-disable MD013 -->
+<!-- cspell:words Regressable mathrm mathbb protret hyperparameters promptinj bootstrappable pretraining ambiently parseable -->
 ---
 title: 'Experiment 01 — Protocol retention'
 ---
 
 ## Overview
 Exp1 measures **how reliably a model can adopt and retain the Viable Prompt Protocol (VPP)** when solving a concrete technical task, compared against a **baseline** condition with no protocol instructions.
-
 
 Experiment 01 lives in [`experiments/exp1-protocol-retention/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/experiments/exp1-protocol-retention).
 It compares a VPP-guided condition against a baseline that omits the header
@@ -21,10 +22,6 @@ prompt-injection study for an IDE assistant.
 - `analyze-exp1.mjs` — normalizes saved transcripts and checks for required
   headings in the drafted protocol.
 
-<!-- markdownlint-disable MD013 -->
-<!-- cspell:words Regressable mathrm mathbb protret hyperparameters -->
-
-
 ## At a glance (25 sessions per condition, 50 assistant turns each, `gpt-4.1`, `temp=0.2`):
 
 * **VPP condition**
@@ -34,6 +31,7 @@ prompt-injection study for an IDE assistant.
   * `footer_present`: **100.0%**
   * `footer_version_v1.4`: **100.0%**
   * `protocol_retention_ok`: **96.0%**
+    
 * **Baseline condition**
 
   * `header_present`: **0.0%**
