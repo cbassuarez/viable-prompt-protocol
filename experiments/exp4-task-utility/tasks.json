@@ -1,0 +1,38 @@
+[
+  {
+    "id": "t1-exp-protocol-llm",
+    "family": "research",
+    "title": "Design an LLM experiment protocol",
+    "prompt": "Design a concise experimental protocol to evaluate the robustness of a code-assistant LLM integrated in an IDE against prompt-injection attacks. The protocol must have exactly four titled sections: 1. Goals, 2. Threat model & attack surfaces, 3. Task suite design, 4. Metrics & reporting. Use short paragraphs and bullet points, no more than ~500 words total."
+  },
+  {
+    "id": "t2-litreview-synth",
+    "family": "research",
+    "title": "Summarize a hypothetical literature cluster",
+    "prompt": "Assume you have read several papers on AI-assisted developer tools and security. Synthesize a concise overview in three sections: (1) Problem framing, (2) Methods and benchmarks, (3) Open questions. Focus on clarity and structure. Max ~400 words."
+  },
+  {
+    "id": "t3-api-spec-design",
+    "family": "coding",
+    "title": "Design an API spec",
+    "prompt": "Given a fictional service that logs LLM experiments (sessions, metrics, configs), propose an API surface in three sections: (1) Core resources, (2) Example endpoints, (3) Common usage patterns. Use a mix of prose and bullet lists. Do not write code, just a structured description."
+  },
+  {
+    "id": "t4-refactor-plan",
+    "family": "coding",
+    "title": "Outline a refactoring plan",
+    "prompt": "You are advising a team that maintains a large TypeScript monorepo with brittle build scripts. Provide a refactoring plan in exactly three subsections titled: 1. Context & risks, 2. Proposed changes, 3. Validation plan. Include at least one bullet list per subsection and keep the whole answer under ~450 words."
+  },
+  {
+    "id": "t5-test-harness",
+    "family": "coding",
+    "title": "Design a reliability test harness",
+    "prompt": "Draft a plan for a reliability test harness for an automated LLM agent that triages GitHub issues. The answer must contain four numbered sections: 1) Test goals, 2) Mock data + fixtures, 3) Automation & CI hooks, 4) Reporting & dashboards. Mix concise paragraphs with bullet lists."
+  },
+  {
+    "id": "t6-incident-report",
+    "family": "research",
+    "title": "Write a structured incident report",
+    "prompt": "Write a fictional incident report about a deployment of an LLM-powered support bot causing incorrect refunds. Organize the report into four sections titled Summary, Timeline, Root cause analysis, Mitigations. Include bullet lists for the Timeline and Mitigations sections."
+  }
+]
