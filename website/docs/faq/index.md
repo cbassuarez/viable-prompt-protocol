@@ -4,7 +4,7 @@ title: 'FAQ'
 
 ## How do I add VPP to my prompts?
 
-Import the header snippet into your custom instructions,
+Import the header snippet into your custom instructions:
 
 ```text
 Viable-Prompt Protocol:
@@ -29,7 +29,7 @@ Do not add any text outside the tagged content and the footer.
 Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
 
-then issue your first line as `!<tag> [--modifier ...]`.
+Then issue your first line as `!<tag> [--modifier ...]`.
 
 Mirror the workflow described in the guide and spec.
 
