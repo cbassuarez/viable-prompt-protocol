@@ -1,6 +1,10 @@
-# Summary
+---
+title: Summary
+---
 
-<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD013 MD025 -->
+
+# Summary
 
 ## Putting it all together
 
