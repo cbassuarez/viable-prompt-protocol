@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD013 MD046 MD009 -->
 ---
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
@@ -34,11 +35,8 @@ hero:
       <span class="vpp-snippet-title">Header snippet</span>
       <span class="vpp-snippet-hint">Copy → paste into custom instructions</span>
     </header>
+    
 
-```text
-# Header snippet placeholder
-[Replace this block with the official header-snippet.txt contents]
-```
 
     <p class="vpp-snippet-instructions">
       Paste this snippet into your model's custom instructions or system prompt.
