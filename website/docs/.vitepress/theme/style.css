@@ -284,4 +284,9 @@ pre,
   .vpp-hero-button {
     width: 100%;
   }
+
+  .vpp-hero-snippet-block pre {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
 }
