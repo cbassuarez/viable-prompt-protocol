@@ -1,0 +1,62 @@
+:root {
+  --vpp-accent: #4f46e5;
+  --vpp-bg-panel: rgba(79, 70, 229, 0.05);
+  --vpp-code-font: 'Fira Code', 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.VPContent {
+  background: var(--vpp-bg-panel);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.5);
+}
+
+.VPDoc .content-container {
+  backdrop-filter: blur(6px);
+}
+
+code,
+pre,
+.VPBadge,
+.vp-doc strong code,
+.vp-doc code {
+  font-family: var(--vpp-code-font);
+}
+
+.vpp-callout {
+  border-left: 4px solid var(--vpp-accent);
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+  box-shadow: 0 12px 24px -20px rgba(15, 23, 42, 0.6);
+}
+
+.vpp-try-box {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(14, 116, 144, 0.1));
+  border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.vpp-try-box h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vpp-accent);
+}
+
+.vpp-try-box p {
+  margin: 0;
+}
+
+.VPHomeHero .name {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.VPHomeHero .text {
+  max-width: 640px;
+}
