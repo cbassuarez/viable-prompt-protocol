@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD003 MD009 MD022 MD031 MD040 MD046 -->
+<!-- markdownlint-disable MD003 MD009 MD022 MD031 MD034 MD040 MD046 -->
 
 ---
 layout: home
