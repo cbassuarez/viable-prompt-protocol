@@ -16,16 +16,7 @@ hero:
       link: /corpus/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/cbassuarez/viable-prompt-protocol
-features:
-  - title: 'Deterministic conversation framing'
-    details: 'Every exchange begins with an explicit tag and optional modifiers that communicate the agent locus, intention, and expected behavior.'
-  - title: 'Footer-based compliance ledger'
-    details: 'Standardized closing lines make it trivial to audit state transitions, track assumptions, and surface gaps in understanding.'
-  - title: 'Composable pipelines'
-    details: 'Multi-cycle workflows sequence tags into pipelines, enabling reproducible prompt engineering and experimental design.'
-  - title: 'Open corpus for study'
-    details: 'Experiments, transcripts, and logs show the protocol in action, ready for researchers and practitioners to mine for insight.'
+      link: /github/
 ---
 
 ## What is the Viable Prompt Protocol?
@@ -36,6 +27,13 @@ The protocol standardizes the first user line as `!<tag> [--modifier ...]` and r
 
 By chaining tags together, VPP supports multi-cycle workflows such as `<g> → <q> → <o> → <c> → <o_f>`, giving teams a reliable loop for gathering context, questioning, outputting, critiquing, and finalizing.
 
+## Features
+
+- **Deterministic conversation framing.** Every exchange begins with an explicit tag and optional modifiers that communicate the agent locus, intention, and expected behavior.
+- **Footer-based compliance ledger.** Standardized closing lines make it trivial to audit state transitions, track assumptions, and surface gaps in understanding.
+- **Composable pipelines.** Multi-cycle workflows sequence tags into pipelines, enabling reproducible prompt engineering and experimental design.
+- **Open corpus for study.** Experiments, transcripts, and logs show the protocol in action, ready for researchers and practitioners to mine for insight.
+
 ## Core ideas in one glance
 
 - Tags and loci describe the agent role and where it operates.
@@ -45,48 +43,32 @@ By chaining tags together, VPP supports multi-cycle workflows such as `<g> → <
 
 ## Try it in ChatGPT
 
-1. Paste the “header snippet” into a new conversation.
+1. Paste the header snippet below into a new conversation.
 2. Send `!<q>` on line 1.
 3. Observe the assistant’s tag line and footer.
 4. Iterate across tags as needed.
 
-```text
 # Header snippet placeholder
-[Replace this block with the official header-snippet.txt contents]
 ```
+Viable-Prompt Protocol:
 
-## Where to go next
+User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
+I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
 
-- [Protocol Specification](/spec/): Normative definitions of tags, modifiers, cycles, and compliance requirements.
-- [Guide](/guide/): Practical tips for applying VPP in research and production settings.
-- [Experiments](/experiments/): Deep dives into Exp-01, Exp-02, and Exp-01b with annotated transcripts.
-- [Corpus](/corpus/): An index of transcripts, logs, and supporting artifacts.
-- [Changelog](/changelog/): Version history and protocol evolution notes.
-- [FAQ](/faq/): Quick answers to the most common questions about VPP adoption.
 
-## Corpus at a glance
+Only the first line is parsed; later bangs are ignored as content. Tags define mode, regardless of prompt body content. 
+<g> is concept-only (snippets ok; no full files).
+<o> is a realized draft with Assumptions, Citations, Tests when relevant. 
+<q> is rough-context question/probing/diagnostic only. Ask general questions when appropriate.
+<c> is a fine-context locum questioning/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
+<o_f> is the final, desired output with Assumptions, Citations, Tests when relevant. Any <o> could be <o_f>.
+<e> is an escape tag, which is paired with a modifier tag to escape to another part in the loop (e.g. !<e> --<g>). Special case <e_o> escapes to <o> immediately.
+Loop is flexible: g→q→o→c→…→o_f (any order/length).
+After 3 cycles I propose !<e> --<tag> or !<e_o>.
 
-The VPP corpus captures real interactions that exercise the protocol in varied settings. It spans curated experiments, exploratory sessions, and failure investigations that illuminate how the protocol behaves under stress.
+Non-negotiable: ALWAYS append the compliance footer line to EVERY reply:
+[Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]
+Do not add any text outside the tagged content and the footer.
 
-- Controlled experiments tracing prompt compliance.
-- User-only runs highlighting onboarding friction.
-- Failure cases that inform new tags, modifiers, or recovery paths.
-
-## Design principles
-
-- Minimal surface area with explicitly named fields.
-- Machine legibility first; human readability a close second.
-- Transparent error reporting and recovery primitives.
-- Versioned evolution to accommodate new tags and workflows.
-- Repeatable pipelines for experimentation and production.
-- Inclusive of both human and model loci.
-- Open documentation and corpus for community validation.
-
-## Who is VPP for?
-
-VPP serves practitioners who need accountable, iterative interactions with language models.
-
-- Prompt engineers coordinating multi-step prompts.
-- Researchers studying conversation protocols and agent compliance.
-- Developers integrating LLMs into critical workflows.
-- Artists and writers exploring structured creative cycles.
+Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
+```
