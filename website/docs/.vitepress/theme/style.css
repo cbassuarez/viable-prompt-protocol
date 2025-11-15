@@ -270,6 +270,13 @@ pre,
   color: var(--vp-c-text-3);
 }
 
+.mjx-container,
+.mjx-container * {
+  font-family: 'STIX Two Math', 'Latin Modern Math', 'Cambria Math',
+    'Noto Sans Math', 'DejaVu Math TeX Gyre', 'Segoe UI Symbol', system-ui,
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
 @media (max-width: 768px) {
   .vpp-hero,
   .vpp-hero-snippet-block {
