@@ -6,7 +6,6 @@ const ROOT = path.resolve(
   path.join(path.dirname(fileURLToPath(import.meta.url)), "../../")
 );
 const CORPUS_DIR = path.join(ROOT, "corpus", "v1.4");
-const INDEX_PATH = path.join(CORPUS_DIR, "index.jsonl");
 const SESSIONS_DIR = path.join(CORPUS_DIR, "sessions");
 const EXP2_CONFIGS_PATH = path.join(
   ROOT,
@@ -15,36 +14,38 @@ const EXP2_CONFIGS_PATH = path.join(
   "configs.jsonl"
 );
 
-/* ---------- helpers: index + sessions ---------- */
+/* ---------- helpers: load sessions from files ---------- */
 
-function loadIndexEntries() {
-  if (!fs.existsSync(INDEX_PATH)) {
-    console.error("No index.jsonl found at", INDEX_PATH);
+function loadExp2SessionsFromFiles() {
+  if (!fs.existsSync(SESSIONS_DIR)) {
+    console.error("Sessions dir not found at", SESSIONS_DIR);
     process.exit(1);
   }
-  const raw = fs.readFileSync(INDEX_PATH, "utf8");
-  const entries = [];
-  for (const line of raw.split(/\r?\n/)) {
-    const trimmed = line.trim();
-    if (!trimmed) continue;
+
+  const files = fs.readdirSync(SESSIONS_DIR);
+  const sessions = [];
+
+  for (const file of files) {
+    if (!file.endsWith(".json")) continue;
+    const fullPath = path.join(SESSIONS_DIR, file);
     try {
-      const obj = JSON.parse(trimmed);
-      entries.push(obj);
-    } catch {
-      console.warn("Skipping bad index line:", trimmed);
+      const raw = fs.readFileSync(fullPath, "utf8");
+      const session = JSON.parse(raw);
+
+      if (
+        !session.meta ||
+        session.meta.challenge_type !== "prompt_injection"
+      ) {
+        continue;
+      }
+
+      sessions.push(session);
+    } catch (err) {
+      console.warn("Skipping bad session file:", file, err.message);
     }
   }
-  return entries;
-}
 
-function loadSession(id) {
-  const sessionPath = path.join(SESSIONS_DIR, `${id}.json`);
-  if (!fs.existsSync(sessionPath)) {
-    console.warn("Missing session file for id:", id);
-    return null;
-  }
-  const raw = fs.readFileSync(sessionPath, "utf8");
-  return JSON.parse(raw);
+  return sessions;
 }
 
 /* ---------- helpers: config targets (staged runs) ---------- */
@@ -78,7 +79,7 @@ function loadExp2ConfigTargets() {
 function initStats() {
   return {
     configTargets: 0,              // how many configs staged for this condition
-    sessionFiles: 0,               // how many session JSONs we saw in corpus
+    sessionFiles: 0,               // how many session JSONs we saw on disk
     sessionsAnalyzed: 0,           // sessions with >= 3 assistant turns
     incompleteSessions: 0,         // sessions with < 3 assistant turns
     assistantTurnsAnalyzed: 0,
@@ -115,15 +116,12 @@ function pct(n, d) {
 /* ---------- main analysis ---------- */
 
 function analyze() {
-  const indexEntries = loadIndexEntries().filter(
-    e => e.challenge_type === "prompt_injection"
-  );
-
+  const sessions = loadExp2SessionsFromFiles();
   const configTargetsByCond = loadExp2ConfigTargets();
   const byCondition = new Map();
 
-  for (const entry of indexEntries) {
-    const cond = entry.condition || "unknown";
+  for (const session of sessions) {
+    const cond = session.meta?.condition || "unknown";
 
     if (!byCondition.has(cond)) {
       const stats = initStats();
@@ -134,10 +132,9 @@ function analyze() {
     const stats = byCondition.get(cond);
     stats.sessionFiles += 1;
 
-    const session = loadSession(entry.id);
-    if (!session) continue;
-
-    const assistantTurns = session.turns.filter(t => t.role === "assistant");
+    const assistantTurns = (session.turns || []).filter(
+      t => t.role === "assistant"
+    );
 
     // Exp2 is only meaningful if we reached the post-injection reply.
     // We expect 3 assistant turns: grounding, protocol, post-injection.
@@ -189,7 +186,10 @@ function analyze() {
     const vppFooterAllPct = pct(stats.vppFooterPresent, at).toFixed(1);
     const lastHeaderPct = pct(stats.lastVppHeaderRetained, sess).toFixed(1);
     const lastFooterPct = pct(stats.lastVppFooterRetained, sess).toFixed(1);
-    const retentionPct = pct(stats.protocolRetentionAfterInjection, sess).toFixed(1);
+    const retentionPct = pct(
+      stats.protocolRetentionAfterInjection,
+      sess
+    ).toFixed(1);
 
     console.log(
       `  vpp_header_present (all assistant turns):   ${vppHeaderAllPct}%`
