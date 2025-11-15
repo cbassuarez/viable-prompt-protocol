@@ -28,14 +28,14 @@ Do not add any text outside the tagged content and the footer.
 
 Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
+
 then issue your first line as `!<tag> [--modifier ...]`.
 
 Mirror the workflow described in the guide and spec.
 
 ## What if the model ignores the footer?
 
-Treat missing or malformed footers as protocol violations. Respond with `<c>` or `<e>` to request correction, and log the
-incident for future tuning.
+Treat missing or malformed footers as protocol violations. Respond with `<c>` or `<e>` to request correction, and log the incident for future tuning.
 
 ## Can I extend the tag set?
 
@@ -44,10 +44,8 @@ participants can interoperate.
 
 ## Does VPP work with non-OpenAI models?
 
-Yes. Any model capable of deterministic formatting can adopt VPP. Adjust prompts to reinforce footer compliance and modifier
-handling.
+Yes. Any model capable of deterministic formatting can adopt VPP. Adjust prompts to reinforce footer compliance and modifier handling.
 
 ## How should I handle multi-agent scenarios?
 
-Assign loci in modifiers or footers (e.g., `Locus=assistant-b`) and coordinate hand-offs explicitly. The experiments section
-showcases working patterns.
+Assign loci in modifiers or footers (e.g., `Locus=assistant-b`) and coordinate hand-offs explicitly. The experiments section showcases working patterns.
