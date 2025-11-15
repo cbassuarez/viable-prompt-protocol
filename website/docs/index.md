@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD013 MD046 MD003 MD013 MD034 MD022 -->
 ---
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
@@ -37,33 +36,15 @@ hero:
     </header>
 
 ```text
-Viable-Prompt Protocol:
-
-User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
-I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
-
-Only the first line is parsed; later bangs are ignored as content.
-<g> is concept-only (snippets ok; no full files).
-<o> is a realized draft with Assumptions, Citations, Tests when relevant.
-<q> is rough-context question/probing/diagnostic only. Ask general questions when appropriate.
-<c> is a fine-context locum questioning/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
-<o_f> is the final, desired output with Assumptions, Citations, Tests when relevant. Any <o> could be <o_f>.
-<e> is an escape tag, which is paired with a modifier tag to escape to another part in the loop (e.g. !<e> --<g>).  Special case <e_o> escapes to <o> immediately.
-Loop is flexible: g→q→o→c→…→o_f (any order/length).
-After 3 cycles I propose !<e> --<tag> or !<e_o>.
-
-Non-negotiable: ALWAYS append the compliance footer line to EVERY reply:
-[Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]
-Do not add any text outside the tagged content and the footer.
-
-Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
+# Header snippet placeholder
+[Replace this block with the official header-snippet.txt contents]
 ```
 
-<p class="vpp-snippet-instructions">
-  Paste this snippet into your model's custom instructions or system prompt.
-  Then start each conversation with <code>!&lt;q&gt;</code> on line 1.
-  </p>
- </div>
+    <p class="vpp-snippet-instructions">
+      Paste this snippet into your model's custom instructions or system prompt.
+      Then start each conversation with <code>!&lt;q&gt;</code> on line 1.
+    </p>
+  </div>
 </div>
 
 ## Start with the protocol
