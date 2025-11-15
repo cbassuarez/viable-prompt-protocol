@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD013 MD046 -->
+<!-- markdownlint-disable MD013 MD046 MD003 MD013 MD034 -->
 ---
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
