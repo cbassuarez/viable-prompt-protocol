@@ -90,6 +90,13 @@ function parseFooter(footerLine) {
   }
 }
 
+// Experimental note:
+// For condition="baseline", we do NOT provide the VPP header snippet or footer spec.
+// If we still try to split replies into header/body/footer and parse footers, we
+// turn normal prose into "invalid footer" events. That confounds metrics when
+// comparing VPP vs baseline. The condition-aware parser below ensures only VPP
+// sessions are treated as structured messages; baseline remains flat text.
+
 function parseAssistantMessage(text) {
   const sourceText = typeof text === "string" ? text : "";
   const lines = sourceText.split(/\r?\n/).map(line => line.trim());
@@ -150,6 +157,29 @@ function parseAssistantMessage(text) {
     footer,
     parsed_footer: parseFooter(footer)
   };
+}
+
+// NOTE: Baseline condition is intentionally *unstructured* (no VPP header/footer).
+// If we tried to parse headers/footers for baseline, we would introduce a
+// measurement artifact: normal prose would be mis-labeled as headers/footers,
+// and footer parsing errors would confound VPP vs baseline comparisons.
+function parseAssistantForCondition(text, condition) {
+  const sourceText = typeof text === "string" ? text : "";
+
+  // Baseline condition: no VPP structure; store whole reply as body.
+  if (condition === "baseline") {
+    return {
+      raw_header: null,
+      tag: null,
+      modifiers: [],
+      body: sourceText.trim(),
+      footer: null,
+      parsed_footer: null
+    };
+  }
+
+  // VPP (or any other structured condition): use the full VPP parser.
+  return parseAssistantMessage(sourceText);
 }
 
 function buildSystemMessage(headerSnippet, config) {
@@ -422,7 +452,7 @@ async function runSession(config) {
   let turnIndex = 1;
 
   const { assistantText } = await callModel(messages, config);
-  const parsedAssistant = parseAssistantMessage(assistantText);
+  const parsedAssistant = parseAssistantForCondition(assistantText, config.condition);
   session.turns.push({
     turn_index: turnIndex++,
     role: "assistant",
@@ -459,7 +489,7 @@ async function runSession(config) {
     });
 
     const { assistantText: assistantReply } = await callModel(messages, config);
-    const parsedAssistantReply = parseAssistantMessage(assistantReply);
+    const parsedAssistantReply = parseAssistantForCondition(assistantReply, config.condition);
     session.turns.push({
       turn_index: turnIndex++,
       role: "assistant",
