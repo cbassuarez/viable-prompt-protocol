@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD013 MD046 -->
 ---
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
@@ -58,11 +59,11 @@ Do not add any text outside the tagged content and the footer.
 Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
 
-    <p class="vpp-snippet-instructions">
-      Paste this snippet into your model's custom instructions or system prompt.
-      Then start each conversation with <code>!&lt;q&gt;</code> on line 1.
-    </p>
-  </div>
+<p class="vpp-snippet-instructions">
+  Paste this snippet into your model's custom instructions or system prompt.
+  Then start each conversation with <code>!&lt;q&gt;</code> on line 1.
+  </p>
+ </div>
 </div>
 
 ## Start with the protocol
