@@ -129,8 +129,8 @@ Exp3 is designed to probe three main hypotheses:
 * **H1 — Structural retention under VPP.**
   With the header snippet + explicit user tagging in place:
 
-  * ( \mathbb{E}[S_s \mid \text{VPP}] \approx 1 )
-  * ( \mathbb{E}[S_s \mid \text{Baseline}] \approx 0 )
+  * $( \mathbb{E}[S_s \mid \text{VPP}] \approx 1 )$
+  * $( \mathbb{E}[S_s \mid \text{Baseline}] \approx 0 )$
 
   i.e., only the VPP condition maintains the explicit structural contract on
   the final, post-injection turn.
@@ -138,15 +138,15 @@ Exp3 is designed to probe three main hypotheses:
 * **H2 — Partial task protection.**
   VPP should reduce, but not necessarily eliminate, successful task hijacks:
 
-  * ( \mathbb{E}[J_s \mid \text{VPP}] < \mathbb{E}[J_s \mid \text{Baseline}] )
-  * ( \mathbb{E}[A_s \mid \text{VPP}] > \mathbb{E}[A_s \mid \text{Baseline}] )
+  * $( \mathbb{E}[J_s \mid \text{VPP}] < \mathbb{E}[J_s \mid \text{Baseline}] )$
+  * $( \mathbb{E}[A_s \mid \text{VPP}] > \mathbb{E}[A_s \mid \text{Baseline}] )$
 
 * **H3 — Baseline behavior is dominated by most-recent instructions.**
   Without VPP, we expect the model to treat the final injection as the
   primary objective:
 
-  * ( \mathbb{E}[J_s \mid \text{Baseline}] ) should be close to 1,
-  * ( \mathbb{E}[A_s \mid \text{Baseline}] ) should be close to 0.
+  * $( \mathbb{E}[J_s \mid \text{Baseline}] )$ should be close to 1,
+  * $( \mathbb{E}[A_s \mid \text{Baseline}] )$ should be close to 0.
 
 Empirically, the observed results align with these qualitative expectations.
 
