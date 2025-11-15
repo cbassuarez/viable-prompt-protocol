@@ -6,5 +6,6 @@
 - `!<e_o>` → assistant replies as `<o>` (skip to output; assumptions explicit)
 
 **Only the first line is parsed.** Any later bangs/tags are treated as content.
+Tags define mode, regardless of prompt body content. 
 
 **Determinism:** Given a valid first line, the assistant’s opening tag is uniquely determined by this rule.
