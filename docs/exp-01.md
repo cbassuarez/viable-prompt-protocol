@@ -1,4 +1,5 @@
 <!-- markdownlint-disable MD013 -->
+<!-- cspell:words Regressable mathrm mathbb protret hyperparameters -->
 # Exp1 — Protocol Retention
 
 Exp1 measures **how reliably a model can adopt and retain the Viable Prompt Protocol (VPP)** when solving a concrete technical task, compared against a **baseline** condition with no protocol instructions.
