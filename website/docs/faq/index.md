@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD009 MD031 MD040 MD046 -->
 ---
 title: 'FAQ'
 ---
