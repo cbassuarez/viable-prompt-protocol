@@ -1,4 +1,6 @@
 <!-- markdownlint-disable MD013 MD040 -->
+<!-- cspell:words taskutil longdialog -->
+
 
 # Exp4 — Task Utility
 
