@@ -2,7 +2,10 @@
 title: 'Experiment 01b — User-only protocol rehearsal'
 ---
 
+<!-- markdownlint-disable MD013 -->
+
 ## Overview
+
 This experiment phase tests whether Viable Prompt Protocol (VPP) can be instantiated and retained **purely from user instructions**, without any system-level header snippet, and whether the protocol appears “in the wild” when a user simply types `!<q>` with no explanation.
 We run three conditions:
 
@@ -94,17 +97,19 @@ Parsing of tags and footers reuses the same helpers as Exp1/Exp2:
 
 **Goal:** test whether a power user can fully instantiate VPP in a normal chat with no special system prompt, relying only on a short in-chat description of the protocol.
 
-**System message**
+#### System message
 
 ```text
 You are a helpful assistant.
 
 Follow the user's instructions carefully and respond clearly and concisely.
 ```
-Turn 0 (user) — explicit VPP description
+
+#### Turn 0 (user) — explicit VPP description
 
 We start the conversation with a !<g> turn that defines the protocol in-chat:
-```
+
+```text
 !<g>
 I’m using a tag+footer protocol in this chat:
 
@@ -115,7 +120,9 @@ I’m using a tag+footer protocol in this chat:
 
 In this turn, just restate those rules and confirm you will follow them. Do not write any content besides the header, body, and footer.
 ```
-**Turn 1 (assistant)**
+
+<!-- markdownlint-disable-next-line MD024 -->
+#### Turn 1 (assistant)
 
 The assistant is expected to:
 
@@ -125,10 +132,11 @@ The assistant is expected to:
 
 3. End with a v1.4 footer line.
 
-**Turn 2 (user) — actual task**
+#### Turn 2 (user) — actual task
 
 We switch to !<o> and ask for a four-section experimental protocol, reusing the same task shape as Exp1:
-```
+
+```text
 !<o>
 Now write the actual experimental protocol you outlined.
 
@@ -143,7 +151,9 @@ Constraints:
 - Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).
 - Do not include any prose outside these four sections.
 ```
-**Turn 3 (assistant)**
+
+<!-- markdownlint-disable-next-line MD024 -->
+#### Turn 3 (assistant)
 
 Expected:
 
@@ -161,57 +171,72 @@ We stop after this point (2 user turns, 2 assistant turns).
 
 Goal: test whether the model spontaneously recognizes tags like `!<q>` as a protocol without any explanation, and without tools.
 
-**System message**
-```
+<!-- markdownlint-disable-next-line MD024 -->
+#### System message
+
+```text
 You are a helpful assistant.
 
 Respond to the user's messages as best you can.
 ```
-Turn 0 (user) — minimal ambient tag
-```
+
+#### Turn 0 (user) — minimal ambient tag
+
+```text
 !<q>
 test
 ```
+
 There is no mention of “Viable Prompt Protocol”, tags, or footers.
 
-**Turn 1 (assistant)**
+<!-- markdownlint-disable-next-line MD024 -->
+#### Turn 1 (assistant)
 
 We record whatever the model does.
 
-**Turn 2 (user) — optional second probe**
-```
+#### Turn 2 (user) — optional second probe
+
+```text
 !<o>
 second test
 ```
-**Turn 3 (assistant)**
+
+<!-- markdownlint-disable-next-line MD024 -->
+#### Turn 3 (assistant)
 
 Again, we record whatever happens and then end the session. This gives us up to 2 user + 2 assistant turns, enough to detect any within-conversation pattern learning.
 
 ---
 
-**Condition C — user_only_vpp_ambient_browse**
+### Condition C — user_only_vpp_ambient_browse
+
 Goal: same as Condition B, but with a system message that encourages reflecting on unfamiliar syntax as something to interpret or “research” (without wiring actual tools in this harness).
 
-System message
-```
+<!-- markdownlint-disable-next-line MD024 -->
+#### System message
+
+```text
 You are a helpful assistant.
 
 Respond to the user's messages as best you can.
 
 If you encounter unfamiliar syntax such as leading command tags (e.g. `!<q>`), you may actively try to interpret their meaning and adapt your replies accordingly.
 ```
+
 User turns are identical to Condition B:
 
-Turn 0: `!<q>\ntest`
+#### Turn 0: `!<q>\ntest`
 
-Turn 2: `!<o>\nsecond test`
+#### Turn 2: `!<o>\nsecond test`
 
 ## Metrics
+
 We reuse the Exp1/Exp2 style metrics.
 
 *For each condition we compute:*
 
-**1. Across all assistant turns:**
+<!-- markdownlint-disable-next-line MD026 -->
+### 1. Across all assistant turns:
 
 – `header_present` — fraction of assistant turns where `raw_header` is non-null, and tag is one of { "g", "q", "o", "c", "o_f" }.
 
@@ -221,7 +246,8 @@ We reuse the Exp1/Exp2 style metrics.
 
 – `footer_version_v1.4` — fraction of assistant turns where `parsed_footer?.version === "v1.4"`.
 
-**2. At session level: `protocol_retention_ok` (only meaningful for user_only_vpp_explicit):**
+<!-- markdownlint-disable-next-line MD026 -->
+### 2. At session level: `protocol_retention_ok` (only meaningful for user_only_vpp_explicit):
 
 A session counts as protocol_retention_ok = 1 if:
 
@@ -231,7 +257,8 @@ A session counts as protocol_retention_ok = 1 if:
 
 – Every assistant footer parses as version === "v1.4".
 
-**3. Additional lexical/behavioral metrics for the ambient conditions:**
+<!-- markdownlint-disable-next-line MD026 -->
+### 3. Additional lexical/behavioral metrics for the ambient conditions:
 
 For each assistant turn, we build `text = (raw_header + " " + body + " " + footer).toLowerCase()` and define:
 
@@ -248,7 +275,8 @@ For each assistant turn, we build `text = (raw_header + " " + body + " " + foote
 
   – Satisfies mentions_vpp.
 
-**We report:**
+<!-- markdownlint-disable-next-line MD026 -->
+### We report:
 
 – any_vpp_lexical: percentage of sessions where the model ever mentions VPP-like concepts.
 
@@ -257,7 +285,8 @@ For each assistant turn, we build `text = (raw_header + " " + body + " " + foote
 ---
 
 ## Results
-**Condition A. `user_only_vpp_explicit`**
+
+### Condition A. `user_only_vpp_explicit`
 
 |  Condition:             | user_only_vpp_explicit |
 |-------------------------|------------------------|
@@ -276,7 +305,7 @@ For each assistant turn, we build `text = (raw_header + " " + body + " " + foote
 – Perfect header usage.
 
 – Perfect tag mirroring (`<g>` → `<g>`, `<o>` → `<o>`).
-  
+
 – Perfect footer presence and v1.4 parsing.
 
 – No sessions drop the protocol on any turn in this short task.
@@ -284,9 +313,10 @@ For each assistant turn, we build `text = (raw_header + " " + body + " " + foote
 In other words: *VPP is fully bootstrappable via user-only instructions for this class of tasks. The system message is a convenience, not a hard requirement, as long as the user describes the protocol clearly.*
 
 ---
-**Condition B. `user_only_vpp_ambient_nobrowse`**
 
-|Condition:            |user_only_vpp_ambient_nobrowse | 
+### Condition B. `user_only_vpp_ambient_nobrowse`
+
+|Condition:            |user_only_vpp_ambient_nobrowse |
 |----------------------|-------------------------------|
 |  Sessions:           |       50                      |
 |  Assistant turns:    |       100                     |
@@ -296,7 +326,8 @@ In other words: *VPP is fully bootstrappable via user-only instructions for this
 |  footer_version_v1.4:|     0.0%                      |
 |  any_vpp_lexical:    |      0.0%                     |
 |  any_vpp_behavior:   |      0.0%                     |
-  
+
+<!-- markdownlint-disable-next-line MD024 -->
 ### Summary
 
 With only !<q>\ntest (and a follow-up !<o>\nsecond test) and no explanation:
@@ -310,9 +341,10 @@ With only !<q>\ntest (and a follow-up !<o>\nsecond test) and no explanation:
 So under a very minimal cue (`!<q>` on line 1), with a generic system prompt and no tools: **the model does not spontaneously recognize VPP or adopt its structure.**
 
 ---
-**Condition C. `user_only_vpp_ambient_browse`**
 
-|Condition:            |user_only_vpp_ambient_browse   | 
+### Condition C. `user_only_vpp_ambient_browse`
+
+|Condition:            |user_only_vpp_ambient_browse   |
 |----------------------|-------------------------------|
 |  Sessions:           |       50                      |
 |  Assistant turns:    |       100                     |
@@ -323,7 +355,7 @@ So under a very minimal cue (`!<q>` on line 1), with a generic system prompt and
 |  any_vpp_lexical:    |      0.0%                     |
 |  any_vpp_behavior:   |      0.0%                     |
 
-  
+<!-- markdownlint-disable-next-line MD024 -->
 ### Summary
 
 This condition uses the same user messages as user_only_vpp_ambient_nobrowse, but with a system message that explicitly tells the model it may try to interpret unfamiliar command-like syntax. In this harness we do not wire real browsing/tools; it’s still purely a pretraining + instruction-following test.
@@ -336,9 +368,10 @@ This condition uses the same user messages as user_only_vpp_ambient_nobrowse, bu
 
 At this stage, under these minimal conditions: ambient tags like `!<q>\ntest` are not sufficient to trigger VPP-style behavior or even an explicit recognition of a tag+footer protocol.
 
-# Interpretation
+## Interpretation
 
 Taken together, Exp1b shows:
+
 1. Within a session, VPP is easy to instantiate from user-only instructions:
 
 2. Once a power user explains the protocol in a short message, structural adherence becomes effectively perfect in this task family.

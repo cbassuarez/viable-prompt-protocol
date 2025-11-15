@@ -1,5 +1,7 @@
 # Summary
 
+<!-- markdownlint-disable MD013 -->
+
 ## Putting it all together
 
 With Experiment 01, Experiment 02, and Experiment 01b in place, we can triangulate three different aspects of VPP:
@@ -57,7 +59,7 @@ The metrics look at **post-injection** behavior:
 
 Experiment 01b removes the system header snippet entirely and asks:
 
-1. **Can a power user still get VPP behavior if they describe the protocol in-chat?**  
+1. **Can a power user still get VPP behavior if they describe the protocol in-chat?**
 2. **Does VPP appear at all when a user simply types `!<q>\ntest` with no explanation?**
 
 Results:
