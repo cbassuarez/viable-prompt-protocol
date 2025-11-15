@@ -9,7 +9,9 @@
     "run:exp2-promptinj": "node experiments/exp2-prompt-injection/run-exp2-promptinj.mjs",
     "analyze:exp2": "node experiments/exp2-prompt-injection/analyze-exp2.mjs",
     "run:exp1b-user-only": "node experiments/exp1b-user-only-protocol/run-exp1b-user-only.mjs",
-    "analyze:exp1b": "node experiments/exp1b-user-only-protocol/analyze-exp1b.mjs"
+    "analyze:exp1b": "node experiments/exp1b-user-only-protocol/analyze-exp1b.mjs",
+    "run:exp3-taskinj": "node experiments/exp3-task-injection/run-exp3-taskinj.mjs",
+    "analyze:exp3": "node experiments/exp3-task-injection/analyze-exp3.mjs"
   },
   "dependencies": {
     "openai": "^4.54.0"
