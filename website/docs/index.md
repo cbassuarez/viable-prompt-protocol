@@ -19,22 +19,6 @@ hero:
       link: https://github.com/cbassuarez/viable-prompt-protocol
 ---
 
-<div class="vpp-hero">
-  <h1 class="vpp-hero-title">Viable Prompt Protocol</h1>
-  <p class="vpp-hero-lede">Structure every LLM exchange with explicit tags, modifiers, and a compliance footer.</p>
-  <p class="vpp-hero-tagline">Deterministic scaffolding for research-grade prompt engineering.</p>
-  <div class="vpp-hero-actions">
-    <a
-      class="vpp-hero-button vpp-hero-button--brand"
-      href="https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md"
-    >
-      Read the normative spec
-    </a>
-    <a class="vpp-hero-button" href="/guide/">Browse the protocol guide</a>
-    <a class="vpp-hero-button" href="https://github.com/cbassuarez/viable-prompt-protocol">View on GitHub</a>
-  </div>
-</div>
-
 <div class="vpp-hero-snippet-block">
   <header class="vpp-snippet-header">
     <span class="vpp-snippet-title">Header snippet</span>
