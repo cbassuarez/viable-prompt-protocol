@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD013 MD003 MD012 MD022 MD024 MD046 MD009 MD034 -->
 ---
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
@@ -19,31 +18,6 @@ hero:
       text: View on GitHub
       link: https://github.com/cbassuarez/viable-prompt-protocol
 ---
-
-<div class="vpp-hero-grid">
-  <div class="vpp-hero-main">
-    <h1>Viable Prompt Protocol (VPP)</h1>
-    <p>Viable Prompt Protocol (VPP) is a compact grammar for human ↔ LLM collaborations.</p>
-    <div class="vpp-hero-actions">
-      <a class="VPButton brand" href="/spec/">Read the Spec</a>
-      <a class="VPButton alt" href="/corpus/">Explore the Corpus</a>
-      <a class="VPButton alt" href="/github/">View on GitHub</a>
-    </div>
-  </div>
-  <div class="vpp-hero-snippet">
-    <header class="vpp-snippet-header">
-      <span class="vpp-snippet-title">Header snippet</span>
-      <span class="vpp-snippet-hint">Copy → paste into custom instructions</span>
-    </header>
-    
-
-
-    <p class="vpp-snippet-instructions">
-      Paste this snippet into your model's custom instructions or system prompt.
-      Then start each conversation with <code>!&lt;q&gt;</code> on line 1.
-    </p>
-  </div>
-</div>
 
 ## Start with the protocol
 
