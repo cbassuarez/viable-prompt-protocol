@@ -2,7 +2,7 @@
 
 Exp2 tests whether the Viable Prompt Protocol (VPP) continues to hold once it has been adopted, even when a later user turn *explicitly* instructs the model to “drop the protocol” and respond like a normal assistant.
 
-> **Related:** [Exp1 — Protocol Retention](./exp1-protocol-retention.md)
+> **Related:** [Exp1 — Protocol Retention](./exp-01.md)
 
 ---
 
