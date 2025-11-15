@@ -20,7 +20,8 @@ Experiment 02 explores how two assistant personas collaborate under VPP to criti
 
 ## Results
 
-The drafting agent maintained `<o>` turns while the critic issued `<c>` responses with targeted modifiers such as `--major`. The loop converged in three cycles with a vetted memo.
+The drafting agent maintained `<o>` turns while the critic issued `<c>` responses with targeted modifiers such as `--major`.
+The loop converged in three cycles with a vetted memo.
 
 ```text
 <o>
@@ -30,7 +31,8 @@ Draft an executive summary of the memo.
 
 ## Failure modes
 
-Occasional double-critiques occurred when the critic forgot to shift loci back to the drafter, resulting in redundant `<c>` turns.
+Occasional double-critiques occurred when the critic forgot to shift loci back to the drafter, resulting in redundant `<c>`
+turns.
 
 ```text
 <c>

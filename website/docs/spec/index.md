@@ -3,7 +3,14 @@ title: 'Specification'
 outline: [2, 3]
 ---
 
-The Viable Prompt Protocol (VPP) specification defines the normative behaviors expected from both human operators and assistant models when participating in protocol-compliant conversations. This document is authoritative and should be treated as the source of truth for all VPP implementations.
+> The canonical machine-readable copy lives at
+> <https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md>.
+> Versioned modules and examples remain under
+> [`docs/spec/v1.4/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/docs/spec/v1.4).
+
+The Viable Prompt Protocol (VPP) specification defines the normative behaviors expected from both human operators and assistant
+models when participating in protocol-compliant conversations. This document is authoritative and should be treated as the
+source of truth for all VPP implementations.
 
 ```text
 VPP_VERSION: 1.4
@@ -15,7 +22,9 @@ FOOTER_FORMAT: [Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n> | C
 
 ## Introduction
 
-VPP is a conversation protocol that constrains the structure of human and assistant turns through mandatory first-line tags, optional modifiers, and a required compliance footer. The goals are repeatability, machine legibility, and clear traceability across multi-turn cycles.
+VPP is a conversation protocol that constrains the structure of human and assistant turns through mandatory first-line tags,
+optional modifiers, and a required compliance footer. The goals are repeatability, machine legibility, and clear traceability
+across multi-turn cycles.
 
 ## Scope and terminology
 
@@ -67,15 +76,22 @@ Modifiers SHOULD be sparse and mutually coherent. Conflicting modifiers MUST be 
 
 ## Pipelines and loci
 
-Pipelines chain tags into predictable sequences, often using loci labels such as `research`, `draft`, or `eval`. A canonical pipeline is `<g> → <q> → <o> → <c> → <o_f>`, enabling preparation, inquiry, production, critique, and delivery. Loci metadata may be included in modifiers or footers to trace responsibility boundaries.
+Pipelines chain tags into predictable sequences, often using loci labels such as `research`, `draft`, or `eval`.
+A canonical pipeline is `<g> → <q> → <o> → <c> → <o_f>`, enabling preparation, inquiry, production, critique, and delivery.
+Loci metadata may be included in modifiers or footers to trace responsibility boundaries.
 
 ## Error modes and recovery
 
-Error tags `<e>` and `<e_o>` capture deviations. When the assistant detects an invalid state, it MUST emit `<e>` and describe the issue. The user may follow with `<e_o>` to report operator-originating problems. Recovery typically involves returning to `<g>` or `<q>` with corrective modifiers.
+Error tags `<e>` and `<e_o>` capture deviations.
+When the assistant detects an invalid state, it MUST emit `<e>` and describe the issue.
+The user may follow with `<e_o>` to report operator-originating problems.
+Recovery typically involves returning to `<g>` or `<q>` with corrective modifiers.
 
 ## Compliance footer
 
-Every assistant message MUST end with a footer matching the schema `[Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]`. Missing fields or malformed entries constitute protocol violations and should be escalated through critique cycles.
+Every assistant message MUST end with a footer matching the schema `[Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n>
+| Cycle=<i>/3 | Locus=<name?>]`.
+Missing fields or malformed entries constitute protocol violations and should be escalated through critique cycles.
 
 ## Examples
 
@@ -83,7 +99,7 @@ Every assistant message MUST end with a footer matching the schema `[Version=vX.
 !<q> --major
 <q>
 Please outline the primary risk factors for protocol drift.
-[Version=v1.4 | Tag=<q> | Sources=internal-docs | Assumptions=2 | Cycle=1/3 | Locus=assistant]
+[Version=v1.4 | Tag=<q> | Sources=preprint-2024-02 | Assumptions=1 | Cycle=1/3 | Locus=assistant]
 ```
 
 ```text
@@ -95,4 +111,6 @@ Feedback acknowledged. Minor updates applied to the summary section.
 
 ## Versioning
 
-VPP versions follow semantic increments. Minor versions introduce new modifiers or clarifications; major versions may revise tag semantics or footer structure. Implementers SHOULD record the version in the footer and upgrade only after validating compatibility.
+VPP versions follow semantic increments.
+Minor versions introduce new modifiers or clarifications; major versions may revise tag semantics or footer structure.
+Implementers SHOULD record the version in the footer and upgrade only after validating compatibility.

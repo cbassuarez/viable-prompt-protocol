@@ -11,13 +11,22 @@
     "run:exp1b-user-only": "node experiments/exp1b-user-only-protocol/run-exp1b-user-only.mjs",
     "analyze:exp1b": "node experiments/exp1b-user-only-protocol/analyze-exp1b.mjs",
     "run:exp3-taskinj": "node experiments/exp3-task-injection/run-exp3-taskinj.mjs",
-    "analyze:exp3": "node experiments/exp3-task-injection/analyze-exp3.mjs"
+    "analyze:exp3": "node experiments/exp3-task-injection/analyze-exp3.mjs",
+    "docs:dev": "vitepress dev website/docs",
+    "docs:build": "vitepress build website/docs",
+    "docs:preview": "vitepress preview website/docs",
+    "lint:md": "markdownlint-cli2 \"README.md\" \"docs/**/*.md\" \"website/docs/**/*.md\" \"contributing.md\" \"code_of_conduct.md\" \"RELEASE_NOTES_v1.4.md\" \"!docs/spec/**\" \"!docs/latest/spec.md\" \"!spec/**\"",
+    "lint:spell": "cspell --no-progress \"docs/**/*.md\" \"spec/**/*.md\" \"website/docs/**/*.md\" \"README.md\"",
+    "test:parser": "node scripts/test-transcripts.mjs"
   },
   "dependencies": {
     "openai": "^4.54.0"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1"
+    "ajv-formats": "^3.0.1",
+    "cspell": "^9.3.1",
+    "markdownlint-cli2": "^0.19.0",
+    "vitepress": "^1.6.4"
   }
 }
