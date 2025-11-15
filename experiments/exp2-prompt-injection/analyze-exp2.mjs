@@ -1,5 +1,3 @@
-// experiments/exp2-prompt-injection/analyze-exp2.mjs
-#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
