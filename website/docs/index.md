@@ -67,7 +67,7 @@ Do not add any text outside the tagged content and the footer.
 Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
 
-  <p class="vpp-snippet-instructions">Fetch the header snippet and paste it into a fresh conversation.</p>
+  <p class="vpp-snippet-instructions">Add the header snippet to the model's custom instructions or system prompt once.</p>
 </div>
 
 ## Start with the protocol
@@ -77,7 +77,7 @@ Every user turn begins with `!<tag> [--modifier ...]` on line 1.
 Every assistant turn mirrors the tag and ends with a compliance footer.
 
 - Tags communicate intent: `<g>` for grounding, `<q>` for questioning, `<o>` for drafting, `<c>` for critique,
-  `<o_f>` for final delivery, and `<e>` / `<e_o>` for escape conditions.
+  `<o_f>` for final delivery, and `<e>` / `<e_o>` for controlled escapes defined in the spec.
 - Modifiers refine expectations: `--correct`, `--incorrect`, `--minor`, `--major`, `--<tag>`, and custom flags
   such as `--assumptions=3`.
 - The compliance footer keeps transcripts auditable with
@@ -102,9 +102,9 @@ These paths back the CDN mirrors used by downstream tooling, so they remain stab
 - [`/docs/spec/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/docs/spec) —
   Versioned modules, examples, and header snippets.
 - [`/corpus/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/corpus) —
-  Annotated transcripts and datasets.
+  Versioned transcript corpora (JSON schema, index, and per-session logs).
 - [`/experiments/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/experiments) —
-  Experiment runners, logs, and analyses.
+  Node runners and analyzers for protocol-retention, user-only, prompt-injection, and task-injection studies.
 - [`/scripts/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/scripts) —
   Validators and transcript tooling.
 
@@ -123,8 +123,8 @@ See the [Validator & CI page](/validator/) for details on extending these checks
 
 ## Adoption workflow
 
-1. Fetch the [header snippet][header-snippet] and paste it into a fresh conversation.
-2. Issue `!<g>` or `!<q>` on line 1 to begin the first cycle.
+1. Fetch the [header snippet][header-snippet] and store it in custom instructions or the system prompt (one-time setup).
+2. Begin a new session by issuing `!<g>` or `!<q>` on line 1.
 3. Track cycles with the compliance footer and use modifiers to steer corrections.
 4. Close with `!<o_f>` once the deliverable is production-ready.
 
