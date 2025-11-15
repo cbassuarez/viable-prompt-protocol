@@ -2,9 +2,11 @@
 title: 'Experiments'
 ---
 
-The Viable Prompt Protocol experiments catalog documents applied runs that test compliance, resilience, and usability. Each
-experiment captures transcripts, annotations, and reflections on how the protocol behaves under varying conditions.
+The Viable Prompt Protocol experiments directory contains runnable Node
+programs plus JSONL configuration files. Each experiment feeds transcripts into
+`corpus/v1.4/` so they can be validated with `scripts/test-transcripts.mjs`.
 
-- [Exp-01: Baseline compliance run](/experiments/exp-01)
-- [Exp-02: Multi-agent critique loop](/experiments/exp-02)
-- [Exp-01b: Header snippet stress test](/experiments/exp-01b)
+- [Exp-01: Protocol retention](./exp-01)
+- [Exp-01b: User-only protocol rehearsal](./exp-01b)
+- [Exp-02: Prompt injection](./exp-02)
+- [Exp-03: Task injection](./exp-03)

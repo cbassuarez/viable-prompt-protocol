@@ -1,44 +1,42 @@
 ---
-title: 'Experiment 01b — Header snippet stress test'
+title: 'Experiment 01b — User-only protocol rehearsal'
 ---
 
 ## Overview
 
-Experiment 01b subjects the header snippet to malformed edits to observe protocol resilience and recovery pathways.
+Experiment 01b is located at
+[`experiments/exp1b-user-only-protocol/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/experiments/exp1b-user-only-protocol).
+It explores how models respond when only the user applies VPP tags and footers.
+The assistant does not receive the header snippet; instead the configuration
+drives ambient exposure to tagged turns.
 
-## Condition & setup
+## Directory contents
 
-- Model: GPT-4o-mini (April 2024)
-- Snippet perturbations: Missing footer field, duplicate modifiers, invalid tag casing
-- Objective: Detect and correct user-side misconfigurations before cycle two
+- `run-exp1b-user-only.mjs` — conducts user-only conversations across multiple
+  conditions and records transcripts with parsed headers/footers where present.
+- `configs.jsonl` — defines runs with `condition="user_only_vpp_ambient_nobrowse"`
+  and `condition="user_only_vpp_ambient_browse"`, both using
+  `challenge_type="user_only_protocol"`.
+- `analyze-exp1b.mjs` — inspects saved sessions for adherence and footer fields.
 
-## Metrics
+## Running the experiment
 
-- Error detection latency
-- Accuracy of suggested fixes
-- User effort to resume compliant flow
+Provide `OPENAI_API_KEY` and execute:
 
-## Results
-
-The assistant flagged malformed inputs within a single turn and supplied corrected header examples for the operator.
-
-```text
-<e>
-Header snippet missing Version field in footer template.
-[Version=v1.4 | Tag=<e> | Sources=validator | Assumptions=0 | Cycle=1/3 | Locus=assistant]
+```bash
+npm run run:exp1b-user-only
 ```
 
-## Failure modes
+Session JSON files and index rows are appended under `corpus/v1.4/`. You can
+summarize the collected data with:
 
-The assistant occasionally over-corrected by inserting speculative sources, requiring manual pruning.
-
-```text
-<o>
-Proposed corrected footer: [Version=v1.4 | Tag=<q> | Sources=operator-provided | Assumptions=0 | Cycle=1/3 | Locus=user]
-[Version=v1.4 | Tag=<o> | Sources=auto-fix | Assumptions=1 | Cycle=2/3 | Locus=assistant]
+```bash
+npm run analyze:exp1b
 ```
 
-## Implications for the protocol
+## Notes
 
-- Validate sources before echoing them in correction examples.
-- Provide tooling to diff header snippets automatically.
+- Ambient conditions send minimal content (e.g., `!<q>\ntest`) to observe whether
+  the assistant mirrors tags without being explicitly instructed.
+- The runner also defines logic for an explicit-instruction condition, which can
+  be activated by adding matching entries to `configs.jsonl`.

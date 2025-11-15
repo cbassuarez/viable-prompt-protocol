@@ -1,46 +1,44 @@
 ---
-title: 'Experiment 02 — Multi-agent critique loop'
+title: 'Experiment 02 — Prompt injection'
 ---
 
 ## Overview
 
-Experiment 02 explores how two assistant personas collaborate under VPP to critique and refine outputs iteratively.
+Experiment 02 resides in
+[`experiments/exp2-prompt-injection/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/experiments/exp2-prompt-injection).
+It evaluates how well VPP instructions survive a follow-up prompt injection that
+asks for plain-text output without tags or footers. The runner stages both VPP
+and baseline conditions against the same task brief.
 
-## Condition & setup
+## Directory contents
 
-- Agents: Assistant-A (drafting) and Assistant-B (critique)
-- Hand-off: Each cycle concludes with an explicit locus change in the footer
-- Objective: Produce a policy memo with peer review baked in
+- `run-exp2-promptinj.mjs` — builds chat sessions, loading the header snippet
+  for the VPP condition and inserting an explicit “ignore the protocol”
+  injection on a later user turn.
+- `configs.jsonl` — lists run IDs with metadata such as
+  `challenge_type="prompt_injection"`, the target model, and
+  `injection_template_id` values.
+- `analyze-exp2.mjs` — scans `corpus/v1.4/sessions/` for prompt-injection
+  sessions and reports retention metrics (e.g., whether the last turn kept its
+  VPP header/footer).
 
-## Metrics
+## Running the experiment
 
-- Turn-taking latency
-- Critique depth (measured in corrective modifiers)
-- Resolution time per cycle
+With `OPENAI_API_KEY` set, execute:
 
-## Results
-
-The drafting agent maintained `<o>` turns while the critic issued `<c>` responses with targeted modifiers such as `--major`.
-The loop converged in three cycles with a vetted memo.
-
-```text
-<o>
-Draft an executive summary of the memo.
-[Version=v1.4 | Tag=<o> | Sources=draft-notes | Assumptions=3 | Cycle=2/3 | Locus=assistant-a]
+```bash
+npm run run:exp2-promptinj
 ```
 
-## Failure modes
+Sessions are serialized to `corpus/v1.4/sessions/` and indexed in
+`corpus/v1.4/index.jsonl`. Post-run summaries are available via:
 
-Occasional double-critiques occurred when the critic forgot to shift loci back to the drafter, resulting in redundant `<c>`
-turns.
-
-```text
-<c>
-Awaiting updated draft before issuing further critique.
-[Version=v1.4 | Tag=<c> | Sources=critique-log | Assumptions=0 | Cycle=3/3 | Locus=assistant-b]
+```bash
+npm run analyze:exp2
 ```
 
-## Implications for the protocol
+## Notes
 
-- Encourage explicit locus naming in footers for multi-agent runs.
-- Consider introducing a `--handoff=<agent>` modifier to prevent duplicate critiques.
+- The injection template rewrites the protocol instructions as plain text,
+  enabling direct measurement of retention.
+- Baseline runs omit both the header snippet and footer parsing for comparison.

@@ -4,8 +4,10 @@ title: 'FAQ'
 
 ## How do I add VPP to my prompts?
 
-Start every conversation with the header snippet from the repository, then issue your first line as `!<tag> [--modifier ...]`.
-Mirror the workflow described in the guide and spec.
+Store the header snippet in your model’s custom instructions or system prompt so
+every chat begins with the same contract. Then start a conversation with
+`!<tag> [--modifier ...]` on line 1 and follow the loop described in the guide
+and spec.
 
 ## What if the model ignores the footer?
 
@@ -24,5 +26,7 @@ handling.
 
 ## How should I handle multi-agent scenarios?
 
-Assign loci in modifiers or footers (e.g., `Locus=assistant-b`) and coordinate hand-offs explicitly. The experiments section
-showcases working patterns.
+Assign loci in modifiers or footers (e.g., `Locus=assistant-b`) and coordinate
+hand-offs explicitly. The current experiments focus on protocol retention and
+injection scenarios; consult the normative spec when designing multi-agent
+extensions.
