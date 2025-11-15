@@ -185,3 +185,12 @@
 {"id":"exp1b-ambient-browse-0023","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_browse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:42:52.130Z"}
 {"id":"exp1b-ambient-browse-0024","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_browse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:42:55.784Z"}
 {"id":"exp1b-ambient-browse-0025","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_browse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:43:02.526Z"}
+{"id":"exp1b-ambient-nobrowse-1001","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:22.901Z"}
+{"id":"exp1b-ambient-nobrowse-1002","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:24.815Z"}
+{"id":"exp1b-ambient-nobrowse-1003","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:26.556Z"}
+{"id":"exp1b-ambient-nobrowse-1004","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:27.779Z"}
+{"id":"exp1b-ambient-nobrowse-1005","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:30.035Z"}
+{"id":"exp1b-ambient-nobrowse-1006","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:31.215Z"}
+{"id":"exp1b-ambient-nobrowse-1007","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:32.886Z"}
+{"id":"exp1b-ambient-nobrowse-1008","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:34.714Z"}
+{"id":"exp1b-ambient-nobrowse-1009","model":"gpt-4.1","provider":"openai","condition":"user_only_vpp_ambient_nobrowse","challenge_type":"user_only_protocol","created_at":"2025-11-15T05:47:36.991Z"}
