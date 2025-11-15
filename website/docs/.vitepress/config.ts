@@ -1,39 +1,16 @@
 import { defineConfig } from 'vitepress';
+import markdownItKatex from 'markdown-it-katex';
 
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
   description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
   base: '/viable-prompt-protocol/',
   lastUpdated: true,
-  head: [
-    [
-      'script',
-      { id: 'mathjax-config' },
-      `window.MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\\\(', '\\\)']
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\\[', '\\]']
-          ],
-          processEscapes: true
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      };`
-    ],
-    [
-      'script',
-      {
-        defer: '',
-        src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
-      }
-    ]
-  ],
+  markdown: {
+    config: (md) => {
+      md.use(markdownItKatex);
+    }
+  },
   editLink: {
     pattern: 'https://github.com/cbassuarez/viable-prompt-protocol/edit/main/website/docs/:path'
   },

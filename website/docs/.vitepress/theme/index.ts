@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme';
-import type { Theme } from 'vitepress';
+import 'katex/dist/katex.min.css';
 import './style.css';
 
 const theme: Theme = {
