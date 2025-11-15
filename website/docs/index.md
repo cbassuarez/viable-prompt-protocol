@@ -19,6 +19,49 @@ hero:
       link: https://github.com/cbassuarez/viable-prompt-protocol
 ---
 
+<div class="vpp-hero">
+  <h1 class="vpp-hero-title">Viable Prompt Protocol</h1>
+  <p class="vpp-hero-lede">Structure every LLM exchange with explicit tags, modifiers, and a compliance footer.</p>
+  <p class="vpp-hero-tagline">Deterministic scaffolding for research-grade prompt engineering.</p>
+  <div class="vpp-hero-actions">
+    <a class="vpp-hero-button vpp-hero-button--brand" href="https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md">Read the normative spec</a>
+    <a class="vpp-hero-button" href="/guide/">Browse the protocol guide</a>
+    <a class="vpp-hero-button" href="https://github.com/cbassuarez/viable-prompt-protocol">View on GitHub</a>
+  </div>
+</div>
+
+<div class="vpp-hero-snippet-block">
+  <header class="vpp-snippet-header">
+    <span class="vpp-snippet-title">Header snippet</span>
+    <span class="vpp-snippet-hint">Copy → paste into custom instructions</span>
+  </header>
+
+```text
+Viable-Prompt Protocol:
+
+User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
+I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
+
+Only the first line is parsed; later bangs are ignored as content.
+<g> is concept-only (snippets ok; no full files).
+<o> is a realized draft with Assumptions, Citations, Tests when relevant.
+<q> is rough-context question/probing/diagnostic only. Ask general questions when appropriate.
+<c> is a fine-context locum questioning/probing. Ask clarifying questions when appropriate. Otherwise, clarify.
+<o_f> is the final, desired output with Assumptions, Citations, Tests when relevant. Any <o> could be <o_f>.
+<e> is an escape tag, which is paired with a modifier tag to escape to another part in the loop (e.g. !<e> --<g>).  Special case <e_o> escapes to <o> immediately.
+Loop is flexible: g→q→o→c→…→o_f (any order/length).
+After 3 cycles I propose !<e> --<tag> or !<e_o>.
+
+Non-negotiable: ALWAYS append the compliance footer line to EVERY reply:
+[Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]
+Do not add any text outside the tagged content and the footer.
+
+Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
+```
+
+  <p class="vpp-snippet-instructions">Fetch the header snippet and paste it into a fresh conversation.</p>
+</div>
+
 ## Start with the protocol
 
 Viable Prompt Protocol (VPP) is a compact grammar for human ↔ LLM collaborations.
