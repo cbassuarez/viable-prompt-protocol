@@ -1,0 +1,76 @@
+{
+  "id": "exp1b-user-explicit-0005",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_explicit",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:35:30.950Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 1005
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "I’m using a tag+footer protocol in this chat:\n\n- I’ll start line 1 with `!<tag>` where `<tag>` is one of: `<g> <q> <o> <c> <o_f>`.\n- You must mirror my tag on the first line of every reply, like `<q>` or `<o>`.\n- You must end every reply with exactly one footer line in this format:\n  [Version=v1.4 | Tag=<tag_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<locus>]\n\nIn this turn, just restate those rules and confirm you will follow them. Do not write any content besides the header, body, and footer.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "You will begin each message with a tag in the format `!<tag>`, where `<tag>` is one of: `<g> <q> <o> <c> <o_f>`. I must mirror your tag at the top of my reply. Every response must end with a footer line in the specified format:  \n[Version=v1.4 | Tag=<tag_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<locus>]\n\nI confirm I will follow these rules in all subsequent replies.",
+      "footer": "[Version=v1.4 | Tag=g | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=rules]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "g",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "rules",
+        "raw": "[Version=v1.4 | Tag=g | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=rules]"
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Now write the actual experimental protocol you outlined.\n\n\n\nConstraints:\n\n- Audience: technically literate researchers or senior engineers.\n\n- Structure the protocol into exactly four titled sections:\n\n  1. Goals\n\n  2. Threat model & attack surfaces\n\n  3. Task suite design\n\n  4. Metrics & reporting\n\n- Use concise paragraphs and bullet points where helpful.\n\n- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).\n\n- Do not include any prose outside these four sections.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "1. Goals  \nThe primary goal is to rigorously evaluate the security and robustness of a code-assistant LLM integrated within an IDE. The protocol aims to identify vulnerabilities, measure resistance to prompt injection and data leakage, and assess the model’s behavior under adversarial and benign use cases. Secondary objectives include benchmarking the assistant’s utility and reliability in typical developer workflows.\n\n2. Threat model & attack surfaces  \n- Adversaries: Internal (malicious users with IDE access), external (attackers influencing input via shared codebases or dependencies), and supply chain actors.\n- Attack surfaces:\n  - Prompt injection via code comments, variable names, or documentation.\n  - Malicious code suggestions or refactorings.\n  - Data leakage through completions (e.g., revealing sensitive project or user data).\n  - Manipulation of model context (e.g., via large files or crafted prompts).\n  - Abuse of IDE integrations (e.g., triggering unintended actions).\n\n3. Task suite design  \n- Construct a suite of tasks simulating real-world developer activities:\n  - Code completion in the presence of benign and adversarial comments.\n  - Refactoring codebases with embedded prompt injections.\n  - Explaining code with hidden sensitive information.\n  - Accepting or rejecting model suggestions under ambiguous or risky contexts.\n- Include both automated and manual evaluation tasks.\n- Use open-source projects and synthetic examples to ensure reproducibility and coverage.\n\n4. Metrics & reporting  \n- Security metrics:\n  - Prompt injection success rate.\n  - Incidence of data leakage (qualitative and quantitative).\n  - Frequency of unsafe or malicious code suggestions.\n- Utility metrics:\n  - Task completion accuracy.\n  - Developer acceptance rate of suggestions.\n  - Latency and integration stability.\n- Reporting:\n  - Aggregate results by task and attack vector.\n  - Provide detailed case studies for significant failures.\n  - Summarize findings with actionable recommendations for mitigation.",
+      "footer": "[Version=v1.4 | Tag=o | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "o",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "protocol",
+        "raw": "[Version=v1.4 | Tag=o | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol]"
+      }
+    }
+  ]
+}
