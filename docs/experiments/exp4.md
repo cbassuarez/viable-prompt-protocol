@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD013 MD040 -->
+<!-- markdownlint-disable MD012 MD013 MD040 -->
 <!-- cspell:words taskutil longdialog -->
 
 
