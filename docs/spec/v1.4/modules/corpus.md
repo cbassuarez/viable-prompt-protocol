@@ -6,7 +6,7 @@
 > A small, disciplined corpus of structured chats for studying **tag+footer protocols**,
 > **prompt injection robustness**, and **instruction hierarchies** in large language models.
 
-The VPP corpus consists of synthetic conversations between scripted *users* and OpenAI models (e.g. `gpt-4.1`). Each conversation follows a unified JSON schema and is stored under `corpus/v1.4/`. No human personal data is included.
+The VPP corpus consists of synthetic conversations between scripted *users* and OpenAI models (e.g. `gpt-4.1`, `gpt-5.1`). Each conversation follows a unified JSON schema and is stored under `corpus/v1.4/`. No human personal data is included.
 
 This page is meant to be:
 
