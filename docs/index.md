@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 -->
+<!-- cspell:words Regressable mathrm mathbb protret hyperparameters -->
 ---
 layout: home
 title: "Viable Prompt Protocol (VPP)"
