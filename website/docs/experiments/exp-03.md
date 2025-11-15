@@ -3,6 +3,7 @@ title: 'Experiment 03 — Task injection'
 ---
 
 <!-- markdownlint-disable MD013 -->
+<!-- cspell:words mathrm mathbb -->
 
 ## Overview
 
