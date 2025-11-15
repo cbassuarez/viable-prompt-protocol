@@ -10,13 +10,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with: { node-version: '20' }
+      - name: Install dependencies
+        run: npm ci
       - name: Markdownlint
-        run: npx markdownlint-cli2 **/*.md
+        run: npm run lint:md
       - name: Lychee link check
         uses: lycheeverse/lychee-action@v1
         with:
           args: --verbose --no-progress --max-concurrency 4 --accept 200,206 --exclude-mail --timeout 20s "**/*.md"
       - name: Spellcheck
-        run: npx cspell --no-progress "docs/**/*.md" "spec/**/*.md" "README.md"
+        run: npm run lint:spell
       - name: Parser tests
-        run: node scripts/test-transcripts.mjs
+        run: npm run test:parser

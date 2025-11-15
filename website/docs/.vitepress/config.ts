@@ -15,6 +15,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/' },
       { text: 'Experiments', link: '/experiments/' },
       { text: 'Corpus', link: '/corpus/' },
+      { text: 'Validator & CI', link: '/validator/' },
       { text: 'Changelog', link: '/changelog/' },
       { text: 'FAQ', link: '/faq/' }
     ],
@@ -64,6 +65,14 @@ export default defineConfig({
           text: 'Corpus',
           items: [
             { text: 'Overview', link: '/corpus/' }
+          ]
+        }
+      ],
+      '/validator/': [
+        {
+          text: 'Validator & CI',
+          items: [
+            { text: 'Checks', link: '/validator/' }
           ]
         }
       ]

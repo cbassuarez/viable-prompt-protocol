@@ -4,7 +4,8 @@ title: 'Experiment 01 — Baseline compliance run'
 
 ## Overview
 
-Experiment 01 measures how faithfully a frontier model adheres to VPP when provided with the canonical header snippet and minimal prompting.
+Experiment 01 measures how faithfully a frontier model adheres to VPP when provided with the canonical header snippet and
+minimal prompting.
 
 ## Condition & setup
 
@@ -20,7 +21,8 @@ Experiment 01 measures how faithfully a frontier model adheres to VPP when provi
 
 ## Results
 
-The assistant maintained perfect tag mirroring across five cycles and produced compliant footers with accurate assumption counts.
+The assistant maintained perfect tag mirroring across five cycles and produced compliant footers with accurate assumption
+counts.
 
 ```text
 <q>
@@ -30,7 +32,8 @@ Summarize the implications of protocol drift in conversational agents.
 
 ## Failure modes
 
-One cycle stalled when the user issued conflicting modifiers (`--major --correct`). The assistant escalated with `<e>` and requested clarification.
+One cycle stalled when the user issued conflicting modifiers (`--major --correct`). The assistant escalated with `<e>` and
+requested clarification.
 
 ```text
 <e>

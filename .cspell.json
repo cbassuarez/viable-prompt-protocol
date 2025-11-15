@@ -1,1 +1,25 @@
-{ "version": "0.2", "language": "en", "words": ["bang-tag", "locum", "loci", "cybernetic", "jsDelivr", "VPP"] }
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "Viable",
+    "VitePress",
+    "bang-tag",
+    "bootstrappable",
+    "affordances",
+    "cybernetic",
+    "hyperparameters",
+    "inspectable",
+    "lycheeverse",
+    "jsDelivr",
+    "locum",
+    "loci",
+    "nobrowse",
+    "parseable",
+    "pretraining",
+    "promptinj",
+    "protret",
+    "ambiently",
+    "VPP"
+  ]
+}
