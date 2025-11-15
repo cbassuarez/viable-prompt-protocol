@@ -1,5 +1,3 @@
-// experiments/exp2-prompt-injection/run-exp2-promptinj.mjs
-#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
