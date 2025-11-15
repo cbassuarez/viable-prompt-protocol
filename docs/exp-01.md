@@ -448,4 +448,3 @@ You should see metrics close to those reported above, modulo sampling variation 
   * **Longer tasks & tools:** integrate multi-step workflows and tool calls to study protocol retention under more realistic usage.
 
 Exp1 thus serves as a **foundational benchmark**: it shows that VPP can induce near-perfect structural adherence and strong semantic task retention, while a baseline assistant given the same semantic task does not spontaneously adopt the protocol.
-
