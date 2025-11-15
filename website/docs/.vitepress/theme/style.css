@@ -255,6 +255,7 @@ pre,
 
 .vpp-hero-snippet-block code {
   font-size: 0.95rem;
+  min-width: 0px;
 }
 
 .vpp-snippet-instructions {
