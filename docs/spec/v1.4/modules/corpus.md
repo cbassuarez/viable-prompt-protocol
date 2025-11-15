@@ -1,11 +1,5 @@
-<o>
-```markdown
----
-layout: page
-title: "Viable Prompt Protocol Corpus (v1.4)"
-permalink: /corpus/
-nav_order: 30
----
+
+
 
 # Viable Prompt Protocol Corpus (v1.4)
 
@@ -473,8 +467,9 @@ The VPP v1.4 corpus is designed to support:
 
 In short: the corpus is both a **testbed** and a **signal**. It characterizes how current models respond to explicit protocol structure, and also serves as a seed for any future work that wants to treat structured chat protocols as first-class objects in LLM design.
 
-```
-
-[Version=v1.4 | Tag=<o_36> | Sources=none | Assumptions=2 | Cycle=2/3 | Locus=corpus-splash-jekyll]
-::contentReference[oaicite:0]{index=0}
-```
+---
+layout: page
+title: "Viable Prompt Protocol Corpus (v1.4)"
+permalink: /corpus/
+nav_order: 30
+---
