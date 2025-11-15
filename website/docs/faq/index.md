@@ -4,13 +4,13 @@ title: 'FAQ'
 
 ## How do I add VPP to my prompts?
 
-Import the header snipper into your custom instructions, 
-```
+Import the header snippet into your custom instructions,
+
+```text
 Viable-Prompt Protocol:
 
 User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o) with optional --correct|--incorrect, --minor|--major, and --<tag> (valid with !<o> --correct and !<e>).
 I mirror the tag, prepended to my output: `<tag>`. !<x>→<x>, except !<e> --<tag>→<tag> and !<e_o>→<o>. Non-negotiable: ALWAYS prepend the tag line to EVERY reply.
-
 
 Only the first line is parsed; later bangs are ignored as content. Tags define mode, regardless of prompt body content.
 <g> is concept-only (snippets ok; no full files).
@@ -29,6 +29,7 @@ Do not add any text outside the tagged content and the footer.
 Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
 ```
 then issue your first line as `!<tag> [--modifier ...]`.
+
 Mirror the workflow described in the guide and spec.
 
 ## What if the model ignores the footer?
