@@ -20,7 +20,7 @@ Also valid with `!<e> --<tag>` (explicitly jump loci and start at `<tag>`).
 
 The first line must contain **only** the command.  
 No other text or tags allowed on that line.
-
+Tags define mode, regardless of prompt body content. 
 Parsing rule: only the first line is parsed for a command;  
 any bangs/tags on later lines are treated as plain content (ignored by the parser).
 
