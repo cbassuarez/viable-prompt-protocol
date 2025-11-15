@@ -107,7 +107,7 @@ Follow the user's instructions carefully and respond clearly and concisely.
 
 #### Turn 0 (user) — explicit VPP description
 
-We start the conversation with a !<g> turn that defines the protocol in-chat:
+We start the conversation with a `!<g>` turn that defines the protocol in-chat:
 
 ```text
 !<g>
@@ -126,7 +126,7 @@ In this turn, just restate those rules and confirm you will follow them. Do not 
 
 The assistant is expected to:
 
-1. Start with <g> on line 1.
+1. Start with `<g>` on line 1.
 
 2. Restate/confirm the rules in the body.
 
@@ -134,7 +134,7 @@ The assistant is expected to:
 
 #### Turn 2 (user) — actual task
 
-We switch to !<o> and ask for a four-section experimental protocol, reusing the same task shape as Exp1:
+We switch to `!<o>` and ask for a four-section experimental protocol, reusing the same task shape as Exp1:
 
 ```text
 !<o>
@@ -330,7 +330,7 @@ In other words: *VPP is fully bootstrappable via user-only instructions for this
 <!-- markdownlint-disable-next-line MD024 -->
 ### Summary
 
-With only !<q>\ntest (and a follow-up !<o>\nsecond test) and no explanation:
+With only `!<q>\ntest` (and a follow-up `!<o>\nsecond test`) and no explanation:
 
 1. The model never emits a VPP-style header or footer.
 
