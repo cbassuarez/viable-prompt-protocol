@@ -2,7 +2,7 @@
 title: 'Experiment 06 — Long dialog retention'
 ---
 <!-- docs/exp-06.md -->
-<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD004 MD013 -->
 
 ## Overview
 
