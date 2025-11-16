@@ -6,11 +6,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(path.join(__dirname, ".."));
 
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
-
-// Summary JSON that powers the browser:
-// lives at website/docs/corpus/corpus-v1_4.json → served at /corpus/corpus-v1_4.json
-const DATA_DIR = path.join(ROOT, "website", "docs", "corpus");
+// VitePress static assets live under website/docs/public/
+const DATA_DIR = path.join(ROOT, "website", "docs", "public", "corpus");
 const OUT_PATH = path.join(DATA_DIR, "corpus-v1_4.json");
+
 
 if (!fs.existsSync(INDEX_PATH)) {
   console.error("Missing index.jsonl at", INDEX_PATH);
@@ -41,15 +40,15 @@ for (const line of lines) {
     if (!id) continue;
 
     entries.push({
-      id,
-      model: model || null,
-      provider: provider || null,
-      condition: condition || null,
-      challenge_type: challenge_type || null,
-      created_at: created_at || null,
-      // Relative path from /corpus/ to the raw session JSON
-      path: `v1.4/sessions/${id}.json`,
-    });
+  id,
+  model: model || null,
+  provider: provider || null,
+  condition: condition || null,
+  challenge_type: challenge_type || null,
+  created_at: created_at || null,
+  // Relative path from /corpus/ to the raw session JSON
+  path: `v1.4/sessions/${id}.json`,
+});
   } catch (err) {
     console.warn("Skipping invalid JSONL line:", line, err.message);
   }
