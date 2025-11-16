@@ -1,5 +1,12 @@
 import { defineConfig } from 'vitepress';
 import mathjax3 from 'markdown-it-mathjax3';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { cp, readdir, stat } from 'node:fs/promises';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const publicDir = path.resolve(__dirname, '../public');
+
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
   description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
@@ -12,6 +19,12 @@ export default defineConfig({
   },
   editLink: {
     pattern: 'https://github.com/cbassuarez/viable-prompt-protocol/edit/main/website/docs/:path'
+  },
+  vite: {
+    publicDir,
+  },
+  async buildEnd(siteConfig) {
+    await copyPublicAssets(siteConfig);
   },
   themeConfig: {
     nav: [
@@ -91,3 +104,30 @@ export default defineConfig({
     }
   }
 });
+
+async function copyPublicAssets(siteConfig: { srcDir?: string; outDir?: string }) {
+  const { outDir, srcDir } = siteConfig || {};
+  if (!outDir) return;
+  const resolvedPublicDir = srcDir
+    ? path.resolve(srcDir, 'public')
+    : publicDir;
+  let stats;
+  try {
+    stats = await stat(resolvedPublicDir);
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return;
+    throw err;
+  }
+
+  if (!stats.isDirectory()) return;
+
+  const entries = await readdir(resolvedPublicDir);
+  await Promise.all(
+    entries.map((entry) =>
+      cp(path.join(resolvedPublicDir, entry), path.join(outDir, entry), {
+        recursive: true,
+        force: true,
+      }),
+    ),
+  );
+}
