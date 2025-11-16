@@ -2,7 +2,7 @@
 title: 'Experiment 05 — Friction & convergence'
 ---
 
-<!-- markdownlint-disable MD012 MD013 -->
+<!-- markdownlint-disable MD004 MD012 MD013 -->
 
 ## Overview
 
