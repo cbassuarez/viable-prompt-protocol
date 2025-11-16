@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,25 +8,17 @@ const ROOT = path.resolve(path.join(__dirname, ".."));
 
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
 
-// VitePress static assets live under website/docs/public
-// Serve the index at /corpus/v1.4/corpus-v1_4.json
-const PUBLIC_DIR = path.join(
-  ROOT,
-  "website",
-  "docs",
-  "public",
-  "corpus",
-  "v1.4"
-);
-const OUT_PATH = path.join(PUBLIC_DIR, "corpus-v1_4.json");
-
+// We want the JSON index to sit next to index.jsonl, so it is served at:
+//   /corpus/v1.4/corpus-v1_4.json
+const OUT_DIR = path.join(ROOT, "corpus", "v1.4");
+const OUT_PATH = path.join(OUT_DIR, "corpus-v1_4.json");
 
 if (!fs.existsSync(INDEX_PATH)) {
   console.error("Missing index.jsonl at", INDEX_PATH);
   process.exit(1);
 }
 
-fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+fs.mkdirSync(OUT_DIR, { recursive: true });
 
 const lines = fs
   .readFileSync(INDEX_PATH, "utf8")
@@ -55,7 +48,7 @@ for (const line of lines) {
       condition: condition || null,
       challenge_type: challenge_type || null,
       created_at: created_at || null,
-      // Path where the static site serves the raw session JSON
+      // Where the raw session JSON is served from on the site
       path: `/corpus/v1.4/sessions/${id}.json`,
     });
   } catch (err) {
