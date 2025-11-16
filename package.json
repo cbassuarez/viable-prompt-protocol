@@ -19,7 +19,7 @@
     "run:exp6-longdialog": "node experiments/exp6-long-dialog/run-exp6-longdialog.mjs",
     "analyze:exp6": "node experiments/exp6-long-dialog/analyze-exp6.mjs",
     "docs:dev": "vitepress dev website/docs",
-    "docs:build": "vitepress build website/docs",
+    "docs:build": "npm run build:corpus-data && vitepress build website/docs",
     "docs:preview": "vitepress preview website/docs",
     "lint:md": "markdownlint-cli2 \"README.md\" \"docs/**/*.md\" \"website/docs/**/*.md\" \"contributing.md\" \"code_of_conduct.md\" \"RELEASE_NOTES_v1.4.md\" \"!docs/spec/**\" \"!docs/latest/spec.md\" \"!spec/**\"",
     "lint:spell": "cspell --no-progress \"docs/**/*.md\" \"spec/**/*.md\" \"website/docs/**/*.md\" \"README.md\"",
