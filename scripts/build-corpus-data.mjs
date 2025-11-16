@@ -6,19 +6,31 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(path.join(__dirname, ".."));
 
+// Source index
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
 
-// We want the JSON index to sit next to index.jsonl, so it is served at:
-//   /corpus/v1.4/corpus-v1_4.json
-const OUT_DIR = path.join(ROOT, "corpus", "v1.4");
-const OUT_PATH = path.join(OUT_DIR, "corpus-v1_4.json");
+// 1) Keep a copy next to index.jsonl (for local tooling / debugging)
+const CORPUS_DIR = path.join(ROOT, "corpus", "v1.4");
+const CORPUS_OUT_PATH = path.join(CORPUS_DIR, "corpus-v1_4.json");
+
+// 2) Emit a copy into the docs public tree so it’s served at /corpus/v1.4/…
+const PUBLIC_DIR = path.join(
+  ROOT,
+  "website",
+  "docs",
+  "public",
+  "corpus",
+  "v1.4"
+);
+const PUBLIC_OUT_PATH = path.join(PUBLIC_DIR, "corpus-v1_4.json");
 
 if (!fs.existsSync(INDEX_PATH)) {
   console.error("Missing index.jsonl at", INDEX_PATH);
   process.exit(1);
 }
 
-fs.mkdirSync(OUT_DIR, { recursive: true });
+fs.mkdirSync(CORPUS_DIR, { recursive: true });
+fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 
 const lines = fs
   .readFileSync(INDEX_PATH, "utf8")
@@ -56,5 +68,14 @@ for (const line of lines) {
   }
 }
 
-fs.writeFileSync(OUT_PATH, JSON.stringify(entries, null, 2));
-console.log(`Wrote ${entries.length} entries to ${OUT_PATH}`);
+const json = JSON.stringify(entries, null, 2);
+
+// Write both copies
+fs.writeFileSync(CORPUS_OUT_PATH, json);
+fs.writeFileSync(PUBLIC_OUT_PATH, json);
+
+console.log(
+  `Wrote ${entries.length} entries to:\n` +
+    `  - ${CORPUS_OUT_PATH}\n` +
+    `  - ${PUBLIC_OUT_PATH}`
+);
