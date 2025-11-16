@@ -3,6 +3,7 @@ title: 'Experiments'
 ---
 
 <!-- markdownlint-disable MD013 -->
+<!-- cspell:words taskutil longdialog -->
 
 The Viable Prompt Protocol experiments directory contains runnable Node
 programs plus JSONL configuration files. Each experiment feeds transcripts into
