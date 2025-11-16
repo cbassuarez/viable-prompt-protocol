@@ -84,7 +84,8 @@ Examples:
       if (!tbody) return;
       setEmptyMessage("Loading corpus index…");
       try {
-        // corpus-v1_4.json sits in the same directory as this page (/corpus/)
+        // corpus-v1_4.json now lives at /corpus/corpus-v1_4.json
+        // and this page is /corpus/, so a relative fetch works.
         const res = await fetch("corpus-v1_4.json", { cache: "no-store" });
         if (!res.ok) {
           throw new Error("Failed to load corpus data: " + res.status);
