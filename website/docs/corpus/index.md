@@ -19,3 +19,189 @@ runners. Browse the files on GitHub:
 The files follow the same schema validated by `node scripts/test-transcripts.mjs`.
 Session IDs align with the `id` fields in each experiment’s `configs.jsonl` so
 you can trace runs back to their source configuration.
+
+---
+
+<!-- markdownlint-disable-next-line MD026 -->
+## 6. Browse sessions
+
+The table below is generated from `corpus/v1.4/index.jsonl` via
+`website/docs/_data/corpus-v1_4.json`. Each row links to a human-readable viewer and
+the raw JSON session file.
+
+You can pre-filter by query parameters:
+
+- `?challenge_type=protocol_retention`
+- `?challenge_type=prompt_injection`
+- `?challenge_type=user_only_protocol`
+- `?condition=vpp`, `?condition=baseline`, etc.
+
+### 6.1 Session index
+
+<div class="corpus-table-wrapper">
+  <table class="corpus-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Experiment</th>
+        <th>Condition</th>
+        <th>Model</th>
+        <th>Created</th>
+        <th>Links</th>
+      </tr>
+    </thead>
+    <tbody id="corpus-table-body"></tbody>
+  </table>
+</div>
+
+<div id="corpus-active-filter" class="corpus-active-filter" aria-live="polite"></div>
+
+<script>
+  (function () {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const filterChallenge = params.get("challenge_type");
+    const filterCondition = params.get("condition");
+
+    const statusEl = document.getElementById("corpus-active-filter");
+    const tbody = document.getElementById("corpus-table-body");
+    const siteBase = (window.__VP_SITE_DATA__?.site?.base || "/").replace(/\/$/, "");
+    const dataUrl = withBase("/_data/corpus-v1_4.json");
+
+    let rows = [];
+
+    init();
+
+    async function init() {
+      if (!tbody) return;
+      try {
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("Failed to load corpus data: " + res.status);
+        }
+
+        const entries = await res.json();
+        renderRows(entries);
+        rows = Array.from(tbody.querySelectorAll("[data-corpus-row]"));
+        applyFilters();
+      } catch (err) {
+        console.error(err);
+        if (statusEl) {
+          statusEl.textContent =
+            "Unable to load session index: " + (err.message || String(err));
+        }
+      }
+    }
+
+    function renderRows(entries) {
+      if (!tbody || !Array.isArray(entries)) return;
+      const sorted = entries.slice().sort((a, b) => {
+        const aTime = a?.created_at ? Date.parse(a.created_at) || 0 : 0;
+        const bTime = b?.created_at ? Date.parse(b.created_at) || 0 : 0;
+        if (aTime !== bTime) return bTime - aTime;
+        return String(a?.id || "").localeCompare(String(b?.id || ""));
+      });
+
+      const frag = document.createDocumentFragment();
+
+      sorted.forEach((entry) => {
+        const tr = document.createElement("tr");
+        tr.setAttribute("data-corpus-row", "");
+        tr.dataset.challengeType = entry?.challenge_type || "";
+        tr.dataset.condition = entry?.condition || "";
+
+        tr.appendChild(makeCodeCell(entry?.id || "", "corpus-id"));
+        tr.appendChild(makeCodeCell(entry?.challenge_type || ""));
+        tr.appendChild(makeCodeCell(entry?.condition || ""));
+        tr.appendChild(makeCodeCell(entry?.model || ""));
+
+        const createdCell = document.createElement("td");
+        if (entry?.created_at) {
+          const time = document.createElement("time");
+          time.dateTime = entry.created_at;
+          time.textContent = entry.created_at;
+          createdCell.appendChild(time);
+        } else {
+          createdCell.textContent = "—";
+        }
+        tr.appendChild(createdCell);
+
+        const linksCell = document.createElement("td");
+        linksCell.className = "corpus-links";
+        const viewLink = document.createElement("a");
+        viewLink.href = withBase(
+          "/corpus/session/?id=" + encodeURIComponent(entry?.id || "")
+        );
+        viewLink.textContent = "View";
+
+        const jsonLink = document.createElement("a");
+        if (entry?.path) {
+          jsonLink.href = withBase(entry.path);
+        } else {
+          jsonLink.href = "#";
+        }
+        jsonLink.target = "_blank";
+        jsonLink.rel = "noopener";
+        jsonLink.textContent = "JSON";
+
+        linksCell.appendChild(viewLink);
+        linksCell.appendChild(document.createTextNode(" \u00A0·\u00A0"));
+        linksCell.appendChild(jsonLink);
+        tr.appendChild(linksCell);
+
+        frag.appendChild(tr);
+      });
+
+      tbody.innerHTML = "";
+      tbody.appendChild(frag);
+    }
+
+    function makeCodeCell(value, className) {
+      const td = document.createElement("td");
+      if (className) td.className = className;
+      const code = document.createElement("code");
+      code.textContent = value || "";
+      td.appendChild(code);
+      return td;
+    }
+
+    function applyFilters() {
+      if (!rows.length) return;
+      let visibleCount = 0;
+
+      rows.forEach((row) => {
+        const ct = row.dataset.challengeType || "";
+        const cond = row.dataset.condition || "";
+
+        let ok = true;
+        if (filterChallenge && ct !== filterChallenge) ok = false;
+        if (filterCondition && cond !== filterCondition) ok = false;
+
+        row.style.display = ok ? "" : "none";
+        if (ok) visibleCount += 1;
+      });
+
+      const parts = [];
+      if (filterChallenge) parts.push("challenge_type=" + filterChallenge);
+      if (filterCondition) parts.push("condition=" + filterCondition);
+
+      if (statusEl) {
+        if (parts.length === 0) {
+          statusEl.textContent = "";
+        } else {
+          statusEl.textContent =
+            "Filters: " + parts.join(", ") + " — " + visibleCount + " sessions.";
+        }
+      }
+    }
+
+    function withBase(path) {
+      if (!path) return path;
+      if (path.startsWith("http://") || path.startsWith("https://")) {
+        return path;
+      }
+      const normalized = path.startsWith("/") ? path : `/${path}`;
+      return `${siteBase}${normalized}` || normalized;
+    }
+  })();
+</script>

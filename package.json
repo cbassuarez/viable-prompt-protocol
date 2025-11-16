@@ -23,7 +23,8 @@
     "docs:preview": "vitepress preview website/docs",
     "lint:md": "markdownlint-cli2 \"README.md\" \"docs/**/*.md\" \"website/docs/**/*.md\" \"contributing.md\" \"code_of_conduct.md\" \"RELEASE_NOTES_v1.4.md\" \"!docs/spec/**\" \"!docs/latest/spec.md\" \"!spec/**\"",
     "lint:spell": "cspell --no-progress \"docs/**/*.md\" \"spec/**/*.md\" \"website/docs/**/*.md\" \"README.md\"",
-    "test:parser": "node scripts/test-transcripts.mjs"
+    "test:parser": "node scripts/test-transcripts.mjs",
+    "build:corpus-data": "node scripts/build-corpus-data.mjs"
   },
   "dependencies": {
     "openai": "^4.54.0"
