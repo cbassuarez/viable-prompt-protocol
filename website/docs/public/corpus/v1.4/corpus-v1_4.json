@@ -6,7 +6,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:02:07.602Z",
-    "path": "v1.4/sessions/exp1-protret-0001.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0001.json"
   },
   {
     "id": "exp1-protret-0002",
@@ -15,7 +15,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:02:24.062Z",
-    "path": "v1.4/sessions/exp1-protret-0002.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0002.json"
   },
   {
     "id": "exp1-protret-0003",
@@ -24,7 +24,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:02:40.341Z",
-    "path": "v1.4/sessions/exp1-protret-0003.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0003.json"
   },
   {
     "id": "exp1-protret-0004",
@@ -33,7 +33,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:02:57.358Z",
-    "path": "v1.4/sessions/exp1-protret-0004.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0004.json"
   },
   {
     "id": "exp1-protret-0005",
@@ -42,7 +42,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:03:15.602Z",
-    "path": "v1.4/sessions/exp1-protret-0005.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0005.json"
   },
   {
     "id": "exp1-protret-0006",
@@ -51,7 +51,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:03:33.654Z",
-    "path": "v1.4/sessions/exp1-protret-0006.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0006.json"
   },
   {
     "id": "exp1-protret-0007",
@@ -60,7 +60,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:03:48.411Z",
-    "path": "v1.4/sessions/exp1-protret-0007.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0007.json"
   },
   {
     "id": "exp1-protret-0008",
@@ -69,7 +69,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:04:03.949Z",
-    "path": "v1.4/sessions/exp1-protret-0008.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0008.json"
   },
   {
     "id": "exp1-protret-0009",
@@ -78,7 +78,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:04:17.467Z",
-    "path": "v1.4/sessions/exp1-protret-0009.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0009.json"
   },
   {
     "id": "exp1-protret-0010",
@@ -87,7 +87,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:04:32.537Z",
-    "path": "v1.4/sessions/exp1-protret-0010.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0010.json"
   },
   {
     "id": "exp1-protret-0011",
@@ -96,7 +96,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:04:45.846Z",
-    "path": "v1.4/sessions/exp1-protret-0011.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0011.json"
   },
   {
     "id": "exp1-protret-0012",
@@ -105,7 +105,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:05:00.190Z",
-    "path": "v1.4/sessions/exp1-protret-0012.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0012.json"
   },
   {
     "id": "exp1-protret-0013",
@@ -114,7 +114,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:05:17.293Z",
-    "path": "v1.4/sessions/exp1-protret-0013.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0013.json"
   },
   {
     "id": "exp1-protret-0014",
@@ -123,7 +123,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:05:31.397Z",
-    "path": "v1.4/sessions/exp1-protret-0014.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0014.json"
   },
   {
     "id": "exp1-protret-0015",
@@ -132,7 +132,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:05:54.510Z",
-    "path": "v1.4/sessions/exp1-protret-0015.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0015.json"
   },
   {
     "id": "exp1-protret-0016",
@@ -141,7 +141,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:06:19.369Z",
-    "path": "v1.4/sessions/exp1-protret-0016.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0016.json"
   },
   {
     "id": "exp1-protret-0017",
@@ -150,7 +150,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:06:33.562Z",
-    "path": "v1.4/sessions/exp1-protret-0017.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0017.json"
   },
   {
     "id": "exp1-protret-0018",
@@ -159,7 +159,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:06:48.343Z",
-    "path": "v1.4/sessions/exp1-protret-0018.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0018.json"
   },
   {
     "id": "exp1-protret-0019",
@@ -168,7 +168,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:07:02.946Z",
-    "path": "v1.4/sessions/exp1-protret-0019.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0019.json"
   },
   {
     "id": "exp1-protret-0020",
@@ -177,7 +177,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:07:18.605Z",
-    "path": "v1.4/sessions/exp1-protret-0020.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0020.json"
   },
   {
     "id": "exp1-protret-0021",
@@ -186,7 +186,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:07:32.939Z",
-    "path": "v1.4/sessions/exp1-protret-0021.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0021.json"
   },
   {
     "id": "exp1-protret-0022",
@@ -195,7 +195,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:07:53.656Z",
-    "path": "v1.4/sessions/exp1-protret-0022.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0022.json"
   },
   {
     "id": "exp1-protret-0023",
@@ -204,7 +204,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:08:09.520Z",
-    "path": "v1.4/sessions/exp1-protret-0023.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0023.json"
   },
   {
     "id": "exp1-protret-0024",
@@ -213,7 +213,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:08:27.406Z",
-    "path": "v1.4/sessions/exp1-protret-0024.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0024.json"
   },
   {
     "id": "exp1-protret-0025",
@@ -222,7 +222,7 @@
     "condition": "vpp",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:08:43.810Z",
-    "path": "v1.4/sessions/exp1-protret-0025.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-0025.json"
   },
   {
     "id": "exp1-protret-baseline-001",
@@ -231,7 +231,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:08:57.853Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-001.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-001.json"
   },
   {
     "id": "exp1-protret-baseline-002",
@@ -240,7 +240,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:09:21.391Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-002.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-002.json"
   },
   {
     "id": "exp1-protret-baseline-003",
@@ -249,7 +249,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:09:46.546Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-003.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-003.json"
   },
   {
     "id": "exp1-protret-baseline-004",
@@ -258,7 +258,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:10:11.005Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-004.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-004.json"
   },
   {
     "id": "exp1-protret-baseline-005",
@@ -267,7 +267,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:10:31.468Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-005.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-005.json"
   },
   {
     "id": "exp1-protret-baseline-006",
@@ -276,7 +276,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:10:56.466Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-006.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-006.json"
   },
   {
     "id": "exp1-protret-baseline-007",
@@ -285,7 +285,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:11:15.941Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-007.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-007.json"
   },
   {
     "id": "exp1-protret-baseline-008",
@@ -294,7 +294,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:11:37.877Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-008.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-008.json"
   },
   {
     "id": "exp1-protret-baseline-009",
@@ -303,7 +303,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:12:01.270Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-009.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-009.json"
   },
   {
     "id": "exp1-protret-baseline-010",
@@ -312,7 +312,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:12:25.589Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-010.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-010.json"
   },
   {
     "id": "exp1-protret-baseline-011",
@@ -321,7 +321,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:12:50.287Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-011.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-011.json"
   },
   {
     "id": "exp1-protret-baseline-012",
@@ -330,7 +330,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:13:11.511Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-012.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-012.json"
   },
   {
     "id": "exp1-protret-baseline-013",
@@ -339,7 +339,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:13:34.448Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-013.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-013.json"
   },
   {
     "id": "exp1-protret-baseline-014",
@@ -348,7 +348,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:13:51.214Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-014.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-014.json"
   },
   {
     "id": "exp1-protret-baseline-015",
@@ -357,7 +357,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:14:16.865Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-015.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-015.json"
   },
   {
     "id": "exp1-protret-baseline-016",
@@ -366,7 +366,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:14:55.875Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-016.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-016.json"
   },
   {
     "id": "exp1-protret-baseline-017",
@@ -375,7 +375,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:15:15.984Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-017.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-017.json"
   },
   {
     "id": "exp1-protret-baseline-018",
@@ -384,7 +384,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:15:34.232Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-018.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-018.json"
   },
   {
     "id": "exp1-protret-baseline-019",
@@ -393,7 +393,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:15:59.223Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-019.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-019.json"
   },
   {
     "id": "exp1-protret-baseline-020",
@@ -402,7 +402,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:16:17.382Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-020.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-020.json"
   },
   {
     "id": "exp1-protret-baseline-021",
@@ -411,7 +411,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:16:42.144Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-021.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-021.json"
   },
   {
     "id": "exp1-protret-baseline-022",
@@ -420,7 +420,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:17:09.882Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-022.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-022.json"
   },
   {
     "id": "exp1-protret-baseline-023",
@@ -429,7 +429,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:17:34.575Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-023.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-023.json"
   },
   {
     "id": "exp1-protret-baseline-024",
@@ -438,7 +438,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:17:52.998Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-024.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-024.json"
   },
   {
     "id": "exp1-protret-baseline-025",
@@ -447,7 +447,7 @@
     "condition": "baseline",
     "challenge_type": "protocol_retention",
     "created_at": "2025-11-15T02:18:14.596Z",
-    "path": "v1.4/sessions/exp1-protret-baseline-025.json"
+    "path": "/corpus/v1.4/sessions/exp1-protret-baseline-025.json"
   },
   {
     "id": "exp2-promptinj-0001",
@@ -456,7 +456,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:28:37.422Z",
-    "path": "v1.4/sessions/exp2-promptinj-0001.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0001.json"
   },
   {
     "id": "exp2-promptinj-0002",
@@ -465,7 +465,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:28:53.436Z",
-    "path": "v1.4/sessions/exp2-promptinj-0002.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0002.json"
   },
   {
     "id": "exp2-promptinj-0003",
@@ -474,7 +474,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:29:17.231Z",
-    "path": "v1.4/sessions/exp2-promptinj-0003.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0003.json"
   },
   {
     "id": "exp2-promptinj-0004",
@@ -483,7 +483,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:29:44.078Z",
-    "path": "v1.4/sessions/exp2-promptinj-0004.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0004.json"
   },
   {
     "id": "exp2-promptinj-0005",
@@ -492,7 +492,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:30:07.659Z",
-    "path": "v1.4/sessions/exp2-promptinj-0005.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0005.json"
   },
   {
     "id": "exp2-promptinj-0006",
@@ -501,7 +501,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:30:27.126Z",
-    "path": "v1.4/sessions/exp2-promptinj-0006.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0006.json"
   },
   {
     "id": "exp2-promptinj-0007",
@@ -510,7 +510,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:30:50.236Z",
-    "path": "v1.4/sessions/exp2-promptinj-0007.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0007.json"
   },
   {
     "id": "exp2-promptinj-0008",
@@ -519,7 +519,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:31:09.420Z",
-    "path": "v1.4/sessions/exp2-promptinj-0008.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0008.json"
   },
   {
     "id": "exp2-promptinj-0009",
@@ -528,7 +528,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:31:28.373Z",
-    "path": "v1.4/sessions/exp2-promptinj-0009.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0009.json"
   },
   {
     "id": "exp2-promptinj-0010",
@@ -537,7 +537,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:31:45.865Z",
-    "path": "v1.4/sessions/exp2-promptinj-0010.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0010.json"
   },
   {
     "id": "exp2-promptinj-0011",
@@ -546,7 +546,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:32:01.557Z",
-    "path": "v1.4/sessions/exp2-promptinj-0011.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0011.json"
   },
   {
     "id": "exp2-promptinj-0012",
@@ -555,7 +555,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:32:19.950Z",
-    "path": "v1.4/sessions/exp2-promptinj-0012.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0012.json"
   },
   {
     "id": "exp2-promptinj-0013",
@@ -564,7 +564,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:32:41.295Z",
-    "path": "v1.4/sessions/exp2-promptinj-0013.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0013.json"
   },
   {
     "id": "exp2-promptinj-0014",
@@ -573,7 +573,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:32:58.339Z",
-    "path": "v1.4/sessions/exp2-promptinj-0014.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0014.json"
   },
   {
     "id": "exp2-promptinj-0015",
@@ -582,7 +582,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:33:19.166Z",
-    "path": "v1.4/sessions/exp2-promptinj-0015.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0015.json"
   },
   {
     "id": "exp2-promptinj-0016",
@@ -591,7 +591,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:33:37.953Z",
-    "path": "v1.4/sessions/exp2-promptinj-0016.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0016.json"
   },
   {
     "id": "exp2-promptinj-0017",
@@ -600,7 +600,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:33:51.870Z",
-    "path": "v1.4/sessions/exp2-promptinj-0017.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0017.json"
   },
   {
     "id": "exp2-promptinj-0018",
@@ -609,7 +609,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:34:13.890Z",
-    "path": "v1.4/sessions/exp2-promptinj-0018.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0018.json"
   },
   {
     "id": "exp2-promptinj-0019",
@@ -618,7 +618,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:34:31.940Z",
-    "path": "v1.4/sessions/exp2-promptinj-0019.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0019.json"
   },
   {
     "id": "exp2-promptinj-0020",
@@ -627,7 +627,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:34:50.106Z",
-    "path": "v1.4/sessions/exp2-promptinj-0020.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0020.json"
   },
   {
     "id": "exp2-promptinj-0021",
@@ -636,7 +636,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:35:08.129Z",
-    "path": "v1.4/sessions/exp2-promptinj-0021.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0021.json"
   },
   {
     "id": "exp2-promptinj-0022",
@@ -645,7 +645,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:35:26.738Z",
-    "path": "v1.4/sessions/exp2-promptinj-0022.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0022.json"
   },
   {
     "id": "exp2-promptinj-0023",
@@ -654,7 +654,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:35:40.999Z",
-    "path": "v1.4/sessions/exp2-promptinj-0023.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0023.json"
   },
   {
     "id": "exp2-promptinj-0024",
@@ -663,7 +663,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:35:56.595Z",
-    "path": "v1.4/sessions/exp2-promptinj-0024.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0024.json"
   },
   {
     "id": "exp2-promptinj-0025",
@@ -672,7 +672,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:36:32.546Z",
-    "path": "v1.4/sessions/exp2-promptinj-0025.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0025.json"
   },
   {
     "id": "exp2-promptinj-baseline-001",
@@ -681,7 +681,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:36:53.744Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-001.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-001.json"
   },
   {
     "id": "exp2-promptinj-baseline-002",
@@ -690,7 +690,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:37:19.435Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-002.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-002.json"
   },
   {
     "id": "exp2-promptinj-baseline-003",
@@ -699,7 +699,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:37:44.394Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-003.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-003.json"
   },
   {
     "id": "exp2-promptinj-baseline-004",
@@ -708,7 +708,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:38:09.240Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-004.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-004.json"
   },
   {
     "id": "exp2-promptinj-baseline-005",
@@ -717,7 +717,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:38:33.093Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-005.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-005.json"
   },
   {
     "id": "exp2-promptinj-baseline-006",
@@ -726,7 +726,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:38:54.234Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-006.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-006.json"
   },
   {
     "id": "exp2-promptinj-baseline-007",
@@ -735,7 +735,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:39:16.102Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-007.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-007.json"
   },
   {
     "id": "exp2-promptinj-baseline-008",
@@ -744,7 +744,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:39:37.722Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-008.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-008.json"
   },
   {
     "id": "exp2-promptinj-baseline-009",
@@ -753,7 +753,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:40:01.329Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-009.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-009.json"
   },
   {
     "id": "exp2-promptinj-baseline-010",
@@ -762,7 +762,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:40:21.541Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-010.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-010.json"
   },
   {
     "id": "exp2-promptinj-baseline-011",
@@ -771,7 +771,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:40:42.336Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-011.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-011.json"
   },
   {
     "id": "exp2-promptinj-baseline-012",
@@ -780,7 +780,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:41:02.622Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-012.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-012.json"
   },
   {
     "id": "exp2-promptinj-baseline-013",
@@ -789,7 +789,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:41:23.591Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-013.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-013.json"
   },
   {
     "id": "exp2-promptinj-baseline-014",
@@ -798,7 +798,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:42:41.694Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-014.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-014.json"
   },
   {
     "id": "exp2-promptinj-baseline-015",
@@ -807,7 +807,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:43:09.970Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-015.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-015.json"
   },
   {
     "id": "exp2-promptinj-baseline-016",
@@ -816,7 +816,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T03:43:35.706Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-016.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-016.json"
   },
   {
     "id": "exp2-promptinj-0016",
@@ -825,7 +825,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:06:44.816Z",
-    "path": "v1.4/sessions/exp2-promptinj-0016.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0016.json"
   },
   {
     "id": "exp2-promptinj-0017",
@@ -834,7 +834,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:07:03.917Z",
-    "path": "v1.4/sessions/exp2-promptinj-0017.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0017.json"
   },
   {
     "id": "exp2-promptinj-0018",
@@ -843,7 +843,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:07:25.387Z",
-    "path": "v1.4/sessions/exp2-promptinj-0018.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0018.json"
   },
   {
     "id": "exp2-promptinj-0019",
@@ -852,7 +852,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:07:46.557Z",
-    "path": "v1.4/sessions/exp2-promptinj-0019.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0019.json"
   },
   {
     "id": "exp2-promptinj-0020",
@@ -861,7 +861,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:08:05.443Z",
-    "path": "v1.4/sessions/exp2-promptinj-0020.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0020.json"
   },
   {
     "id": "exp2-promptinj-0021",
@@ -870,7 +870,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:08:28.675Z",
-    "path": "v1.4/sessions/exp2-promptinj-0021.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0021.json"
   },
   {
     "id": "exp2-promptinj-0022",
@@ -879,7 +879,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:08:48.057Z",
-    "path": "v1.4/sessions/exp2-promptinj-0022.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0022.json"
   },
   {
     "id": "exp2-promptinj-0023",
@@ -888,7 +888,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:09:08.570Z",
-    "path": "v1.4/sessions/exp2-promptinj-0023.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0023.json"
   },
   {
     "id": "exp2-promptinj-0024",
@@ -897,7 +897,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:09:27.744Z",
-    "path": "v1.4/sessions/exp2-promptinj-0024.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0024.json"
   },
   {
     "id": "exp2-promptinj-0025",
@@ -906,7 +906,7 @@
     "condition": "vpp",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:09:53.431Z",
-    "path": "v1.4/sessions/exp2-promptinj-0025.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-0025.json"
   },
   {
     "id": "exp2-promptinj-baseline-016",
@@ -915,7 +915,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:10:20.037Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-016.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-016.json"
   },
   {
     "id": "exp2-promptinj-baseline-017",
@@ -924,7 +924,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:10:43.962Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-017.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-017.json"
   },
   {
     "id": "exp2-promptinj-baseline-018",
@@ -933,7 +933,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:11:13.120Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-018.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-018.json"
   },
   {
     "id": "exp2-promptinj-baseline-019",
@@ -942,7 +942,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:11:37.073Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-019.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-019.json"
   },
   {
     "id": "exp2-promptinj-baseline-020",
@@ -951,7 +951,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:12:02.406Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-020.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-020.json"
   },
   {
     "id": "exp2-promptinj-baseline-021",
@@ -960,7 +960,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:12:30.324Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-021.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-021.json"
   },
   {
     "id": "exp2-promptinj-baseline-022",
@@ -969,7 +969,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:12:58.412Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-022.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-022.json"
   },
   {
     "id": "exp2-promptinj-baseline-023",
@@ -978,7 +978,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:13:25.080Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-023.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-023.json"
   },
   {
     "id": "exp2-promptinj-baseline-024",
@@ -987,7 +987,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:13:54.077Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-024.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-024.json"
   },
   {
     "id": "exp2-promptinj-baseline-025",
@@ -996,7 +996,7 @@
     "condition": "baseline",
     "challenge_type": "prompt_injection",
     "created_at": "2025-11-15T04:14:20.633Z",
-    "path": "v1.4/sessions/exp2-promptinj-baseline-025.json"
+    "path": "/corpus/v1.4/sessions/exp2-promptinj-baseline-025.json"
   },
   {
     "id": "exp1b-user-explicit-0001",
@@ -1005,7 +1005,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:34:08.912Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0001.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0001.json"
   },
   {
     "id": "exp1b-user-explicit-0002",
@@ -1014,7 +1014,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:34:39.394Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0002.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0002.json"
   },
   {
     "id": "exp1b-user-explicit-0003",
@@ -1023,7 +1023,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:34:57.745Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0003.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0003.json"
   },
   {
     "id": "exp1b-user-explicit-0004",
@@ -1032,7 +1032,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:35:15.225Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0004.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0004.json"
   },
   {
     "id": "exp1b-user-explicit-0005",
@@ -1041,7 +1041,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:35:30.950Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0005.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0005.json"
   },
   {
     "id": "exp1b-user-explicit-0006",
@@ -1050,7 +1050,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:35:46.697Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0006.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0006.json"
   },
   {
     "id": "exp1b-user-explicit-0007",
@@ -1059,7 +1059,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:35:58.898Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0007.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0007.json"
   },
   {
     "id": "exp1b-user-explicit-0008",
@@ -1068,7 +1068,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:36:16.386Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0008.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0008.json"
   },
   {
     "id": "exp1b-user-explicit-0009",
@@ -1077,7 +1077,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:36:32.996Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0009.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0009.json"
   },
   {
     "id": "exp1b-user-explicit-0010",
@@ -1086,7 +1086,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:36:52.333Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0010.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0010.json"
   },
   {
     "id": "exp1b-user-explicit-0011",
@@ -1095,7 +1095,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:37:04.208Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0011.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0011.json"
   },
   {
     "id": "exp1b-user-explicit-0012",
@@ -1104,7 +1104,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:37:15.716Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0012.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0012.json"
   },
   {
     "id": "exp1b-user-explicit-0013",
@@ -1113,7 +1113,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:37:29.421Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0013.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0013.json"
   },
   {
     "id": "exp1b-user-explicit-0014",
@@ -1122,7 +1122,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:37:44.136Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0014.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0014.json"
   },
   {
     "id": "exp1b-user-explicit-0015",
@@ -1131,7 +1131,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:37:56.524Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0015.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0015.json"
   },
   {
     "id": "exp1b-user-explicit-0016",
@@ -1140,7 +1140,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:38:08.673Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0016.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0016.json"
   },
   {
     "id": "exp1b-user-explicit-0017",
@@ -1149,7 +1149,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:38:37.545Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0017.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0017.json"
   },
   {
     "id": "exp1b-user-explicit-0018",
@@ -1158,7 +1158,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:38:50.396Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0018.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0018.json"
   },
   {
     "id": "exp1b-user-explicit-0019",
@@ -1167,7 +1167,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:39:08.354Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0019.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0019.json"
   },
   {
     "id": "exp1b-user-explicit-0020",
@@ -1176,7 +1176,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:39:22.529Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0020.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0020.json"
   },
   {
     "id": "exp1b-user-explicit-0021",
@@ -1185,7 +1185,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:39:37.012Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0021.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0021.json"
   },
   {
     "id": "exp1b-user-explicit-0022",
@@ -1194,7 +1194,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:39:52.391Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0022.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0022.json"
   },
   {
     "id": "exp1b-user-explicit-0023",
@@ -1203,7 +1203,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:04.313Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0023.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0023.json"
   },
   {
     "id": "exp1b-user-explicit-0024",
@@ -1212,7 +1212,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:19.761Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0024.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0024.json"
   },
   {
     "id": "exp1b-user-explicit-0025",
@@ -1221,7 +1221,7 @@
     "condition": "user_only_vpp_explicit",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:30.529Z",
-    "path": "v1.4/sessions/exp1b-user-explicit-0025.json"
+    "path": "/corpus/v1.4/sessions/exp1b-user-explicit-0025.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0001",
@@ -1230,7 +1230,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:44.438Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0001.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0001.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0002",
@@ -1239,7 +1239,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:46.548Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0002.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0002.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0003",
@@ -1248,7 +1248,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:48.843Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0003.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0003.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0004",
@@ -1257,7 +1257,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:51.290Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0004.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0004.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0005",
@@ -1266,7 +1266,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:53.214Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0005.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0005.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0006",
@@ -1275,7 +1275,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:55.858Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0006.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0006.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0007",
@@ -1284,7 +1284,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:57.157Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0007.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0007.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0008",
@@ -1293,7 +1293,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:40:59.925Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0008.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0008.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0009",
@@ -1302,7 +1302,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:02.308Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0009.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0009.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0010",
@@ -1311,7 +1311,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:03.524Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0010.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0010.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0011",
@@ -1320,7 +1320,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:04.746Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0011.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0011.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0012",
@@ -1329,7 +1329,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:06.839Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0012.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0012.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0013",
@@ -1338,7 +1338,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:09.469Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0013.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0013.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0014",
@@ -1347,7 +1347,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:12.606Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0014.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0014.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0015",
@@ -1356,7 +1356,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:14.718Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0015.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0015.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0016",
@@ -1365,7 +1365,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:16.618Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0016.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0016.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0017",
@@ -1374,7 +1374,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:18.154Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0017.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0017.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0018",
@@ -1383,7 +1383,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:20.098Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0018.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0018.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0019",
@@ -1392,7 +1392,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:21.738Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0019.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0019.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0020",
@@ -1401,7 +1401,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:22.913Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0020.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0020.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0021",
@@ -1410,7 +1410,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:25.513Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0021.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0021.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0022",
@@ -1419,7 +1419,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:28.521Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0022.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0022.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0023",
@@ -1428,7 +1428,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:30.205Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0023.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0023.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0024",
@@ -1437,7 +1437,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:33.482Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0024.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0024.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-0025",
@@ -1446,7 +1446,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:35.757Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-0025.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-0025.json"
   },
   {
     "id": "exp1b-ambient-browse-0001",
@@ -1455,7 +1455,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:38.585Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0001.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0001.json"
   },
   {
     "id": "exp1b-ambient-browse-0002",
@@ -1464,7 +1464,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:41.215Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0002.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0002.json"
   },
   {
     "id": "exp1b-ambient-browse-0003",
@@ -1473,7 +1473,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:44.587Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0003.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0003.json"
   },
   {
     "id": "exp1b-ambient-browse-0004",
@@ -1482,7 +1482,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:46.863Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0004.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0004.json"
   },
   {
     "id": "exp1b-ambient-browse-0005",
@@ -1491,7 +1491,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:50.242Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0005.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0005.json"
   },
   {
     "id": "exp1b-ambient-browse-0006",
@@ -1500,7 +1500,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:53.292Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0006.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0006.json"
   },
   {
     "id": "exp1b-ambient-browse-0007",
@@ -1509,7 +1509,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:41:57.478Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0007.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0007.json"
   },
   {
     "id": "exp1b-ambient-browse-0008",
@@ -1518,7 +1518,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:00.338Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0008.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0008.json"
   },
   {
     "id": "exp1b-ambient-browse-0009",
@@ -1527,7 +1527,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:03.829Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0009.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0009.json"
   },
   {
     "id": "exp1b-ambient-browse-0010",
@@ -1536,7 +1536,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:08.041Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0010.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0010.json"
   },
   {
     "id": "exp1b-ambient-browse-0011",
@@ -1545,7 +1545,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:11.871Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0011.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0011.json"
   },
   {
     "id": "exp1b-ambient-browse-0012",
@@ -1554,7 +1554,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:15.144Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0012.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0012.json"
   },
   {
     "id": "exp1b-ambient-browse-0013",
@@ -1563,7 +1563,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:19.081Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0013.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0013.json"
   },
   {
     "id": "exp1b-ambient-browse-0014",
@@ -1572,7 +1572,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:22.862Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0014.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0014.json"
   },
   {
     "id": "exp1b-ambient-browse-0015",
@@ -1581,7 +1581,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:26.313Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0015.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0015.json"
   },
   {
     "id": "exp1b-ambient-browse-0016",
@@ -1590,7 +1590,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:29.935Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0016.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0016.json"
   },
   {
     "id": "exp1b-ambient-browse-0017",
@@ -1599,7 +1599,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:35.000Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0017.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0017.json"
   },
   {
     "id": "exp1b-ambient-browse-0018",
@@ -1608,7 +1608,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:37.698Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0018.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0018.json"
   },
   {
     "id": "exp1b-ambient-browse-0019",
@@ -1617,7 +1617,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:40.514Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0019.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0019.json"
   },
   {
     "id": "exp1b-ambient-browse-0020",
@@ -1626,7 +1626,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:43.348Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0020.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0020.json"
   },
   {
     "id": "exp1b-ambient-browse-0021",
@@ -1635,7 +1635,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:46.455Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0021.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0021.json"
   },
   {
     "id": "exp1b-ambient-browse-0022",
@@ -1644,7 +1644,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:49.702Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0022.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0022.json"
   },
   {
     "id": "exp1b-ambient-browse-0023",
@@ -1653,7 +1653,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:52.130Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0023.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0023.json"
   },
   {
     "id": "exp1b-ambient-browse-0024",
@@ -1662,7 +1662,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:42:55.784Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0024.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0024.json"
   },
   {
     "id": "exp1b-ambient-browse-0025",
@@ -1671,7 +1671,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:43:02.526Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-0025.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-0025.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1001",
@@ -1680,7 +1680,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:22.901Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1001.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1001.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1002",
@@ -1689,7 +1689,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:24.815Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1002.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1002.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1003",
@@ -1698,7 +1698,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:26.556Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1003.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1003.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1004",
@@ -1707,7 +1707,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:27.779Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1004.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1004.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1005",
@@ -1716,7 +1716,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:30.035Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1005.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1005.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1006",
@@ -1725,7 +1725,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:31.215Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1006.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1006.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1007",
@@ -1734,7 +1734,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:32.886Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1007.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1007.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1008",
@@ -1743,7 +1743,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:34.714Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1008.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1008.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1009",
@@ -1752,7 +1752,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:47:36.991Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1009.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1009.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1001",
@@ -1761,7 +1761,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:30.041Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1001.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1001.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1002",
@@ -1770,7 +1770,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:32.970Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1002.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1002.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1003",
@@ -1779,7 +1779,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:34.335Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1003.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1003.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1004",
@@ -1788,7 +1788,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:35.667Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1004.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1004.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1005",
@@ -1797,7 +1797,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:51.161Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1005.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1005.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1006",
@@ -1806,7 +1806,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:52.884Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1006.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1006.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1007",
@@ -1815,7 +1815,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:54.989Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1007.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1007.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1008",
@@ -1824,7 +1824,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:56.321Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1008.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1008.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1009",
@@ -1833,7 +1833,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:57.793Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1009.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1009.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1010",
@@ -1842,7 +1842,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:50:59.184Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1010.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1010.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1011",
@@ -1851,7 +1851,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:00.929Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1011.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1011.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1012",
@@ -1860,7 +1860,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:02.326Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1012.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1012.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1013",
@@ -1869,7 +1869,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:03.377Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1013.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1013.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1014",
@@ -1878,7 +1878,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:04.833Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1014.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1014.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1015",
@@ -1887,7 +1887,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:06.181Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1015.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1015.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1016",
@@ -1896,7 +1896,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:10.528Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1016.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1016.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1017",
@@ -1905,7 +1905,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:13.023Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1017.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1017.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1018",
@@ -1914,7 +1914,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:20.676Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1018.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1018.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1019",
@@ -1923,7 +1923,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:23.307Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1019.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1019.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1020",
@@ -1932,7 +1932,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:24.507Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1020.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1020.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1021",
@@ -1941,7 +1941,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:26.581Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1021.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1021.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1022",
@@ -1950,7 +1950,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:27.837Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1022.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1022.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1023",
@@ -1959,7 +1959,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:32.367Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1023.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1023.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1024",
@@ -1968,7 +1968,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:33.551Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1024.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1024.json"
   },
   {
     "id": "exp1b-ambient-nobrowse-1025",
@@ -1977,7 +1977,7 @@
     "condition": "user_only_vpp_ambient_nobrowse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:34.850Z",
-    "path": "v1.4/sessions/exp1b-ambient-nobrowse-1025.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-nobrowse-1025.json"
   },
   {
     "id": "exp1b-ambient-browse-1001",
@@ -1986,7 +1986,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:39.781Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1001.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1001.json"
   },
   {
     "id": "exp1b-ambient-browse-1002",
@@ -1995,7 +1995,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:43.956Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1002.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1002.json"
   },
   {
     "id": "exp1b-ambient-browse-1003",
@@ -2004,7 +2004,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:47.223Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1003.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1003.json"
   },
   {
     "id": "exp1b-ambient-browse-1004",
@@ -2013,7 +2013,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:51.193Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1004.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1004.json"
   },
   {
     "id": "exp1b-ambient-browse-1005",
@@ -2022,7 +2022,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:51:56.939Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1005.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1005.json"
   },
   {
     "id": "exp1b-ambient-browse-1006",
@@ -2031,7 +2031,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:00.919Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1006.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1006.json"
   },
   {
     "id": "exp1b-ambient-browse-1007",
@@ -2040,7 +2040,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:06.423Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1007.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1007.json"
   },
   {
     "id": "exp1b-ambient-browse-1008",
@@ -2049,7 +2049,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:13.281Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1008.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1008.json"
   },
   {
     "id": "exp1b-ambient-browse-1009",
@@ -2058,7 +2058,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:17.951Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1009.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1009.json"
   },
   {
     "id": "exp1b-ambient-browse-1010",
@@ -2067,7 +2067,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:22.540Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1010.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1010.json"
   },
   {
     "id": "exp1b-ambient-browse-1011",
@@ -2076,7 +2076,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:25.702Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1011.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1011.json"
   },
   {
     "id": "exp1b-ambient-browse-1012",
@@ -2085,7 +2085,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:29.208Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1012.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1012.json"
   },
   {
     "id": "exp1b-ambient-browse-1013",
@@ -2094,7 +2094,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:35.141Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1013.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1013.json"
   },
   {
     "id": "exp1b-ambient-browse-1014",
@@ -2103,7 +2103,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:36.402Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1014.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1014.json"
   },
   {
     "id": "exp1b-ambient-browse-1015",
@@ -2112,7 +2112,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:39.723Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1015.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1015.json"
   },
   {
     "id": "exp1b-ambient-browse-1016",
@@ -2121,7 +2121,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:45.695Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1016.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1016.json"
   },
   {
     "id": "exp1b-ambient-browse-1017",
@@ -2130,7 +2130,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:49.376Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1017.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1017.json"
   },
   {
     "id": "exp1b-ambient-browse-1018",
@@ -2139,7 +2139,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:54.342Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1018.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1018.json"
   },
   {
     "id": "exp1b-ambient-browse-1019",
@@ -2148,7 +2148,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:52:59.756Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1019.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1019.json"
   },
   {
     "id": "exp1b-ambient-browse-1020",
@@ -2157,7 +2157,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:53:05.227Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1020.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1020.json"
   },
   {
     "id": "exp1b-ambient-browse-1021",
@@ -2166,7 +2166,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:53:10.510Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1021.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1021.json"
   },
   {
     "id": "exp1b-ambient-browse-1022",
@@ -2175,7 +2175,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:53:14.655Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1022.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1022.json"
   },
   {
     "id": "exp1b-ambient-browse-1023",
@@ -2184,7 +2184,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:53:16.017Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1023.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1023.json"
   },
   {
     "id": "exp1b-ambient-browse-1024",
@@ -2193,7 +2193,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:53:21.259Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1024.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1024.json"
   },
   {
     "id": "exp1b-ambient-browse-1025",
@@ -2202,7 +2202,7 @@
     "condition": "user_only_vpp_ambient_browse",
     "challenge_type": "user_only_protocol",
     "created_at": "2025-11-15T05:53:27.027Z",
-    "path": "v1.4/sessions/exp1b-ambient-browse-1025.json"
+    "path": "/corpus/v1.4/sessions/exp1b-ambient-browse-1025.json"
   },
   {
     "id": "exp3-taskinj-vpp-001",
@@ -2211,7 +2211,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:24:35.867Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-001.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-001.json"
   },
   {
     "id": "exp3-taskinj-vpp-002",
@@ -2220,7 +2220,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:24:51.359Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-002.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-002.json"
   },
   {
     "id": "exp3-taskinj-vpp-003",
@@ -2229,7 +2229,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:25:07.474Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-003.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-003.json"
   },
   {
     "id": "exp3-taskinj-vpp-004",
@@ -2238,7 +2238,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:25:24.212Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-004.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-004.json"
   },
   {
     "id": "exp3-taskinj-vpp-005",
@@ -2247,7 +2247,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:25:44.132Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-005.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-005.json"
   },
   {
     "id": "exp3-taskinj-vpp-006",
@@ -2256,7 +2256,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:25:59.405Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-006.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-006.json"
   },
   {
     "id": "exp3-taskinj-vpp-007",
@@ -2265,7 +2265,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:26:12.137Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-007.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-007.json"
   },
   {
     "id": "exp3-taskinj-vpp-008",
@@ -2274,7 +2274,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:26:28.405Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-008.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-008.json"
   },
   {
     "id": "exp3-taskinj-vpp-009",
@@ -2283,7 +2283,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:26:41.552Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-009.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-009.json"
   },
   {
     "id": "exp3-taskinj-vpp-010",
@@ -2292,7 +2292,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:26:53.149Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-010.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-010.json"
   },
   {
     "id": "exp3-taskinj-vpp-011",
@@ -2301,7 +2301,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:27:11.783Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-011.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-011.json"
   },
   {
     "id": "exp3-taskinj-vpp-012",
@@ -2310,7 +2310,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:27:24.592Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-012.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-012.json"
   },
   {
     "id": "exp3-taskinj-vpp-013",
@@ -2319,7 +2319,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:27:36.851Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-013.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-013.json"
   },
   {
     "id": "exp3-taskinj-vpp-014",
@@ -2328,7 +2328,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:27:48.123Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-014.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-014.json"
   },
   {
     "id": "exp3-taskinj-vpp-015",
@@ -2337,7 +2337,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:28:04.634Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-015.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-015.json"
   },
   {
     "id": "exp3-taskinj-vpp-016",
@@ -2346,7 +2346,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:28:16.364Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-016.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-016.json"
   },
   {
     "id": "exp3-taskinj-vpp-017",
@@ -2355,7 +2355,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:28:27.880Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-017.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-017.json"
   },
   {
     "id": "exp3-taskinj-vpp-018",
@@ -2364,7 +2364,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:28:40.016Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-018.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-018.json"
   },
   {
     "id": "exp3-taskinj-vpp-019",
@@ -2373,7 +2373,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:28:54.468Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-019.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-019.json"
   },
   {
     "id": "exp3-taskinj-vpp-020",
@@ -2382,7 +2382,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:29:09.773Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-020.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-020.json"
   },
   {
     "id": "exp3-taskinj-vpp-021",
@@ -2391,7 +2391,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:29:20.654Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-021.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-021.json"
   },
   {
     "id": "exp3-taskinj-vpp-022",
@@ -2400,7 +2400,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:29:40.053Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-022.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-022.json"
   },
   {
     "id": "exp3-taskinj-vpp-023",
@@ -2409,7 +2409,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:29:54.638Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-023.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-023.json"
   },
   {
     "id": "exp3-taskinj-vpp-024",
@@ -2418,7 +2418,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:30:07.088Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-024.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-024.json"
   },
   {
     "id": "exp3-taskinj-vpp-025",
@@ -2427,7 +2427,7 @@
     "condition": "vpp_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:30:22.107Z",
-    "path": "v1.4/sessions/exp3-taskinj-vpp-025.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-vpp-025.json"
   },
   {
     "id": "exp3-taskinj-baseline-001",
@@ -2436,7 +2436,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:30:42.993Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-001.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-001.json"
   },
   {
     "id": "exp3-taskinj-baseline-002",
@@ -2445,7 +2445,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:31:14.148Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-002.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-002.json"
   },
   {
     "id": "exp3-taskinj-baseline-003",
@@ -2454,7 +2454,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:31:45.253Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-003.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-003.json"
   },
   {
     "id": "exp3-taskinj-baseline-004",
@@ -2463,7 +2463,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:32:15.237Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-004.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-004.json"
   },
   {
     "id": "exp3-taskinj-baseline-005",
@@ -2472,7 +2472,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:32:43.322Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-005.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-005.json"
   },
   {
     "id": "exp3-taskinj-baseline-006",
@@ -2481,7 +2481,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:33:13.135Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-006.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-006.json"
   },
   {
     "id": "exp3-taskinj-baseline-007",
@@ -2490,7 +2490,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:33:49.254Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-007.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-007.json"
   },
   {
     "id": "exp3-taskinj-baseline-008",
@@ -2499,7 +2499,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:34:27.879Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-008.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-008.json"
   },
   {
     "id": "exp3-taskinj-baseline-009",
@@ -2508,7 +2508,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:35:00.907Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-009.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-009.json"
   },
   {
     "id": "exp3-taskinj-baseline-010",
@@ -2517,7 +2517,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:35:30.814Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-010.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-010.json"
   },
   {
     "id": "exp3-taskinj-baseline-011",
@@ -2526,7 +2526,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:36:01.239Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-011.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-011.json"
   },
   {
     "id": "exp3-taskinj-baseline-012",
@@ -2535,7 +2535,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:36:32.132Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-012.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-012.json"
   },
   {
     "id": "exp3-taskinj-baseline-013",
@@ -2544,7 +2544,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:37:09.616Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-013.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-013.json"
   },
   {
     "id": "exp3-taskinj-baseline-014",
@@ -2553,7 +2553,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:37:36.114Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-014.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-014.json"
   },
   {
     "id": "exp3-taskinj-baseline-015",
@@ -2562,7 +2562,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:38:05.916Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-015.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-015.json"
   },
   {
     "id": "exp3-taskinj-baseline-016",
@@ -2571,7 +2571,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:38:34.607Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-016.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-016.json"
   },
   {
     "id": "exp3-taskinj-baseline-017",
@@ -2580,7 +2580,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:39:07.296Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-017.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-017.json"
   },
   {
     "id": "exp3-taskinj-baseline-018",
@@ -2589,7 +2589,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:39:35.564Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-018.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-018.json"
   },
   {
     "id": "exp3-taskinj-baseline-019",
@@ -2598,7 +2598,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:40:14.091Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-019.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-019.json"
   },
   {
     "id": "exp3-taskinj-baseline-020",
@@ -2607,7 +2607,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:40:57.959Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-020.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-020.json"
   },
   {
     "id": "exp3-taskinj-baseline-021",
@@ -2616,7 +2616,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:41:45.235Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-021.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-021.json"
   },
   {
     "id": "exp3-taskinj-baseline-022",
@@ -2625,7 +2625,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:42:21.406Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-022.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-022.json"
   },
   {
     "id": "exp3-taskinj-baseline-023",
@@ -2634,7 +2634,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:43:00.814Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-023.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-023.json"
   },
   {
     "id": "exp3-taskinj-baseline-024",
@@ -2643,7 +2643,7 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:43:26.143Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-024.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-024.json"
   },
   {
     "id": "exp3-taskinj-baseline-025",
@@ -2652,6 +2652,6 @@
     "condition": "baseline_task_injection",
     "challenge_type": "task_injection",
     "created_at": "2025-11-15T07:43:48.970Z",
-    "path": "v1.4/sessions/exp3-taskinj-baseline-025.json"
+    "path": "/corpus/v1.4/sessions/exp3-taskinj-baseline-025.json"
   }
 ]
