@@ -7,8 +7,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(path.join(__dirname, ".."));
 
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
-// Jekyll site root is under website/docs/
-const DATA_DIR = path.join(ROOT, "website", "docs", "_data");
+
+// Jekyll/VitePress site root is under website/docs/
+// For the corpus browser we serve the summary JSON from /corpus/corpus-v1_4.json
+const DATA_DIR = path.join(ROOT, "website", "docs", "corpus");
 const OUT_PATH = path.join(DATA_DIR, "corpus-v1_4.json");
 
 if (!fs.existsSync(INDEX_PATH)) {
