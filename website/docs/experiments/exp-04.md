@@ -211,7 +211,7 @@ Sample sizes here are small but illustrate the intended behavior: VPP hits **all
 ### Limitations
 
 * Very small N (3 sessions per condition) — the purpose of this run is **sanity checking**, not statistical power.
-* The tasks are tailored to things VPP is good at (structured experimental writeups), so results may differ for other domains (e.g., free-form creative writing).
+* The tasks are tailored to things VPP is good at (structured experimental write-ups), so results may differ for other domains (e.g., free-form creative writing).
 * The “mini protocol” is only one possible competitor; future work could explore stronger non-tag-based structuring prompts.
 
 ---
