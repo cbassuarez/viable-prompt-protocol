@@ -296,7 +296,7 @@ For each condition:
 **Runner:** `experiments/exp2-prompt-injection/run-exp2-promptinj.mjs`
 **Analyzer:** `experiments/exp2-prompt-injection/analyze-exp2.mjs`
 
-#### Question
+#### 3.2.1 Question
 
 After VPP is installed (as in Exp1), what happens if the **user** explicitly instructs the model to:
 
@@ -306,7 +306,7 @@ After VPP is installed (as in Exp1), what happens if the **user** explicitly ins
 
 Does the protocol structure survive?
 
-#### Setup
+#### 3.2.2 Setup
 
 * The **prefix** of each session is essentially Exp1’s `vpp` setup:
 
@@ -316,7 +316,7 @@ Does the protocol structure survive?
 
 Both `vpp` and `baseline` conditions are run for comparison.
 
-#### Metrics (post-injection)
+#### 3.2.3 Metrics (post-injection)
 
 For each condition, the analyzer computes:
 
@@ -326,7 +326,7 @@ For each condition, the analyzer computes:
 * `last_vpp_footer_retained` — fraction of sessions where the **final** assistant turn still has a valid `v1.4` footer.
 * `protocol_retention_after_injection` — fraction of sessions whose final assistant turn satisfies header+footer+`v1.4`.
 
-#### High-level results (v1.4)
+#### 3.2.4 High-level results (v1.4)
 
 * **VPP condition**
 
@@ -346,12 +346,12 @@ For each condition, the analyzer computes:
 **Runner:** `experiments/exp1b-user-only-protocol/run-exp1b-user-only.mjs`
 **Analyzer:** `experiments/exp1b-user-only-protocol/analyze-exp1b.mjs`
 
-#### Questions
+#### 3.3.1 Questions
 
 1. Can VPP be fully instantiated using **only user instructions**, with no VPP system header?
 2. Do models show *any* VPP-like behavior when a user simply types `!<q>` with no explanation?
 
-#### Conditions
+#### 3.3.2 Conditions
 
 1. `user_only_vpp_explicit`
 
@@ -374,7 +374,7 @@ For each condition, the analyzer computes:
    * User turns are identical to `user_only_vpp_ambient_nobrowse`.
    * No tools are wired in this harness; this still probes pretraining + instruction following only.
 
-#### Metrics
+#### 3.3.3 Metrics
 
 Same structural metrics as Exp1, plus:
 
@@ -384,7 +384,7 @@ Same structural metrics as Exp1, plus:
   * VPP structural behavior (header+footer+`v1.4`), or
   * `any_vpp_lexical`.
 
-#### High-level results (v1.4)
+#### 3.3.4 High-level results (v1.4)
 
 * `user_only_vpp_explicit`
 
@@ -408,14 +408,14 @@ Same structural metrics as Exp1, plus:
 **Runner:** `experiments/exp4-task-utility/run-exp4-task-utility.mjs`
 **Analyzer:** `experiments/exp4-task-utility/analyze-exp4.mjs`
 
-#### Question
+#### 3.4.1 Question
 
 When you give the model a realistic, multi-section task (“write an experiment protocol”, “design an API spec”), does VPP help it satisfy the requested structure better than:
 
 * a **baseline** (no protocol), and
 * a **“mini protocol”** (a simple structuring hint in natural language)?
 
-#### Design
+#### 3.4.2 Design
 
 * Conditions:
 
@@ -434,7 +434,7 @@ When you give the model a realistic, multi-section task (“write an experiment 
   * `has_any_bullets` — presence of bullets as a crude structural signal.
   * VPP structural metrics in the VPP condition (`final_header_ok`, `final_footer_ok`, `final_struct_ok`).
 
-#### High-level results (v1.4)
+#### 3.4.3 High-level results (v1.4)
 
 Preliminary run (3 sessions/condition):
 
@@ -461,11 +461,11 @@ VPP is the only condition that **consistently hits all requested sections** in t
 **Runner:** `experiments/exp5-friction-convergence/run-exp5-friction-convergence.mjs`
 **Analyzer:** `experiments/exp5-friction-convergence/analyze-exp5.mjs`
 
-#### Question
+#### 3.5.1 Question
 
 How much back-and-forth is needed to get the model to obey a simple validator? Does VPP reduce the number of “you didn’t follow X” complaints?
 
-#### Design
+#### 3.5.2 Design
 
 * Conditions:
 
@@ -486,7 +486,7 @@ How much back-and-forth is needed to get the model to obey a simple validator? D
   * `mean_complaints` — average number of complaint turns.
   * Optional structural metrics (for VPP conditions).
 
-#### High-level results (v1.4)
+#### 3.5.3 High-level results (v1.4)
 
 Initial run (2 sessions/condition):
 
@@ -518,14 +518,14 @@ In this harness, VPP behaves like a **zero-friction protocol**: the model satisf
 **Runner:** `experiments/exp6-long-dialog/run-exp6-long-dialog.mjs`
 **Analyzer:** `experiments/exp6-long-dialog/analyze-exp6.mjs`
 
-#### Question
+#### 3.6.1 Question
 
 Does VPP remain stable over longer, multi-turn dialogs? What happens if you:
 
 * include an explicit grounding turn vs
 * just start sending tags with the VPP header installed?
 
-#### Design
+#### 3.6.2 Design
 
 * Conditions:
 
@@ -543,7 +543,7 @@ Does VPP remain stable over longer, multi-turn dialogs? What happens if you:
   * `first_structural_failure_turn` — where structure breaks, if at all.
   * `task_coverage_ok` — whether all requested sub-tasks are covered.
 
-#### High-level results (v1.4)
+#### 3.6.3 High-level results (v1.4)
 
 Initial run (3 sessions/condition):
 
