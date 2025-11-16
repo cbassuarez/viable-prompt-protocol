@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,8 +7,8 @@ const ROOT = path.resolve(path.join(__dirname, ".."));
 
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
 
-// Jekyll/VitePress site root is under website/docs/
-// For the corpus browser we serve the summary JSON from /corpus/corpus-v1_4.json
+// Summary JSON that powers the browser:
+// lives at website/docs/corpus/corpus-v1_4.json → served at /corpus/corpus-v1_4.json
 const DATA_DIR = path.join(ROOT, "website", "docs", "corpus");
 const OUT_PATH = path.join(DATA_DIR, "corpus-v1_4.json");
 
@@ -48,7 +47,7 @@ for (const line of lines) {
       condition: condition || null,
       challenge_type: challenge_type || null,
       created_at: created_at || null,
-      // Path where GitHub Pages serves the raw session JSON
+      // URL where the raw session JSON is served
       path: `/corpus/v1.4/sessions/${id}.json`,
     });
   } catch (err) {
