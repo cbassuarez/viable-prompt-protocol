@@ -6,9 +6,18 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(path.join(__dirname, ".."));
 
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
-// VitePress static assets live under website/docs/public/
-const DATA_DIR = path.join(ROOT, "website", "docs", "public", "corpus");
-const OUT_PATH = path.join(DATA_DIR, "corpus-v1_4.json");
+
+// VitePress static assets live under website/docs/public
+// Serve the index at /corpus/v1.4/corpus-v1_4.json
+const PUBLIC_DIR = path.join(
+  ROOT,
+  "website",
+  "docs",
+  "public",
+  "corpus",
+  "v1.4"
+);
+const OUT_PATH = path.join(PUBLIC_DIR, "corpus-v1_4.json");
 
 
 if (!fs.existsSync(INDEX_PATH)) {
@@ -16,7 +25,7 @@ if (!fs.existsSync(INDEX_PATH)) {
   process.exit(1);
 }
 
-fs.mkdirSync(DATA_DIR, { recursive: true });
+fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 
 const lines = fs
   .readFileSync(INDEX_PATH, "utf8")
@@ -40,15 +49,15 @@ for (const line of lines) {
     if (!id) continue;
 
     entries.push({
-  id,
-  model: model || null,
-  provider: provider || null,
-  condition: condition || null,
-  challenge_type: challenge_type || null,
-  created_at: created_at || null,
-  // Relative path from /corpus/ to the raw session JSON
-  path: `v1.4/sessions/${id}.json`,
-});
+      id,
+      model: model || null,
+      provider: provider || null,
+      condition: condition || null,
+      challenge_type: challenge_type || null,
+      created_at: created_at || null,
+      // Path where the static site serves the raw session JSON
+      path: `/corpus/v1.4/sessions/${id}.json`,
+    });
   } catch (err) {
     console.warn("Skipping invalid JSONL line:", line, err.message);
   }

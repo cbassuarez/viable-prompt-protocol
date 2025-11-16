@@ -884,7 +884,7 @@ From the repository root:
 npm run build:corpus-data
 ```
 
-This reads `corpus/v1.4/index.jsonl` and writes `website/docs/corpus/corpus-v1_4.json`, which powers the browser above.
+This reads `corpus/v1.4/index.jsonl` and writes `website/docs/public/corpus/v1.4/corpus-v1_4.json` (served at `/corpus/v1.4/corpus-v1_4.json`), which powers the browser above.
 
 ### 4.2 Running experiments
 
