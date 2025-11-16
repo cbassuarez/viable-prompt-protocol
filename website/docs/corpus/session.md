@@ -6,6 +6,7 @@ nav_exclude: true
 ---
 
 <!-- markdownlint-disable MD013 MD025 MD033 -->
+<!-- cspell:ignore endfor longdialog Menlo rgba Consolas backlink -->
 
 # Session viewer
 
