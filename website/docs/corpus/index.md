@@ -3,7 +3,7 @@ title: 'Corpus'
 ---
 
 <!-- markdownlint-disable MD013 MD025 MD033 -->
-<!-- cspell:ignore endfor longdialog -->
+<!-- cspell:ignore endfor longdialog Menlo rgba Consolas -->
 
 # Viable Prompt Protocol Corpus (v1.4)
 
