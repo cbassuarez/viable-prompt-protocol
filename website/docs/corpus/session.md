@@ -5,7 +5,7 @@ permalink: /corpus/session/
 nav_exclude: true
 ---
 
-<!-- markdownlint-disable MD013 MD033 -->
+<!-- markdownlint-disable MD013 MD025 MD033 -->
 
 # Session viewer
 
