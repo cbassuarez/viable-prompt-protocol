@@ -3,6 +3,7 @@ title: 'Experiments 04–06 — Utility, friction, and long-dialog retention'
 ---
 <!-- docs/summary-04-06-snippet.md -->
 <!-- markdownlint-disable MD004 MD013 MD025 -->
+<!-- cspell:words longdialog -->
 
 # Experiments 04–06 — Utility, friction, and long-dialog retention
 
