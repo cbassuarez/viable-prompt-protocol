@@ -47,8 +47,8 @@ for (const line of lines) {
       condition: condition || null,
       challenge_type: challenge_type || null,
       created_at: created_at || null,
-      // URL where the raw session JSON is served
-      path: `/corpus/v1.4/sessions/${id}.json`,
+      // Relative path from /corpus/ to the raw session JSON
+      path: `v1.4/sessions/${id}.json`,
     });
   } catch (err) {
     console.warn("Skipping invalid JSONL line:", line, err.message);

@@ -69,15 +69,13 @@ Examples:
 <script>
   (function () {
     if (typeof window === "undefined") return;
+
     const params = new URLSearchParams(window.location.search);
     const filterChallenge = params.get("challenge_type");
     const filterCondition = params.get("condition");
 
     const statusEl = document.getElementById("corpus-active-filter");
     const tbody = document.getElementById("corpus-table-body");
-    const siteBase = (window.__VP_SITE_DATA__?.site?.base || "/").replace(/\/$/, "");
-    const dataUrl = withBase("/corpus/corpus-v1_4.json");
-
     let rows = [];
 
     init();
@@ -86,7 +84,8 @@ Examples:
       if (!tbody) return;
       setEmptyMessage("Loading corpus index…");
       try {
-        const res = await fetch(dataUrl, { cache: "no-store" });
+        // corpus-v1_4.json sits in the same directory as this page (/corpus/)
+        const res = await fetch("corpus-v1_4.json", { cache: "no-store" });
         if (!res.ok) {
           throw new Error("Failed to load corpus data: " + res.status);
         }
@@ -148,19 +147,19 @@ Examples:
 
         const linksCell = document.createElement("td");
         linksCell.className = "corpus-links";
+
+        // Session viewer is assumed to live at /corpus/session
         const viewLink = document.createElement("a");
-        viewLink.href = withBase(
-          "/corpus/session?id=" + encodeURIComponent(entry?.id || "")
-        );
+        viewLink.href = "session?id=" + encodeURIComponent(entry?.id || "");
         viewLink.textContent = "View";
 
         const jsonLink = document.createElement("a");
+        // entry.path is now relative from /corpus/ (e.g., "v1.4/sessions/<id>.json")
         if (entry?.path) {
-          jsonLink.href = withBase(entry.path);
+          jsonLink.href = entry.path;
         } else if (entry?.id) {
-          jsonLink.href = withBase(
-            "/corpus/v1.4/sessions/" + encodeURIComponent(entry.id) + ".json"
-          );
+          jsonLink.href =
+            "v1.4/sessions/" + encodeURIComponent(entry.id) + ".json";
         } else {
           jsonLink.href = "#";
         }
@@ -217,15 +216,6 @@ Examples:
             "Filters: " + parts.join(", ") + " — " + visibleCount + " sessions.";
         }
       }
-    }
-
-    function withBase(path) {
-      if (!path) return path;
-      if (path.startsWith("http://") || path.startsWith("https://")) {
-        return path;
-      }
-      const normalized = path.startsWith("/") ? path : `/${path}`;
-      return `${siteBase}${normalized}` || normalized;
     }
   })();
 </script>
@@ -373,7 +363,7 @@ From the repository root:
 npm run build:corpus-data
 ```
 
-This reads `corpus/v1.4/index.jsonl` and writes `website/docs/_data/corpus-v1_4.json`, which powers the browser above.
+This reads `corpus/v1.4/index.jsonl` and writes `website/docs/corpus/corpus-v1_4.json`, which powers the browser above.
 
 ### 4.2 Running experiments
 
