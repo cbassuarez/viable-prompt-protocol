@@ -7,16 +7,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(path.join(__dirname, ".."));
 
 const INDEX_PATH = path.join(ROOT, "corpus", "v1.4", "index.jsonl");
-// Jekyll site root is under website/docs/
-const DATA_DIR = path.join(ROOT, "website", "docs", "_data");
-const OUT_PATH = path.join(DATA_DIR, "corpus-v1_4.json");
+const OUTPUT_PATHS = [
+  // Keep a copy near the source data for local inspection/debugging.
+  path.join(ROOT, "corpus", "v1.4", "corpus-v1_4.json"),
+  // Ensure the VitePress public/ directory has the JSON so the built site serves it.
+  path.join(ROOT, "website", "docs", "public", "corpus", "v1.4", "corpus-v1_4.json"),
+  // Preserve the legacy _data/ copy for compatibility.
+  path.join(ROOT, "website", "docs", "_data", "corpus-v1_4.json"),
+];
 
 if (!fs.existsSync(INDEX_PATH)) {
   console.error("Missing index.jsonl at", INDEX_PATH);
   process.exit(1);
 }
-
-fs.mkdirSync(DATA_DIR, { recursive: true });
 
 const lines = fs
   .readFileSync(INDEX_PATH, "utf8")
@@ -54,5 +57,10 @@ for (const line of lines) {
   }
 }
 
-fs.writeFileSync(OUT_PATH, JSON.stringify(entries, null, 2));
-console.log(`Wrote ${entries.length} entries to ${OUT_PATH}`);
+const serialized = JSON.stringify(entries, null, 2);
+
+for (const outPath of OUTPUT_PATHS) {
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, serialized);
+  console.log(`Wrote ${entries.length} entries to ${outPath}`);
+}
