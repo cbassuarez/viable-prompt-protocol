@@ -3,6 +3,7 @@ title: 'Experiment 06 — Long dialog retention'
 ---
 <!-- docs/exp-06.md -->
 <!-- markdownlint-disable MD004 MD013 -->
+<!-- cspell:words longdialog -->
 
 ## Overview
 
