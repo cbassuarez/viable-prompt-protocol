@@ -76,7 +76,7 @@ Examples:
     const statusEl = document.getElementById("corpus-active-filter");
     const tbody = document.getElementById("corpus-table-body");
     const siteBase = (window.__VP_SITE_DATA__?.site?.base || "/").replace(/\/$/, "");
-    const dataUrl = withBase("/corpus/v1.4/sessions/*.json");
+    const dataUrl = withBase("/corpus/corpus-v1_4.json");
 
     let rows = [];
 
