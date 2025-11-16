@@ -22,7 +22,7 @@ This page serves two purposes:
 ## 1. Corpus browser
 
 The table below is generated from `corpus/v1.4/index.jsonl` via
-`website/docs/_data/corpus-v1_4.json`. Each row links to:
+`website/docs/corpus/corpus-v1_4.json`. Each row links to:
 
 - A **human-readable viewer** (`/corpus/session?id=…`).
 - The **raw JSON** session file.
