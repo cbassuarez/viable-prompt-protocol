@@ -26,7 +26,7 @@ you can trace runs back to their source configuration.
 ## 6. Browse sessions
 
 The table below is generated from `corpus/v1.4/index.jsonl` via
-`website/docs/_data/corpus-v1_4.json`. Each row links to a human-readable viewer and
+`website/docs/public/corpus/v1.4/corpus-v1_4.json`. Each row links to a human-readable viewer and
 the raw JSON session file.
 
 You can pre-filter by query parameters:
@@ -66,7 +66,7 @@ You can pre-filter by query parameters:
     const statusEl = document.getElementById("corpus-active-filter");
     const tbody = document.getElementById("corpus-table-body");
     const siteBase = (window.__VP_SITE_DATA__?.site?.base || "/").replace(/\/$/, "");
-    const dataUrl = withBase("/_data/corpus-v1_4.json");
+    const dataUrl = withBase("/corpus/v1.4/corpus-v1_4.json");
 
     let rows = [];
 
