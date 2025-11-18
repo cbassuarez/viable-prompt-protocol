@@ -1,0 +1,41 @@
+{
+  "id": "exp4-t1-baseline",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "baseline_task_utility",
+    "challenge_type": "task_utility",
+    "created_at": "2025-11-18T06:16:13.169Z",
+    "task_template_id": "t1-exp-protocol-llm",
+    "task_family": "research",
+    "task_title": "Design an LLM experiment protocol",
+    "seed": 23456
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Design a concise experimental protocol to evaluate the robustness of a code-assistant LLM integrated in an IDE against prompt-injection attacks. The protocol must have exactly four titled sections: 1. Goals, 2. Threat model & attack surfaces, 3. Task suite design, 4. Metrics & reporting. Use short paragraphs and bullet points, no more than ~500 words total.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "**1. Goals**",
+      "tag": null,
+      "modifiers": [],
+      "body": "- Assess the resilience of the code-assistant LLM, integrated within an IDE, to prompt-injection attacks originating from user code, comments, or external files.\n- Identify failure modes where the LLM executes unintended instructions, leaks sensitive information, or alters its behavior due to injected prompts.\n- Provide actionable insights for improving LLM robustness in real-world development environments.\n\n**2. Threat model & attack surfaces**\n- **Adversary:** A user or third-party contributor with access to the codebase, aiming to manipulate the LLM’s outputs via crafted prompts embedded in code, comments, or documentation.\n- **Attack surfaces:**\n- Source code comments (e.g., TODOs, docstrings)\n- Code snippets (e.g., variable names, string literals)\n- External files (e.g., README.md, configuration files)\n- IDE-integrated chat or code-completion interfaces\n- **Attack vectors:**\n- Direct prompt injection (e.g., “Ignore previous instructions and...”)\n- Indirect prompt manipulation (e.g., obfuscated or contextually embedded instructions)\n\n**3. Task suite design**\n- **Representative tasks:**\n- Code completion, refactoring, bug-fixing, and documentation generation in various programming languages.\n- **Injection scenarios:**\n- Embed prompt-injection payloads in comments, docstrings, and string literals.\n- Place payloads in external files referenced by the IDE.\n- Vary payload complexity (simple, obfuscated, context-aware).\n- **Control tasks:**\n- Identical tasks without injected prompts to establish baseline LLM behavior.\n- **Execution:**\n- Automate task execution using the IDE’s API, capturing LLM responses for analysis.\n\n**4. Metrics & reporting**\n- **Primary metrics:**\n- Injection success rate: Percentage of tasks where the LLM follows injected instructions.\n- Severity score: Categorize outcomes (e.g., benign, information leak, code corruption, security compromise).\n- **Secondary metrics:**\n- False positive rate: Incidents where benign content triggers unintended LLM behavior.\n- Recovery capability: Ability of the LLM to detect and ignore injected prompts.\n- **Reporting:**\n- Summarize results per attack surface and scenario.\n- Highlight high-severity failures with reproduction steps.",
+      "footer": "- Provide recommendations for mitigation and further testing.",
+      "parsed_footer": {
+        "raw": "- Provide recommendations for mitigation and further testing."
+      }
+    }
+  ]
+}
