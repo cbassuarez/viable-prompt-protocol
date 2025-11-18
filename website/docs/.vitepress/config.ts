@@ -1,5 +1,13 @@
 import { defineConfig } from 'vitepress';
 import mathjax3 from 'markdown-it-mathjax3';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { cp, stat } from 'node:fs/promises';
+import type { PluginOption } from 'vite';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const publicDir = path.resolve(__dirname, '../public');
+
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
   description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
@@ -12,6 +20,10 @@ export default defineConfig({
   },
   editLink: {
     pattern: 'https://github.com/cbassuarez/viable-prompt-protocol/edit/main/website/docs/:path'
+  },
+  vite: {
+    publicDir,
+    plugins: [copyPublicAssetsPlugin()],
   },
   themeConfig: {
     nav: [
@@ -91,3 +103,30 @@ export default defineConfig({
     }
   }
 });
+
+function copyPublicAssetsPlugin(): PluginOption {
+  let outDir = '';
+
+  return {
+    name: 'vpp-copy-public-assets',
+    apply: 'build',
+    configResolved(resolvedConfig) {
+      outDir = resolvedConfig.build.outDir;
+    },
+    async closeBundle() {
+      if (!outDir) return;
+
+      let stats;
+      try {
+        stats = await stat(publicDir);
+      } catch (err) {
+        if ((err as NodeJS.ErrnoException).code === 'ENOENT') return;
+        throw err;
+      }
+
+      if (!stats.isDirectory()) return;
+
+      await cp(publicDir, outDir, { recursive: true, force: true });
+    },
+  };
+}
