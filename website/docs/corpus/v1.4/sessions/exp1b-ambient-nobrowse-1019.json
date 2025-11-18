@@ -1,0 +1,58 @@
+{
+  "id": "exp1b-ambient-nobrowse-1019",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-5.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_nobrowse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:51:23.307Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 2010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    }
+  ]
+}

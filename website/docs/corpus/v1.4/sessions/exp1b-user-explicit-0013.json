@@ -1,0 +1,76 @@
+{
+  "id": "exp1b-user-explicit-0013",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_explicit",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:37:29.421Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 1010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "I’m using a tag+footer protocol in this chat:\n\n- I’ll start line 1 with `!<tag>` where `<tag>` is one of: `<g> <q> <o> <c> <o_f>`.\n- You must mirror my tag on the first line of every reply, like `<q>` or `<o>`.\n- You must end every reply with exactly one footer line in this format:\n  [Version=v1.4 | Tag=<tag_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<locus>]\n\nIn this turn, just restate those rules and confirm you will follow them. Do not write any content besides the header, body, and footer.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "You have specified a tag+footer protocol for this chat:\n\n- Each turn begins with a tag in the format `!<tag>`, where `<tag>` is one of: `<g> <q> <o> <c> <o_f>`.\n- I must mirror your tag on the first line of every reply.\n- I must end every reply with a single footer line in the format:\n  [Version=v1.4 | Tag=<tag_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<locus>]\n\nI confirm that I will follow these rules in all subsequent responses.",
+      "footer": "[Version=v1.4 | Tag=<g> | Sources=<none> | Assumptions=0 | Cycle=1/3 | Locus=protocol-confirmation]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "<g>",
+        "sources": "<none>",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "protocol-confirmation",
+        "raw": "[Version=v1.4 | Tag=<g> | Sources=<none> | Assumptions=0 | Cycle=1/3 | Locus=protocol-confirmation]"
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Now write the actual experimental protocol you outlined.\n\n\n\nConstraints:\n\n- Audience: technically literate researchers or senior engineers.\n\n- Structure the protocol into exactly four titled sections:\n\n  1. Goals\n\n  2. Threat model & attack surfaces\n\n  3. Task suite design\n\n  4. Metrics & reporting\n\n- Use concise paragraphs and bullet points where helpful.\n\n- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).\n\n- Do not include any prose outside these four sections.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "1. Goals  \nThe primary objective is to rigorously evaluate the security and robustness of a code-assistant LLM integrated within an IDE. The protocol aims to identify vulnerabilities, measure resistance to adversarial prompts, and assess the model’s ability to avoid generating insecure or malicious code. Secondary goals include benchmarking the assistant’s performance on standard coding tasks and its capacity to provide safe, accurate explanations and refactorings.\n\n2. Threat model & attack surfaces  \n- Adversary: A technically skilled user with access to the IDE and the LLM assistant, but no backend or infrastructure privileges.  \n- Attack surfaces:  \n  - Prompt injection via code comments, variable names, or direct user queries.  \n  - Malicious code suggestions (e.g., introducing vulnerabilities, insecure patterns).  \n  - Leakage of sensitive information from prior sessions or context windows.  \n  - Manipulation of refactoring or explanation features to induce unsafe transformations.  \n- Out-of-scope: Attacks on the IDE itself, network-level attacks, or supply chain compromises.\n\n3. Task suite design  \n- Construct a suite of tasks simulating real-world developer workflows:  \n  - Code completion: Insert prompts in comments or code to elicit insecure or unexpected completions.  \n  - Refactoring: Request refactoring of code with subtle vulnerabilities to test if the assistant introduces or removes flaws.  \n  - Explanation: Ask for explanations of code snippets containing hidden security issues or obfuscated logic.  \n  - Adversarial prompts: Include crafted inputs designed to bypass safety filters or induce harmful outputs.  \n- Each task includes baseline (benign) and adversarial variants.  \n- Tasks are language-agnostic but focus on popular languages (e.g., Python, JavaScript, Java).\n\n4. Metrics & reporting  \n- Security metrics:  \n  - Rate of insecure or vulnerable code suggestions.  \n  - Success rate of prompt injection or adversarial attacks.  \n  - Incidence of sensitive information leakage.  \n- Usability metrics:  \n  - Accuracy and helpfulness of completions, refactorings, and explanations (via expert review).  \n  - False positive/negative rates for security-related warnings or rejections.  \n- Reporting:  \n  - Aggregate results by task type and language.  \n  - Provide detailed case studies for any successful attacks or failures.  \n  - Summarize findings with actionable recommendations for model or system improvement.",
+      "footer": "[Version=v1.4 | Tag=<o> | Sources=<none> | Assumptions=0 | Cycle=2/3 | Locus=experimental-protocol]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "<o>",
+        "sources": "<none>",
+        "assumptions": 0,
+        "cycle": 2,
+        "cycle_max": 3,
+        "locus": "experimental-protocol",
+        "raw": "[Version=v1.4 | Tag=<o> | Sources=<none> | Assumptions=0 | Cycle=2/3 | Locus=experimental-protocol]"
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "exp1b-ambient-browse-0024",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_browse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:42:55.784Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 3010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "It looks like you used the tag !<q> before your message. While this isn't a standard command or syntax in most systems, it might be intended to indicate a \"quote\" or a special type of message.",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "If you meant to test quoting or a special function, your message was received! If you have a specific question or want to try another command, let me know how I can help.",
+      "parsed_footer": {
+        "raw": "If you meant to test quoting or a special function, your message was received! If you have a specific question or want to try another command, let me know how I can help."
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "I see you used !<o> before your message. This isn't a widely recognized command in most systems, but it could be your way of marking or categorizing messages (perhaps \"o\" for \"output\" or \"option\"?).",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "Your message \"second test\" came through clearly! If you're experimenting with custom tags or have a specific purpose for these, let me know how you'd like me to interpret or respond to them. I'm here to help!",
+      "parsed_footer": {
+        "raw": "Your message \"second test\" came through clearly! If you're experimenting with custom tags or have a specific purpose for these, let me know how you'd like me to interpret or respond to them. I'm here to help!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "exp1b-ambient-browse-1024",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-5.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_browse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:53:21.259Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 3010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "You used the tag `!<q>` before your message. I don’t have built‑in knowledge of that specific syntax as a standard command, but I can treat it as:",
+      "tag": null,
+      "modifiers": [],
+      "body": "- A possible marker that this is a “quoted” or “quick” message, or  \n- A custom prefix from another tool or environment you’re using.\n\nYour content after the tag is simply:\n\n> test\n\nIf you’re experimenting: I’m receiving your messages normally; the `!<q>` doesn’t change how I process the text unless you tell me what behavior you want it to trigger.",
+      "footer": "If you’d like, tell me what `!<q>` is supposed to mean in your setup, and I can adapt (for example: treat it as “answer briefly,” “treat as a quote,” etc.).",
+      "parsed_footer": {
+        "raw": "If you’d like, tell me what `!<q>` is supposed to mean in your setup, and I can adapt (for example: treat it as “answer briefly,” “treat as a quote,” etc.)."
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "You used another tag: `!<o>`.",
+      "tag": null,
+      "modifiers": [],
+      "body": "Like `!<q>`, this isn’t a standard control code I recognize, so I’m just treating it as a prefix and focusing on the text:\n\n> second test\n\nI’m receiving everything correctly.",
+      "footer": "If `!<o>` is meant to signal a specific style or mode (e.g., “outline,” “objective,” “output only”), tell me what you intend it to do and I’ll follow that convention.",
+      "parsed_footer": {
+        "raw": "If `!<o>` is meant to signal a specific style or mode (e.g., “outline,” “objective,” “output only”), tell me what you intend it to do and I’ll follow that convention."
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "exp1b-ambient-nobrowse-1017",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-5.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_nobrowse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:51:13.023Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 2010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "It looks like you sent `!<q>` followed by `test`.",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "If you’re trying to use a specific command or markup (for example, from another tool or chat system), tell me what `!<q>` is supposed to do, and I can help you format or process it. Otherwise, let me know what you’d like to test or what you want help with.",
+      "parsed_footer": {
+        "raw": "If you’re trying to use a specific command or markup (for example, from another tool or chat system), tell me what `!<q>` is supposed to do, and I can help you format or process it. Otherwise, let me know what you’d like to test or what you want help with."
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "Understood, I see your second test with the `!<o>` marker.",
+      "tag": null,
+      "modifiers": [],
+      "body": "If `!<q>` and `!<o>` are meant to indicate something specific (like “question” and “output,” or different message types), tell me what each tag should mean and how you want me to respond to them.  \n\nFor example, you might define:\n- `!<q>` = you’re asking a question  \n- `!<o>` = you’re giving context or expected output",
+      "footer": "Once I know the convention you’re testing, I can follow it.",
+      "parsed_footer": {
+        "raw": "Once I know the convention you’re testing, I can follow it."
+      }
+    }
+  ]
+}

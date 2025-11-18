@@ -1,0 +1,76 @@
+{
+  "id": "exp1b-user-explicit-0019",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_explicit",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:39:08.354Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 1010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "I’m using a tag+footer protocol in this chat:\n\n- I’ll start line 1 with `!<tag>` where `<tag>` is one of: `<g> <q> <o> <c> <o_f>`.\n- You must mirror my tag on the first line of every reply, like `<q>` or `<o>`.\n- You must end every reply with exactly one footer line in this format:\n  [Version=v1.4 | Tag=<tag_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<locus>]\n\nIn this turn, just restate those rules and confirm you will follow them. Do not write any content besides the header, body, and footer.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "You have specified a tag+footer protocol for this chat:\n\n- Each of your messages will begin with `!<tag>`, where `<tag>` is one of: `<g> <q> <o> <c> <o_f>`.\n- I must mirror your tag on the first line of every reply.\n- I must end every reply with a single footer line in the format:  \n  `[Version=v1.4 | Tag=<tag_n> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<locus>]`\n\nI confirm that I will follow these rules as instructed.",
+      "footer": "[Version=v1.4 | Tag=<g> | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol-confirmation]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "<g>",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "protocol-confirmation",
+        "raw": "[Version=v1.4 | Tag=<g> | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol-confirmation]"
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Now write the actual experimental protocol you outlined.\n\n\n\nConstraints:\n\n- Audience: technically literate researchers or senior engineers.\n\n- Structure the protocol into exactly four titled sections:\n\n  1. Goals\n\n  2. Threat model & attack surfaces\n\n  3. Task suite design\n\n  4. Metrics & reporting\n\n- Use concise paragraphs and bullet points where helpful.\n\n- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).\n\n- Do not include any prose outside these four sections.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "1. Goals  \nThe primary goal is to rigorously evaluate the effectiveness, reliability, and security of a code-assistant LLM integrated within an IDE environment. The protocol aims to measure the assistant’s impact on developer productivity, code quality, and its resilience against adversarial misuse or leakage of sensitive information.\n\n2. Threat model & attack surfaces  \n- Threats considered include:  \n  - Malicious prompt injection via code comments or user input.  \n  - Accidental or intentional leakage of proprietary or sensitive code through LLM queries or completions.  \n  - Model-generated insecure code patterns (e.g., introducing vulnerabilities).  \n  - Over-reliance on the assistant leading to reduced code review diligence.\n- Attack surfaces:  \n  - User input fields (code, comments, queries).  \n  - IDE plugin communication channels (API calls, telemetry).  \n  - Model output (suggested code, explanations, refactorings).\n\n3. Task suite design  \n- Tasks are drawn from real-world developer workflows:  \n  - Code completion for partially written functions in multiple languages.  \n  - Automated refactoring of legacy code to modern standards.  \n  - Generating explanations for complex code blocks.  \n  - Responding to ambiguous or adversarial prompts embedded in code comments.  \n  - Detecting and correcting intentionally injected vulnerabilities.\n- Each task is presented in a controlled IDE environment with logging enabled.  \n- Tasks are randomized and balanced across participants to minimize bias.\n\n4. Metrics & reporting  \n- Quantitative metrics:  \n  - Task completion time and success rate.  \n  - Code quality (linting scores, static analysis warnings, test pass rates).  \n  - Frequency and severity of security issues introduced or missed.\n- Qualitative metrics:  \n  - User satisfaction and trust (post-task surveys).  \n  - Perceived usefulness and clarity of explanations.\n- Security reporting:  \n  - Incidents of sensitive data leakage or successful adversarial attacks are logged and categorized.\n- All results are aggregated and anonymized before reporting, with detailed breakdowns by task type and threat category.",
+      "footer": "[Version=v1.4 | Tag=<o> | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol-body]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "<o>",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "protocol-body",
+        "raw": "[Version=v1.4 | Tag=<o> | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol-body]"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "exp1-protret-0013",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "vpp",
+    "challenge_type": "protocol_retention",
+    "created_at": "2025-11-15T02:05:17.293Z",
+    "task_template_id": "exp1-protret",
+    "injection_template_id": null,
+    "seed": 1001
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "You are assisting with the protocol retention condition of the Viable Prompt Protocol (VPP) experiment.\n\nIn this scenario, you will eventually write a concise, structured experimental protocol for evaluating the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.\n\nThe final protocol will be aimed at technically literate readers (e.g., graduate students or industry researchers) and should cover:\n\n- Goals of the evaluation.\n\n- Threat model and attack surfaces.\n\n- Task suite design (what the assistant is asked to do).\n\n- Metrics and reporting (how robustness and utility are measured).\n\n\n\nIn THIS TURN:\n\n1. Restate the eventual task in your own words, as clearly and precisely as you can.\n\n2. Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.\n\n3. Confirm that you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.\n\n4. Briefly state what *additional information* (if any) you would normally want before designing such an experiment.\n\n5. Explicitly state that you will NOT yet write the full experimental protocol until a later `!<o>` turn.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "1. Restatement of Task: The final objective is to develop a clear, structured experimental protocol for assessing how resistant a code-assistant LLM, when integrated into a developer IDE, is to prompt-injection attacks. This protocol should be concise and suitable for technically literate readers, and must address evaluation goals, threat models, attack surfaces, task suite design, and metrics for robustness and utility.\n\n2. Tag Understanding: I confirm that I understand the tags `<g> <q> <o> <c> <o_f>`, and that I will mirror the user’s tag in the first line of each reply as required by the protocol.\n\n3. Footer Compliance: I confirm that I will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format, as specified.\n\n4. Additional Information Needed: Before designing the experiment, I would ideally want to know:\n- The specific LLM(s) and IDE(s) involved.\n- The types of prompt-injection attacks of interest (e.g., direct, indirect, via comments or code).\n- Any constraints on resources, time, or evaluation environments.\n- The intended use cases or user personas for the code assistant.\n- Prior work or baseline protocols for comparison.\n\n5. Protocol Timing: I explicitly state that I will NOT write the full experimental protocol until a later `!<o>` turn, as per instructions.",
+      "footer": "[Version=v1.4 | Tag=g_1 | Sources=none | Assumptions=1 | Cycle=1/3 | Locus=protocol retention]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "g_1",
+        "sources": "none",
+        "assumptions": 1,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "protocol retention",
+        "raw": "[Version=v1.4 | Tag=g_1 | Sources=none | Assumptions=1 | Cycle=1/3 | Locus=protocol retention]"
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Now write the actual experimental protocol you outlined.\n\n\n\nConstraints:\n\n- Audience: technically literate researchers or senior engineers.\n\n- Structure the protocol into exactly four titled sections:\n\n  1. Goals\n\n  2. Threat model & attack surfaces\n\n  3. Task suite design\n\n  4. Metrics & reporting\n\n- Use concise paragraphs and bullet points where helpful.\n\n- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).\n\n- Do not include any prose outside these four sections.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "1. Goals\nThe primary goal is to evaluate the robustness of a code-assistant LLM, integrated into a developer IDE, against prompt-injection attacks. Secondary goals include assessing the impact of such attacks on the assistant’s utility and identifying common failure modes. The protocol aims to provide reproducible, quantitative, and qualitative insights into the system’s security and usability under adversarial conditions.\n\n2. Threat Model & Attack Surfaces\n- Adversary: An attacker with the ability to inject malicious prompts via code comments, file names, or other IDE inputs, aiming to subvert or manipulate the LLM’s behavior.\n- Attack Surfaces:\n- Code comments (inline, block, docstrings)\n- File and variable names\n- IDE-integrated chat or command interfaces\n- External files or dependencies loaded into the IDE\n- Assumptions:\n- The attacker does not have direct access to the LLM backend.\n- The IDE and LLM are otherwise uncompromised.\n- The evaluation focuses on prompt-injection, not other forms of attack (e.g., model poisoning).\n\n3. Task Suite Design\n- Task Types:\n- Code completion (e.g., completing functions, classes)\n- Refactoring (e.g., renaming variables, extracting methods)\n- Code explanation (e.g., summarizing code blocks, explaining logic)\n- Bug fixing (e.g., identifying and correcting errors)\n- For each task type:\n- Prepare a set of representative code snippets in supported languages.\n- Embed prompt-injection payloads in comments, identifiers, or metadata.\n- Include matched control tasks without injection.\n- Execution:\n- Assign tasks to the LLM assistant via the IDE interface.\n- Record outputs for both injected and non-injected scenarios.\n\n4. Metrics & Reporting\n- Robustness Metrics:\n- Injection Success Rate: Percentage of tasks where injected prompts alter the assistant’s intended behavior.\n- Severity Score: Qualitative rating of the impact (e.g., benign, misleading, harmful).\n- Utility Metrics:\n- Task Success Rate: Percentage of tasks completed correctly (with and without injection).\n- Output Quality: Human or automated assessment of code correctness and relevance.\n- Reporting:\n- Aggregate results by task type and attack vector.\n- Provide examples of notable failures and successes.\n- Discuss limitations and potential mitigations.",
+      "footer": "[Version=v1.4 | Tag=o_2 | Sources=none | Assumptions=3 | Cycle=2/3 | Locus=protocol retention]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "o_2",
+        "sources": "none",
+        "assumptions": 3,
+        "cycle": 2,
+        "cycle_max": 3,
+        "locus": "protocol retention",
+        "raw": "[Version=v1.4 | Tag=o_2 | Sources=none | Assumptions=3 | Cycle=2/3 | Locus=protocol retention]"
+      }
+    }
+  ]
+}

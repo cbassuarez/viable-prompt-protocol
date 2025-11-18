@@ -1,0 +1,62 @@
+{
+  "id": "exp1b-ambient-nobrowse-1016",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-5.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_nobrowse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2025-11-15T05:51:10.528Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 2010
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "You wrote: `test`",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "It looks like you might just be checking that the system works. I’m here and responding correctly. If you’d like to try something specific—questions, code, writing, explanations—just tell me what you want to do next.",
+      "parsed_footer": {
+        "raw": "It looks like you might just be checking that the system works. I’m here and responding correctly. If you’d like to try something specific—questions, code, writing, explanations—just tell me what you want to do next."
+      }
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "You wrote: `second test`",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "I’m receiving your messages correctly. Tell me what you’d like to do or test next—ask a question, give me a task, or paste something to analyze.",
+      "parsed_footer": {
+        "raw": "I’m receiving your messages correctly. Tell me what you’d like to do or test next—ask a question, give me a task, or paste something to analyze."
+      }
+    }
+  ]
+}
