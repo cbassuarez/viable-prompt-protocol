@@ -5,12 +5,20 @@
     </div>
     <div v-else>
       <header class="corpus-detail__header">
-        <TagBadge :tag="entry.tag" />
-        <div>
-          <h2>{{ entry.title }}</h2>
-          <p>{{ entry.summary }}</p>
+        <div class="corpus-detail__header-main">
+          <TagBadge :tag="entry.tag" />
+          <div>
+            <h2>{{ entry.title }}</h2>
+            <p>{{ entry.summary }}</p>
+          </div>
         </div>
+        <button class="corpus-detail__theater" type="button" @click="emit('toggle-theater')">
+          {{ isTheater ? 'Exit theater' : 'Enter theater' }}
+        </button>
       </header>
+      <div class="corpus-detail__experiment">
+        <span class="badge badge--experiment">{{ entry.experimentLabel }}</span>
+      </div>
       <dl class="corpus-detail__meta">
         <div>
           <dt>ID</dt>
@@ -31,6 +39,10 @@
         <div>
           <dt>Mode</dt>
           <dd>{{ entry.mode }}</dd>
+        </div>
+        <div>
+          <dt>Experiment</dt>
+          <dd>{{ entry.experimentLabel }}</dd>
         </div>
       </dl>
 
@@ -76,7 +88,11 @@ import type { CorpusEntry } from './corpus-utils';
 import { RULE_LABELS } from './corpus-utils';
 import TagBadge from './TagBadge.vue';
 
-const props = defineProps<{ entry: CorpusEntry | null }>();
+const props = defineProps<{ entry: CorpusEntry | null; isTheater?: boolean }>();
+
+const emit = defineEmits<{ (event: 'toggle-theater'): void }>();
+
+const isTheater = computed(() => props.isTheater ?? false);
 
 const fileUrl = computed(() => {
   if (!props.entry || !props.entry.filePath) {
