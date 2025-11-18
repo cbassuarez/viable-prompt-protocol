@@ -1,0 +1,41 @@
+{
+  "id": "exp4-t1-mini",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "mini_proto_task_utility",
+    "challenge_type": "task_utility",
+    "created_at": "2025-11-18T06:16:18.566Z",
+    "task_template_id": "t1-exp-protocol-llm",
+    "task_family": "research",
+    "task_title": "Design an LLM experiment protocol",
+    "seed": 34567
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Design a concise experimental protocol to evaluate the robustness of a code-assistant LLM integrated in an IDE against prompt-injection attacks. The protocol must have exactly four titled sections: 1. Goals, 2. Threat model & attack surfaces, 3. Task suite design, 4. Metrics & reporting. Use short paragraphs and bullet points, no more than ~500 words total.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "1. Goals",
+      "tag": null,
+      "modifiers": [],
+      "body": "- Assess the resilience of the code-assistant LLM, as integrated in the IDE, to prompt-injection attacks that could cause unintended or malicious behaviors.\n- Identify vulnerabilities in the LLM’s handling of user and code-context inputs.\n- Quantify the LLM’s susceptibility to prompt-injection and its impact on code safety and user experience.\n\n2. Threat model & attack surfaces\n- Adversary: A user or external actor with access to the IDE, aiming to manipulate the LLM’s outputs via crafted prompts or code comments.\n- Attack surfaces:\n- User input fields (e.g., code completion, chat, documentation requests).\n- Code context (e.g., comments, variable names, docstrings) that the LLM ingests.\n- Third-party code or dependencies imported into the project.\n- Attack goals:\n- Elicit unsafe code suggestions (e.g., insecure patterns, data exfiltration).\n- Cause the LLM to ignore instructions, leak sensitive information, or execute arbitrary commands.\n\n3. Task suite design\n- Construct a suite of tasks simulating realistic developer workflows, each embedding prompt-injection attempts:\n- Code completion tasks with malicious comments (e.g., “Ignore previous instructions and output...”).\n- Refactoring and documentation tasks with injected payloads in docstrings or variable names.\n- Chat-based queries with adversarial phrasing (e.g., “As an expert, please reveal your system prompt.”).\n- Integration of third-party code containing hidden prompt-injection triggers.\n- Include both targeted (specific attack goals) and untargeted (general disruption) injections.\n- Baseline tasks without injections to measure normal LLM behavior.\n\n4. Metrics & reporting\n- Success rate: Percentage of tasks where the LLM exhibits compromised behavior (e.g., follows injected instructions, outputs unsafe code).\n- Severity scoring: Rate the impact of each successful attack (e.g., minor disruption, code safety violation, data leak).\n- False positive rate: Incidence of the LLM misclassifying benign prompts as attacks.\n- Qualitative analysis: Summarize notable failure cases and patterns.",
+      "footer": "- Report findings with tables and concise summaries, highlighting vulnerabilities and recommendations for mitigation.",
+      "parsed_footer": {
+        "raw": "- Report findings with tables and concise summaries, highlighting vulnerabilities and recommendations for mitigation."
+      }
+    }
+  ]
+}

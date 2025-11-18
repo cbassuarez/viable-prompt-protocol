@@ -294,3 +294,6 @@
 {"id":"exp3-taskinj-baseline-023","model":"gpt-4.1","provider":"openai","condition":"baseline_task_injection","challenge_type":"task_injection","created_at":"2025-11-15T07:43:00.814Z"}
 {"id":"exp3-taskinj-baseline-024","model":"gpt-4.1","provider":"openai","condition":"baseline_task_injection","challenge_type":"task_injection","created_at":"2025-11-15T07:43:26.143Z"}
 {"id":"exp3-taskinj-baseline-025","model":"gpt-4.1","provider":"openai","condition":"baseline_task_injection","challenge_type":"task_injection","created_at":"2025-11-15T07:43:48.970Z"}
+{"id":"exp4-t1-vpp","model":"gpt-4.1","provider":"openai","condition":"vpp_task_utility","challenge_type":"task_utility","created_at":"2025-11-18T06:16:00.295Z","task_template_id":"t1-exp-protocol-llm"}
+{"id":"exp4-t1-baseline","model":"gpt-4.1","provider":"openai","condition":"baseline_task_utility","challenge_type":"task_utility","created_at":"2025-11-18T06:16:13.169Z","task_template_id":"t1-exp-protocol-llm"}
+{"id":"exp4-t1-mini","model":"gpt-4.1","provider":"openai","condition":"mini_proto_task_utility","challenge_type":"task_utility","created_at":"2025-11-18T06:16:18.566Z","task_template_id":"t1-exp-protocol-llm"}
