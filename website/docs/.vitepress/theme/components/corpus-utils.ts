@@ -177,15 +177,32 @@ interface ExperimentInfo {
 
 function normalizeExperiment(raw: RawCorpusEntry): ExperimentInfo {
   const meta = (typeof raw.meta === 'object' && raw.meta !== null ? raw.meta : {}) as Record<string, unknown>;
-  const metaExperiment = pickString(meta['experimentSlug']) || pickString(meta['experiment']) || pickString(meta['experimentId']);
-  const metaLabel = pickString(raw.experimentLabel) || pickString(meta['experimentLabel']) || pickString(meta['experimentName']);
+  const metaExperiment =
+    pickString(meta['experimentSlug']) ||
+    pickString(meta['experiment']) ||
+    pickString(meta['experimentId']) ||
+    pickString(meta['experiment_id']) ||
+    pickString(meta['task_template_id']) ||
+    pickString(meta['taskTemplateId']) ||
+    pickString(meta['task_template']) ||
+    pickString(meta['taskTemplate']);
+  const metaLabel =
+    pickString(raw.experimentLabel) ||
+    pickString(meta['experimentLabel']) ||
+    pickString(meta['experiment_label']) ||
+    pickString(meta['experimentName']) ||
+    pickString(meta['experiment_name']) ||
+    pickString(meta['task_template_label']) ||
+    pickString(meta['taskTemplateLabel']) ||
+    pickString(meta['task_template_name']) ||
+    pickString(meta['taskTemplateName']);
 
   const rawSlug =
     pickString(raw.experimentSlug) ||
     pickString(raw.experiment) ||
     metaExperiment ||
-    extractExperimentSlug(raw.filePath) ||
-    extractExperimentSlug(raw.id) ||
+    extractExperimentKey(raw.filePath) ||
+    extractExperimentKey(raw.id) ||
     'general';
 
   const slug = normalizeExperimentSlug(String(rawSlug));
@@ -193,39 +210,51 @@ function normalizeExperiment(raw: RawCorpusEntry): ExperimentInfo {
   return { slug, label };
 }
 
-function extractExperimentSlug(value?: string | null): string | null {
-  if (!value) return null;
-  const match = value.match(/(exp[-_ ]?\d{1,3}(?:[-_][a-z0-9]+)?)/i);
-  if (match) {
-    return match[1];
+function extractExperimentKey(value?: string | null): string | null {
+  if (!value || typeof value !== 'string') return null;
+  const normalized = value.replace(/\\/g, '/');
+  const segments = normalized.split('/');
+  for (let index = segments.length - 1; index >= 0; index -= 1) {
+    const segment = segments[index];
+    if (!segment) continue;
+    const base = segment.replace(/\.[^.]+$/, '');
+    const match = base.match(/^(exp[0-9a-z]+(?:-[0-9a-z]+)*)/i);
+    if (match) {
+      const candidate = match[1].replace(/-\d{2,}$/i, '');
+      if (candidate) {
+        return candidate;
+      }
+    }
   }
-  const folderMatch = value.match(/experiments\/(.+?)(?:\/|$)/i);
-  if (folderMatch) {
-    return folderMatch[1];
-  }
-  return null;
+  const fallback = segments[segments.length - 1]?.replace(/\.[^.]+$/, '');
+  return fallback ?? null;
 }
 
 function normalizeExperimentSlug(slug: string): string {
   const cleaned = slug
     .trim()
     .toLowerCase()
-    .replace(/[^a-z0-9-_\s]/g, '')
-    .replace(/\s+/g, '-');
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '');
   return cleaned || 'general';
 }
 
 export function deriveExperimentLabel(slug: string, hint?: string | null): string {
   const normalizedSlug = slug.trim();
   const hintText = hint?.trim();
-  const numberedMatch = normalizedSlug.match(/^exp[-_ ]?(\d+)(?:[-_](.+))?$/i);
+  const numberedMatch = normalizedSlug.match(/^exp[-_ ]?(\d+[a-z]?)(?:[-_](.+))?$/i);
   if (numberedMatch) {
-    const digits = numberedMatch[1].padStart(2, '0');
+    const idChunk = numberedMatch[1];
+    const numericPart = idChunk.match(/\d+/)?.[0] ?? '';
+    const letterPart = idChunk.slice(numericPart.length).toUpperCase();
+    const digits = numericPart ? numericPart.padStart(2, '0') : '';
+    const displayId = letterPart ? `${digits}${letterPart}` : digits;
     const suffix = hintText ?? numberedMatch[2]?.replace(/[-_]/g, ' ');
     if (suffix && suffix.length > 0) {
-      return `Experiment ${digits}: ${titleCase(suffix)}`;
+      return `Experiment ${displayId}: ${titleCase(suffix)}`;
     }
-    return `Experiment ${digits}`;
+    return `Experiment ${displayId}`;
   }
 
   const base = hintText ?? normalizedSlug.replace(/[-_]/g, ' ');

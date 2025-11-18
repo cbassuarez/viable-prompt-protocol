@@ -11,9 +11,47 @@
         class="corpus-viewer__theater-toggle"
         type="button"
         :disabled="!canUseTheater"
+        aria-label="Enter theater mode"
         @click="openTheater"
       >
-        Enter theater
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M5 9V5h4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19 9V5h-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5 15v4h4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19 15v4h-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </button>
     </header>
 
@@ -45,7 +83,11 @@
         {{ errorMessage }}
       </p>
 
-      <div class="corpus-viewer__body">
+      <div v-if="showEmptyState" class="corpus-viewer__empty">
+        <p class="corpus-viewer__empty-title">No entries match the current filters.</p>
+        <p class="corpus-viewer__empty-hint">Adjust experiment, tag, or search filters to see results.</p>
+      </div>
+      <div v-else class="corpus-viewer__body">
         <CorpusList
           :entries="sortedEntries"
           :selected-id="selectedEntryId"
@@ -109,7 +151,16 @@
                 {{ errorMessage }}
               </p>
 
-              <div class="corpus-viewer__body corpus-viewer__body--theater">
+              <div
+                v-if="showEmptyState"
+                class="corpus-viewer__empty corpus-viewer__empty--theater"
+              >
+                <p class="corpus-viewer__empty-title">No entries match the current filters.</p>
+                <p class="corpus-viewer__empty-hint">
+                  Adjust experiment, tag, or search filters to see results.
+                </p>
+              </div>
+              <div v-else class="corpus-viewer__body corpus-viewer__body--theater">
                 <CorpusList
                   :entries="sortedEntries"
                   :selected-id="selectedEntryId"
@@ -204,8 +255,8 @@ const experimentOptions = computed<ExperimentOption[]>(() => {
     }
   }
   return Array.from(seen.entries())
-    .sort((a, b) => a[0].localeCompare(b[0], 'en', { numeric: true }))
-    .map(([slug, label]) => ({ slug, label }));
+    .map(([slug, label]) => ({ slug, label }))
+    .sort((a, b) => compareExperimentOptions(a, b));
 });
 
 watch(experimentOptions, (options) => {
@@ -230,6 +281,7 @@ const filteredEntries = computed(() =>
 const sortedEntries = computed(() => sortEntries(filteredEntries.value));
 
 const canUseTheater = computed(() => sortedEntries.value.length > 0);
+const showEmptyState = computed(() => !isLoading.value && sortedEntries.value.length === 0);
 const activeExperimentLabel = computed(() => {
   if (selectedExperiment.value === 'all') {
     return '';
@@ -255,12 +307,6 @@ watch(
   },
   { immediate: true }
 );
-
-watch(sortedEntries, (entries) => {
-  if (entries.length === 0 && isTheater.value) {
-    closeTheater();
-  }
-});
 
 watch(selectedEntryId, () => {
   if (isTheater.value) {
@@ -316,6 +362,29 @@ async function loadVersion(version: string) {
 function corpusUrl(version: string) {
   const slug = version.replace('.', '_');
   return `/corpus/${version}/corpus-${slug}.json`;
+}
+
+function compareExperimentOptions(a: ExperimentOption, b: ExperimentOption): number {
+  const aIndex = getExperimentSortIndex(a.slug);
+  const bIndex = getExperimentSortIndex(b.slug);
+  if (aIndex !== null && bIndex !== null && aIndex !== bIndex) {
+    return aIndex - bIndex;
+  }
+  if (aIndex !== null && bIndex === null) {
+    return -1;
+  }
+  if (aIndex === null && bIndex !== null) {
+    return 1;
+  }
+  return a.label.localeCompare(b.label, 'en', { numeric: true });
+}
+
+function getExperimentSortIndex(slug: string): number | null {
+  const match = slug.match(/^exp-?(\d+)/);
+  if (match) {
+    return Number(match[1]);
+  }
+  return null;
 }
 
 function onVersionChange(version: string) {
@@ -427,13 +496,13 @@ function syncFocusedIndexWithSelection() {
 
 function onKeyDown(event: KeyboardEvent) {
   if (!isTheater.value) return;
-  if (!sortedEntries.value.length) return;
-
   if (event.key === 'Escape') {
     event.preventDefault();
     closeTheater();
     return;
   }
+
+  if (!sortedEntries.value.length) return;
 
   const currentIndex = getSelectedIndex() ?? 0;
 
