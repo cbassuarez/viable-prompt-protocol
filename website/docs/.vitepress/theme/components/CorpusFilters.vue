@@ -14,6 +14,30 @@
       </select>
     </div>
 
+    <div v-if="experiments.length" class="corpus-filters__group">
+      <div class="corpus-filters__label">Experiments</div>
+      <div class="corpus-filters__chips corpus-filters__chips--scroll">
+        <button
+          class="chip"
+          :class="{ 'chip--active': selectedExperiment === 'all' }"
+          type="button"
+          @click="emit('update:experiment', 'all')"
+        >
+          All experiments
+        </button>
+        <button
+          v-for="experiment in experiments"
+          :key="experiment.slug"
+          class="chip"
+          :class="{ 'chip--active': selectedExperiment === experiment.slug }"
+          type="button"
+          @click="emit('update:experiment', experiment.slug)"
+        >
+          {{ experiment.label }}
+        </button>
+      </div>
+    </div>
+
     <div class="corpus-filters__group">
       <div class="corpus-filters__label">Tags</div>
       <div class="corpus-filters__chips">
@@ -109,6 +133,8 @@ const props = defineProps<{
   modeOptions: string[];
   selectedModes: string[];
   searchQuery: string;
+  experiments: { slug: string; label: string }[];
+  selectedExperiment: string;
 }>();
 
 const {
@@ -122,7 +148,9 @@ const {
   selectedSeverities,
   modeOptions,
   selectedModes,
-  searchQuery
+  searchQuery,
+  experiments,
+  selectedExperiment
 } = toRefs(props);
 
 const emit = defineEmits<{
@@ -132,6 +160,7 @@ const emit = defineEmits<{
   (event: 'toggle-mode', mode: string): void;
   (event: 'update:version', version: string): void;
   (event: 'update:search', value: string): void;
+  (event: 'update:experiment', value: string): void;
 }>();
 
 function onVersionChange(event: Event) {
