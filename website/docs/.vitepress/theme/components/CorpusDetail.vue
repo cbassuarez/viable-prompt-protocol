@@ -12,12 +12,97 @@
             <p>{{ entry.summary }}</p>
           </div>
         </div>
-        <button class="corpus-detail__theater" type="button" @click="emit('toggle-theater')">
-          {{ isTheater ? 'Exit theater' : 'Enter theater' }}
+        <button
+          class="corpus-detail__theater"
+          type="button"
+          :aria-label="theaterButtonLabel"
+          @click="emit('toggle-theater')"
+        >
+          <svg
+            v-if="isTheater"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M9 5v4H5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15 5v4h4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9 19v-4H5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15 19v-4h4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            v-else
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M5 9V5h4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M19 9V5h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M5 15v4h4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M19 15v4h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </button>
       </header>
       <div class="corpus-detail__experiment">
-        <span class="badge badge--experiment">{{ entry.experimentLabel }}</span>
+        <span class="badge badge--experiment">
+          <span class="badge--experiment-label">Experiment:</span>
+          <span>{{ entry.experimentLabel }}</span>
+        </span>
       </div>
       <dl class="corpus-detail__meta">
         <div>
@@ -93,6 +178,9 @@ const props = defineProps<{ entry: CorpusEntry | null; isTheater?: boolean }>();
 const emit = defineEmits<{ (event: 'toggle-theater'): void }>();
 
 const isTheater = computed(() => props.isTheater ?? false);
+const theaterButtonLabel = computed(() =>
+  isTheater.value ? 'Exit theater mode' : 'Enter theater mode'
+);
 
 const fileUrl = computed(() => {
   if (!props.entry || !props.entry.filePath) {
