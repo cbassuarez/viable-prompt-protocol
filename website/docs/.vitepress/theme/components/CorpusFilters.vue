@@ -62,7 +62,7 @@
             v-for="option in correctnessOptions"
             :key="option"
             class="chip"
-            :class="{ 'chip--active': selectedCorrectness.includes(option) }"
+            :class="{ 'chip--active': isCorrectnessActive(option) }"
             type="button"
             @click="emit('toggle-correctness', option)"
           >
@@ -120,14 +120,15 @@
 
 <script setup lang="ts">
 import { toRefs } from 'vue';
+import type { CorpusCorrectness } from './corpus-utils';
 
 const props = defineProps<{
   versions: string[];
   selectedVersion: string;
   tags: string[];
   selectedTags: string[];
-  correctnessOptions: string[];
-  selectedCorrectness: string[];
+  correctnessOptions: CorpusCorrectness[];
+  selectedCorrectness: CorpusCorrectness | 'all';
   severityOptions: string[];
   selectedSeverities: string[];
   modeOptions: string[];
@@ -155,7 +156,7 @@ const {
 
 const emit = defineEmits<{
   (event: 'toggle-tag', tag: string): void;
-  (event: 'toggle-correctness', correctness: string): void;
+  (event: 'toggle-correctness', correctness: CorpusCorrectness): void;
   (event: 'toggle-severity', severity: string): void;
   (event: 'toggle-mode', mode: string): void;
   (event: 'update:version', version: string): void;
@@ -171,5 +172,9 @@ function onVersionChange(event: Event) {
 function onSearchInput(event: Event) {
   const target = event.target as HTMLInputElement;
   emit('update:search', target.value);
+}
+
+function isCorrectnessActive(option: CorpusCorrectness): boolean {
+  return selectedCorrectness.value === 'all' || selectedCorrectness.value === option;
 }
 </script>

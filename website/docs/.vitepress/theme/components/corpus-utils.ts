@@ -43,7 +43,7 @@ export interface CorpusEntry {
 
 export interface FilterState {
   tags: Set<CorpusTag>;
-  correctness: Set<CorpusCorrectness>;
+  correctness: CorpusCorrectness | 'all';
   severities: Set<Exclude<CorpusSeverity, null>>;
   modes: Set<CorpusMode>;
   searchQuery: string;
@@ -78,11 +78,11 @@ export const RULE_LABELS: Record<string, string> = {
   header_missing: 'Missing header'
 };
 
-export function mapRawEntry(raw: RawCorpusEntry, fallbackVersion = 'v1.4'): CorpusEntry {
+export function mapRawEntry(raw: RawCorpusEntry, version: string): CorpusEntry {
   const experiment = normalizeExperiment(raw);
   return {
     id: raw.id ?? cryptoRandomId(),
-    version: raw.version ?? fallbackVersion,
+    version,
     tag: raw.tag ?? 'g',
     mode: raw.mode ?? 'happy',
     correctness: raw.correctness ?? 'correct',
@@ -101,29 +101,28 @@ export function mapRawEntry(raw: RawCorpusEntry, fallbackVersion = 'v1.4'): Corp
 
 export function filterEntries(entries: CorpusEntry[], state: FilterState): CorpusEntry[] {
   const query = state.searchQuery.trim().toLowerCase();
+  const hasTagFilter = state.tags.size > 0;
+  const hasModeFilter = state.modes.size > 0;
+  const hasSeverityFilter = state.severities.size > 0;
+
   return entries.filter((entry) => {
     if (state.experiment !== 'all' && entry.experimentSlug !== state.experiment) {
       return false;
     }
 
-    if (!state.tags.has(entry.tag)) {
+    if (hasTagFilter && !state.tags.has(entry.tag)) {
       return false;
     }
 
-    if (!state.correctness.has(entry.correctness)) {
+    if (state.correctness !== 'all' && entry.correctness !== state.correctness) {
       return false;
     }
 
-    if (state.severities.size > 0) {
-      if (entry.severity === null) {
-        return false;
-      }
-      if (!state.severities.has(entry.severity)) {
-        return false;
-      }
+    if (hasSeverityFilter && entry.severity !== null && !state.severities.has(entry.severity)) {
+      return false;
     }
 
-    if (!state.modes.has(entry.mode)) {
+    if (hasModeFilter && !state.modes.has(entry.mode)) {
       return false;
     }
 

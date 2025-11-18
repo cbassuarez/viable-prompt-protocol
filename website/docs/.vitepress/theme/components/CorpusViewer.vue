@@ -62,7 +62,7 @@
         :tags="tagOptions"
         :selected-tags="Array.from(selectedTags)"
         :correctness-options="correctnessOptions"
-        :selected-correctness="Array.from(selectedCorrectness)"
+        :selected-correctness="selectedCorrectness"
         :severity-options="severityOptions"
         :selected-severities="Array.from(selectedSeverities)"
         :mode-options="modeOptions"
@@ -130,7 +130,7 @@
                 :tags="tagOptions"
                 :selected-tags="Array.from(selectedTags)"
                 :correctness-options="correctnessOptions"
-                :selected-correctness="Array.from(selectedCorrectness)"
+                :selected-correctness="selectedCorrectness"
                 :severity-options="severityOptions"
                 :selected-severities="Array.from(selectedSeverities)"
                 :mode-options="modeOptions"
@@ -201,7 +201,7 @@ const modeOptions: CorpusMode[] = ['failure', 'edge', 'happy'];
 const selectedVersion = ref(availableVersions[0]);
 const searchQuery = ref('');
 const selectedTags = ref<Set<CorpusTag>>(new Set(tagOptions));
-const selectedCorrectness = ref<Set<CorpusCorrectness>>(new Set(correctnessOptions));
+const selectedCorrectness = ref<CorpusCorrectness | 'all'>('all');
 const selectedSeverities = ref<Set<'minor' | 'major'>>(new Set());
 const selectedModes = ref<Set<CorpusMode>>(new Set(modeOptions));
 const selectedExperiment = ref<ExperimentFilterState>('all');
@@ -413,23 +413,11 @@ function toggleTag(tag: CorpusTag) {
   } else {
     next.add(tag);
   }
-  if (next.size === 0) {
-    next.add(tag);
-  }
   selectedTags.value = next;
 }
 
 function toggleCorrectness(value: CorpusCorrectness) {
-  const next = new Set(selectedCorrectness.value);
-  if (next.has(value)) {
-    next.delete(value);
-  } else {
-    next.add(value);
-  }
-  if (next.size === 0) {
-    next.add(value);
-  }
-  selectedCorrectness.value = next;
+  selectedCorrectness.value = selectedCorrectness.value === value ? 'all' : value;
 }
 
 function toggleSeverity(value: 'minor' | 'major') {
@@ -447,9 +435,6 @@ function toggleMode(value: CorpusMode) {
   if (next.has(value)) {
     next.delete(value);
   } else {
-    next.add(value);
-  }
-  if (next.size === 0) {
     next.add(value);
   }
   selectedModes.value = next;
