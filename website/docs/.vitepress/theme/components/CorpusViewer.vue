@@ -138,7 +138,7 @@ async function loadVersion(version: string) {
 
 function corpusUrl(version: string) {
   const slug = version.replace('.', '_');
-  return `/corpus/${version}/corpus-v${slug}.json`;
+  return `/corpus/${version}/corpus-${slug}.json`;
 }
 
 function onVersionChange(version: string) {
