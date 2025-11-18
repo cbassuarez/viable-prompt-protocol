@@ -4,7 +4,18 @@ title: 'Corpus'
 
 The corpus directory contains the transcripts collected by the experiment
 runners. Browse the files on GitHub:
-[`/corpus/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/corpus).
+[`/corpus/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/corpus), or
+explore the curated viewer below. The viewer loads entries straight from
+`/corpus/v1.4/corpus-v1_4.json`, so rebuilding the corpus automatically updates
+this page.
+
+## Corpus viewer
+
+Use the filters to jump between tag types, correctness, severity, and edge
+cases. Selecting an item reveals the user/assistant snippet, annotations, and
+links back to the source file.
+
+<CorpusViewer />
 
 ## Layout
 
