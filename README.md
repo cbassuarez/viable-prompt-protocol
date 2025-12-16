@@ -1,3 +1,4 @@
+<!-- cSpell:ignore vpp vppchat -->
 # Viable Prompt Protocol (VPP)
 
 [![Spec][badge-spec]][spec-doc]
