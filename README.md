@@ -95,5 +95,5 @@ npm run docs:build
 [docs-site]: https://cbassuarez.github.io/viable-prompt-protocol/
 [cdn-latest]: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/latest/spec.md
 [cdn-v1]: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md
-[vpp-example]: https://raw.githubusercontent.com/cbassuarez/viable-prompt-protocol/263b11b92ca34b5ef34b85a8937494bf3a6c9250/vpp_example.gif
+
 <!-- markdownlint-restore -->
