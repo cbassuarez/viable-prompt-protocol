@@ -3,7 +3,7 @@ title: VPPChat Quickstart
 sidebar: false
 ---
 
-[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/EXAMPLE)
+[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/w4GDYBZs)
 
 VPPChat ships the protocol with defaults that match the normative spec. Use this quickstart to get oriented.
 
