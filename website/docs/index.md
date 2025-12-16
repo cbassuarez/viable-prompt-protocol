@@ -1,7 +1,4 @@
 ---
-<!-- cSpell:ignore vppchat vpp -->
-<!-- markdownlint-disable MD032 MD034 MD007-->
-
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
 titleTemplate: 'Viable Prompt Protocol (VPP)'
@@ -164,3 +161,6 @@ validates transcripts and docs before merge.
   https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/header-snippet.txt
 [parser-schema]:
   https://github.com/cbassuarez/viable-prompt-protocol/blob/main/spec/latest/spec.md
+---
+<!-- cSpell:ignore vppchat vpp -->
+<!-- markdownlint-disable MD032 MD034 MD007-->
