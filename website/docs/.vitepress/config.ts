@@ -15,6 +15,7 @@ export default defineConfig({
   },
   themeConfig: {
     nav: [
+      { text: 'Get VPPChat', link: '/vppchat/' },
       { text: 'Home', link: '/' },
       { text: 'Spec', link: '/spec/' },
       { text: 'Guide', link: '/guide/' },
@@ -85,6 +86,17 @@ export default defineConfig({
           text: 'Validator & CI',
           items: [
             { text: 'Checks', link: '/validator/' }
+          ]
+        }
+      ],
+      '/vppchat/': [
+        {
+          text: 'VPPChat',
+          items: [
+            { text: 'VPPChat', link: '/vppchat/' },
+            { text: 'Release notes', link: '/vppchat/release-notes' },
+            { text: 'Privacy', link: '/vppchat/privacy' },
+            { text: 'Roadmap', link: '/vppchat/roadmap' }
           ]
         }
       ]
