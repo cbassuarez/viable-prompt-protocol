@@ -1,5 +1,7 @@
-<!-- cSpell:ignore vppchat vpp -->
 ---
+<!-- cSpell:ignore vppchat vpp -->
+<!-- markdownlint-disable MD032 MD034 MD007-->
+
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
 titleTemplate: 'Viable Prompt Protocol (VPP)'
@@ -14,7 +16,7 @@ hero:
   actions:
     - theme: brand
       text: Join VPPChat Beta (TestFlight)
-      link: https://testflight.apple.com/join/EXAMPLE
+      link: https://testflight.apple.com/join/w4GDYBZs
     - theme: alt
       text: Try VPP in your system prompt
       link: '#header-snippet'
