@@ -4,21 +4,38 @@ title: 'Viable Prompt Protocol (VPP)'
 titleTemplate: 'Viable Prompt Protocol (VPP)'
 description: 'A tag + footer-driven protocol for deterministic, machine-readable LLM conversations.'
 hero:
-  name: 'Viable Prompt Protocol'
-  text: 'Structure every LLM exchange with explicit tags, modifiers, and a compliance footer.'
-  tagline: 'Deterministic scaffolding for research-grade prompt engineering.'
+  name: 'VPPChat beta'
+  text: 'VPP is the spec. VPPChat is the best way to run it — tuned, and VPP-enforced from source.'
+  tagline: 'Docs-first, app-forward.'
+  image:
+    src: /vppchat/hero.svg
+    alt: VPPChat beta
   actions:
     - theme: brand
-      text: Read the normative spec
-      link: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md
+      text: Join VPPChat Beta (TestFlight)
+      link: https://testflight.apple.com/join/EXAMPLE
     - theme: alt
-      text: Browse the protocol guide
-      link: /guide/
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/cbassuarez/viable-prompt-protocol
+      text: Try VPP in your system prompt
+      link: '#header-snippet'
+features:
+  - icon: '🚀'
+    title: 'VPPChat Quickstart'
+    details: 'Follow the tuned, VPP-enforced flow from the app.'
+    link: /vppchat/
+    linkText: 'Open quickstart'
+  - icon: '🧭'
+    title: 'Header snippet'
+    details: 'Copy the canonical system prompt for any model.'
+    link: '#header-snippet'
+    linkText: 'Jump to snippet'
+  - icon: '📑'
+    title: 'Read the normative spec'
+    details: 'Stay aligned with the canonical, versioned protocol.'
+    link: /spec/
+    linkText: 'Read spec'
 ---
 
+<a id="header-snippet"></a>
 <div class="vpp-hero-snippet-block">
   <header class="vpp-snippet-header">
     <span class="vpp-snippet-title">Header snippet</span>
@@ -52,6 +69,27 @@ Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/sp
 ```
 
   <p class="vpp-snippet-instructions">Add the header snippet to the model's custom instructions or system prompt once.</p>
+</div>
+
+<div class="vpp-beta-callout">
+  <div class="vpp-beta-callout__header">
+    <h2>VPPChat Beta</h2>
+    <a class="vpp-beta-callout__cta" href="https://testflight.apple.com/join/EXAMPLE">Join VPPChat Beta (TestFlight)</a>
+  </div>
+  <div class="vpp-beta-callout__links">
+    <a class="vpp-beta-card" href="/vppchat/release-notes">
+      <span class="vpp-beta-card__title">Release notes</span>
+      <span class="vpp-beta-card__desc">Track the beta build updates.</span>
+    </a>
+    <a class="vpp-beta-card" href="/vppchat/privacy">
+      <span class="vpp-beta-card__title">Privacy</span>
+      <span class="vpp-beta-card__desc">How the beta handles your data.</span>
+    </a>
+    <a class="vpp-beta-card" href="/vppchat/roadmap">
+      <span class="vpp-beta-card__title">Roadmap & known issues</span>
+      <span class="vpp-beta-card__desc">See what is shipping next and what to expect.</span>
+    </a>
+  </div>
 </div>
 
 ## Start with the protocol
