@@ -1,3 +1,4 @@
+<!-- cSpell:ignore vppchat vpp -->
 ---
 layout: home
 title: 'Viable Prompt Protocol (VPP)'
