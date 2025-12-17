@@ -5,6 +5,10 @@ export default defineConfig({
   description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
   base: '/viable-prompt-protocol/',
   lastUpdated: true,
+  head: [
+  ['link', { rel: 'icon', type: 'image/png', href: '/vppchat_icon.png' }],
+  ['link', { rel: 'apple-touch-icon', href: '/vppchat_icon.png' }]
+],
   markdown: {
     config: (md) => {
       md.use(mathjax3);
