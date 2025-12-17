@@ -14,5 +14,6 @@ Use this page when deciding if the protocol fits your workflow:
 - VPPChat ships with defaults that enforce both without extra setup, but the protocol works anywhere you can set a system prompt.
 
 If you want the lighter-weight path, copy the [header snippet](/#header-snippet) into your model of choice. When you need stricter enforcement with macOS polish, install the VPPChat beta.
+
 ---
 <!-- markdownlint-disable MD032 MD003 MD026 MD013-->
