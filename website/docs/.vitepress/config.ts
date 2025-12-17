@@ -1,14 +1,18 @@
 import { defineConfig } from 'vitepress';
 import mathjax3 from 'markdown-it-mathjax3';
+
+const base = '/viable-prompt-protocol/';
+
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
   description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
-  base: '/viable-prompt-protocol/',
+  base,
   lastUpdated: true,
   head: [
-  ['link', { rel: 'icon', type: 'image/png', href: '/vppchat_icon.png' }],
-  ['link', { rel: 'apple-touch-icon', href: '/vppchat_icon.png' }]
-],
+    ['link', { rel: 'icon', type: 'image/png', href: `${base}vppchat_icon.png?v=1` }],
+    ['link', { rel: 'shortcut icon', type: 'image/png', href: `${base}vppchat_icon.png?v=1` }],
+    ['link', { rel: 'apple-touch-icon', href: `${base}vppchat_icon.png?v=1` }]
+  ],
   markdown: {
     config: (md) => {
       md.use(mathjax3);
