@@ -122,7 +122,7 @@ transcript stays auditable as it grows.
 - Learn workflows and patterns: [Guide][guide]
 - Copy the system prompt once: [Header snippet][header_snippet]
 
-[testflight]: https://testflight.apple.com/join/w4GDYBZs
-[header_snippet]: /#header-snippet
-[spec]: /spec/
-[guide]: /guide/
+-[testflight]: https://testflight.apple.com/join/w4GDYBZs
+ [header_snippet]: /#header-snippet
+ [spec]: /spec/
+ [guide]: /guide/
