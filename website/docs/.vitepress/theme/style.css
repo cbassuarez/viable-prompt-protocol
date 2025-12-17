@@ -418,7 +418,7 @@ pre,
   right: min(8%, 2.5rem);
   width: clamp(96px, 18vw, 220px);
   aspect-ratio: 1 / 1;
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAEAYAAACk6Ai5AAABdWlDQ1BrQ0dDb2xvclNwYWNlRGlzcGxheVAzAAAokXWQvUvDUBiGt3qyT2sES9QWIjS0cREUsBESjY50GrUqwTrRQrtVCyc1T6B1Fwd1Y/wF/4EzZV/A1W26EPRsFBRQ0Yp8//uVYKtk77M+TM3Pec84uEMDczUTRgmGYncRq7m5RwnG4hmOMq8ecM7xEF1bCxe4N3Xs+/3fYq/C/L7r7Spprfnmi9PzCIH8E9BWoqKrHoTwY0SVHCPTnIa/7FtZbnlAtfwFg9u26s6emrY0ikVThnnyxBaqWrDvFvH3p0XW1NHyO75VAH+K01fSFFvt1HH9/oMBlb7f+qNB0/k/3YlJ2a7ylVGOsTUrs7B1K+AIwLvKM0MXxXgjYxgCCwM7sv1KykuqmYZjydjs3Ujsv91FnXxWxRsG0Pckzn47VCgvRfn7JURWyS28ukGd75I7jsEloj0jlsV+EjxO4NvwKcBWwZkA8azFAAAAAElFTkSuQmCC') center/cover no-repeat;
+  background: url('vppchat/vppchat_icon.png') center/cover no-repeat;
   transform: perspective(900px) rotateY(-14deg) rotateX(6deg) translateZ(30px);
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
   pointer-events: none;
