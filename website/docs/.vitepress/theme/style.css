@@ -997,3 +997,15 @@ body.body--no-scroll {
     transform: perspective(760px) rotateY(-10deg) rotateX(5deg);
   }
 }
+
+/* Ensure the VitePress nav always wins the stacking context */
+.VPNav {
+  z-index: 200;
+}
+
+/* Keep the banner below the nav (sticky under nav height) */
+.vpp-announcement-bar {
+  position: sticky;
+  top: var(--vp-nav-height);
+  z-index: 150;
+}
