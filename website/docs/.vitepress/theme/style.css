@@ -1285,3 +1285,7 @@ body.body--no-scroll {
     transition-duration: 1ms !important;
   }
 }
+
+.dark .VPHomeHero .name::after {
+  color: #ffffff;
+}
