@@ -934,20 +934,32 @@ body.body--no-scroll {
   overflow: hidden;
 }
 /* Home hero: enlarge image area and overlay icon (scoped to VPHomeHero) */
+/* Bigger, but never overflow the viewport */
 .VPHomeHero .image-container {
   position: relative;
   isolation: isolate;
-  max-width: none;
-  width: clamp(420px, 54vw, 980px);
+
+  /* keep it large but contained */
+  width: 100%;
+  max-width: min(980px, calc(100vw - 2rem));
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-right: clamp(12px, 2.2vw, 28px);
+  box-sizing: border-box;
+
+  overflow: visible; /* allow icon to sit on top without clipping */
 }
 
-.VPHomeHero .image-container .image,
+/* Ensure no stretching: preserve intrinsic aspect ratio */
 .VPHomeHero .image-container img,
 .VPHomeHero img.image,
 .VPHomeHero .VPImage.image {
-  width: clamp(420px, 54vw, 980px);
-  max-width: none;
+  display: block;
+  width: 100%;
   height: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .VPHomeHero .image-container::after {
@@ -967,7 +979,7 @@ body.body--no-scroll {
 @media (max-width: 768px) {
   /* Give the hero image area breathing room on the right */
 .VPHomeHero .image-container {
-  padding-right: clamp(12px, 2.2vw, 28px);
+  padding-right: clamp(12px, 4vw, 28px);
   box-sizing: border-box;
 }
 
