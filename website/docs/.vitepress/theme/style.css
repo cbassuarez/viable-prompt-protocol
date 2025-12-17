@@ -385,11 +385,11 @@ pre,
     -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
-.home .VPHomeHero .name {
+.VPHomeHero .name {
   position: relative;
 }
 
-.home .VPHomeHero .name::after {
+.VPHomeHero .name::after {
   content: 'beta';
   display: inline-flex;
   align-items: center;
@@ -406,43 +406,6 @@ pre,
   text-transform: uppercase;
 }
 
-.home .VPHomeHero .image {
-  position: relative;
-  isolation: isolate;
-}
-
-.home .VPHomeHero .image::after {
-  content: '';
-  position: absolute;
-  bottom: min(12%, 2.75rem);
-  right: min(8%, 2.5rem);
-  width: clamp(96px, 18vw, 220px);
-  aspect-ratio: 1 / 1;
-  background: url("../vppchat_icon.png") center / contain no-repeat;
-  transform: perspective(900px) rotateY(-14deg) rotateX(6deg) translateZ(30px);
-  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
-  pointer-events: none;
-  z-index: 2;
-}
-
-.home .VPHomeHero .image img {
-  width: clamp(360px, 48vw, 780px);
-  max-width: none;
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .home .VPHomeHero .image::after {
-    width: clamp(80px, 28vw, 140px);
-    bottom: 1.5rem;
-    right: 1.5rem;
-    transform: perspective(760px) rotateY(-10deg) rotateX(5deg);
-  }
-
-  .home .VPHomeHero .image img {
-    width: clamp(260px, 80vw, 480px);
-  }
-}
 
 @media (max-width: 768px) {
   .vpp-hero,
@@ -970,33 +933,31 @@ pre,
 body.body--no-scroll {
   overflow: hidden;
 }
-/* Home hero: make the image area larger (scoped to home only) */
-body.home .VPHomeHero .image-container {
-  position: relative;       /* needed for overlay */
+/* Home hero: enlarge image area and overlay icon (scoped to VPHomeHero) */
+.VPHomeHero .image-container {
+  position: relative;
   isolation: isolate;
-  max-width: none;          /* remove default cap */
-  width: clamp(360px, 52vw, 860px);
+  max-width: none;
+  width: clamp(420px, 54vw, 980px);
 }
 
-/* Make the actual image fill the container (covers multiple DOM variants) */
-body.home .VPHomeHero .image-container .image,
-body.home .VPHomeHero .image-container img,
-body.home .VPHomeHero img.image,
-body.home .VPHomeHero .VPImage.image {
-  width: 100%;
+.VPHomeHero .image-container .image,
+.VPHomeHero .image-container img,
+.VPHomeHero img.image,
+.VPHomeHero .VPImage.image {
+  width: clamp(420px, 54vw, 980px);
   max-width: none;
   height: auto;
 }
 
-/* Overlay app icon in front (lower-right; swap right->left if desired) */
-body.home .VPHomeHero .image-container::after {
+.VPHomeHero .image-container::after {
   content: "";
   position: absolute;
-  right: clamp(8px, 2vw, 24px);
-  bottom: clamp(8px, 2vw, 24px);
+  right: min(8%, 2.5rem);
+  bottom: min(12%, 2.75rem);
   width: clamp(96px, 18vw, 220px);
   aspect-ratio: 1 / 1;
-  background: url("/vppchat_icon.png") center / contain no-repeat;
+  background: url("../vppchat_icon.png") center / contain no-repeat;
   transform: perspective(900px) rotateY(-14deg) rotateX(6deg) translateZ(30px);
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
   pointer-events: none;
@@ -1004,12 +965,21 @@ body.home .VPHomeHero .image-container::after {
 }
 
 @media (max-width: 768px) {
-  body.home .VPHomeHero .image-container {
-    width: clamp(260px, 80vw, 520px);
+  .VPHomeHero .image-container {
+    width: clamp(260px, 82vw, 520px);
   }
 
-  body.home .VPHomeHero .image-container::after {
+  .VPHomeHero .image-container .image,
+  .VPHomeHero .image-container img,
+  .VPHomeHero img.image,
+  .VPHomeHero .VPImage.image {
+    width: clamp(260px, 82vw, 520px);
+  }
+
+  .VPHomeHero .image-container::after {
     width: clamp(80px, 28vw, 140px);
+    right: 1.5rem;
+    bottom: 1.5rem;
     transform: perspective(760px) rotateY(-10deg) rotateX(5deg);
   }
 }
