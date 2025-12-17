@@ -118,8 +118,8 @@ transcript stays auditable as it grows.
 
 ## Next
 
-- Read the normative spec: [Spec](/spec/latest/spec.md)
-- Learn workflows and patterns: [Guide](/website/docs/guide/index.md)
+- Read the normative spec: [Spec](https://cbassuarez.github.io/viable-prompt-protocol/spec/)
+- Learn workflows and patterns: [Guide](https://cbassuarez.github.io/viable-prompt-protocol/guide/)
 - Copy the system prompt once: [Header snippet](/#header-snippet)
 
 -[testflight](https://testflight.apple.com/join/w4GDYBZs)
