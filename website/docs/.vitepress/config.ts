@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress';
 import mathjax3 from 'markdown-it-mathjax3';
 
-const base = '/viable-prompt-protocol/';
+const base = '/';
 
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
