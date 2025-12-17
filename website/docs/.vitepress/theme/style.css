@@ -970,3 +970,46 @@ pre,
 body.body--no-scroll {
   overflow: hidden;
 }
+/* Home hero: make the image area larger (scoped to home only) */
+body.home .VPHomeHero .image-container {
+  position: relative;       /* needed for overlay */
+  isolation: isolate;
+  max-width: none;          /* remove default cap */
+  width: clamp(360px, 52vw, 860px);
+}
+
+/* Make the actual image fill the container (covers multiple DOM variants) */
+body.home .VPHomeHero .image-container .image,
+body.home .VPHomeHero .image-container img,
+body.home .VPHomeHero img.image,
+body.home .VPHomeHero .VPImage.image {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+/* Overlay app icon in front (lower-right; swap right->left if desired) */
+body.home .VPHomeHero .image-container::after {
+  content: "";
+  position: absolute;
+  right: clamp(8px, 2vw, 24px);
+  bottom: clamp(8px, 2vw, 24px);
+  width: clamp(96px, 18vw, 220px);
+  aspect-ratio: 1 / 1;
+  background: url("/vppchat_icon.png") center / contain no-repeat;
+  transform: perspective(900px) rotateY(-14deg) rotateX(6deg) translateZ(30px);
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  body.home .VPHomeHero .image-container {
+    width: clamp(260px, 80vw, 520px);
+  }
+
+  body.home .VPHomeHero .image-container::after {
+    width: clamp(80px, 28vw, 140px);
+    transform: perspective(760px) rotateY(-10deg) rotateX(5deg);
+  }
+}
