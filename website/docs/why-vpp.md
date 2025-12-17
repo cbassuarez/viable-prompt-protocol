@@ -123,3 +123,6 @@ transcript stays auditable as it grows.
 - Copy the system prompt once: [Header snippet](/#header-snippet)
 
 -[testflight](https://testflight.apple.com/join/w4GDYBZs)
+
+---
+<!-- cSpell:ignore testflight replayable -->
