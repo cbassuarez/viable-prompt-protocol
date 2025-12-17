@@ -1005,7 +1005,7 @@ body.body--no-scroll {
 
 /* Keep the banner below the nav (sticky under nav height) */
 .vpp-announcement-bar {
-  position: sticky;
-  top: var(--vp-nav-height);
+  position: sticky !important;
+  top: var(--vp-nav-height) !important;
   z-index: 150;
 }
