@@ -15,4 +15,4 @@ Use this page when deciding if the protocol fits your workflow:
 
 If you want the lighter-weight path, copy the [header snippet](/#header-snippet) into your model of choice. When you need stricter enforcement with macOS polish, install the VPPChat beta.
 ---
-<!-- markdownlint-disable MD032 MD034 MD013-->
+<!-- markdownlint-disable MD032 MD003 MD026 MD013-->
