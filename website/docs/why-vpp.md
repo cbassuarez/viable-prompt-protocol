@@ -120,9 +120,10 @@ transcript stays auditable as it grows.
 
 - Read the normative spec: [Spec][spec]
 - Learn workflows and patterns: [Guide][guide]
-- Copy the system prompt once: [Header snippet][header_snippet]
+- Copy the system prompt once: [Header snippet][headersnippet]
 
 -[testflight]: https://testflight.apple.com/join/w4GDYBZs
- [header_snippet]: /#header-snippet
- [spec]: /spec/
- [guide]: /guide/
+[spec]: /spec/
+[guide]: /guide/
+[headersnippet]: /#header-snippet
+
