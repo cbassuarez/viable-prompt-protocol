@@ -490,20 +490,26 @@ pre,
 }
 
 .VPHomeHero .name::after {
-  content: 'beta';
+  content: 'BETA';
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   margin-left: 0.65rem;
-  padding: 0.2rem 0.65rem;
+  padding: 0.18rem 0.62rem;
+
   border-radius: 999px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  font-weight: 600;
-  text-transform: uppercase;
+  border: 1px solid currentColor;
+  background: transparent;
+
+  color: #f97316; /* orange */
+  font-size: 0.78rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  white-space: nowrap;
+
+  transform: none;
 }
 
 
