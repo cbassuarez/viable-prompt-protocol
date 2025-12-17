@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: Join VPPChat Beta (TestFlight)
-      link: https://testflight.apple.com/join/EXAMPLE
+      link: https://testflight.apple.com/join/w4GDYBZs
     - theme: alt
       text: Try VPP in your system prompt
       link: '#header-snippet'
