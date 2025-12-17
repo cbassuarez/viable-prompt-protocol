@@ -4,16 +4,16 @@ title: 'Viable Prompt Protocol (VPP)'
 titleTemplate: 'Viable Prompt Protocol (VPP)'
 description: 'A tag + footer-driven protocol for deterministic, machine-readable LLM conversations.'
 hero:
-  name: 'VPPChat beta'
-  text: 'VPP is the spec. VPPChat is the best way to run it — tuned, and VPP-enforced from source.'
-  tagline: 'Docs-first, app-forward.'
+  name: 'VPPChat'
+  text: 'The reference macOS client for Viable Prompt Protocol.'
+  tagline: 'Run VPP with strict tag + footer enforcement, tuned defaults, and a workflow built for real transcripts.'
   image:
-    src: /vppchat/hero.svg
-    alt: VPPChat beta
+    src: /vppchat-example.png
+    alt: VPPChat
   actions:
     - theme: brand
       text: Join VPPChat Beta (TestFlight)
-      link: https://testflight.apple.com/join/w4GDYBZs
+      link: https://testflight.apple.com/join/EXAMPLE
     - theme: alt
       text: Try VPP in your system prompt
       link: '#header-snippet'
@@ -34,6 +34,10 @@ features:
     link: /spec/
     linkText: 'Read spec'
 ---
+
+::: tip Why VPP
+[Why VPP](/why-vpp) — when to use VPP, how it differs from other prompt grammars, and what “strict” means in practice.
+:::
 
 <a id="header-snippet"></a>
 <div class="vpp-hero-snippet-block">
