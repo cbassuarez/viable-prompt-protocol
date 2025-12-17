@@ -78,7 +78,7 @@ Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/sp
 <div class="vpp-beta-callout">
   <div class="vpp-beta-callout__header">
     <h2>VPPChat Beta</h2>
-    <a class="vpp-beta-callout__cta" href="https://testflight.apple.com/join/EXAMPLE">Join VPPChat Beta (TestFlight)</a>
+    <a class="vpp-beta-callout__cta" href="https://testflight.apple.com/join/w4GDYBZs">Join VPPChat Beta (TestFlight)</a>
   </div>
   <div class="vpp-beta-callout__links">
     <a class="vpp-beta-card" href="/vppchat/release-notes">

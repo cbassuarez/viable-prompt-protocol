@@ -3,7 +3,7 @@ title: VPPChat Beta Roadmap
 sidebar: false
 ---
 
-[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/EXAMPLE)
+[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/w4GDYBZs)
 
 This roadmap keeps testers aware of upcoming changes and known issues.
 

@@ -3,7 +3,7 @@ title: VPPChat Beta Release Notes
 sidebar: false
 ---
 
-[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/EXAMPLE)
+[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/w4GDYBZs)
 
 Updates to the TestFlight build are posted here to keep beta testers in sync with the latest protocol-aligned behavior.
 

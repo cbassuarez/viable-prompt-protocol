@@ -3,7 +3,7 @@ title: VPPChat Beta Privacy
 sidebar: false
 ---
 
-[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/EXAMPLE)
+[Join VPPChat Beta (TestFlight)](https://testflight.apple.com/join/w4GDYBZs)
 
 VPPChat honors the protocol's transparency requirements while keeping beta telemetry minimal.
 
