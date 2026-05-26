@@ -9,8 +9,6 @@
 [![CDN Latest][badge-cdn-latest]][cdn-latest]
 [![CDN v1.4][badge-cdn-v1]][cdn-v1]
 
-> ![vppchat-example.png](vppchat-example.png)
-
 A compact, testable protocol for tagged, closed-loop prompting (constructivist–cybernetic).
 **Bang-tag grammar** for users, **mirrored tags** for assistants, flexible loop, explicit escapes, and a machine-readable
 compliance footer.
