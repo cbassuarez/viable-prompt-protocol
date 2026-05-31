@@ -13,17 +13,17 @@ sidebar: false
   </p>
 
   <p class="vpp-hero-tagline">
-    Join VPPChat Beta for tuned defaults and strict tag + footer
-    enforcement.
+    A shared contract for how humans and assistants structure
+    multi-turn work—on any model you already use.
   </p>
 
   <div class="vpp-hero-actions">
     <a class="vpp-hero-button vpp-hero-button--brand"
-      href="https://testflight.apple.com/join/w4GDYBZs">
-      Join VPPChat Beta (TestFlight)
-    </a>
-    <a class="vpp-hero-button" href="/#header-snippet">
+      href="/#header-snippet">
       Try VPP in your system prompt
+    </a>
+    <a class="vpp-hero-button" href="/spec/">
+      Read the spec
     </a>
   </div>
 </div>
@@ -107,22 +107,11 @@ transcript stays auditable as it grows.
   </p>
 </div>
 
-<div class="vpp-try-box" style="margin-top: 1rem;">
-  <h3>Run VPP enforced</h3>
-  <p>
-    <a href="https://testflight.apple.com/join/w4GDYBZs">Join VPPChat
-    Beta</a> for tuned defaults and strict tag + footer enforcement—no
-    extra setup.
-  </p>
-</div>
-
 ## Next
 
 - Read the normative spec: [Spec](https://cbassuarez.github.io/viable-prompt-protocol/spec/)
 - Learn workflows and patterns: [Guide](https://cbassuarez.github.io/viable-prompt-protocol/guide/)
 - Copy the system prompt once: [Header snippet](/#header-snippet)
 
--[testflight](https://testflight.apple.com/join/w4GDYBZs)
-
 ---
-<!-- cSpell:ignore testflight replayable -->
+<!-- cSpell:ignore replayable -->

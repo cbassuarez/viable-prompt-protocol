@@ -4,28 +4,20 @@ title: 'Viable Prompt Protocol (VPP)'
 titleTemplate: 'Viable Prompt Protocol (VPP)'
 description: 'A tag + footer-driven protocol for deterministic, machine-readable LLM conversations.'
 hero:
-  name: 'VPPChat'
-  text: 'The reference macOS client for Viable Prompt Protocol.'
-  tagline: 'Run VPP with strict tag + footer enforcement, tuned defaults, and a workflow built for real transcripts.'
-  image:
-    src: /vppchat-example.png
-    alt: VPPChat
+  name: 'Viable Prompt Protocol'
+  text: 'A tag-first protocol for auditable human–LLM conversations.'
+  tagline: 'Every user turn declares intent with !<tag>; every reply mirrors it and ends with a machine-readable compliance footer. Strict, versioned, and model-agnostic.'
   actions:
     - theme: brand
-      text: Join VPPChat Beta (TestFlight)
-      link: https://testflight.apple.com/join/w4GDYBZs
-    - theme: alt
       text: Try VPP in your system prompt
       link: '#header-snippet'
+    - theme: alt
+      text: Read the spec
+      link: /spec/
 features:
-  - icon: '🚀'
-    title: 'VPPChat Quickstart'
-    details: 'Follow the tuned, VPP-enforced flow from the app.'
-    link: /vppchat/
-    linkText: 'Open quickstart'
   - icon: '🧭'
     title: 'Header snippet'
-    details: 'Copy the canonical system prompt for any model.'
+    details: 'Copy the canonical system prompt and run VPP on any model.'
     link: '#header-snippet'
     linkText: 'Jump to snippet'
   - icon: '📑'
@@ -33,6 +25,11 @@ features:
     details: 'Stay aligned with the canonical, versioned protocol.'
     link: /spec/
     linkText: 'Read spec'
+  - icon: '🔁'
+    title: 'Why VPP'
+    details: 'When to use VPP, how it differs from prompt templates, and what “strict” means.'
+    link: /why-vpp
+    linkText: 'Read more'
 ---
 
 ::: tip Why VPP
@@ -73,27 +70,6 @@ Full spec: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/sp
 ```
 
   <p class="vpp-snippet-instructions">Add the header snippet to the model's custom instructions or system prompt once.</p>
-</div>
-
-<div class="vpp-beta-callout">
-  <div class="vpp-beta-callout__header">
-    <h2>VPPChat Beta</h2>
-    <a class="vpp-beta-callout__cta" href="https://testflight.apple.com/join/w4GDYBZs">Join VPPChat Beta (TestFlight)</a>
-  </div>
-  <div class="vpp-beta-callout__links">
-    <a class="vpp-beta-card" href="/vppchat/release-notes">
-      <span class="vpp-beta-card__title">Release notes</span>
-      <span class="vpp-beta-card__desc">Track the beta build updates.</span>
-    </a>
-    <a class="vpp-beta-card" href="/vppchat/privacy">
-      <span class="vpp-beta-card__title">Privacy</span>
-      <span class="vpp-beta-card__desc">How the beta handles your data.</span>
-    </a>
-    <a class="vpp-beta-card" href="/vppchat/roadmap">
-      <span class="vpp-beta-card__title">Roadmap & known issues</span>
-      <span class="vpp-beta-card__desc">See what is shipping next and what to expect.</span>
-    </a>
-  </div>
 </div>
 
 ## Start with the protocol
@@ -166,5 +142,5 @@ validates transcripts and docs before merge.
 [parser-schema]:
   https://github.com/cbassuarez/viable-prompt-protocol/blob/main/spec/latest/spec.md
 ---
-<!-- cSpell:ignore vppchat vpp -->
+<!-- cSpell:ignore vpp -->
 <!-- markdownlint-disable MD032 MD034 MD007-->
