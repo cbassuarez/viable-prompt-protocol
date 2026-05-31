@@ -200,7 +200,7 @@ None external; derived from this session’s rules.
 
 ---
 title: Viable Prompt Protocol (VPP) v1.4 — Bang-Tagged, Mirror-Response Loop
-permalink: https://cbassuarez.github.io/viable-prompt-protocol/latest/spec.html
+permalink: https://viableprompt.org/latest/spec.html
 layout: single
 sidebar:
   nav: "vpp"

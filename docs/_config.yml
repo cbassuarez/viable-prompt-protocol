@@ -2,8 +2,8 @@ title: Viable Prompt Protocol
 description: Bang-tagged, closed-loop prompting (constructivist–cybernetic)
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: "default"
-url: "https://cbassuarez.github.io"
-baseurl: "/viable-prompt-protocol"
+url: "https://viableprompt.org"
+baseurl: ""
 permalink: pretty
 markdown: kramdown
 plugins:

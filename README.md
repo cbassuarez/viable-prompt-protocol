@@ -49,7 +49,7 @@ Or fetch via CDN: `https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol
 
 ## Docs
 
-- **VitePress site**: <https://cbassuarez.github.io/viable-prompt-protocol/>
+- **VitePress site**: <https://viableprompt.org/>
 - **Latest**: [`docs/latest/spec.md`](docs/latest/spec.md) (tracked to v1.4)
 - **Versioned**: [`docs/spec/v1.4/spec.md`](docs/spec/v1.4/spec.md)
 - **Modules**: [`docs/spec/v1.4/modules/`](docs/spec/v1.4/modules/)
@@ -95,7 +95,7 @@ npm run docs:build
 [spec-doc]: docs/spec/v1.4/spec.md
 [ci-workflow]: https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/ci.yml
 [pages-workflow]: https://github.com/cbassuarez/viable-prompt-protocol/actions/workflows/pages.yml
-[docs-site]: https://cbassuarez.github.io/viable-prompt-protocol/
+[docs-site]: https://viableprompt.org/
 [cdn-latest]: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/latest/spec.md
 [cdn-v1]: https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md
 

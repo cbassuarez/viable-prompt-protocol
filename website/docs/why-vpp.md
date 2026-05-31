@@ -109,8 +109,8 @@ transcript stays auditable as it grows.
 
 ## Next
 
-- Read the normative spec: [Spec](https://cbassuarez.github.io/viable-prompt-protocol/spec/)
-- Learn workflows and patterns: [Guide](https://cbassuarez.github.io/viable-prompt-protocol/guide/)
+- Read the normative spec: [Spec](https://viableprompt.org/spec/)
+- Learn workflows and patterns: [Guide](https://viableprompt.org/guide/)
 - Copy the system prompt once: [Header snippet](/#header-snippet)
 
 ---

@@ -1,7 +1,7 @@
 # Viable Prompt Protocol documentation
 
 The public documentation for the Viable Prompt Protocol is now published via the VitePress site at
-<https://cbassuarez.github.io/viable-prompt-protocol/>.
+<https://viableprompt.org/>.
 
 - For the machine-readable specification, continue to use [`docs/spec/v1.4/spec.md`](spec/v1.4/spec.md) and
   [`spec/latest/spec.md`](../spec/latest/spec.md) as canonical sources.

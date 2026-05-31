@@ -36,6 +36,6 @@ These automation steps run in CI and in the GitHub Pages deployment pipeline.
 - Steps: Install Node 20, run lint + spell + parser checks,
   build the VitePress site with `npm run docs:build`, and publish via
   `actions/deploy-pages`.
-- Output: <https://cbassuarez.github.io/viable-prompt-protocol/>
+- Output: <https://viableprompt.org/>
 
 Use these commands locally before pushing changes; CI will block merges that diverge from the expected outputs.
