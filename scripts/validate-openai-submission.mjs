@@ -6,9 +6,17 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const packetPath = resolve(root, "submission/openai-public-plugin.json");
 const packet = JSON.parse(await readFile(packetPath, "utf8"));
+const importPath = resolve(root, "chatgpt-app-submission.json");
+const submissionImport = JSON.parse(await readFile(importPath, "utf8"));
 const manifest = JSON.parse(
   await readFile(resolve(root, "plugins/viable-prompt-protocol/.codex-plugin/plugin.json"), "utf8")
 );
+const toolNames = [
+  "vpp_prepare_turn",
+  "vpp_format_response",
+  "vpp_validate_exchange",
+  "vpp_validate_transcript"
+];
 
 assert.equal(packet.submission_type, "with_mcp");
 assert.equal(packet.listing.name, manifest.interface.displayName);
@@ -33,6 +41,37 @@ assert.deepEqual(packet.expected_annotations, {
   openWorldHint: false,
   destructiveHint: false
 });
+
+assert.equal(
+  submissionImport.$schema,
+  "https://developers.openai.com/plugins/schemas/chatgpt-app-submission.v1.json"
+);
+assert.equal(submissionImport.schema_version, 1);
+assert.equal(submissionImport.app_info.display_name, packet.listing.name);
+assert.equal(submissionImport.app_info.category, packet.listing.category.toUpperCase());
+assert.ok(submissionImport.app_info.subtitle.length <= 30);
+assert.deepEqual(Object.keys(submissionImport.tools), toolNames);
+assert.equal(submissionImport.test_cases.length, 5);
+assert.equal(submissionImport.negative_test_cases.length, 3);
+
+for (const name of toolNames) {
+  const tool = submissionImport.tools[name];
+  assert.deepEqual(tool.annotations, packet.expected_annotations);
+  assert.ok(tool.justifications.read_only_justification);
+  assert.ok(tool.justifications.open_world_justification);
+  assert.ok(tool.justifications.destructive_justification);
+}
+
+for (const testCase of submissionImport.test_cases) {
+  assert.ok(testCase.description && testCase.user_prompt && testCase.expected_output);
+  const triggeredTools = testCase.tools_triggered.split(",").map((name) => name.trim());
+  assert.ok(triggeredTools.length > 0);
+  for (const name of triggeredTools) assert.ok(toolNames.includes(name), `Unknown tool in positive test: ${name}`);
+}
+for (const testCase of submissionImport.negative_test_cases) {
+  assert.ok(testCase.description && testCase.user_prompt && testCase.expected_output);
+  assert.equal(testCase.tools_triggered, null);
+}
 
 for (const [name, justification] of Object.entries(packet.tool_annotation_justifications)) {
   assert.match(name, /^vpp_(prepare_turn|format_response|validate_exchange|validate_transcript)$/);
@@ -64,4 +103,4 @@ await Promise.all([
   access(resolve(root, `${packet.skill.bundle_path}.sha256.txt`))
 ]);
 
-console.log("OpenAI public plugin submission packet is structurally valid.");
+console.log("OpenAI public plugin submission packet and portal import are structurally valid.");

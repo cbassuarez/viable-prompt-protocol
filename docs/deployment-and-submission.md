@@ -85,7 +85,7 @@ The submission is **With MCP** and combines one Universal MCP URL with the uploa
 - Skill bundle: `website/docs/public/downloads/viable-prompt-protocol-skill-1.0.0.zip`
 - Release notes: **Initial VPP v1.5 plugin submission. Adds a portable Agent Skill, four anonymous read-only MCP computation tools, immutable protocol resources, transparent client-carried state, conversation-global tag counters, and an offline fallback.**
 
-All four tools declare `readOnlyHint: true`, `openWorldHint: false`, and `destructiveHint: false` because they compute and return protocol structures without changing external or server-side state. The canonical machine-readable portal packet, annotation justifications, reviewer notes, and reproducible test cases are in `submission/openai-public-plugin.json`.
+All four tools declare `readOnlyHint: true`, `openWorldHint: false`, and `destructiveHint: false` because they compute and return protocol structures without changing external or server-side state. Upload the portal-native `chatgpt-app-submission.json` at the repository root to prefill App Info, MCP tool annotations, and Testing. The more detailed internal packet, reviewer notes, and release data remain in `submission/openai-public-plugin.json`.
 
 ### Domain verification
 
