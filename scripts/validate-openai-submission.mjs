@@ -44,7 +44,7 @@ assert.deepEqual(packet.expected_annotations, {
 
 assert.equal(
   submissionImport.$schema,
-  "https://developers.openai.com/plugins/schemas/chatgpt-app-submission.v1.json"
+  "https://developers.openai.com/apps-sdk/schemas/chatgpt-app-submission.v1.json"
 );
 assert.equal(submissionImport.schema_version, 1);
 assert.equal(submissionImport.app_info.display_name, packet.listing.name);
