@@ -2,6 +2,9 @@
   "name": "viable-prompt-protocol",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "run:exp1-protret": "node experiments/exp1-protocol-retention/run-exp1-protret.mjs",
     "test:corpus": "node scripts/validate-corpus.mjs",

@@ -77,7 +77,7 @@ v1.4 archive.
 
 ## Development and verification
 
-Requires Node 20.
+Requires Node 22 or newer.
 
 ```bash
 npm ci
