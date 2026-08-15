@@ -5,7 +5,7 @@ import {
   type FormattedResponse,
   type PreparedTurn,
   type SourceMode,
-  type VppState
+  type VppStateInput
 } from "./core";
 
 export interface BodyGeneration {
@@ -16,7 +16,7 @@ export interface BodyGeneration {
 
 export interface HostAdapterInput {
   message: string;
-  state?: VppState | null;
+  state?: VppStateInput | null;
   next_locus?: string | null;
   generate: (prepared: PreparedTurn) => Promise<string | BodyGeneration>;
 }

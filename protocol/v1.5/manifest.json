@@ -28,15 +28,19 @@
     "default_locus": "default",
     "cycle_initial": 1,
     "cycle_max": 3,
-    "cycle_advances_on_user_tag": "c",
-    "tag_counts_scope": "conversation",
+    "cycle_model": "restartable-dag",
+    "cycle_closes_on_user_tag": "c",
+    "cycle_advances_after_close": true,
+    "locus_scope": "cycle",
+    "active_path_only": true,
+    "tag_counts_scope": "conversation-per-tag",
     "cycle_resets": [
       "new-locus-escape",
       "immediate-output-escape",
       "explicit-pipeline",
       "new-command-after-final"
     ],
-    "escape_hint_at_cycle_max": true
+    "escape_hint_on_cycle_close_at_max": true
   },
   "contracts": {
     "g": "Stay conceptual. Snippets are allowed; do not emit full files or modules.",

@@ -1,7 +1,7 @@
 <!-- GENERATED from protocol/v1.5/manifest.json; do not edit. -->
 # Viable Prompt Protocol v1.5
 
-Manifest digest: `3f8948a2838ddc33`
+Manifest digest: `0d7a00f3ccb6f493`
 
 VPP is a tagged, closed-loop conversation protocol. The user places one command on line 1; the assistant returns exactly one allowed wrapper tag, a body, and the canonical footer.
 
@@ -29,11 +29,11 @@ VPP is a tagged, closed-loop conversation protocol. The user places one command 
 
 ## State
 
-The default locus is `default`. Cycle starts at 1. Every valid user `!<c>` advances the cycle, capped at 3. New-locus escapes, immediate-output escapes, explicit pipelines, and a new command after `<o_f>` reset cycle to 1.
+The default locus is `default`. One cycle is a restartable DAG traversal that owns its locus and active realized path. Cycle starts at 1. A valid user `!<c>` is formatted at the current cycle and closes that traversal; the next valid ordinary command opens the next cycle, capped at 3. New-locus escapes, immediate-output escapes, explicit pipelines, and a new valid command after `<o_f>` start a new cycle at 1.
 
-Tag indexes are conversation-global. They continue across cycle resets and locus changes, and reset only when the caller begins a new conversation with no prior state. Unnamed locus jumps are assigned `locus-2`, `locus-3`, and so on.
+Tag indexes are per-tag and conversation-global. They continue across cycle restarts and locus changes, and reset only when the caller begins a new conversation with no prior state. For example, `g, q, g` yields `g_1, q_1, g_2`. Unnamed locus jumps are assigned `locus-2`, `locus-3`, and so on.
 
-At cycle 3 the formatter adds the canonical escape choices when the body does not already contain both forms:
+When a valid `!<c>` closes cycle 3, the formatter adds the canonical escape choices when the body does not already contain both forms:
 
 > Escape options: send `!<e> --<g>` (or `--<q>`, `--<o>`, `--<c>`, `--<o_f>`) to change locus, or `!<e_o>` to start an output pipeline.
 

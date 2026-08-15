@@ -53,8 +53,8 @@ export const openApiDocument = {
   openapi: "3.1.0",
   info: {
     title: "Viable Prompt Protocol API",
-    version: "1.0.0",
-    description: "Stateless deterministic operations for VPP protocol v1.5. Conversation state is client-carried JSON."
+    version: "1.1.0",
+    description: "Stateless deterministic operations for VPP protocol v1.5. Canonical client-carried state models each cycle as a restartable DAG with its own locus and active path; per-tag counters remain conversation-global."
   },
   servers: [{ url: "https://mcp.viableprompt.org" }],
   paths: {

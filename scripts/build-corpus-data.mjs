@@ -73,8 +73,6 @@ function buildEntries() {
 
       const userText = prevTurn && typeof prevTurn.body === "string" ? prevTurn.body : "";
 
-      const id = `${version}-${String(nextId).padStart(4, "4").replace(/^0+/, "").padStart(4, "0")}`;
-      // simpler: pad to 4 digits
       const paddedId = `${version}-${String(nextId).padStart(4, "0")}`;
 
       const entry = {

@@ -4,7 +4,7 @@
     "name": "Viable Prompt Protocol",
     "category": "Productivity",
     "short_description": "Structure and validate VPP conversations.",
-    "long_description": "Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill uses a stateless runtime to prepare turns, maintain conversation-global tag counters in client-carried state, format responses, validate exchanges, and repair structural errors.",
+    "long_description": "Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill and stateless runtime prepare turns, preserve conversation-global per-tag counters, track restartable cycle paths and loci, format responses, and surface validation controls in an inline UI.",
     "website_url": "https://viableprompt.org/",
     "support_url": "https://viableprompt.org/support/",
     "privacy_policy_url": "https://viableprompt.org/privacy/",
@@ -21,14 +21,14 @@
     "url_type": "universal",
     "url": "https://mcp.viableprompt.org/mcp",
     "authentication": "none",
-    "custom_ui": false,
-    "content_security_policy": "No custom UI and no UI fetch domains.",
+    "custom_ui": true,
+    "content_security_policy": "The bundled inline MCP App requests no connect or resource domains. It uses no external assets, storage, telemetry, or nested browsing.",
     "domain_challenge_url": "https://mcp.viableprompt.org/.well-known/openai-apps-challenge"
   },
   "skill": {
     "name": "viable-prompt-protocol",
-    "bundle_path": "website/docs/public/downloads/viable-prompt-protocol-skill-1.0.0.zip",
-    "version": "1.0.0"
+    "bundle_path": "website/docs/public/downloads/viable-prompt-protocol-skill-1.1.0.zip",
+    "version": "1.1.0"
   },
   "starter_prompts": [
     "Use VPP to structure this conversation.",
@@ -71,7 +71,7 @@
     {
       "name": "Inject escape choices at cycle three",
       "user_prompt": "Run three consecutive valid !<c> turns while carrying state. Keep each generated critique body brief and omit escape wording from the third body.",
-      "expected_behavior": "Advance the critique cycle on every valid c command, cap it at three, and allow vpp_format_response to inject the canonical escape choices on the third response.",
+      "expected_behavior": "Emit each valid c at its current iteration, close that cycle, open the next cycle only when its following ordinary command arrives, and inject canonical escape choices only when the third valid c closes iteration three.",
       "expected_result_shape": "The third response has Cycle=3/3 and includes both the !<e> --<g> form and !<e_o> escape form exactly once.",
       "fixture_data": "Carry the committed state between all three exchanges."
     },
@@ -104,6 +104,6 @@
     }
   ],
   "availability": "All countries and regions supported by the OpenAI Plugins Directory where the publisher is permitted to offer the service.",
-  "release_notes": "Initial Viable Prompt Protocol plugin submission. Packages the portable VPP v1.5 Agent Skill with four anonymous read-only MCP computation tools, immutable protocol references, transparent client-carried state, conversation-global tag counters, deterministic structural repair, and an offline fallback.",
-  "reviewer_notes": "The server is anonymous and stateless. It has no custom UI, OAuth flow, demo account, or server-side conversation persistence. Opening /mcp in a browser is not a functional test; use MCP Streamable HTTP initialization or /healthz for service health."
+  "release_notes": "VPP runtime 1.1.0 adds canonical restartable cycle paths, per-cycle locus ownership, conversation-global per-tag counters, legacy-state normalization, and an accessible inline MCP App for composing modes, flags, locus transitions, and skips. All four tools remain anonymous and read-only.",
+  "reviewer_notes": "The server is anonymous and stateless, with no OAuth flow, demo account, or server-side conversation persistence. Validation tools attach one inline cycle-controller UI; prepare and format remain UI-free. The widget has no external assets, network domains, storage, or telemetry. Opening /mcp in a browser is not a functional test; use MCP Streamable HTTP initialization or /healthz for service health."
 }

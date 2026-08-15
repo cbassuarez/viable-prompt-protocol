@@ -25,8 +25,8 @@ This repository install is the same plugin package being prepared for OpenAI's p
 
 ## Download the portable bundle
 
-- [Download the complete plugin 1.0.0](/downloads/viable-prompt-protocol-plugin-1.0.0.zip) ([SHA-256](/downloads/viable-prompt-protocol-plugin-1.0.0.zip.sha256.txt))
-- [Download the standalone Agent Skill 1.0.0](/downloads/viable-prompt-protocol-skill-1.0.0.zip) ([SHA-256](/downloads/viable-prompt-protocol-skill-1.0.0.zip.sha256.txt))
+- [Download the complete plugin 1.1.0](/downloads/viable-prompt-protocol-plugin-1.1.0.zip) ([SHA-256](/downloads/viable-prompt-protocol-plugin-1.1.0.zip.sha256.txt))
+- [Download the standalone Agent Skill 1.1.0](/downloads/viable-prompt-protocol-skill-1.1.0.zip) ([SHA-256](/downloads/viable-prompt-protocol-skill-1.1.0.zip.sha256.txt))
 
 The complete archive contains the same plugin directory used by the repository marketplace. Use it for local inspection, a manual install, or distribution to another plugin-compatible host. The standalone archive is the portable skill tree for Agent Skills hosts and submission systems that accept a skill bundle directly.
 
@@ -40,7 +40,7 @@ Hosts with Streamable HTTP MCP support can connect directly:
 https://mcp.viableprompt.org/mcp
 ```
 
-In ChatGPT developer mode, open Plugins, select the plus button, create a public MCP connection, and enter the complete URL above. Choose no authentication. The service exposes four read-only computation tools, five immutable v1.5 references, and the `start-vpp` prompt.
+In ChatGPT developer mode, open Plugins, select the plus button, create a public MCP connection, and enter the complete URL above. Choose no authentication. The service exposes four read-only computation tools, five immutable v1.5 references, the `start-vpp` prompt, and one inline cycle controller attached only to validation results.
 
 You can confirm that the production service is available at [`/healthz`](https://mcp.viableprompt.org/healthz). The MCP endpoint itself expects MCP requests; opening `/mcp` as an ordinary web page is not a functional test.
 
@@ -60,9 +60,11 @@ Carry the returned `state` to the next exchange. Omit it only for a genuinely ne
 
 The service receives the command, response, state, or transcript supplied to the selected operation and returns a deterministic structural result. It does not create an account, persist conversation state, or enable application-level request-body logging. Do not send secrets or personal data that are unnecessary for validation. Read the full [privacy policy](/privacy/) before using the public endpoint with sensitive workflows.
 
-## Secondary methods
+<a id="secondary-methods"></a>
 
-Read the [normative v1.5 specification](/spec/) when implementing another host adapter. If the host has no skill or tool support, use the [custom-instructions fallback](/custom-instructions/); it offers less reliable enforcement because the model must maintain its own state.
+## Secondary methods — reduced assurance
+
+Read the [normative v1.5 specification](/spec/) when implementing another host adapter. Only when the host cannot install a skill, call MCP, or use the JSON operations should you use the [custom-instructions fallback](/custom-instructions/). That route is reduced assurance because the model must maintain and repair its own structural state.
 
 Need help choosing an installation route? See [Support](/support/).
 

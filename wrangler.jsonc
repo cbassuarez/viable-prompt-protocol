@@ -5,6 +5,12 @@
   "compatibility_date": "2026-08-14",
   "workers_dev": true,
   "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "mcp.viableprompt.org",
+      "custom_domain": true
+    }
+  ],
   "observability": { "enabled": false },
   "limits": {
     "cpu_ms": 50

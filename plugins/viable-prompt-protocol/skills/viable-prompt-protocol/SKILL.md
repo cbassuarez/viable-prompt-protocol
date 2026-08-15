@@ -5,7 +5,7 @@ description: Enforce Viable Prompt Protocol v1.5 when line 1 contains an explici
 
 # Viable Prompt Protocol
 
-Treat the returned state as conversation state. Tag indexes are global for the conversation and continue across loci. Omit state only for a genuinely new conversation.
+Treat the returned state as conversation state. Each tag has its own conversation-global index, and those counters continue across cycle and locus changes. Each restartable cycle owns its current locus and realized path. Omit state only for a genuinely new conversation.
 
 1. Call `vpp_prepare_turn` with the complete user message, current state when available, and `next_locus` only when the user names a new locus.
 2. If status is `protocol_error`, use `deterministic_body` and do not improvise. Otherwise generate body-only content that follows `content_contract`; do not add VPP wrappers.

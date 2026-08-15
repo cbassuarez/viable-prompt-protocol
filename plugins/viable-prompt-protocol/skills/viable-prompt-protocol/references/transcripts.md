@@ -17,7 +17,7 @@ ASSISTANT: <g>
 
 ## Critique cycles and automatic escape choices
 
-Three valid user `!<c>` commands move cycles 1 to 2 to 3 and remain capped at 3. The formatter injects the canonical escape choices at cycle 3 if the generated body omitted them.
+A valid user `!<c>` closes the current cycle without changing that response footer. The next valid ordinary command opens the next cycle. Therefore three closed unresolved cycles produce critique footers at cycles 1, 2, and 3; the third critique receives the canonical escape choices if its generated body omitted them.
 
 ## Deterministic invalid-command recovery
 

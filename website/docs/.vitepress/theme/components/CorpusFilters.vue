@@ -18,7 +18,7 @@
       <div class="corpus-filters__label">Experiments</div>
       <div class="corpus-filters__chips corpus-filters__chips--scroll">
         <button
-          class="chip"
+          class="chip vpp-glass"
           :class="{ 'chip--active': selectedExperiment === 'all' }"
           type="button"
           @click="emit('update:experiment', 'all')"
@@ -28,7 +28,7 @@
         <button
           v-for="experiment in experiments"
           :key="experiment.slug"
-          class="chip"
+          class="chip vpp-glass"
           :class="{ 'chip--active': selectedExperiment === experiment.slug }"
           type="button"
           @click="emit('update:experiment', experiment.slug)"
@@ -44,7 +44,7 @@
         <button
           v-for="tag in tags"
           :key="tag"
-          class="chip"
+          class="chip vpp-glass"
           :class="{ 'chip--active': selectedTags.includes(tag) }"
           type="button"
           @click="emit('toggle-tag', tag)"
@@ -61,7 +61,7 @@
           <button
             v-for="option in correctnessOptions"
             :key="option"
-            class="chip"
+            class="chip vpp-glass"
             :class="{ 'chip--active': isCorrectnessActive(option) }"
             type="button"
             @click="emit('toggle-correctness', option)"
@@ -77,7 +77,7 @@
           <button
             v-for="option in severityOptions"
             :key="option"
-            class="chip"
+            class="chip vpp-glass"
             :class="{ 'chip--active': selectedSeverities.includes(option) }"
             type="button"
             @click="emit('toggle-severity', option)"
@@ -93,7 +93,7 @@
           <button
             v-for="option in modeOptions"
             :key="option"
-            class="chip"
+            class="chip vpp-glass"
             :class="{ 'chip--active': selectedModes.includes(option) }"
             type="button"
             @click="emit('toggle-mode', option)"

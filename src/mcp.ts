@@ -24,6 +24,11 @@ import {
   validateExchangeInputSchema,
   validateTranscriptInputSchema
 } from "./schemas";
+import {
+  CYCLE_CONTROLLER_MIME_TYPE,
+  CYCLE_CONTROLLER_URI,
+  cycleControllerHtml
+} from "./widget-resource";
 
 preloadSchemas();
 
@@ -50,12 +55,25 @@ function registerTextResource(server: McpServer, name: string, uri: string, titl
   );
 }
 
+function toolMeta(invoking: string, invoked: string, rendersController = false) {
+  return {
+    "openai/toolInvocation/invoking": invoking,
+    "openai/toolInvocation/invoked": invoked,
+    ...(rendersController
+      ? {
+          ui: { resourceUri: CYCLE_CONTROLLER_URI },
+          "openai/outputTemplate": CYCLE_CONTROLLER_URI
+        }
+      : {})
+  };
+}
+
 export function createVppMcpServer(): McpServer {
   const server = new McpServer(
-    { name: "viable-prompt-protocol", title: "Viable Prompt Protocol", version: "1.0.0" },
+    { name: "viable-prompt-protocol", title: "Viable Prompt Protocol", version: "1.1.0" },
     {
       instructions:
-        "Use vpp_prepare_turn, generate body-only content under its contract, call vpp_format_response, then vpp_validate_exchange. Carry returned state to the next turn.",
+        "Use vpp_prepare_turn, generate body-only content under its contract, call vpp_format_response, then vpp_validate_exchange. Carry returned canonical state to the next turn. Tag counters are per-tag and conversation-global; each cycle owns its locus and active path.",
       cacheHints: {
         "tools/list": { ttlMs: 86_400_000, cacheScope: "public" },
         "resources/list": { ttlMs: 86_400_000, cacheScope: "public" },
@@ -70,10 +88,11 @@ export function createVppMcpServer(): McpServer {
     "vpp_prepare_turn",
     {
       title: "Prepare VPP turn",
-      description: "Parse only line 1 of a VPP message, resolve the deterministic transition, and propose transparent client-carried state without persisting it.",
+      description: "Use this when a VPP command on line 1 needs deterministic parsing, transition resolution, and proposed client-carried state.",
       inputSchema: prepareInputSchema,
       outputSchema: preparedTurnSchema,
-      annotations
+      annotations,
+      _meta: toolMeta("Preparing VPP turn…", "Turn prepared")
     },
     async ({ message, state, next_locus }) => toolResult(prepareTurn(message, state, next_locus) as unknown as Record<string, unknown>)
   );
@@ -82,10 +101,11 @@ export function createVppMcpServer(): McpServer {
     "vpp_format_response",
     {
       title: "Format VPP response",
-      description: "Normalize a model-generated body, remove duplicate VPP wrappers, inject required cycle-3 escapes, and add the canonical v1.5 header and footer.",
+      description: "Use this after preparing a VPP turn to normalize body-only model output and add the canonical v1.5 wrapper, footer, and committed state.",
       inputSchema: formatInputSchema,
       outputSchema: formattedResponseSchema,
-      annotations
+      annotations,
+      _meta: toolMeta("Formatting VPP response…", "Response formatted")
     },
     async ({ prepared_turn, body, sources, assumption_count }) =>
       toolResult(formatResponse(prepared_turn, body, sources, assumption_count) as unknown as Record<string, unknown>)
@@ -95,10 +115,11 @@ export function createVppMcpServer(): McpServer {
     "vpp_validate_exchange",
     {
       title: "Validate VPP exchange",
-      description: "Validate one VPP user-assistant exchange, report structural violations, and optionally repair wrappers while preserving the response body.",
+      description: "Use this when one VPP exchange needs structural validation or a body-preserving wrapper repair; the result also renders the cycle controller.",
       inputSchema: validateExchangeInputSchema,
       outputSchema: exchangeValidationSchema,
-      annotations
+      annotations,
+      _meta: toolMeta("Checking VPP exchange…", "Exchange checked", true)
     },
     async (input) => toolResult(validateExchange(input) as unknown as Record<string, unknown>)
   );
@@ -107,10 +128,11 @@ export function createVppMcpServer(): McpServer {
     "vpp_validate_transcript",
     {
       title: "Validate VPP transcript",
-      description: "Validate a VPP transcript, reconstruct conversation-global counters and client-carried state, and report structural violations by turn.",
+      description: "Use this when a VPP transcript needs state reconstruction and turn-indexed structural diagnostics; the result also renders cycle and locus history.",
       inputSchema: validateTranscriptInputSchema,
       outputSchema: transcriptValidationSchema,
-      annotations
+      annotations,
+      _meta: toolMeta("Checking VPP transcript…", "Transcript checked", true)
     },
     async (input) => toolResult(validateTranscript(input) as unknown as Record<string, unknown>)
   );
@@ -120,6 +142,32 @@ export function createVppMcpServer(): McpServer {
   registerTextResource(server, "vpp-v1.5-header", "vpp://v1.5/header-snippet", "VPP v1.5 fallback header", "text/plain", generatedHeaderText);
   registerTextResource(server, "vpp-v1.5-state", "vpp://v1.5/state-schema", "VPP v1.5 state schema", "application/schema+json", generatedStateSchemaText);
   registerTextResource(server, "vpp-v1.5-adoption", "vpp://v1.5/adoption", "VPP v1.5 adoption guide", "text/markdown", generatedAdoptionText);
+  server.registerResource(
+    "vpp-cycle-controller",
+    CYCLE_CONTROLLER_URI,
+    { title: "VPP cycle controller", mimeType: CYCLE_CONTROLLER_MIME_TYPE },
+    async (resourceUri) => ({
+      contents: [
+        {
+          uri: resourceUri.href,
+          mimeType: CYCLE_CONTROLLER_MIME_TYPE,
+          text: cycleControllerHtml,
+          _meta: {
+            ui: {
+              prefersBorder: true,
+              domain: "https://mcp.viableprompt.org",
+              csp: { connectDomains: [], resourceDomains: [] }
+            },
+            "openai/widgetPrefersBorder": true,
+            "openai/widgetDomain": "https://mcp.viableprompt.org",
+            "openai/widgetCSP": { connect_domains: [], resource_domains: [] },
+            "openai/widgetDescription":
+              "Compact VPP controls for the active cycle path, next mode, flags, locus, and exact follow-up command."
+          }
+        }
+      ]
+    })
+  );
 
   server.registerPrompt(
     "start-vpp",

@@ -48,11 +48,11 @@ VPP is a tagged, closed-loop conversation protocol. The user places one command 
 
 ## State
 
-The default locus is \`${manifest.state.default_locus}\`. Cycle starts at 1. Every valid user \`!<c>\` advances the cycle, capped at ${manifest.state.cycle_max}. New-locus escapes, immediate-output escapes, explicit pipelines, and a new command after \`<o_f>\` reset cycle to 1.
+The default locus is \`${manifest.state.default_locus}\`. One cycle is a restartable DAG traversal that owns its locus and active realized path. Cycle starts at 1. A valid user \`!<c>\` is formatted at the current cycle and closes that traversal; the next valid ordinary command opens the next cycle, capped at ${manifest.state.cycle_max}. New-locus escapes, immediate-output escapes, explicit pipelines, and a new valid command after \`<o_f>\` start a new cycle at 1.
 
-Tag indexes are conversation-global. They continue across cycle resets and locus changes, and reset only when the caller begins a new conversation with no prior state. Unnamed locus jumps are assigned \`locus-2\`, \`locus-3\`, and so on.
+Tag indexes are per-tag and conversation-global. They continue across cycle restarts and locus changes, and reset only when the caller begins a new conversation with no prior state. For example, \`g, q, g\` yields \`g_1, q_1, g_2\`. Unnamed locus jumps are assigned \`locus-2\`, \`locus-3\`, and so on.
 
-At cycle 3 the formatter adds the canonical escape choices when the body does not already contain both forms:
+When a valid \`!<c>\` closes cycle 3, the formatter adds the canonical escape choices when the body does not already contain both forms:
 
 > ${escapeHint}
 
@@ -73,7 +73,7 @@ const header = `Viable Prompt Protocol v1.5 (reduced-assurance fallback):
 
 Parse only line 1 as !<tag> plus optional modifiers. User tags are g,q,o,c,o_f,e,e_o. Assistant tags are limited to g,q,o,c,o_f. Reject duplicate or contradictory modifiers and invalid pipeline destinations with <c> recovery. Mirror ordinary tags; !<e> --<tag> starts a named/new locus, !<e_o> routes to <o>, and !<o> --correct --<tag> starts a pipeline.
 
-Track state per conversation. Tag indexes are conversation-global and continue across loci. Cycle starts at 1; every valid user !<c> advances it, capped at 3. Locus escapes, immediate-output escapes, explicit pipelines, and a new command after <o_f> reset cycle but not tag counts. At cycle 3 add both escape choices if absent. Default locus is default; unnamed jumps are locus-2, locus-3, etc.
+Track state per conversation. Tag indexes are per-tag, conversation-global, and continue across cycles and loci. A cycle is one restartable DAG traversal with its own locus and active path. A valid user !<c> is formatted at the current cycle and closes it; the next valid ordinary command opens the next cycle, capped at 3. Locus escapes, immediate-output escapes, explicit pipelines, and a new valid command after <o_f> start at cycle 1 without resetting tag counts. Add both escape choices only when a valid !<c> closes cycle 3. Default locus is default; unnamed jumps are locus-2, locus-3, etc.
 
 Every reply must be exactly:
 <assistant_tag>
@@ -131,7 +131,7 @@ const failureCodes = `<!-- GENERATED from protocol/v1.5/manifest.json; do not ed
 | \`missing-or-malformed-footer\` | The canonical footer is absent or malformed. |
 | \`*-mismatch\` | Wrapper/footer fields differ from the deterministic transition. |
 | \`nested-header\`, \`nested-footer\` | A duplicate wrapper appears inside the body. |
-| \`missing-escape-options\` | A cycle-3 response omitted an escape form. |
+| \`missing-escape-options\` | The critique closing cycle 3 omitted an escape form. |
 | \`recovery-body-mismatch\` | Invalid input did not use the deterministic recovery body. |
 `;
 
@@ -154,7 +154,7 @@ ASSISTANT: <g>
 
 ## Critique cycles and automatic escape choices
 
-Three valid user \`!<c>\` commands move cycles 1 to 2 to 3 and remain capped at 3. The formatter injects the canonical escape choices at cycle 3 if the generated body omitted them.
+A valid user \`!<c>\` closes the current cycle without changing that response footer. The next valid ordinary command opens the next cycle. Therefore three closed unresolved cycles produce critique footers at cycles 1, 2, and 3; the third critique receives the canonical escape choices if its generated body omitted them.
 
 ## Deterministic invalid-command recovery
 
@@ -173,7 +173,7 @@ Use the packaged \`viable-prompt-protocol\` skill and its remote MCP dependency.
 
 The MCP endpoint is \`https://mcp.viableprompt.org/mcp\`. Equivalent stateless JSON operations live under \`https://mcp.viableprompt.org/api/v1/\`; OpenAPI is at \`/api/v1/openapi.json\`.
 
-Conversation state is transparent JSON carried by the client. Send no state to begin a new conversation. Reuse returned state for the next turn. The service keeps no conversation state and is designed not to log request bodies.
+Conversation state is transparent JSON carried by the client. Send no state to begin a new conversation. Reuse returned state for the next turn. Each cycle owns its locus and active realized path; per-tag counters remain conversation-global across all cycle and locus changes. The service keeps no conversation state and is designed not to log request bodies.
 
 Use the bundled offline CLI only if remote MCP and JSON are unavailable. Custom instructions are a reduced-assurance fallback because a model cannot reliably enforce counters and transitions from prose alone.
 `;

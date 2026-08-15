@@ -4,24 +4,51 @@
   "title": "VPP Conversation State",
   "type": "object",
   "additionalProperties": false,
-  "required": ["protocol_version", "locus", "cycle", "tag_counts", "closed"],
+  "required": ["protocol_version", "cycle", "tag_counts", "closed"],
   "properties": {
     "protocol_version": { "const": "v1.5" },
-    "locus": {
+    "cycle": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["index", "name"],
+      "required": ["sequence", "iteration", "locus", "path", "closed"],
       "properties": {
-        "index": { "type": "integer", "minimum": 1 },
-        "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 64,
-          "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._/-]*$"
-        }
+        "sequence": { "type": "integer", "minimum": 1 },
+        "iteration": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "locus": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["index", "name"],
+          "properties": {
+            "index": { "type": "integer", "minimum": 1 },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._/-]*$"
+            }
+          }
+        },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["command_tag", "response_tag", "tag_index", "modifiers"],
+            "properties": {
+              "command_tag": { "enum": ["g", "q", "o", "c", "o_f", "e", "e_o"] },
+              "response_tag": { "enum": ["g", "q", "o", "c", "o_f"] },
+              "tag_index": { "type": "integer", "minimum": 1 },
+              "modifiers": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": { "enum": ["correct", "incorrect", "minor", "major", "<g>", "<q>", "<o>", "<c>", "<o_f>"] }
+              }
+            }
+          }
+        },
+        "closed": { "type": "boolean" }
       }
     },
-    "cycle": { "type": "integer", "minimum": 1, "maximum": 3 },
     "tag_counts": {
       "type": "object",
       "additionalProperties": false,

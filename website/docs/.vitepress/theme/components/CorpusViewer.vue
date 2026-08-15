@@ -8,50 +8,14 @@
       </div>
       <button
         ref="theaterTriggerRef"
-        class="corpus-viewer__theater-toggle"
+        class="corpus-viewer__theater-toggle vpp-glass"
+        data-glass-shape="square"
         type="button"
         :disabled="!canUseTheater"
         aria-label="Enter theater mode"
         @click="openTheater"
       >
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path
-            d="M5 9V5h4"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M19 9V5h-4"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M5 15v4h4"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M19 15v4h-4"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <VppAsciiIcon src="/canvas/expand.svg" alt="" :size="44" :cell-size="5" />
       </button>
     </header>
 
@@ -115,7 +79,7 @@
             </div>
             <button
               ref="theaterCloseButtonRef"
-              class="corpus-theater__close"
+              class="corpus-theater__close vpp-glass"
               type="button"
               @click="closeTheater"
             >
@@ -191,6 +155,7 @@ import { TAG_ORDER, filterEntries, mapRawEntry, sortEntries } from './corpus-uti
 import CorpusFilters from './CorpusFilters.vue';
 import CorpusList from './CorpusList.vue';
 import CorpusDetail from './CorpusDetail.vue';
+import VppAsciiIcon from './VppAsciiIcon.vue';
 
 const availableVersions = ['v1.4'];
 const tagOptions = TAG_ORDER;

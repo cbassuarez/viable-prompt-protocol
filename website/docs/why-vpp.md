@@ -18,11 +18,11 @@ sidebar: false
   </p>
 
   <div class="vpp-hero-actions">
-    <a class="vpp-hero-button vpp-hero-button--brand"
+    <a class="vpp-hero-button vpp-hero-button--brand vpp-glass"
       href="/install/">
       Install VPP
     </a>
-    <a class="vpp-hero-button" href="/spec/">
+    <a class="vpp-hero-button vpp-glass" href="/spec/">
       Read the spec
     </a>
   </div>
@@ -82,7 +82,7 @@ Clarify the deliverable and remove the weakest assumption.
 Understood. Deliverable: a single-page spec with a join-first CTA.
 Removed assumption: that we can infer the user’s audience without
 asking.
-[Version=v1.5 | Tag=c_1 | Sources=none | Assumptions=0 | Cycle=2/3 | Locus=default]
+[Version=v1.5 | Tag=c_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=default]
 ```
 
 The tag states intent. The footer makes progress reviewable.
@@ -100,9 +100,9 @@ transcript stays auditable as it grows.
   <h3>Try VPP anywhere</h3>
   <p>
     <a href="/install/">Install the plugin</a>, then begin with
-    <code>!&lt;g&gt;</code> or <code>!&lt;q&gt;</code>. The generated
-    <a href="/custom-instructions/">custom-instructions block</a> remains
-    available for hosts that cannot use skills or tools.
+    <code>!&lt;g&gt;</code> or <code>!&lt;q&gt;</code>. The skill prepares
+    the turn through MCP, generates the body, commits the wrapper, and validates
+    the exchange before it returns.
   </p>
 </div>
 
@@ -110,7 +110,7 @@ transcript stays auditable as it grows.
 
 - Read the normative spec: [Spec](https://viableprompt.org/spec/)
 - Learn workflows and patterns: [Guide](https://viableprompt.org/guide/)
-- Use the fallback instructions: [Custom instructions](/custom-instructions/)
+- Connect a supported host: [Remote MCP setup](/install/#connect-the-remote-mcp-server)
 
 ---
 <!-- cSpell:ignore replayable -->

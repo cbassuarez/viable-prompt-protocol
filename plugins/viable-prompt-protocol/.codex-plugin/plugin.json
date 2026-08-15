@@ -1,6 +1,6 @@
 {
   "name": "viable-prompt-protocol",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Structure, format, and validate VPP v1.5 conversations with a portable skill and deterministic runtime.",
   "author": {
     "name": "Seb Suarez",
@@ -15,7 +15,7 @@
   "interface": {
     "displayName": "Viable Prompt Protocol",
     "shortDescription": "Structure and validate VPP conversations.",
-    "longDescription": "Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill uses a stateless runtime to prepare turns, maintain conversation-global tag counters in client-carried state, format responses, validate exchanges, and repair structural errors.",
+    "longDescription": "Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill and stateless runtime prepare turns, preserve conversation-global per-tag counters, track restartable cycle paths and loci, format responses, and surface validation controls in an inline UI.",
     "developerName": "Seb Suarez",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read"],
@@ -27,7 +27,7 @@
       "Validate and repair this VPP transcript.",
       "Start a VPP planning loop for a resilient launch plan."
     ],
-    "brandColor": "#3B82F6",
+    "brandColor": "#E95420",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png"
   },

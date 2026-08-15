@@ -18,5 +18,5 @@
 | `missing-or-malformed-footer` | The canonical footer is absent or malformed. |
 | `*-mismatch` | Wrapper/footer fields differ from the deterministic transition. |
 | `nested-header`, `nested-footer` | A duplicate wrapper appears inside the body. |
-| `missing-escape-options` | A cycle-3 response omitted an escape form. |
+| `missing-escape-options` | The critique closing cycle 3 omitted an escape form. |
 | `recovery-body-mismatch` | Invalid input did not use the deterministic recovery body. |

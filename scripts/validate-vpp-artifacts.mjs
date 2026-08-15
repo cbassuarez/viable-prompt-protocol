@@ -4,6 +4,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const packageMetadata = JSON.parse(await readFile(resolve(root, "package.json"), "utf8"));
 const pluginRoot = resolve(root, "plugins/viable-prompt-protocol");
 const skillRoot = resolve(pluginRoot, "skills/viable-prompt-protocol");
 const skillText = await readFile(resolve(skillRoot, "SKILL.md"), "utf8");
@@ -34,7 +35,7 @@ assert.match(openAiYaml, /allow_implicit_invocation: true/);
 
 const manifest = JSON.parse(await readFile(resolve(pluginRoot, ".codex-plugin/plugin.json"), "utf8"));
 assert.equal(manifest.name, "viable-prompt-protocol");
-assert.equal(manifest.version, "1.0.0");
+assert.equal(manifest.version, packageMetadata.version);
 assert.equal(manifest.skills, "./skills/");
 assert.equal(manifest.mcpServers, "./.mcp.json");
 assert.equal(manifest.author.name, "Seb Suarez");
@@ -64,8 +65,8 @@ assert.deepEqual(marketplace.plugins[0], {
 });
 
 for (const archive of [
-  "viable-prompt-protocol-plugin-1.0.0.zip",
-  "viable-prompt-protocol-skill-1.0.0.zip"
+  `viable-prompt-protocol-plugin-${packageMetadata.version}.zip`,
+  `viable-prompt-protocol-skill-${packageMetadata.version}.zip`
 ]) {
   await access(resolve(root, "website/docs/public/downloads", archive));
   await access(resolve(root, "website/docs/public/downloads", `${archive}.sha256.txt`));

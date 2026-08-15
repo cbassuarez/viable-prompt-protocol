@@ -4,10 +4,10 @@ import {
   validateExchange,
   validateTranscript,
   VppInputError,
-  type PreparedTurn,
+  type PreparedTurnInput,
   type SourceMode,
   type TranscriptTurn,
-  type VppState
+  type VppStateInput
 } from "./core";
 import { generatedManifestText } from "./generated-content";
 
@@ -46,14 +46,14 @@ async function main() {
     case "prepare-turn": {
       result = prepareTurn(
         requiredString(input, "message"),
-        input.state as VppState | null | undefined,
+        input.state as VppStateInput | null | undefined,
         input.next_locus as string | null | undefined
       );
       break;
     }
     case "format-response": {
       result = formatResponse(
-        input.prepared_turn as PreparedTurn,
+        input.prepared_turn as PreparedTurnInput,
         requiredString(input, "body"),
         (input.sources ?? "none") as SourceMode,
         (input.assumption_count ?? 0) as number
@@ -64,7 +64,7 @@ async function main() {
       result = validateExchange({
         user_message: requiredString(input, "user_message"),
         assistant_message: requiredString(input, "assistant_message"),
-        state: input.state as VppState | null | undefined,
+        state: input.state as VppStateInput | null | undefined,
         repair: input.repair === true,
         next_locus: input.next_locus as string | null | undefined
       });
@@ -74,7 +74,7 @@ async function main() {
       if (!Array.isArray(input.turns)) throw new VppInputError("invalid-input", "turns must be an array.");
       result = validateTranscript({
         turns: input.turns as TranscriptTurn[],
-        initial_state: input.initial_state as VppState | null | undefined,
+        initial_state: input.initial_state as VppStateInput | null | undefined,
         repair: input.repair === true
       });
       break;

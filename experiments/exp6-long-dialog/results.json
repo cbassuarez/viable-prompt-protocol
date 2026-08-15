@@ -1,0 +1,40 @@
+{
+  "challenge_type": "long_dialog",
+  "version": "v1.5",
+  "generated_at": "2026-06-01T05:23:33.013Z",
+  "rows": [
+    {
+      "challenge_type": "long_dialog",
+      "condition": "baseline_longdialog_tags",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "n": 1,
+      "header_rate": 0,
+      "footer_rate": 0,
+      "mirror_rate": 0,
+      "last_turn_retained_rate": 0
+    },
+    {
+      "challenge_type": "long_dialog",
+      "condition": "vpp_longdialog_grounded",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "n": 1,
+      "header_rate": 1,
+      "footer_rate": 1,
+      "mirror_rate": 1,
+      "last_turn_retained_rate": 1
+    },
+    {
+      "challenge_type": "long_dialog",
+      "condition": "vpp_longdialog_tags_only",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "n": 1,
+      "header_rate": 1,
+      "footer_rate": 1,
+      "mirror_rate": 1,
+      "last_turn_retained_rate": 1
+    }
+  ]
+}

@@ -107,7 +107,7 @@ export async function handleRequest(request: Request, env: Env = {}): Promise<Re
     });
   }
   if (url.pathname === "/healthz") {
-    return json({ ok: true, service_version: "1.0.0", protocol_version: "v1.5", stateful: false }, 200, { "Cache-Control": "public, max-age=60" });
+    return json({ ok: true, service_version: "1.1.0", protocol_version: "v1.5", stateful: false }, 200, { "Cache-Control": "public, max-age=60" });
   }
   if (url.pathname === `${API_PREFIX}/openapi.json`) {
     return json(openApiDocument, 200, { "Cache-Control": "public, max-age=3600" });

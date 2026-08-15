@@ -21,8 +21,8 @@ codex plugin marketplace add cbassuarez/viable-prompt-protocol
 codex plugin add viable-prompt-protocol@viable-prompt-protocol
 ```
 
-The website also publishes deterministic [plugin](https://viableprompt.org/downloads/viable-prompt-protocol-plugin-1.0.0.zip)
-and [standalone skill](https://viableprompt.org/downloads/viable-prompt-protocol-skill-1.0.0.zip) archives.
+The website also publishes deterministic [plugin](https://viableprompt.org/downloads/viable-prompt-protocol-plugin-1.1.0.zip)
+and [standalone skill](https://viableprompt.org/downloads/viable-prompt-protocol-skill-1.1.0.zip) archives.
 
 The enforced workflow is:
 
@@ -43,9 +43,9 @@ printf '%s' '{"message":"!<g>\nDesign a resilient queue."}' \
   | node plugins/viable-prompt-protocol/skills/viable-prompt-protocol/scripts/vpp.mjs prepare-turn
 ```
 
-Conversation state is client-carried JSON. A new conversation begins with no state and zero tag counters. Returned state
-must be reused on later turns; tag indexes continue globally across loci while cycle resets remain local to the current
-pipeline.
+Conversation state is client-carried JSON. A new conversation begins with no state and zero per-tag counters. Returned
+state must be reused on later turns; each tag index continues across all cycles and loci, while each restartable cycle
+owns its current locus and realized traversal path.
 
 ## Runtime and hosting
 

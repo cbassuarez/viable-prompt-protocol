@@ -20,6 +20,7 @@ jobs:
       - name: Generated artifact drift
         run: |
           npm run generate:vpp
+          npm run build:widget
           npm run build:skill-script
           npm run package:plugin
           git diff --exit-code

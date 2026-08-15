@@ -54,6 +54,30 @@ test("invalid commands produce deterministic c recovery without model discretion
   assert.match(formatted.footer, /Sources=web \| Assumptions=9/);
 });
 
+test("invalid commands increment c without changing cycle topology", () => {
+  const grounding = prepareTurn("!<g>");
+  const before = grounding.next_state.cycle;
+  const invalid = prepareTurn("!<g> --minor --major", grounding.next_state);
+  assert.equal(invalid.tag_index, 1);
+  assert.equal(invalid.next_state.tag_counts.c, 1);
+  assert.equal(invalid.next_state.cycle.sequence, before.sequence);
+  assert.equal(invalid.next_state.cycle.iteration, before.iteration);
+  assert.equal(invalid.next_state.cycle.path.length, before.path.length);
+  assert.equal(invalid.next_state.cycle.closed, before.closed);
+});
+
+test("incorrect output routes to c but only an explicit user c closes the cycle", () => {
+  const routed = prepareTurn("!<o> --incorrect");
+  assert.equal(routed.assistant_tag, "c");
+  assert.equal(routed.next_state.cycle.closed, false);
+  assert.deepEqual(routed.next_state.cycle.path[0], {
+    command_tag: "o",
+    response_tag: "c",
+    tag_index: 1,
+    modifiers: ["incorrect"]
+  });
+});
+
 test("tag indexes are conversation-global and continue across loci", () => {
   const first = prepareTurn("!<g>");
   const second = prepareTurn("!<e> --<g>", first.next_state);
@@ -62,8 +86,8 @@ test("tag indexes are conversation-global and continue across loci", () => {
     [first.tag_index, second.tag_index, third.tag_index],
     [1, 2, 3]
   );
-  assert.equal(second.next_state.locus.name, "locus-2");
-  assert.equal(second.next_state.cycle, 1);
+  assert.equal(second.next_state.cycle.locus.name, "locus-2");
+  assert.equal(second.next_state.cycle.iteration, 1);
   assert.equal(second.next_state.tag_counts.g, 2);
   assert.equal(third.next_state.tag_counts.g, 3);
 });
@@ -75,45 +99,91 @@ test("a new conversation resets all counters", () => {
   assert.deepEqual(createInitialState().tag_counts, { g: 0, q: 0, o: 0, c: 0, o_f: 0 });
 });
 
-test("every valid user critique advances cycle, capped at three", () => {
+test("legacy flat state and prepared turns normalize to canonical cycle state", () => {
+  const legacy = {
+    protocol_version: "v1.5" as const,
+    locus: { index: 2, name: "legacy" },
+    cycle: 2 as const,
+    tag_counts: { g: 4, q: 1, o: 0, c: 2, o_f: 0 },
+    closed: false
+  };
+  const prepared = prepareTurn("!<g>", legacy);
+  assert.equal(prepared.tag_index, 5);
+  assert.equal(prepared.next_state.cycle.iteration, 2);
+  assert.equal(prepared.next_state.cycle.locus.name, "legacy");
+  assert.equal(prepared.next_state.cycle.path.length, 1);
+
+  const legacyPrepared = {
+    ...prepared,
+    next_state: {
+      protocol_version: "v1.5" as const,
+      locus: { index: 2, name: "legacy" },
+      cycle: 2 as const,
+      tag_counts: prepared.next_state.tag_counts,
+      closed: false
+    }
+  };
+  const formatted = formatResponse(legacyPrepared, "Compatible body.");
+  assert.equal(formatted.state.cycle.iteration, 2);
+  assert.equal(formatted.state.cycle.path.length, 1);
+});
+
+test("each valid user critique closes its DAG and the next valid command advances the cycle", () => {
   const c1 = prepareTurn("!<c>");
   const c2 = prepareTurn("!<c>", c1.next_state);
   const c3 = prepareTurn("!<c>", c2.next_state);
-  assert.deepEqual([c1.next_state.cycle, c2.next_state.cycle, c3.next_state.cycle], [2, 3, 3]);
+  assert.deepEqual(
+    [c1.next_state.cycle.iteration, c2.next_state.cycle.iteration, c3.next_state.cycle.iteration],
+    [1, 2, 3]
+  );
+  assert.deepEqual(
+    [c1.next_state.cycle.sequence, c2.next_state.cycle.sequence, c3.next_state.cycle.sequence],
+    [1, 2, 3]
+  );
+  assert.equal(c1.next_state.cycle.closed, true);
+  assert.equal(c2.next_state.cycle.closed, true);
+  assert.equal(c3.next_state.cycle.closed, true);
   assert.deepEqual([c1.tag_index, c2.tag_index, c3.tag_index], [1, 2, 3]);
 });
 
 test("cycle resets retain global counters for all reset forms", () => {
-  let state = prepareTurn("!<c>", prepareTurn("!<c>").next_state).next_state;
-  assert.equal(state.cycle, 3);
+  let state = prepareTurn(
+    "!<c>",
+    prepareTurn("!<c>", prepareTurn("!<c>").next_state).next_state
+  ).next_state;
+  assert.equal(state.cycle.iteration, 3);
 
   const locus = prepareTurn("!<e> --<c>", state, "research");
-  assert.equal(locus.next_state.cycle, 1);
-  assert.equal(locus.next_state.tag_counts.c, 3);
-  assert.equal(locus.next_state.locus.name, "research");
+  assert.equal(locus.next_state.cycle.iteration, 1);
+  assert.equal(locus.next_state.tag_counts.c, 4);
+  assert.equal(locus.next_state.cycle.locus.name, "research");
+  assert.equal(locus.next_state.cycle.closed, false);
 
   state = prepareTurn("!<c>", locus.next_state).next_state;
   const immediate = prepareTurn("!<e_o>", state);
-  assert.equal(immediate.next_state.cycle, 1);
-  assert.equal(immediate.next_state.tag_counts.c, 4);
+  assert.equal(immediate.next_state.cycle.iteration, 1);
+  assert.equal(immediate.next_state.tag_counts.c, 5);
 
   state = prepareTurn("!<c>", immediate.next_state).next_state;
   const pipeline = prepareTurn("!<o> --correct --<g>", state);
-  assert.equal(pipeline.next_state.cycle, 1);
+  assert.equal(pipeline.next_state.cycle.iteration, 1);
   assert.equal(pipeline.next_state.tag_counts.g, 1);
-  assert.equal(pipeline.next_state.tag_counts.c, 5);
+  assert.equal(pipeline.next_state.tag_counts.c, 6);
 
   const final = prepareTurn("!<o_f>", pipeline.next_state);
   assert.equal(final.next_state.closed, true);
   const afterFinal = prepareTurn("!<q>", final.next_state);
-  assert.equal(afterFinal.next_state.cycle, 1);
+  assert.equal(afterFinal.next_state.cycle.iteration, 1);
   assert.equal(afterFinal.next_state.tag_counts.o_f, 1);
   assert.equal(afterFinal.next_state.tag_counts.q, 1);
 });
 
-test("cycle-three formatter injects canonical escapes only when absent", () => {
+test("only the critique closing cycle three injects canonical escapes", () => {
   const first = prepareTurn("!<c>");
-  const thirdCycle = prepareTurn("!<c>", first.next_state);
+  const second = prepareTurn("!<c>", first.next_state);
+  const thirdCycle = prepareTurn("!<c>", second.next_state);
+  assert.equal(first.must_offer_escape, false);
+  assert.equal(second.must_offer_escape, false);
   assert.equal(thirdCycle.must_offer_escape, true);
   const injected = formatResponse(thirdCycle, "Specific critique.");
   assert.match(injected.body, new RegExp(ESCAPE_HINT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
@@ -153,8 +223,29 @@ test("malicious or malformed locus values are rejected", () => {
     assert.throws(() => prepareTurn("!<e> --<g>", undefined, locus), VppInputError, locus);
   }
   const state = createInitialState() as VppState;
-  state.locus.name = "bad]footer";
+  state.cycle.locus.name = "bad]footer";
   assert.throws(() => prepareTurn("!<g>", state), VppInputError);
+});
+
+test("canonical state rejects forged path modifiers, routing, ordering, and closure", () => {
+  const valid = prepareTurn("!<g>").next_state;
+
+  const conflicting = structuredClone(valid);
+  conflicting.cycle.path[0].modifiers = ["minor", "major"];
+  assert.throws(() => prepareTurn("!<q>", conflicting), /valid resolved transition/);
+
+  const misrouted = structuredClone(valid);
+  misrouted.cycle.path[0].response_tag = "q";
+  misrouted.tag_counts.q = 1;
+  assert.throws(() => prepareTurn("!<q>", misrouted), /valid resolved transition/);
+
+  const duplicateIndex = structuredClone(prepareTurn("!<g>", valid).next_state);
+  duplicateIndex.cycle.path[1].tag_index = 1;
+  assert.throws(() => prepareTurn("!<q>", duplicateIndex), /must increase/);
+
+  const falseClosure = structuredClone(valid);
+  falseClosure.cycle.closed = true;
+  assert.throws(() => prepareTurn("!<q>", falseClosure), /final path command/);
 });
 
 test("structural repair preserves body and is idempotent", () => {
@@ -211,8 +302,8 @@ test("contradictory v1.4 sample is preserved while its v1.5 migration is state-c
     assert.equal(validation.ok, true, JSON.stringify(validation.violations));
     state = validation.state;
   }
-  assert.equal(state?.cycle, 1);
-  assert.equal(state?.locus.name, "repo");
+  assert.equal(state?.cycle.iteration, 1);
+  assert.equal(state?.cycle.locus.name, "repo");
   assert.equal(state?.tag_counts.g, 2);
   assert.equal(state?.tag_counts.c, 1);
 });
@@ -231,7 +322,7 @@ test("transcript validation reconstructs global state and reports turn indexes",
   });
   assert.equal(transcript.ok, true);
   assert.equal(transcript.state.tag_counts.g, 2);
-  assert.equal(transcript.state.locus.name, "locus-2");
+  assert.equal(transcript.state.cycle.locus.name, "locus-2");
 
   const bad = validateTranscript({ turns: [{ role: "assistant", content: g.message }] });
   assert.equal(bad.ok, false);
@@ -271,6 +362,6 @@ test("long conversations preserve global counts while cycles and loci reset", ()
   }
   assert.equal(state?.tag_counts.g, 48);
   assert.equal(state?.tag_counts.c, 12);
-  assert.equal(state?.locus.index, 7);
-  assert.ok((state?.cycle ?? 0) >= 1 && (state?.cycle ?? 0) <= 3);
+  assert.equal(state?.cycle.locus.index, 7);
+  assert.ok((state?.cycle.iteration ?? 0) >= 1 && (state?.cycle.iteration ?? 0) <= 3);
 });

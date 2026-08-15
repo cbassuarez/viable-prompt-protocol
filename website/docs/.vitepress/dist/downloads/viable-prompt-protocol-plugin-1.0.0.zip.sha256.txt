@@ -1,0 +1,1 @@
+4502b3d5269742b604cde24285d20c441193ac4c2f56510894f10f161a629bc2  viable-prompt-protocol-plugin-1.0.0.zip

@@ -31,7 +31,7 @@ export default defineConfig({
         text: 'More',
         items: [
           { text: 'Why VPP', link: '/why-vpp' },
-          { text: 'Custom instructions', link: '/custom-instructions/' },
+          { text: 'Reduced-assurance fallback', link: '/custom-instructions/' },
           { text: 'Validator & CI', link: '/validator/' },
           { text: 'Support', link: '/support/' },
           { text: 'Experiments', link: '/experiments/' },

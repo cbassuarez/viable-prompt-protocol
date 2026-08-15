@@ -1,0 +1,82 @@
+{
+  "hash": "47a10de1",
+  "configHash": "ab732563",
+  "lockfileHash": "8cc6e14d",
+  "browserHash": "66c7e9ad",
+  "optimized": {
+    "vue": {
+      "src": "../../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "bcb73d2f",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../../node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "e7a75c5e",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "4bc726db",
+      "needsInterop": false
+    },
+    "lenis": {
+      "src": "../../../../../node_modules/lenis/dist/lenis.mjs",
+      "file": "lenis.js",
+      "fileHash": "0874804b",
+      "needsInterop": false
+    },
+    "three": {
+      "src": "../../../../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "7ce3aff1",
+      "needsInterop": false
+    },
+    "three/addons/controls/OrbitControls.js": {
+      "src": "../../../../../node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "file": "three_addons_controls_OrbitControls__js.js",
+      "fileHash": "19b87a5f",
+      "needsInterop": false
+    },
+    "three/addons/loaders/DRACOLoader.js": {
+      "src": "../../../../../node_modules/three/examples/jsm/loaders/DRACOLoader.js",
+      "file": "three_addons_loaders_DRACOLoader__js.js",
+      "fileHash": "9d982dd3",
+      "needsInterop": false
+    },
+    "three/addons/loaders/GLTFLoader.js": {
+      "src": "../../../../../node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "file": "three_addons_loaders_GLTFLoader__js.js",
+      "fileHash": "4508b400",
+      "needsInterop": false
+    },
+    "three/addons/loaders/SVGLoader.js": {
+      "src": "../../../../../node_modules/three/examples/jsm/loaders/SVGLoader.js",
+      "file": "three_addons_loaders_SVGLoader__js.js",
+      "fileHash": "ee262c19",
+      "needsInterop": false
+    },
+    "three/addons/utils/BufferGeometryUtils.js": {
+      "src": "../../../../../node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "file": "three_addons_utils_BufferGeometryUtils__js.js",
+      "fileHash": "2d26f0c8",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-2S63SOER": {
+      "file": "chunk-2S63SOER.js"
+    },
+    "chunk-X5CJKT5V": {
+      "file": "chunk-X5CJKT5V.js"
+    },
+    "chunk-QYZSKLNP": {
+      "file": "chunk-QYZSKLNP.js"
+    },
+    "chunk-V6TY7KAL": {
+      "file": "chunk-V6TY7KAL.js"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">Viable Prompt Protocol</title>
+  <desc id="description">An orange exclamation mark and less-than sign on a hard-edged warm black field.</desc>
+  <rect width="512" height="512" fill="#15110E"/>
+  <rect x="24" y="24" width="464" height="464" fill="none" stroke="#E95420" stroke-width="12"/>
+  <path fill="#FF7540" d="M92 112h64v224H92zM92 364h64v64H92zM410 106v72L288 256l122 78v72L208 278v-44z"/>
+</svg>

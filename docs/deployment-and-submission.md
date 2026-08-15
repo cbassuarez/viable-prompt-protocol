@@ -1,5 +1,6 @@
 # Production deployment and public plugin submission
 
+<!-- cSpell:ignore rescan -->
 <!-- markdownlint-disable MD013 -->
 
 ## Deploy the production Worker
@@ -72,7 +73,7 @@ The submission is **With MCP** and combines one Universal MCP URL with the uploa
 - Publisher contact: `contact@cbassuarez.com`
 - Category: **Productivity**
 - Short description: **Structure and validate VPP conversations.**
-- Long description: **Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill uses a stateless runtime to prepare turns, maintain conversation-global tag counters in client-carried state, format responses, validate exchanges, and repair structural errors.**
+- Long description: **Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill and stateless runtime prepare turns, preserve conversation-global per-tag counters, track restartable cycle paths and loci, format responses, and surface validation controls in an inline UI.**
 - Website: `https://viableprompt.org/`
 - Support: `https://viableprompt.org/support/`
 - Privacy: `https://viableprompt.org/privacy/`
@@ -80,10 +81,10 @@ The submission is **With MCP** and combines one Universal MCP URL with the uploa
 - MCP URL type: **Universal**
 - MCP URL: `https://mcp.viableprompt.org/mcp`
 - Authentication: **None**
-- UI/CSP: no custom UI and no UI fetch domains
-- Screenshots: none; the plugin has no custom UI
-- Skill bundle: `website/docs/public/downloads/viable-prompt-protocol-skill-1.0.0.zip`
-- Release notes: **Initial VPP v1.5 plugin submission. Adds a portable Agent Skill, four anonymous read-only MCP computation tools, immutable protocol resources, transparent client-carried state, conversation-global tag counters, and an offline fallback.**
+- UI/CSP: one inline MCP App with empty connect/resource domain allowlists; no external assets, storage, or telemetry
+- Screenshots: capture the validation controller in light and dark mode after the production rescan
+- Skill bundle: `website/docs/public/downloads/viable-prompt-protocol-skill-1.1.0.zip`
+- Release notes: **VPP runtime 1.1.0 adds canonical restartable cycle paths, per-cycle locus ownership, conversation-global per-tag counters, legacy-state normalization, and an accessible inline controller for modes, flags, locus transitions, and skips.**
 
 All four tools declare `readOnlyHint: true`, `openWorldHint: false`, and `destructiveHint: false` because they compute and return protocol structures without changing external or server-side state. Upload the portal-native `chatgpt-app-submission.json` at the repository root to prefill App Info, MCP tool annotations, and Testing. The more detailed internal packet, reviewer notes, and release data remain in `submission/openai-public-plugin.json`.
 
@@ -106,9 +107,9 @@ Paste only the token at the prompt. The Worker exposes it as plain text at `http
 ### Five positive test cases
 
 1. Prompt: `!<g>` followed by `Design a resilient queue.` Expected: prepare as `<g>`, generate concept-only body, format `Tag=g_1`, validate, and return state.
-2. Prompt sequence: `!<g>` then `!<e> --<g>`. Expected: second response uses a new deterministic locus, resets cycle to 1, and continues the global counter as `Tag=g_2`.
-3. Prompt: `!<g> --correct --incorrect`. Expected: deterministic `<c>` recovery for `conflicting-correctness`; no free-form model body is needed.
-4. Prompt sequence: three valid `!<c>` turns. Expected: cycle reaches and stays at 3; the formatter injects both canonical escape choices if missing.
+2. In the controller, select **G**, **Correct**, **Major**, and **New locus**, then continue. Expected: the exact `!<e> --correct --major --<g>` command is sent with `next_locus`, and the response continues the global counter as `Tag=g_2`.
+3. Close three cycles with valid `!<c>` commands, opening the following cycle with an ordinary command. Expected: the critiques are `Cycle=1/3`, `Cycle=2/3`, and `Cycle=3/3`; only the third injects both canonical escape choices if missing.
+4. Prompt: `!<g> --correct --incorrect`. Expected: deterministic `<c>` recovery for `conflicting-correctness`; no free-form model body is needed and the active cycle topology is unchanged.
 5. Prompt: `Validate and structurally repair this VPP exchange:` followed by a valid body with a malformed wrapper. Expected: report structured violations, preserve the body, repair the wrapper, and validate the repaired message.
 
 ### Three negative test cases
@@ -124,7 +125,7 @@ Paste only the token at the prompt. The Worker exposes it as plain text at `http
 3. Open the plugin submission portal, select **Create plugin**, then **With MCP**.
 4. Complete Info using the listing packet above.
 5. Add the Universal MCP URL, choose no authentication, complete the domain challenge, and select **Scan Tools**.
-6. Review all four tools, their schemas and annotations, the five immutable resources, and the `start-vpp` prompt.
+6. Review all four tools, their schemas and annotations, five immutable protocol references, the inline UI resource, and the `start-vpp` prompt.
 7. Upload the standalone skill bundle and add the starter prompts.
 8. Enter the five positive and three negative test cases, select supported countries, add the release notes, complete the attestations, and submit for review.
 9. Submission starts review. After approval, return to the portal and choose when to publish to the universal Plugins Directory shared by ChatGPT and Codex.

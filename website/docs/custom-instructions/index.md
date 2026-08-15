@@ -15,7 +15,7 @@ Viable Prompt Protocol v1.5 (reduced-assurance fallback):
 
 Parse only line 1 as !<tag> plus optional modifiers. User tags are g,q,o,c,o_f,e,e_o. Assistant tags are limited to g,q,o,c,o_f. Reject duplicate or contradictory modifiers and invalid pipeline destinations with <c> recovery. Mirror ordinary tags; !<e> --<tag> starts a named/new locus, !<e_o> routes to <o>, and !<o> --correct --<tag> starts a pipeline.
 
-Track state per conversation. Tag indexes are conversation-global and continue across loci. Cycle starts at 1; every valid user !<c> advances it, capped at 3. Locus escapes, immediate-output escapes, explicit pipelines, and a new command after <o_f> reset cycle but not tag counts. At cycle 3 add both escape choices if absent. Default locus is default; unnamed jumps are locus-2, locus-3, etc.
+Track state per conversation. Tag indexes are per-tag, conversation-global, and continue across cycles and loci. A cycle is one restartable DAG traversal with its own locus and active path. A valid user !<c> is formatted at the current cycle and closes it; the next valid ordinary command opens the next cycle, capped at 3. Locus escapes, immediate-output escapes, explicit pipelines, and a new valid command after <o_f> start at cycle 1 without resetting tag counts. Add both escape choices only when a valid !<c> closes cycle 3. Default locus is default; unnamed jumps are locus-2, locus-3, etc.
 
 Every reply must be exactly:
 <assistant_tag>

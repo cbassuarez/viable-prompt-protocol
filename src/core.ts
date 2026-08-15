@@ -11,13 +11,35 @@ export type AssistantTag = (typeof ASSISTANT_TAGS)[number];
 export type UserTag = (typeof USER_TAGS)[number];
 export type SourceMode = (typeof SOURCES)[number];
 
+export interface CyclePathNode {
+  command_tag: UserTag;
+  response_tag: AssistantTag;
+  tag_index: number;
+  modifiers: string[];
+}
+
 export interface VppState {
+  protocol_version: typeof PROTOCOL_VERSION;
+  cycle: {
+    sequence: number;
+    iteration: 1 | 2 | 3;
+    locus: { index: number; name: string };
+    path: CyclePathNode[];
+    closed: boolean;
+  };
+  tag_counts: Record<AssistantTag, number>;
+  closed: boolean;
+}
+
+export interface LegacyVppState {
   protocol_version: typeof PROTOCOL_VERSION;
   locus: { index: number; name: string };
   cycle: 1 | 2 | 3;
   tag_counts: Record<AssistantTag, number>;
   closed: boolean;
 }
+
+export type VppStateInput = VppState | LegacyVppState;
 
 export interface ProtocolDiagnostic {
   code: string;
@@ -55,6 +77,10 @@ export interface PreparedTurn {
   deterministic_body?: string;
   next_state: VppState;
 }
+
+export type PreparedTurnInput = Omit<PreparedTurn, "next_state"> & {
+  next_state: VppStateInput;
+};
 
 export interface FormattedResponse {
   message: string;
@@ -125,24 +151,22 @@ export function createInitialState(locus = "default"): VppState {
   assertLocusName(locus);
   return {
     protocol_version: PROTOCOL_VERSION,
-    locus: { index: 1, name: locus },
-    cycle: 1,
+    cycle: {
+      sequence: 1,
+      iteration: 1,
+      locus: { index: 1, name: locus },
+      path: [],
+      closed: false
+    },
     tag_counts: { g: 0, q: 0, o: 0, c: 0, o_f: 0 },
     closed: false
   };
 }
 
-export function normalizeState(value?: VppState | null): VppState {
+export function normalizeState(value?: VppStateInput | null): VppState {
   if (value == null) return createInitialState();
   if (typeof value !== "object" || value.protocol_version !== PROTOCOL_VERSION) {
     throw new VppInputError("invalid-state-version", `State must use ${PROTOCOL_VERSION}.`);
-  }
-  if (!value.locus || !Number.isInteger(value.locus.index) || value.locus.index < 1) {
-    throw new VppInputError("invalid-locus-index", "State locus.index must be a positive integer.");
-  }
-  assertLocusName(value.locus.name);
-  if (![1, 2, 3].includes(value.cycle)) {
-    throw new VppInputError("invalid-cycle", "State cycle must be 1, 2, or 3.");
   }
   const counts = {} as Record<AssistantTag, number>;
   for (const tag of ASSISTANT_TAGS) {
@@ -155,10 +179,103 @@ export function normalizeState(value?: VppState | null): VppState {
   if (typeof value.closed !== "boolean") {
     throw new VppInputError("invalid-closed-state", "State closed must be boolean.");
   }
+
+  if (typeof value.cycle === "number") {
+    if (!value.locus || !Number.isInteger(value.locus.index) || value.locus.index < 1) {
+      throw new VppInputError("invalid-locus-index", "State locus.index must be a positive integer.");
+    }
+    assertLocusName(value.locus.name);
+    if (![1, 2, 3].includes(value.cycle)) {
+      throw new VppInputError("invalid-cycle", "State cycle must be 1, 2, or 3.");
+    }
+    return {
+      protocol_version: PROTOCOL_VERSION,
+      cycle: {
+        sequence: 1,
+        iteration: value.cycle,
+        locus: { index: value.locus.index, name: value.locus.name },
+        path: [],
+        closed: false
+      },
+      tag_counts: counts,
+      closed: value.closed
+    };
+  }
+
+  const cycle = value.cycle;
+  if (!cycle || !Number.isInteger(cycle.sequence) || cycle.sequence < 1) {
+    throw new VppInputError("invalid-cycle-sequence", "State cycle.sequence must be a positive integer.");
+  }
+  if (![1, 2, 3].includes(cycle.iteration)) {
+    throw new VppInputError("invalid-cycle", "State cycle.iteration must be 1, 2, or 3.");
+  }
+  if (!cycle.locus || !Number.isInteger(cycle.locus.index) || cycle.locus.index < 1) {
+    throw new VppInputError("invalid-locus-index", "State cycle.locus.index must be a positive integer.");
+  }
+  assertLocusName(cycle.locus.name);
+  if (!Array.isArray(cycle.path)) {
+    throw new VppInputError("invalid-cycle-path", "State cycle.path must be an array.");
+  }
+  const path = cycle.path.map((node, index): CyclePathNode => {
+    if (!node || !userTagSet.has(node.command_tag) || !assistantTagSet.has(node.response_tag)) {
+      throw new VppInputError("invalid-cycle-path", `State cycle.path[${index}] has an invalid tag.`);
+    }
+    if (!Number.isInteger(node.tag_index) || node.tag_index < 1 || node.tag_index > counts[node.response_tag]) {
+      throw new VppInputError("invalid-cycle-path", `State cycle.path[${index}].tag_index is inconsistent.`);
+    }
+    if (!Array.isArray(node.modifiers) || node.modifiers.some((modifier) => typeof modifier !== "string")) {
+      throw new VppInputError("invalid-cycle-path", `State cycle.path[${index}].modifiers must be strings.`);
+    }
+    const reconstructed = parseCommand(
+      [`!<${node.command_tag}>`, ...node.modifiers.map((modifier) => `--${modifier}`)].join(" ")
+    );
+    if (!reconstructed.ok || resolvedAssistantTag(reconstructed) !== node.response_tag) {
+      throw new VppInputError(
+        "invalid-cycle-path",
+        `State cycle.path[${index}] does not represent a valid resolved transition.`
+      );
+    }
+    return {
+      command_tag: node.command_tag,
+      response_tag: node.response_tag,
+      tag_index: node.tag_index,
+      modifiers: [...node.modifiers]
+    };
+  });
+  if (typeof cycle.closed !== "boolean") {
+    throw new VppInputError("invalid-cycle-closed-state", "State cycle.closed must be boolean.");
+  }
+  const lastIndexes = new Map<AssistantTag, number>();
+  for (let index = 0; index < path.length; index += 1) {
+    const node = path[index];
+    const prior = lastIndexes.get(node.response_tag) ?? 0;
+    if (node.tag_index <= prior) {
+      throw new VppInputError(
+        "invalid-cycle-path",
+        `State cycle.path[${index}].tag_index must increase for ${node.response_tag}.`
+      );
+    }
+    if (node.command_tag === "c" && index !== path.length - 1) {
+      throw new VppInputError("invalid-cycle-path", "A cycle path cannot continue after a closing c command.");
+    }
+    lastIndexes.set(node.response_tag, node.tag_index);
+  }
+  const last = path.at(-1);
+  if (cycle.closed !== (last?.command_tag === "c")) {
+    throw new VppInputError("invalid-cycle-closed-state", "State cycle.closed must match the final path command.");
+  }
+  if (value.closed !== (last?.response_tag === "o_f")) {
+    throw new VppInputError("invalid-closed-state", "State closed must match the final path response.");
+  }
   return {
     protocol_version: PROTOCOL_VERSION,
-    locus: { index: value.locus.index, name: value.locus.name },
-    cycle: value.cycle,
+    cycle: {
+      sequence: cycle.sequence,
+      iteration: cycle.iteration,
+      locus: { index: cycle.locus.index, name: cycle.locus.name },
+      path,
+      closed: cycle.closed
+    },
     tag_counts: counts,
     closed: value.closed
   };
@@ -309,7 +426,7 @@ export function parseCommand(message: string): ParsedCommand {
 
 export function prepareTurn(
   message: string,
-  state?: VppState | null,
+  state?: VppStateInput | null,
   nextLocus?: string | null
 ): PreparedTurn {
   const current = normalizeState(state);
@@ -319,7 +436,6 @@ export function prepareTurn(
   let assistantTag: AssistantTag = "c";
   let status: PreparedTurn["status"] = "ready";
   let deterministicBody: string | undefined;
-  let resetCycle = false;
 
   if (!command.ok || !command.tag) {
     status = "protocol_error";
@@ -330,43 +446,42 @@ export function prepareTurn(
     };
     deterministicBody = `Invalid VPP command (${diagnostic.code}): ${diagnostic.message} Example: ${diagnostic.example ?? "!<g>"}`;
   } else {
-    if (current.closed) {
-      next.cycle = 1;
-      resetCycle = true;
-    }
-
+    assistantTag = resolvedAssistantTag(command);
     if (command.tag === "e") {
-      assistantTag = command.pipeline_tag as AssistantTag;
-      const locusIndex = current.locus.index + 1;
-      next.locus = { index: locusIndex, name: nextLocus ?? `locus-${locusIndex}` };
-      next.cycle = 1;
-      resetCycle = true;
+      const locusIndex = current.cycle.locus.index + 1;
+      restartCycle(next, 1, { index: locusIndex, name: nextLocus ?? `locus-${locusIndex}` });
     } else if (command.tag === "e_o") {
-      assistantTag = "o";
-      next.cycle = 1;
-      resetCycle = true;
+      restartCycle(next, 1, current.cycle.locus);
     } else if (command.tag === "o" && command.pipeline_tag && command.modifiers.includes("correct")) {
-      assistantTag = command.pipeline_tag;
-      next.cycle = 1;
-      resetCycle = true;
-    } else if (
-      (command.tag === "o" || command.tag === "o_f") &&
-      command.modifiers.includes("incorrect")
-    ) {
-      assistantTag = "c";
-    } else {
-      assistantTag = command.tag as AssistantTag;
+      restartCycle(next, 1, current.cycle.locus);
     }
 
-    if (command.tag === "c" && !resetCycle) {
-      next.cycle = Math.min(3, next.cycle + 1) as VppState["cycle"];
+    const isExplicitRestart =
+      command.tag === "e" ||
+      command.tag === "e_o" ||
+      (command.tag === "o" && Boolean(command.pipeline_tag) && command.modifiers.includes("correct"));
+    if (!isExplicitRestart && current.closed) {
+      restartCycle(next, 1, current.cycle.locus);
+    } else if (!isExplicitRestart && current.cycle.closed) {
+      const iteration = Math.min(3, current.cycle.iteration + 1) as VppState["cycle"]["iteration"];
+      restartCycle(next, iteration, current.cycle.locus);
     }
   }
 
   next.tag_counts[assistantTag] += 1;
   const tagIndex = next.tag_counts[assistantTag];
-  next.closed = status === "ready" && assistantTag === "o_f";
-  const mustOfferEscape = next.cycle === 3 && !next.closed;
+  if (status === "ready" && command.tag) {
+    next.cycle.path.push({
+      command_tag: command.tag,
+      response_tag: assistantTag,
+      tag_index: tagIndex,
+      modifiers: [...command.modifiers]
+    });
+    next.cycle.closed = command.tag === "c";
+    next.closed = assistantTag === "o_f";
+  }
+  const mustOfferEscape =
+    status === "ready" && command.tag === "c" && next.cycle.iteration === 3;
 
   return {
     protocol_version: PROTOCOL_VERSION,
@@ -381,12 +496,68 @@ export function prepareTurn(
   };
 }
 
+function resolvedAssistantTag(command: ParsedCommand): AssistantTag {
+  if (!command.ok || !command.tag) {
+    throw new VppInputError("invalid-command", "Cannot resolve an invalid VPP command.");
+  }
+  if (command.tag === "e") return command.pipeline_tag as AssistantTag;
+  if (command.tag === "e_o") return "o";
+  if (command.tag === "o" && command.pipeline_tag && command.modifiers.includes("correct")) {
+    return command.pipeline_tag;
+  }
+  if ((command.tag === "o" || command.tag === "o_f") && command.modifiers.includes("incorrect")) {
+    return "c";
+  }
+  return command.tag as AssistantTag;
+}
+
+function restartCycle(
+  state: VppState,
+  iteration: VppState["cycle"]["iteration"],
+  locus: VppState["cycle"]["locus"]
+): void {
+  state.cycle = {
+    sequence: state.cycle.sequence + 1,
+    iteration,
+    locus: { index: locus.index, name: locus.name },
+    path: [],
+    closed: false
+  };
+  state.closed = false;
+}
+
+function normalizePreparedTurn(value: PreparedTurnInput): PreparedTurn {
+  if (!value || typeof value !== "object") {
+    throw new VppInputError("invalid-prepared-turn", "Prepared turn must be an object.");
+  }
+  const legacy = typeof value.next_state?.cycle === "number";
+  const nextState = normalizeState(value.next_state);
+  if (legacy && value.status === "ready" && value.command?.ok && value.command.tag) {
+    nextState.cycle.path.push({
+      command_tag: value.command.tag,
+      response_tag: value.assistant_tag,
+      tag_index: value.tag_index,
+      modifiers: [...value.command.modifiers]
+    });
+    nextState.cycle.closed = value.command.tag === "c";
+    nextState.closed = value.assistant_tag === "o_f";
+  }
+  const expectedEscape =
+    value.status === "ready" && value.command?.tag === "c" && nextState.cycle.iteration === 3;
+  return {
+    ...value,
+    must_offer_escape: legacy ? expectedEscape : value.must_offer_escape,
+    next_state: nextState
+  };
+}
+
 export function formatResponse(
-  preparedTurn: PreparedTurn,
+  preparedTurnInput: PreparedTurnInput,
   body: string,
   sources: SourceMode = "none",
   assumptionCount = 0
 ): FormattedResponse {
+  const preparedTurn = normalizePreparedTurn(preparedTurnInput);
   assertPreparedTurn(preparedTurn);
   if (!SOURCES.includes(sources)) {
     throw new VppInputError("invalid-sources", "Sources must be none or web.");
@@ -435,7 +606,7 @@ export function buildFooter(input: {
   if (!Number.isInteger(input.assumptions) || input.assumptions < 0) {
     throw new VppInputError("invalid-assumption-count", "Assumptions must be a non-negative integer.");
   }
-  return `[Version=${PROTOCOL_VERSION} | Tag=${input.tag}_${input.tagIndex} | Sources=${input.sources} | Assumptions=${input.assumptions} | Cycle=${state.cycle}/3 | Locus=${state.locus.name}]`;
+  return `[Version=${PROTOCOL_VERSION} | Tag=${input.tag}_${input.tagIndex} | Sources=${input.sources} | Assumptions=${input.assumptions} | Cycle=${state.cycle.iteration}/3 | Locus=${state.cycle.locus.name}]`;
 }
 
 export function parseFooter(line: string | null | undefined): ParsedFooter {
@@ -487,7 +658,7 @@ export function parseAssistantMessage(message: string): ParsedAssistantMessage {
 export function validateExchange(input: {
   user_message: string;
   assistant_message: string;
-  state?: VppState | null;
+  state?: VppStateInput | null;
   repair?: boolean;
   next_locus?: string | null;
 }): ExchangeValidation {
@@ -506,11 +677,11 @@ export function validateExchange(input: {
     if (footer.tag !== prepared.assistant_tag || footer.tag_index !== prepared.tag_index) {
       violations.push({ code: "footer-tag-mismatch", message: `Expected Tag=${prepared.assistant_tag}_${prepared.tag_index}.` });
     }
-    if (footer.cycle !== prepared.next_state.cycle || footer.cycle_max !== 3) {
-      violations.push({ code: "cycle-mismatch", message: `Expected Cycle=${prepared.next_state.cycle}/3.` });
+    if (footer.cycle !== prepared.next_state.cycle.iteration || footer.cycle_max !== 3) {
+      violations.push({ code: "cycle-mismatch", message: `Expected Cycle=${prepared.next_state.cycle.iteration}/3.` });
     }
-    if (footer.locus !== prepared.next_state.locus.name) {
-      violations.push({ code: "locus-mismatch", message: `Expected Locus=${prepared.next_state.locus.name}.` });
+    if (footer.locus !== prepared.next_state.cycle.locus.name) {
+      violations.push({ code: "locus-mismatch", message: `Expected Locus=${prepared.next_state.cycle.locus.name}.` });
     }
   }
   if (!parsed.body) violations.push({ code: "empty-body", message: "Assistant response body must not be empty." });
@@ -549,7 +720,7 @@ export function validateExchange(input: {
 
 export function validateTranscript(input: {
   turns: TranscriptTurn[];
-  initial_state?: VppState | null;
+  initial_state?: VppStateInput | null;
   repair?: boolean;
 }): {
   ok: boolean;
@@ -628,10 +799,14 @@ function assertPreparedTurn(value: PreparedTurn): void {
   ) {
     throw new VppInputError("invalid-prepared-turn", "A protocol-error turn must contain deterministic c recovery.");
   }
-  if (state.closed !== (value.status === "ready" && value.assistant_tag === "o_f")) {
+  if (value.status === "ready" && state.closed !== (value.assistant_tag === "o_f")) {
     throw new VppInputError("invalid-prepared-turn", "Prepared turn closure does not match its assistant tag.");
   }
-  if (value.must_offer_escape !== (state.cycle === 3 && !state.closed)) {
+  const expectedCycleClosed = value.status === "ready" && value.command.tag === "c";
+  if (value.status === "ready" && state.cycle.closed !== expectedCycleClosed) {
+    throw new VppInputError("invalid-prepared-turn", "Prepared turn cycle closure does not match its command tag.");
+  }
+  if (value.must_offer_escape !== (expectedCycleClosed && state.cycle.iteration === 3)) {
     throw new VppInputError("invalid-prepared-turn", "Prepared turn escape requirement does not match its cycle.");
   }
   const expectedContract = contentContract(value.assistant_tag, value.command);

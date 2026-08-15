@@ -1,0 +1,29 @@
+{
+  "challenge_type": "protocol_retention",
+  "version": "v1.5",
+  "generated_at": "2026-06-01T05:23:33.013Z",
+  "rows": [
+    {
+      "challenge_type": "protocol_retention",
+      "condition": "baseline",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "n": 25,
+      "header_rate": 0,
+      "footer_rate": 0,
+      "mirror_rate": null,
+      "last_turn_retained_rate": 0
+    },
+    {
+      "challenge_type": "protocol_retention",
+      "condition": "vpp",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "n": 25,
+      "header_rate": 1,
+      "footer_rate": 1,
+      "mirror_rate": 1,
+      "last_turn_retained_rate": 1
+    }
+  ]
+}

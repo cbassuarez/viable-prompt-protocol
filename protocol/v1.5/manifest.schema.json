@@ -108,17 +108,25 @@
         "default_locus",
         "cycle_initial",
         "cycle_max",
-        "cycle_advances_on_user_tag",
+        "cycle_model",
+        "cycle_closes_on_user_tag",
+        "cycle_advances_after_close",
+        "locus_scope",
+        "active_path_only",
         "tag_counts_scope",
         "cycle_resets",
-        "escape_hint_at_cycle_max"
+        "escape_hint_on_cycle_close_at_max"
       ],
       "properties": {
         "default_locus": { "const": "default" },
         "cycle_initial": { "const": 1 },
         "cycle_max": { "const": 3 },
-        "cycle_advances_on_user_tag": { "const": "c" },
-        "tag_counts_scope": { "const": "conversation" },
+        "cycle_model": { "const": "restartable-dag" },
+        "cycle_closes_on_user_tag": { "const": "c" },
+        "cycle_advances_after_close": { "const": true },
+        "locus_scope": { "const": "cycle" },
+        "active_path_only": { "const": true },
+        "tag_counts_scope": { "const": "conversation-per-tag" },
         "cycle_resets": {
           "type": "array",
           "prefixItems": [
@@ -129,7 +137,7 @@
           ],
           "items": false
         },
-        "escape_hint_at_cycle_max": { "const": true }
+        "escape_hint_on_cycle_close_at_max": { "const": true }
       }
     },
     "contracts": {

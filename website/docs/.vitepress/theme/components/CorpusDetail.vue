@@ -13,89 +13,18 @@
           </div>
         </div>
         <button
-          class="corpus-detail__theater"
+          class="corpus-detail__theater vpp-glass"
+          data-glass-shape="square"
           type="button"
           :aria-label="theaterButtonLabel"
           @click="emit('toggle-theater')"
         >
-          <svg
-            v-if="isTheater"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              d="M9 5v4H5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15 5v4h4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M9 19v-4H5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15 19v-4h4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            v-else
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              d="M5 9V5h4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M19 9V5h-4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M5 15v4h4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M19 15v4h-4"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <VppAsciiIcon
+            :src="isTheater ? '/canvas/collapse.svg' : '/canvas/expand.svg'"
+            alt=""
+            :size="44"
+            :cell-size="5"
+          />
         </button>
       </header>
       <div class="corpus-detail__experiment">
@@ -172,6 +101,7 @@ import { computed } from 'vue';
 import type { CorpusEntry } from './corpus-utils';
 import { RULE_LABELS } from './corpus-utils';
 import TagBadge from './TagBadge.vue';
+import VppAsciiIcon from './VppAsciiIcon.vue';
 
 const props = defineProps<{ entry: CorpusEntry | null; isTheater?: boolean }>();
 

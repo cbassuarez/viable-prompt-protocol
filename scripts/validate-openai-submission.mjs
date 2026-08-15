@@ -32,7 +32,9 @@ assert.equal(packet.publisher.contact_email, manifest.author.email);
 assert.equal(packet.mcp.url, "https://mcp.viableprompt.org/mcp");
 assert.equal(packet.mcp.url_type, "universal");
 assert.equal(packet.mcp.authentication, "none");
-assert.equal(packet.mcp.custom_ui, false);
+assert.equal(packet.mcp.custom_ui, true);
+assert.equal(packet.skill.version, manifest.version);
+assert.match(packet.mcp.content_security_policy, /no connect or resource domains/i);
 assert.deepEqual(packet.starter_prompts, manifest.interface.defaultPrompt);
 assert.equal(packet.positive_test_cases.length, 5);
 assert.equal(packet.negative_test_cases.length, 3);
@@ -44,9 +46,10 @@ assert.deepEqual(packet.expected_annotations, {
 
 assert.equal(
   submissionImport.$schema,
-  "https://developers.openai.com/apps-sdk/schemas/chatgpt-app-submission.v1.json"
+  "https://developers.openai.com/plugins/schemas/chatgpt-app-submission.v1.json"
 );
 assert.equal(submissionImport.schema_version, 1);
+assert.equal(submissionImport.custom_ui, true);
 assert.equal(submissionImport.app_info.display_name, packet.listing.name);
 assert.equal(submissionImport.app_info.category, packet.listing.category.toUpperCase());
 assert.ok(submissionImport.app_info.subtitle.length <= 30);

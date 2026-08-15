@@ -1,10 +1,11 @@
 {
-  "$schema": "https://developers.openai.com/apps-sdk/schemas/chatgpt-app-submission.v1.json",
+  "$schema": "https://developers.openai.com/plugins/schemas/chatgpt-app-submission.v1.json",
   "schema_version": 1,
+  "custom_ui": true,
   "app_info": {
     "display_name": "Viable Prompt Protocol",
     "subtitle": "Structure VPP conversations",
-    "description": "Viable Prompt Protocol helps users structure tagged conversations, maintain conversation-global counters in transparent client-carried state, format canonical responses, validate exchanges and transcripts, and repair structural errors.",
+    "description": "Viable Prompt Protocol structures tagged conversations with restartable cycle paths, per-cycle loci, and conversation-global per-tag counters. Its deterministic runtime formats canonical responses, validates or repairs structure, and exposes an inline controller for modes, flags, locus transitions, and skips.",
     "category": "PRODUCTIVITY"
   },
   "tools": {
@@ -67,19 +68,19 @@
       "expected_output_url": null
     },
     {
-      "description": "Continue a tag counter when an escape creates a new locus.",
-      "user_prompt": "Use VPP to run !<g> for a short launch goal, then carry the returned state into !<e> --<g> for a new subproblem.",
+      "description": "Use the inline controller to combine flags and create a new locus without resetting a tag counter.",
+      "user_prompt": "Use VPP to run !<g> for a short launch goal. In the validation card, choose G, mark correct and major, choose New locus, accept the proposed locus name, and Continue.",
       "file_attachment_urls": null,
       "tools_triggered": "vpp_prepare_turn, vpp_format_response, vpp_validate_exchange",
-      "expected_output": "The second response uses Tag=g_2 and Locus=locus-2 while Cycle resets to 1/3.",
+      "expected_output": "The controller previews and sends !<e> --correct --major --<g>; the next response uses Tag=g_2 and Locus=locus-2 while the new cycle is 1/3.",
       "expected_output_url": null
     },
     {
-      "description": "Return deterministic recovery for contradictory command modifiers.",
-      "user_prompt": "Use VPP for this request: !<g> --correct --incorrect\nOutline a release plan.",
+      "description": "Close three cycle traversals and inject escape choices only on the third valid critique.",
+      "user_prompt": "Use VPP and carry state while closing three cycles with valid !<c> commands. Between critiques, use an ordinary !<g> command to open the next cycle. Keep the critique bodies brief and omit escape wording.",
       "file_attachment_urls": null,
       "tools_triggered": "vpp_prepare_turn, vpp_format_response, vpp_validate_exchange",
-      "expected_output": "Returns the deterministic <c> recovery response for conflicting-correctness with a canonical footer.",
+      "expected_output": "The three critique responses are Cycle=1/3, Cycle=2/3, and Cycle=3/3. Only the third contains the canonical !<e> --<g> and !<e_o> escape choices.",
       "expected_output_url": null
     },
     {

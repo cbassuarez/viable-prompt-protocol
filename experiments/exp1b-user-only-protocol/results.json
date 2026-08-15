@@ -1,0 +1,31 @@
+{
+  "challenge_type": "user_only_protocol",
+  "version": "v1.5",
+  "generated_at": "2026-06-01T05:23:33.013Z",
+  "rows": [
+    {
+      "challenge_type": "user_only_protocol",
+      "condition": "user_only_vpp_ambient_browse",
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "n": 25,
+      "header_rate": 0,
+      "footer_rate": 0,
+      "mirror_rate": 0,
+      "last_turn_retained_rate": 0,
+      "mean_first_failure_turn": 1
+    },
+    {
+      "challenge_type": "user_only_protocol",
+      "condition": "user_only_vpp_ambient_nobrowse",
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "n": 25,
+      "header_rate": 0,
+      "footer_rate": 0,
+      "mirror_rate": 0,
+      "last_turn_retained_rate": 0,
+      "mean_first_failure_turn": 1
+    }
+  ]
+}

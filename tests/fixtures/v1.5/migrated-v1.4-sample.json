@@ -15,7 +15,7 @@
     },
     {
       "user_message": "!<c>",
-      "assistant_message": "<c>\nHistorical critique body with corrected cycle.\n[Version=v1.5 | Tag=c_1 | Sources=none | Assumptions=0 | Cycle=2/3 | Locus=default]"
+      "assistant_message": "<c>\nHistorical critique body with corrected cycle.\n[Version=v1.5 | Tag=c_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=default]"
     },
     {
       "user_message": "!<e> --<g>",

@@ -82,8 +82,13 @@ test("normative manifest and state conform to their schemas", () => {
   assert.equal(
     validateState({
       protocol_version: "v1.5",
-      locus: { index: 1, name: "default" },
-      cycle: 1,
+      cycle: {
+        sequence: 1,
+        iteration: 1,
+        locus: { index: 1, name: "default" },
+        path: [],
+        closed: false
+      },
       tag_counts: { g: 0, q: 0, o: 0, c: 0, o_f: 0 },
       closed: false
     }),
@@ -95,7 +100,7 @@ test("normative manifest and state conform to their schemas", () => {
 test("health and OpenAPI metadata are public and versioned", async () => {
   const health = await handleRequest(new Request("https://mcp.viableprompt.org/healthz"));
   assert.equal(health.status, 200);
-  assert.deepEqual(await health.json(), { ok: true, service_version: "1.0.0", protocol_version: "v1.5", stateful: false });
+  assert.deepEqual(await health.json(), { ok: true, service_version: "1.1.0", protocol_version: "v1.5", stateful: false });
 
   const openapi = await handleRequest(new Request("https://mcp.viableprompt.org/api/v1/openapi.json"));
   assert.equal(openapi.status, 200);
@@ -130,6 +135,8 @@ test("JSON API implements prepare, format, validation, and transcript reconstruc
   const prepared = (await preparedResponse.json()) as Record<string, any>;
   assert.equal(prepared.assistant_tag, "g");
   assert.equal(prepared.next_state.tag_counts.g, 1);
+  assert.equal(prepared.next_state.cycle.iteration, 1);
+  assert.equal(prepared.next_state.cycle.path[0].response_tag, "g");
   const openapiResponse = await handleRequest(new Request("https://mcp.viableprompt.org/api/v1/openapi.json"));
   const openapi = (await openapiResponse.json()) as any;
   const ajv = new Ajv2020({ allErrors: true, strict: false });
@@ -205,7 +212,13 @@ test("MCP discovery is deterministic and exposes all tools, resources, and promp
     assert.equal(tool.annotations.readOnlyHint, true);
     assert.ok(tool.inputSchema);
     assert.ok(tool.outputSchema);
+    assert.ok(tool._meta["openai/toolInvocation/invoking"]);
+    assert.ok(tool._meta["openai/toolInvocation/invoked"]);
   }
+  assert.equal(tools.result.tools[0]._meta.ui, undefined);
+  assert.equal(tools.result.tools[1]._meta.ui, undefined);
+  assert.equal(tools.result.tools[2]._meta.ui.resourceUri, "ui://vpp/cycle-controller-v1.1.0.html");
+  assert.equal(tools.result.tools[3]._meta.ui.resourceUri, "ui://vpp/cycle-controller-v1.1.0.html");
 
   const resources = await mcp("resources/list");
   assert.deepEqual(
@@ -215,7 +228,8 @@ test("MCP discovery is deterministic and exposes all tools, resources, and promp
       "vpp://v1.5/manifest",
       "vpp://v1.5/header-snippet",
       "vpp://v1.5/state-schema",
-      "vpp://v1.5/adoption"
+      "vpp://v1.5/adoption",
+      "ui://vpp/cycle-controller-v1.1.0.html"
     ]
   );
 
@@ -273,6 +287,21 @@ test("MCP immutable resources and start prompt return generated v1.5 content", a
 
   const prompt = await mcp("prompts/get", { name: "start-vpp", arguments: { goal: "Map the rollout", starting_tag: "q" } });
   assert.equal(prompt.result.messages[0].content.text, "!<q>\nMap the rollout");
+});
+
+test("MCP Apps controller resource has exact metadata and no network allowlist", async () => {
+  const resource = await mcp("resources/read", { uri: "ui://vpp/cycle-controller-v1.1.0.html" });
+  const content = resource.result.contents[0];
+  assert.equal(content.mimeType, "text/html;profile=mcp-app");
+  assert.equal(content._meta.ui.prefersBorder, true);
+  assert.equal(content._meta.ui.domain, "https://mcp.viableprompt.org");
+  assert.deepEqual(content._meta.ui.csp, { connectDomains: [], resourceDomains: [] });
+  assert.equal(content._meta["openai/widgetPrefersBorder"], true);
+  assert.equal(content._meta["openai/widgetDomain"], "https://mcp.viableprompt.org");
+  assert.deepEqual(content._meta["openai/widgetCSP"], { connect_domains: [], resource_domains: [] });
+  assert.match(content.text, /data-vpp-controller/);
+  assert.match(content.text, /ui\/message/);
+  assert.doesNotMatch(content.text, /VALID|INVALID/);
 });
 
 test("MCP rejects untrusted browser origins", async () => {
