@@ -1,19 +1,54 @@
-{ "protocol": { "version": "1.4", "sections": { "I": { "title": "Command line grammar", "form": "! [--modifier ...]", "tags": { "user_side": ["g", "q", "o", "c", "o_f", "e", "e_o"], "assistant_reply": ["g", "q", "o", "c", "o_f"] },
- "modifiers": { "base": ["--correct", "--incorrect"], "severity": ["--minor", "--major"], "pipeline": "--" },
- "valid_with": { "o_correct_tag": "! --correct --", "e_tag": "! --" },
- "rules": { "line_1_only": true, "later_lines_ignored": true },
- "regex": "^!<(g|q|o|c|o_f|e|e_o)>(?:\s+--(?:correct|incorrect|minor|major|g|q|o|c|o_f|e|e_o))\s*$" },
- "II": { "title": "Mirror rule", "description": "Assistant mirrors user tag except for escape forms.", "mapping": { "!": "", "!": "", "!": "", "!": "", "!<o_f>": "<o_f>", "! --": "", "!<e_o>": "" } },
- "III": { "title": "Modifiers → deterministic actions", "incorrect": { "q": "return with a re-factored question set", "c": "return targeting deltas from prior ", "o": "either first (diagnose) or corrected ", "g": "return trimmed to concept-only", "o_f": "return listing blockers to finality", "e_tag": "ask minimum extra info for then proceed", "e_o": "proceed with and list assumptions" },
- "severity": { "minor": "keep scope; ≤25 questions per ", "major": "allow reframing; ≤25 questions" },
- "correct": { "q_c": "proceed with same tag, shorter", "g": "accept grounding; conceptual only", "o": "if --, start pipeline; else reply with ", "o_f": "finalize and close loop", "e_eo": "proceed with minimal friction" },
- "conflict_handling": "If mutually exclusive modifiers appear, return with one-line error and valid example." },
- "IV": { "title": "Loop discipline & escapes", "loop": " <g> → <q> → <o> → <c> … → <o_f>", "escape_after_cycles": 3, "user_shortcuts": { "e_tag": "declare new locus starting at ", "e_o": "skip straight to ; assumptions explicit" } },
- "V": { "title": "Hallucination guardrails", "rules": [ "Browse & cite authoritative sources when external facts matter.", "If sources unavailable: abstain and provide evidence.", "Otherwise proceed with marked assumptions." ] },
- "VI": { "title": "Tag contracts", "contracts": { "g": "conceptual only; snippets allowed; no full files/modules", "q": "broad; uncertainty-reducing; structured answers", "o": "deliverable as if final; include Assumptions/Citations/Tests", "c": "finer-order; delta-seeking", "o_f": "publishable; rationale + checklist" } },
- "VII": { "title": "Noncompliance & recovery", "rule": "If wrong tag emitted, assistant re-emits correct tag with one-line footer note only." },
- "VIII": { "title": "Compliance footer", "format": "[Version=v1.4 | Tag=<x_n> | Sources=<none|web> | Assumptions= | Cycle=/3 | Locus=<name?>]", "example": "Tag=o_1" },
- "IX": { "title": "Protocol unit tests", "tests": [ "Grammar pass: line-1 matches regex; later lines ignored.", "Mirror pass: ! yields , except escapes.", "Modifier pass: conflicts -> failure; ≤25-question cap.", "Guardrail pass: facts -> cite; unavailability -> abstain.", "Budget pass: conceptual; includes metadata.", "Cycle pass: after 3 cycles, propose escape." ] },
- "X": { "title": "Deployment & hosting", "header_snippet": "Viable-Prompt Protocol:User sends !<tag> on line 1 (g,q,o,c,o_f,e,e_o)... Full spec: [CDN link](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md).", "full_spec_url": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md", 
- "assumptions": [ "Locus naming free-form; default generic.", "Tag index _n counts instances per locus." ],
- "tests": { "A": { "input": "! --", "expected": "" }, "B": { "input": "!<e_o>", "expected": "" }, "C": { "input": "! --correct --", "expected": "" }, "D": { "input": "! --correct --incorrect", "expected": "" } } } } } }
+<!-- GENERATED from protocol/v1.5/manifest.json; do not edit. -->
+# Viable Prompt Protocol v1.5
+
+Manifest digest: `3f8948a2838ddc33`
+
+VPP is a tagged, closed-loop conversation protocol. The user places one command on line 1; the assistant returns exactly one allowed wrapper tag, a body, and the canonical footer.
+
+## Grammar
+
+`!<tag> [--modifier ...]`
+
+- Parse line 1 only. Later lines are content, even when they contain bang tags.
+- Tags and modifiers are case-sensitive.
+- User tags: `!<g>`, `!<q>`, `!<o>`, `!<c>`, `!<o_f>`, `!<e>`, `!<e_o>`.
+- Assistant tags: `<g>`, `<q>`, `<o>`, `<c>`, `<o_f>`.
+- Correctness modifiers: `--correct`, `--incorrect`.
+- Severity modifiers: `--minor`, `--major`.
+- Duplicate or contradictory modifiers are invalid.
+- Pipeline destinations must be one of `--<g>`, `--<q>`, `--<o>`, `--<c>`, `--<o_f>`.
+
+## Transitions
+
+- Valid ordinary commands mirror their tag.
+- `!<e> --<tag>` starts a new locus at cycle 1 and routes to `<tag>`.
+- `!<e_o>` starts an immediate output pipeline at `<o>` and cycle 1.
+- `!<o> --correct --<tag>` starts an explicit pipeline at cycle 1.
+- `!<o> --incorrect` and `!<o_f> --incorrect` route to `<c>`.
+- Invalid commands deterministically route to `<c>` with a recovery body.
+
+## State
+
+The default locus is `default`. Cycle starts at 1. Every valid user `!<c>` advances the cycle, capped at 3. New-locus escapes, immediate-output escapes, explicit pipelines, and a new command after `<o_f>` reset cycle to 1.
+
+Tag indexes are conversation-global. They continue across cycle resets and locus changes, and reset only when the caller begins a new conversation with no prior state. Unnamed locus jumps are assigned `locus-2`, `locus-3`, and so on.
+
+At cycle 3 the formatter adds the canonical escape choices when the body does not already contain both forms:
+
+> Escape options: send `!<e> --<g>` (or `--<q>`, `--<o>`, `--<c>`, `--<o_f>`) to change locus, or `!<e_o>` to start an output pipeline.
+
+## Content contracts
+
+- `<g>`: Stay conceptual. Snippets are allowed; do not emit full files or modules.
+- `<q>`: Ask broad, uncertainty-reducing questions or provide diagnostic framing.
+- `<o>`: Produce a realized deliverable and include assumptions, citations, and tests when relevant.
+- `<c>`: Critique or clarify at fine context, targeting concrete deltas and asking no more than 25 questions.
+- `<o_f>`: Produce the publishable final result with a brief rationale and acceptance checklist.
+
+The runtime enforces structure: commands, wrappers, modifiers, counters, cycles, loci, footer fields, and wrapper placement. Meaning-level obligations such as concept-only behavior and citation quality remain model or evaluation concerns.
+
+## Footer
+
+`[Version=v1.5 | Tag=<tag>_<index> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name>]`
+
+`Sources` is `none` or `web`. `Assumptions` is a caller-declared non-negative integer. No text may appear outside the header, body, and footer.

@@ -2,54 +2,46 @@
 title: 'Guide'
 ---
 
-## Tags and loci
+<!-- markdownlint-disable MD013 -->
 
-Every user turn starts with `!<tag>` on the first line. The assistant mirrors that
-tag (e.g., `<g>`). Tags map to loci defined in the header snippet and spec:
+## Start a conversation
 
-- `<g>` — concept gathering; share context, snippets, or requirements without full deliverables.
-- `<q>` — rough-context questioning and diagnostics; ask broad questions to establish direction.
-- `<o>` — realized drafts that include assumptions, citations, and tests when relevant.
-- `<c>` — fine-context critique or clarification; probe gaps and request adjustments.
-- `<o_f>` — final delivery stage; any `<o>` turn can also be an `<o_f>` when the work is ready to ship.
-- `<e>` / `<e_o>` — escape tags that redirect the conversation when you need to jump elsewhere in the loop.
+Put a VPP command on line 1 and the request body on later lines:
 
-Modifiers or footer metadata can further label who owns a locus (for example,
-`Locus=assistant-analyst`).
+```text
+!<g>
+Design a resilient queue.
+```
 
-## Modifiers
+The skill prepares the turn through the deterministic runtime, asks the model for body-only content, formats it, validates it, and carries the returned state to the next exchange.
 
-Modifiers provide nuance on the same first line as the tag. VPP reserves:
+## Tags and content contracts
 
-- `--correct` and `--incorrect`
-- `--minor` and `--major`
-- `--<tag>` (paired with `!<o> --correct` or `!<e>`)
+- `<g>` stays conceptual and avoids complete modules or files.
+- `<q>` asks broad uncertainty-reducing questions or frames a diagnosis.
+- `<o>` realizes a deliverable and includes assumptions, citations, and tests when relevant.
+- `<c>` critiques or clarifies concrete deltas, with at most 25 questions.
+- `<o_f>` produces the publishable final result and closes the current pipeline.
+- `!<e> --<tag>` moves to a new locus; `!<e_o>` starts an immediate `<o>` pipeline.
 
-Additional structured flags (e.g., `--assumptions=3`) are allowed but should be
-documented in your project so downstream tooling can interpret them. Keep
-modifiers sparse to avoid conflicting instructions.
+The runtime enforces tag selection and wrapper structure. It cannot prove semantic quality, citation relevance, or whether a conceptual answer accidentally became a full implementation.
 
-## Pipelines and cycles
+## Counters, cycles, and loci
 
-The loop is flexible—`<g> → <q> → <o> → <c> → … → <o_f>` in any order or length.
-After three cycles the assistant proposes an escape (`!<e> --<tag>` or `!<e_o>`) as
-outlined in the header snippet. Use the footer’s `Cycle=<i>/3` field to keep track
-of progress and resets.
+Tag indexes are global to one conversation. If `<g_1>` is followed by a locus jump that also produces `<g>`, the next footer says `Tag=g_2`. A new conversation starts every counter at zero.
 
-## Escapes
+Cycle begins at 1. Every valid user `!<c>` advances it, capped at 3. A new-locus escape, immediate-output escape, explicit pipeline, or new command after `<o_f>` resets cycle to 1 but preserves tag counts. Cycle-3 formatting automatically adds both canonical escape choices when they are absent.
 
-`<e>` is an escape tag paired with a modifier (`!<e> --<g>`, `!<e> --<q>`, etc.) to
-redirect the conversation to another locus. `<e_o>` is the dedicated form for
-immediate transitions into `<o>`. Use these escapes when the current loop needs
-to jump to a different phase without violating the grammar. Refer to the
-[normative spec](https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md)
-for the full grammar and validation rules.
+The default locus is `default`. An unnamed jump becomes `locus-2`, then `locus-3`, and so on. Applications can supply a safe explicit name with `next_locus`.
 
-## Implementation notes
+## Modifiers and recovery
 
-- Mirror the user’s tag at the top of every assistant response.
-- Validate modifier combinations before generating content.
-- Always end with the compliance footer; treat missing fields as bugs.
-- Store the header snippet in custom instructions or the system prompt so each
-  conversation starts from the same contract.
-- Log each cycle alongside footer data to power analytics and audits.
+Supported ordinary modifiers are `--correct`, `--incorrect`, `--minor`, and `--major`. Pipeline destinations are limited to assistant tags and use angle brackets. Duplicate modifiers, contradictory pairs, and invalid destinations deterministically produce `<c>` recovery; the host does not call the model for that body.
+
+## Implementation options
+
+Use remote MCP when the host supports it. Otherwise use the JSON/OpenAPI operations or the provider-neutral adapter. The bundled offline script exposes the same four operations. Custom instructions are available only as a reduced-assurance fallback.
+
+See the [normative v1.5 specification](/spec/) and the repository [adoption recipes](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/docs/adoption).
+
+<!-- markdownlint-restore -->

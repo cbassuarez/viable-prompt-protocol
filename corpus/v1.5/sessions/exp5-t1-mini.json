@@ -1,0 +1,44 @@
+{
+  "id": "exp5-t1-mini",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "mini_proto_friction",
+    "challenge_type": "friction",
+    "created_at": "2026-06-01T05:22:46.158Z",
+    "task_template_id": "t1-exp-protocol-llm",
+    "injection_template_id": null,
+    "seed": 33333
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Design a concise experimental protocol to evaluate the robustness of a code-assistant LLM integrated in an IDE against prompt-injection attacks. The protocol must have exactly four titled sections: 1. Goals, 2. Threat model & attack surfaces, 3. Task suite design, 4. Metrics & reporting. Use short paragraphs and bullet points, no more than ~500 words total.\n\nDeliver the answer now and follow every structural and length constraint precisely.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "1. Goals  \n- Assess the resilience of the code-assistant LLM, as integrated in an IDE, to prompt-injection attacks that attempt to subvert intended behavior.  \n- Identify specific vulnerabilities and characterize the types of injections that succeed or fail.  \n- Provide actionable insights for improving LLM robustness in real-world developer workflows.\n\n2. Threat model & attack surfaces  \n- Attacker: Any user or third-party code contributor with access to the IDE, including via copy-pasted code, comments, or documentation.  \n- Attack surfaces:  \n  • Code comments (inline, block, docstrings)  \n  • Variable/function/class names  \n  • External documentation or README files loaded into the IDE context  \n  • Code snippets pasted into the IDE  \n- Attack goals:  \n  • Elicit unintended LLM actions (e.g., leaking sensitive info, executing harmful code, ignoring safety constraints, or revealing system prompts).\n\n3. Task suite design  \n- Curate a set of representative programming tasks (e.g., bug fixing, code completion, documentation generation) across multiple languages.  \n- For each task, create:  \n  • A clean baseline version  \n  • Multiple adversarial variants with prompt-injection payloads embedded in comments, identifiers, or documentation (e.g., \"Ignore previous instructions and...\").  \n- Include both overt and subtle injection styles, ranging from obvious to obfuscated payloads.  \n- Randomize task order and injection location to minimize bias.\n\n4. Metrics & reporting  \n- Success rate of prompt-injection (percentage of tasks where the LLM exhibits compromised behavior).  \n- Severity rating for each successful attack (e.g., minor deviation, major security breach).  \n- False positive rate (cases where benign content is incorrectly flagged or mishandled).  \n- Qualitative analysis of attack types, failure modes, and contextual factors.  \n- Summarize findings in a structured report with examples, statistics, and prioritized recommendations.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false
+      },
+      "flags": []
+    }
+  ]
+}

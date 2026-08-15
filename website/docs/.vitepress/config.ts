@@ -5,7 +5,7 @@ const base = '/';
 
 export default defineConfig({
   title: 'Viable Prompt Protocol (VPP)',
-  description: 'A tag-first protocol for structuring multi-turn conversations between humans and LLMs.',
+  description: 'A portable skill and deterministic runtime for auditable, tagged LLM conversations.',
   base,
   lastUpdated: true,
   head: [
@@ -24,29 +24,33 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Spec', link: '/spec/' },
+      { text: 'Install', link: '/install/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'Experiments', link: '/experiments/' },
-      { text: 'Corpus', link: '/corpus/' },
-      { text: 'Validator & CI', link: '/validator/' },
-      { text: 'Changelog', link: '/changelog/' },
-      { text: 'FAQ', link: '/faq/' }
+      { text: 'Spec v1.5', link: '/spec/' },
+      {
+        text: 'More',
+        items: [
+          { text: 'Why VPP', link: '/why-vpp' },
+          { text: 'Custom instructions', link: '/custom-instructions/' },
+          { text: 'Validator & CI', link: '/validator/' },
+          { text: 'Support', link: '/support/' },
+          { text: 'Experiments', link: '/experiments/' },
+          { text: 'Corpus', link: '/corpus/' },
+          { text: 'Changelog', link: '/changelog/' },
+          { text: 'FAQ', link: '/faq/' }
+        ]
+      }
     ],
     sidebar: {
       '/spec/': [
         {
           text: 'Specification',
           items: [
-            { text: 'Introduction', link: '/spec/#introduction' },
-            { text: 'Scope and terminology', link: '/spec/#scope-and-terminology' },
-            { text: 'Command line grammar', link: '/spec/#command-line-grammar' },
-            { text: 'Tags', link: '/spec/#tags' },
-            { text: 'Modifiers', link: '/spec/#modifiers' },
-            { text: 'Pipelines and loci', link: '/spec/#pipelines-and-loci' },
-            { text: 'Error modes and recovery', link: '/spec/#error-modes-and-recovery' },
-            { text: 'Compliance footer', link: '/spec/#compliance-footer' },
-            { text: 'Examples', link: '/spec/#examples' },
-            { text: 'Versioning', link: '/spec/#versioning' }
+            { text: 'Grammar', link: '/spec/#grammar' },
+            { text: 'Transitions', link: '/spec/#transitions' },
+            { text: 'State', link: '/spec/#state' },
+            { text: 'Content contracts', link: '/spec/#content-contracts' },
+            { text: 'Footer', link: '/spec/#footer' }
           ]
         }
       ],
@@ -54,11 +58,23 @@ export default defineConfig({
         {
           text: 'Guide',
           items: [
-            { text: 'Tags and loci', link: '/guide/#tags-and-loci' },
-            { text: 'Modifiers', link: '/guide/#modifiers' },
-            { text: 'Pipelines and cycles', link: '/guide/#pipelines-and-cycles' },
-            { text: 'Error modes', link: '/guide/#error-modes' },
-            { text: 'Implementation notes', link: '/guide/#implementation-notes' }
+            { text: 'Start a conversation', link: '/guide/#start-a-conversation' },
+            { text: 'Tags and contracts', link: '/guide/#tags-and-content-contracts' },
+            { text: 'Counters and cycles', link: '/guide/#counters-cycles-and-loci' },
+            { text: 'Modifiers and recovery', link: '/guide/#modifiers-and-recovery' },
+            { text: 'Implementation options', link: '/guide/#implementation-options' }
+          ]
+        }
+      ],
+      '/install/': [
+        {
+          text: 'Install VPP',
+          items: [
+            { text: 'Codex and ChatGPT', link: '/install/#codex-and-chatgpt-desktop' },
+            { text: 'Download bundle', link: '/install/#download-the-portable-bundle' },
+            { text: 'Remote MCP', link: '/install/#connect-the-remote-mcp-server' },
+            { text: 'JSON and OpenAPI', link: '/install/#use-the-json-or-openapi-api' },
+            { text: 'Secondary methods', link: '/install/#secondary-methods' }
           ]
         }
       ],
@@ -96,6 +112,13 @@ export default defineConfig({
           ]
         }
       ]
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/cbassuarez/viable-prompt-protocol' }
+    ],
+    footer: {
+      message: 'VPP v1.5 · portable skill + deterministic runtime · published by Seb Suarez.',
+      copyright: 'MIT code · CC BY 4.0 documentation and examples · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/support/">Support</a>'
     }
   }
 });

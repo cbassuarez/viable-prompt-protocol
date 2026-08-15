@@ -12,6 +12,29 @@ jobs:
         with: { node-version: '20' }
       - name: Install dependencies
         run: npm ci
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Install Agent Skills validator
+        run: python -m pip install skills-ref==0.1.1
+      - name: Generated artifact drift
+        run: |
+          npm run generate:vpp
+          npm run build:skill-script
+          npm run package:plugin
+          git diff --exit-code
+      - name: Typecheck
+        run: npm run typecheck
+      - name: VPP runtime and MCP contracts
+        run: npm run test:vpp
+      - name: Skill and plugin artifacts
+        run: npm run validate:vpp-artifacts
+      - name: OpenAI public plugin submission packet
+        run: npm run validate:openai-submission
+      - name: Downloadable plugin and skill bundles
+        run: npm run check:plugin-package
+      - name: Open Agent Skills validation
+        run: agentskills validate plugins/viable-prompt-protocol/skills/viable-prompt-protocol
       - name: Markdownlint
         run: npm run lint:md
       - name: Lychee link check
@@ -22,3 +45,11 @@ jobs:
         run: npm run lint:spell
       - name: Parser tests
         run: npm run test:parser
+      - name: Corpus validation
+        run: npm run validate
+      - name: Documentation build
+        run: npm run docs:build
+      - name: Cloudflare Worker dry run
+        run: npm run build:worker
+      - name: Local Cloudflare Worker smoke test
+        run: npm run test:worker-local

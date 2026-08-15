@@ -1,8 +1,13 @@
-# Adoption — OpenAI (ChatGPT & Assistants)
+# Adoption — OpenAI
 
-- **Custom Instructions (ChatGPT):** Paste the Header Snippet. Only line 1 is parsed; later bangs are content.
-- **Assistants API mapping:** *Locus* ≈ **Thread**; *Cycle step* ≈ **Run**. Use the Header Snippet as `instructions`.
-- **Browsing:** enable tools; VPP requires browse & cite for external facts.
-- **Footer:** append machine-readable compliance line to each assistant reply payload/log.
+Install the repository plugin to load the `viable-prompt-protocol` skill and its remote MCP dependency together. The
+skill invokes `vpp_prepare_turn`, generates body-only content, invokes `vpp_format_response`, and validates before
+returning the reply. State stays in the calling conversation as auditable JSON.
 
-Quick test: send `!<g>` (line 1 only) → assistant must reply `<g>` and footer.
+For an application host, use [`examples/openai-responses.ts`](../../examples/openai-responses.ts) with the
+provider-neutral adapter. It bypasses model generation for deterministic protocol errors and wraps every generated body
+through the shared core.
+
+Cloud applications can attach `https://mcp.viableprompt.org/mcp` as a remote MCP server. If remote MCP is unavailable,
+map the four OpenAPI operations at `https://mcp.viableprompt.org/api/v1/openapi.json` as functions. Use the header
+snippet only as a reduced-assurance fallback.

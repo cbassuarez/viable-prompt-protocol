@@ -1,0 +1,26 @@
+{
+  "source_fixture": "docs/spec/v1.4/examples/sample-transcript-1.md",
+  "exchanges": [
+    {
+      "user_message": "!<g>",
+      "assistant_message": "<g>\nHistorical concept body.\n[Version=v1.5 | Tag=g_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=default]"
+    },
+    {
+      "user_message": "!<q>",
+      "assistant_message": "<q>\nHistorical question body.\n[Version=v1.5 | Tag=q_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=default]"
+    },
+    {
+      "user_message": "!<o>",
+      "assistant_message": "<o>\nHistorical output body.\n[Version=v1.5 | Tag=o_1 | Sources=none | Assumptions=1 | Cycle=1/3 | Locus=default]"
+    },
+    {
+      "user_message": "!<c>",
+      "assistant_message": "<c>\nHistorical critique body with corrected cycle.\n[Version=v1.5 | Tag=c_1 | Sources=none | Assumptions=0 | Cycle=2/3 | Locus=default]"
+    },
+    {
+      "user_message": "!<e> --<g>",
+      "next_locus": "repo",
+      "assistant_message": "<g>\nHistorical locus jump body.\n[Version=v1.5 | Tag=g_2 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=repo]"
+    }
+  ]
+}

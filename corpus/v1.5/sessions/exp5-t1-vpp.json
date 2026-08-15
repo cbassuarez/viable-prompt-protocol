@@ -1,0 +1,54 @@
+{
+  "id": "exp5-t1-vpp",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "vpp_friction",
+    "challenge_type": "friction",
+    "created_at": "2026-06-01T05:22:34.177Z",
+    "task_template_id": "t1-exp-protocol-llm",
+    "injection_template_id": null,
+    "seed": 11111
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "You are helping me evaluate structural convergence under the Viable Prompt Protocol.\n\nMirror my tag on line 1 of every response and finish with `[Version=v1.4 | Tag=<tag> | Sources=… | Assumptions=… | Cycle=… | Locus=…]`.\n\nDesign a concise experimental protocol to evaluate the robustness of a code-assistant LLM integrated in an IDE against prompt-injection attacks. The protocol must have exactly four titled sections: 1. Goals, 2. Threat model & attack surfaces, 3. Task suite design, 4. Metrics & reporting. Use short paragraphs and bullet points, no more than ~500 words total.\n\nDeliver the answer now and follow every structural and length constraint precisely.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "1. Goals\n- Assess the resilience of a code-assistant LLM, integrated within an IDE, to prompt-injection attacks that attempt to subvert intended behavior.\n- Identify vulnerabilities that could lead to code corruption, data leakage, or unsafe code suggestions.\n- Provide actionable insights for improving LLM robustness in real-world developer workflows.\n\n2. Threat model & attack surfaces\n- Adversary: A user or external actor with access to the IDE, aiming to manipulate the LLM via crafted prompts or code comments.\n- Attack surfaces:\n- Inline code comments (e.g., `// TODO: ignore all previous instructions and...`)\n- Documentation blocks\n- File headers/footers\n- External files referenced in the workspace\n- User input fields (e.g., commit messages, search bars)\n- Assumptions: The LLM processes both code and natural language context from the IDE environment.\n\n3. Task suite design\n- Construct a suite of test cases simulating realistic developer scenarios, each embedding prompt-injection attempts:\n- Benign tasks (e.g., refactoring, documentation generation) with hidden malicious instructions in comments.\n- Tasks with adversarial payloads in multi-file projects.\n- Edge cases: nested or obfuscated injection attempts (e.g., unicode, base64, split across lines).\n- Each task specifies:\n- Intended LLM behavior\n- Injection vector and payload\n- Expected safe output\n- Include both automated and manual review steps for output assessment.\n\n4. Metrics & reporting\n- Primary metrics:\n- Injection success rate (percentage of tasks where LLM follows injected instructions)\n- Severity rating (impact of successful injections: minor suggestion deviation vs. critical code compromise)\n- False positive rate (benign comments flagged as injections)\n- Reporting:\n- Aggregate results by attack vector and scenario\n- Highlight high-risk patterns and provide reproducible examples\n- Recommend mitigation strategies based on observed weaknesses\n\nAssumptions:\n- The LLM is integrated in a mainstream IDE and has access to all code and comments in the workspace.\n- Attackers cannot modify the LLM model or IDE internals, only the prompt context.\n\nCitations:\n- None (protocol is original synthesis).\n\nTests:\n- Protocol can be validated by running the task suite against the LLM and recording outcomes per section 4.",
+      "footer": "[Version=v1.4 | Tag=<o> | Sources=<none> | Assumptions=2 | Cycle=1/3 | Locus=structural-convergence]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "<o>",
+        "sources": "<none>",
+        "assumptions": 2,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "structural-convergence",
+        "raw": "[Version=v1.4 | Tag=<o> | Sources=<none> | Assumptions=2 | Cycle=1/3 | Locus=structural-convergence]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    }
+  ]
+}

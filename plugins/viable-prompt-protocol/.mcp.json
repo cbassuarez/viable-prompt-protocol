@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "viable-prompt-protocol": {
+      "type": "http",
+      "url": "https://mcp.viableprompt.org/mcp"
+    }
+  }
+}

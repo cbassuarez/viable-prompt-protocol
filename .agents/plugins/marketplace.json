@@ -1,0 +1,20 @@
+{
+  "name": "viable-prompt-protocol",
+  "interface": {
+    "displayName": "Viable Prompt Protocol"
+  },
+  "plugins": [
+    {
+      "name": "viable-prompt-protocol",
+      "source": {
+        "source": "local",
+        "path": "./plugins/viable-prompt-protocol"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

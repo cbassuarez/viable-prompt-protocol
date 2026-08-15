@@ -1,0 +1,13 @@
+interface:
+  display_name: "Viable Prompt Protocol"
+  short_description: "Structure and validate VPP conversations"
+  default_prompt: "Use $viable-prompt-protocol to prepare, format, and validate this VPP exchange."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "viable-prompt-protocol"
+      description: "Stateless VPP v1.5 preparation, formatting, validation, and immutable references"
+      transport: "streamable_http"
+      url: "https://mcp.viableprompt.org/mcp"
+policy:
+  allow_implicit_invocation: true

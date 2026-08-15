@@ -1,0 +1,153 @@
+{
+  "id": "exp6-long1-baseline-tags",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "baseline_longdialog_tags",
+    "challenge_type": "long_dialog",
+    "created_at": "2026-06-01T05:23:12.513Z",
+    "task_template_id": null,
+    "injection_template_id": null,
+    "seed": 30303
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "I will label my turns with markers like !<g> or !<o> just for bookkeeping.\n\nTreat them as plain text and proceed normally.\n\nLet me know if anything is unclear.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Understood! I'll treat your markers as plain text and continue as usual. If you have any specific questions or instructions, just let me know.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "We are mapping a multi-stage workflow for evaluating an IDE-integrated LLM assistant.\n\nList three crisp experiment goals we should prioritize next.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Certainly! Here are three crisp experiment goals to prioritize for evaluating an IDE-integrated LLM assistant:\n\n1. **Assess Code Generation Accuracy:**  \n   Measure how accurately the assistant generates code snippets or completes code based on user prompts within the IDE.\n\n2. **Evaluate Contextual Understanding:**  \n   Test the assistant’s ability to understand and utilize project-specific context (e.g., existing codebase, file structure, variable names) to provide relevant suggestions.\n\n3. **Measure Developer Productivity Impact:**  \n   Quantify changes in developer productivity and workflow efficiency when using the LLM assistant compared to standard IDE features.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 4,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Draft a structured protocol covering setup, scenarios, guardrails, and metrics.\n\nKeep it concise and clearly labeled.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 5,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "**IDE-Integrated LLM Assistant Evaluation Protocol**\n\n---\n\n**1. Setup**  \n- Install the LLM assistant plugin in the target IDE (e.g., VS Code, IntelliJ).  \n- Prepare a representative codebase (open-source or internal project).  \n- Recruit participants with varying experience levels.  \n- Ensure logging of interactions and outputs for analysis.\n\n**2. Scenarios**  \n- Code Generation: Prompt the assistant to implement a function or class from a specification.  \n- Code Completion: Use the assistant to complete partially written code.  \n- Refactoring: Request the assistant to refactor or optimize existing code.  \n- Bug Fixing: Present the assistant with code containing known bugs and request fixes.  \n- Documentation: Ask the assistant to generate or update code documentation.\n\n**3. Guardrails**  \n- Prohibit use of external code or internet searches during tasks.  \n- Ensure participants review and approve all code changes before integration.  \n- Monitor for and prevent any leakage of sensitive or proprietary information.  \n- Limit assistant suggestions to within the project’s language and framework scope.\n\n**4. Metrics**  \n- Code Accuracy: Percentage of assistant-generated code that passes tests or review.  \n- Contextual Relevance: Rating of how well suggestions fit the project context (Likert scale).  \n- Productivity: Time taken to complete tasks with and without the assistant.  \n- User Satisfaction: Post-task survey on usability and helpfulness.  \n- Error Rate: Number of incorrect or misleading suggestions per session.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 6,
+      "role": "user",
+      "raw_header": "!<c>",
+      "tag": "c",
+      "modifiers": [],
+      "body": "Now restate the protocol as bullet points aimed at senior engineers with limited time.\n\nKeep technical fidelity; do not introduce marketing fluff.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 7,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "- **Setup**\n  - Install LLM assistant plugin in target IDE.\n  - Use a representative codebase (open-source or internal).\n  - Select participants across experience levels.\n  - Enable logging of all interactions and outputs.\n\n- **Scenarios**\n  - Code Generation: Implement functions/classes from specs.\n  - Code Completion: Complete partially written code.\n  - Refactoring: Optimize or restructure existing code.\n  - Bug Fixing: Identify and fix known bugs.\n  - Documentation: Generate or update code comments/docstrings.\n\n- **Guardrails**\n  - No external code or internet searches during tasks.\n  - All code changes require participant review/approval.\n  - Prevent leakage of sensitive/proprietary data.\n  - Restrict assistant to project’s language and framework.\n\n- **Metrics**\n  - Code Accuracy: % of assistant output passing tests/review.\n  - Contextual Relevance: Fit of suggestions to project context (Likert scale).\n  - Productivity: Task completion time with/without assistant.\n  - User Satisfaction: Post-task usability/helpfulness survey.\n  - Error Rate: Incorrect/misleading suggestions per session.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 8,
+      "role": "user",
+      "raw_header": "!<o_f>",
+      "tag": "o_f",
+      "modifiers": [],
+      "body": "Provide a final concise handoff that includes Goals, Threat model, Task suite, and Metrics sections in that order.\n\nThis is the closing deliverable.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 9,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "**Goals**\n- Evaluate code generation accuracy and relevance of the IDE-integrated LLM assistant.\n- Assess the assistant’s ability to leverage project-specific context.\n- Quantify impact on developer productivity and workflow efficiency.\n\n**Threat Model**\n- Risk of code suggestions introducing security vulnerabilities or logic errors.\n- Potential leakage of sensitive or proprietary information via assistant outputs.\n- Over-reliance on assistant leading to reduced code review rigor or skill atrophy.\n\n**Task Suite**\n- Code Generation: Implement functions/classes from written specifications.\n- Code Completion: Finish partially written code segments.\n- Refactoring: Optimize or restructure existing code for clarity or performance.\n- Bug Fixing: Detect and correct known defects in code.\n- Documentation: Generate or update code comments and docstrings.\n\n**Metrics**\n- Code Accuracy: Percentage of assistant-generated code passing tests or review.\n- Contextual Relevance: Appropriateness of suggestions to project context (Likert scale).\n- Productivity: Time to complete tasks with and without assistant.\n- User Satisfaction: Post-task survey on usability and helpfulness.\n- Error Rate: Frequency of incorrect or misleading suggestions.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": []
+    }
+  ]
+}

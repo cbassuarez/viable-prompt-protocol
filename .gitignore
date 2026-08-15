@@ -1,3 +1,11 @@
 node_modules/
 
 package-lock.json
+
+# Local secrets (API keys) — never commit
+.env
+.env.*
+
+# Scratch output from --dry-run
+.scratch/
+.wrangler/

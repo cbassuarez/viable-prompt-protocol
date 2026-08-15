@@ -19,8 +19,8 @@ sidebar: false
 
   <div class="vpp-hero-actions">
     <a class="vpp-hero-button vpp-hero-button--brand"
-      href="/#header-snippet">
-      Try VPP in your system prompt
+      href="/install/">
+      Install VPP
     </a>
     <a class="vpp-hero-button" href="/spec/">
       Read the spec
@@ -31,8 +31,8 @@ sidebar: false
 <div class="vpp-callout">
   <strong>VPP is not a chatbot in disguise.</strong>
   It does not swap models or pretend one system is another.
-  VPP is a protocol layered on top of vanilla LLMs: a shared contract for
-  how humans and assistants structure multi-turn work.
+  VPP is a portable skill plus deterministic protocol runtime layered on top
+  of the models you already use.
 </div>
 
 ## What breaks in normal chat
@@ -73,8 +73,7 @@ Unknowns:
 - What “success” means (deliverable + audience).
 - Which constraints are hard vs negotiable.
 - What data we can cite vs must infer.
-[Version=v1.4 | Tag=<q_1> | Sources=<none> | Assumptions=0 | Cycle=1/3 |
-Locus=unknowns]
+[Version=v1.5 | Tag=q_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=default]
 
 !<c>
 Clarify the deliverable and remove the weakest assumption.
@@ -83,8 +82,7 @@ Clarify the deliverable and remove the weakest assumption.
 Understood. Deliverable: a single-page spec with a join-first CTA.
 Removed assumption: that we can infer the user’s audience without
 asking.
-[Version=v1.4 | Tag=<c_1> | Sources=<none> | Assumptions=0 | Cycle=2/3 |
-Locus=spec-tighten]
+[Version=v1.5 | Tag=c_1 | Sources=none | Assumptions=0 | Cycle=2/3 | Locus=default]
 ```
 
 The tag states intent. The footer makes progress reviewable.
@@ -92,7 +90,7 @@ The tag states intent. The footer makes progress reviewable.
 ## Why prompt templates aren’t enough
 
 Prompt templates are great at starting a session.
-They do not enforce structure across dozens of turns.
+They do not reliably enforce structure across dozens of turns or maintain global counters through locus changes.
 
 VPP makes structure continuous:
 Every turn declares intent, every response mirrors it, and the
@@ -101,9 +99,10 @@ transcript stays auditable as it grows.
 <div class="vpp-try-box">
   <h3>Try VPP anywhere</h3>
   <p>
-    Paste the <a href="/#header-snippet">header snippet</a> into your
-    system prompt, then begin with <code>!&lt;g&gt;</code> or
-    <code>!&lt;q&gt;</code>.
+    <a href="/install/">Install the plugin</a>, then begin with
+    <code>!&lt;g&gt;</code> or <code>!&lt;q&gt;</code>. The generated
+    <a href="/custom-instructions/">custom-instructions block</a> remains
+    available for hosts that cannot use skills or tools.
   </p>
 </div>
 
@@ -111,7 +110,7 @@ transcript stays auditable as it grows.
 
 - Read the normative spec: [Spec](https://viableprompt.org/spec/)
 - Learn workflows and patterns: [Guide](https://viableprompt.org/guide/)
-- Copy the system prompt once: [Header snippet](/#header-snippet)
+- Use the fallback instructions: [Custom instructions](/custom-instructions/)
 
 ---
 <!-- cSpell:ignore replayable -->

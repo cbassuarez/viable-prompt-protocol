@@ -1,4 +1,13 @@
 #!/usr/bin/env node
+// Validate corpus session files against their version's JSON Schema.
+//
+// By default this validates every corpus/<version> directory that has a
+// schema.json (so both v1.4 and v1.5 are checked). Pass --version vX to restrict
+// to one.
+//
+//   node scripts/validate-corpus.mjs              # all versions
+//   node scripts/validate-corpus.mjs --version v1.5
+
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -8,76 +17,91 @@ import Ajv from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 const ROOT = path.resolve(path.join(path.dirname(fileURLToPath(import.meta.url)), ".."));
-const CORPUS_DIR = path.join(ROOT, "corpus", "v1.4");
-const SCHEMA_PATH = path.join(CORPUS_DIR, "schema.json");
-const SESSIONS_DIR = path.join(CORPUS_DIR, "sessions");
+const CORPUS_ROOT = path.join(ROOT, "corpus");
 
-function loadSchema() {
-  try {
-    const raw = fs.readFileSync(SCHEMA_PATH, "utf8");
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error(`Failed to read schema at ${SCHEMA_PATH}:`, err.message);
-    process.exit(1);
+function parseArgs(argv) {
+  const args = { version: null };
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === "--version") args.version = argv[++i];
+    else if (argv[i].startsWith("--version=")) args.version = argv[i].slice("--version=".length);
   }
+  return args;
 }
 
-function loadSessionFiles() {
-  if (!fs.existsSync(SESSIONS_DIR)) {
-    console.error(`Sessions directory not found: ${SESSIONS_DIR}`);
-    process.exit(1);
-  }
+// A "version dir" is corpus/<name> containing a schema.json.
+function discoverVersionDirs() {
+  if (!fs.existsSync(CORPUS_ROOT)) return [];
   return fs
-    .readdirSync(SESSIONS_DIR)
-    .filter(name => name.toLowerCase().endsWith(".json"))
-    .map(name => path.join(SESSIONS_DIR, name))
+    .readdirSync(CORPUS_ROOT, { withFileTypes: true })
+    .filter((d) => d.isDirectory() && fs.existsSync(path.join(CORPUS_ROOT, d.name, "schema.json")))
+    .map((d) => d.name)
     .sort();
 }
 
-function validateSessions() {
-  const schema = loadSchema();
+function validateVersion(version) {
+  const dir = path.join(CORPUS_ROOT, version);
+  const schemaPath = path.join(dir, "schema.json");
+  const sessionsDir = path.join(dir, "sessions");
+
+  const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
   const validate = ajv.compile(schema);
 
-  const sessionPaths = loadSessionFiles();
-  if (sessionPaths.length === 0) {
-    console.log("No session files found to validate.");
-    return;
+  let sessionPaths = [];
+  if (fs.existsSync(sessionsDir)) {
+    sessionPaths = fs
+      .readdirSync(sessionsDir)
+      .filter((name) => name.toLowerCase().endsWith(".json"))
+      .map((name) => path.join(sessionsDir, name))
+      .sort();
   }
 
-  let validCount = 0;
-  let invalidCount = 0;
-
+  let valid = 0;
+  let invalid = 0;
   for (const sessionPath of sessionPaths) {
     let data;
     try {
-      const raw = fs.readFileSync(sessionPath, "utf8");
-      data = JSON.parse(raw);
+      data = JSON.parse(fs.readFileSync(sessionPath, "utf8"));
     } catch (err) {
-      console.error(`Failed to parse JSON for ${path.basename(sessionPath)}: ${err.message}`);
-      invalidCount += 1;
+      console.error(`[${version}] bad JSON ${path.basename(sessionPath)}: ${err.message}`);
+      invalid += 1;
       continue;
     }
-
-    const ok = validate(data);
-    if (!ok) {
-      console.error(`Validation failed for ${path.basename(sessionPath)}:`);
-      for (const error of validate.errors ?? []) {
-        console.error(`  [${error.instancePath || "/"}] ${error.message}`);
-      }
-      invalidCount += 1;
+    if (validate(data)) {
+      valid += 1;
     } else {
-      validCount += 1;
+      invalid += 1;
+      console.error(`[${version}] validation failed for ${path.basename(sessionPath)}:`);
+      for (const e of validate.errors ?? []) console.error(`    [${e.instancePath || "/"}] ${e.message}`);
     }
   }
 
-  if (invalidCount > 0) {
-    console.error(`\n${invalidCount} of ${sessionPaths.length} session(s) failed validation.`);
+  console.log(`[${version}] ${valid} valid, ${invalid} invalid (${sessionPaths.length} files).`);
+  return invalid === 0;
+}
+
+function main() {
+  const { version } = parseArgs(process.argv.slice(2));
+  const versions = version ? [version] : discoverVersionDirs();
+
+  if (versions.length === 0) {
+    console.error("No corpus version directories with a schema.json found.");
     process.exit(1);
   }
 
-  console.log(`${validCount} session(s) validated successfully.`);
+  let allOk = true;
+  for (const v of versions) {
+    const schemaPath = path.join(CORPUS_ROOT, v, "schema.json");
+    if (!fs.existsSync(schemaPath)) {
+      console.error(`No schema for version ${v} at ${schemaPath}`);
+      allOk = false;
+      continue;
+    }
+    allOk = validateVersion(v) && allOk;
+  }
+
+  if (!allOk) process.exit(1);
 }
 
-validateSessions();
+main();

@@ -1,116 +1,54 @@
----
-title: 'Specification'
-outline: [2, 3]
----
+<!-- GENERATED from protocol/v1.5/manifest.json; do not edit. -->
+# Viable Prompt Protocol v1.5
 
-> The canonical machine-readable copy lives at
-> <https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/spec/latest/spec.md>.
-> Versioned modules and examples remain under
-> [`docs/spec/v1.4/`](https://github.com/cbassuarez/viable-prompt-protocol/tree/main/docs/spec/v1.4).
+Manifest digest: `3f8948a2838ddc33`
 
-The Viable Prompt Protocol (VPP) specification defines the normative behaviors expected from both human operators and assistant
-models when participating in protocol-compliant conversations. This document is authoritative and should be treated as the
-source of truth for all VPP implementations.
+VPP is a tagged, closed-loop conversation protocol. The user places one command on line 1; the assistant returns exactly one allowed wrapper tag, a body, and the canonical footer.
 
-```text
-VPP_VERSION: 1.4
-TAGS_USER: <g>, <q>, <o>, <c>, <o_f>, <e>, <e_o>
-TAGS_ASSISTANT: <g>, <q>, <o>, <c>, <o_f>
-FIRST_LINE: "!<tag> [--modifier ...]"
-FOOTER_FORMAT: [Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name?>]
-```
+## Grammar
 
-## Introduction
+`!<tag> [--modifier ...]`
 
-VPP is a conversation protocol that constrains the structure of human and assistant turns through mandatory first-line tags,
-optional modifiers, and a required compliance footer. The goals are repeatability, machine legibility, and clear traceability
-across multi-turn cycles.
+- Parse line 1 only. Later lines are content, even when they contain bang tags.
+- Tags and modifiers are case-sensitive.
+- User tags: `!<g>`, `!<q>`, `!<o>`, `!<c>`, `!<o_f>`, `!<e>`, `!<e_o>`.
+- Assistant tags: `<g>`, `<q>`, `<o>`, `<c>`, `<o_f>`.
+- Correctness modifiers: `--correct`, `--incorrect`.
+- Severity modifiers: `--minor`, `--major`.
+- Duplicate or contradictory modifiers are invalid.
+- Pipeline destinations must be one of `--<g>`, `--<q>`, `--<o>`, `--<c>`, `--<o_f>`.
 
-## Scope and terminology
+## Transitions
 
-- **Tag** — A symbol describing the role of the next speaker (e.g., `<q>` for questioning).
-- **Modifier** — Optional flag(s) that adjust expectations for the response (e.g., `--major`).
-- **Cycle** — A bounded sequence of turns, typically three exchanges, that advances the workflow.
-- **Locus** — The seat or perspective from which an agent is operating (human or assistant).
-- **Footer** — The terminal line of a message summarizing compliance data.
+- Valid ordinary commands mirror their tag.
+- `!<e> --<tag>` starts a new locus at cycle 1 and routes to `<tag>`.
+- `!<e_o>` starts an immediate output pipeline at `<o>` and cycle 1.
+- `!<o> --correct --<tag>` starts an explicit pipeline at cycle 1.
+- `!<o> --incorrect` and `!<o_f> --incorrect` route to `<c>`.
+- Invalid commands deterministically route to `<c>` with a recovery body.
 
-## Command line grammar
+## State
 
-The user MUST begin each cycle with a tag line matching the grammar below:
+The default locus is `default`. Cycle starts at 1. Every valid user `!<c>` advances the cycle, capped at 3. New-locus escapes, immediate-output escapes, explicit pipelines, and a new command after `<o_f>` reset cycle to 1.
 
-```bnf
-command-line ::= bang tag modifiers? newline
-bang ::= "!"
-tag ::= "<" identifier ">"
-identifier ::= letter ( letter | digit | "_" )*
-modifiers ::= modifier+
-modifier ::= "--" identifier ( "=" value )?
-value ::= quoted | unquoted
-quoted ::= '"' chars '"'
-unquoted ::= ( letter | digit | "_" | "-" )+
-```
+Tag indexes are conversation-global. They continue across cycle resets and locus changes, and reset only when the caller begins a new conversation with no prior state. Unnamed locus jumps are assigned `locus-2`, `locus-3`, and so on.
 
-## Tags
+At cycle 3 the formatter adds the canonical escape choices when the body does not already contain both forms:
 
-Tags are grouped into loci that signal intent:
+> Escape options: send `!<e> --<g>` (or `--<q>`, `--<o>`, `--<c>`, `--<o_f>`) to change locus, or `!<e_o>` to start an output pipeline.
 
-- **Gather (`<g>`)** — Request background context or clarifications.
-- **Question (`<q>`)** — Pose a primary question or subproblem.
-- **Output (`<o>`)** — Require the assistant to produce a deliverable.
-- **Critique (`<c>`)** — Evaluate previous outputs for correctness and completeness.
-- **Finalize (`<o_f>`)** — Provide the final, vetted answer.
-- **Exception (`<e>`, `<e_o>`)** — Signal user- or operator-originating errors.
+## Content contracts
 
-Each assistant response MUST echo the incoming tag on its first line.
+- `<g>`: Stay conceptual. Snippets are allowed; do not emit full files or modules.
+- `<q>`: Ask broad, uncertainty-reducing questions or provide diagnostic framing.
+- `<o>`: Produce a realized deliverable and include assumptions, citations, and tests when relevant.
+- `<c>`: Critique or clarify at fine context, targeting concrete deltas and asking no more than 25 questions.
+- `<o_f>`: Produce the publishable final result with a brief rationale and acceptance checklist.
 
-## Modifiers
+The runtime enforces structure: commands, wrappers, modifiers, counters, cycles, loci, footer fields, and wrapper placement. Meaning-level obligations such as concept-only behavior and citation quality remain model or evaluation concerns.
 
-Modifiers refine tag intent and expectation:
+## Footer
 
-- `--correct` / `--incorrect` — Confirm or deny correctness of prior outputs.
-- `--minor` / `--major` — Signal the severity of required changes.
-- `--<tag>` — Request a branch to a specific tag locus in the next cycle.
-- `--assumptions=<n>` — Declare expected assumption count in the footer.
+`[Version=v1.5 | Tag=<tag>_<index> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name>]`
 
-Modifiers SHOULD be sparse and mutually coherent. Conflicting modifiers MUST be resolved before issuing the command.
-
-## Pipelines and loci
-
-Pipelines chain tags into predictable sequences, often using loci labels such as `research`, `draft`, or `eval`.
-A canonical pipeline is `<g> → <q> → <o> → <c> → <o_f>`, enabling preparation, inquiry, production, critique, and delivery.
-Loci metadata may be included in modifiers or footers to trace responsibility boundaries.
-
-## Error modes and recovery
-
-Error tags `<e>` and `<e_o>` capture deviations.
-When the assistant detects an invalid state, it MUST emit `<e>` and describe the issue.
-The user may follow with `<e_o>` to report operator-originating problems.
-Recovery typically involves returning to `<g>` or `<q>` with corrective modifiers.
-
-## Compliance footer
-
-Every assistant message MUST end with a footer matching the schema `[Version=vX.Y | Tag=<tag_n> | Sources=<...> | Assumptions=<n>
-| Cycle=<i>/3 | Locus=<name?>]`.
-Missing fields or malformed entries constitute protocol violations and should be escalated through critique cycles.
-
-## Examples
-
-```text
-!<q> --major
-<q>
-Please outline the primary risk factors for protocol drift.
-[Version=v1.4 | Tag=<q> | Sources=preprint-2024-02 | Assumptions=1 | Cycle=1/3 | Locus=assistant]
-```
-
-```text
-!<c> --correct --minor
-<c>
-Feedback acknowledged. Minor updates applied to the summary section.
-[Version=v1.4 | Tag=<c> | Sources=prior-cycle | Assumptions=0 | Cycle=2/3 | Locus=assistant]
-```
-
-## Versioning
-
-VPP versions follow semantic increments.
-Minor versions introduce new modifiers or clarifications; major versions may revise tag semantics or footer structure.
-Implementers SHOULD record the version in the footer and upgrade only after validating compatibility.
+`Sources` is `none` or `web`. `Assumptions` is a caller-declared non-negative integer. No text may appear outside the header, body, and footer.

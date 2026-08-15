@@ -1,0 +1,44 @@
+{
+  "id": "exp4-t3-mini",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "mini_proto_task_utility",
+    "challenge_type": "task_utility",
+    "created_at": "2026-06-01T05:22:31.102Z",
+    "task_template_id": "t3-api-spec-design",
+    "injection_template_id": null,
+    "seed": 34569
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Given a fictional service that logs LLM experiments (sessions, metrics, configs), propose an API surface in three sections: (1) Core resources, (2) Example endpoints, (3) Common usage patterns. Use a mix of prose and bullet lists. Do not write code, just a structured description.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "(1) Core Resources\n\n- **Session**: Represents a single LLM experiment run. Contains metadata (start/end time, user, status).\n- **Metric**: Quantitative results or measurements (accuracy, loss, latency) associated with a session.\n- **Config**: The configuration or hyperparameters used for a session (model type, learning rate, dataset).\n- **Artifact**: Optional files or outputs generated during a session (logs, checkpoints, predictions).\n\n---\n\n(2) Example Endpoints\n\n- **Sessions**\n  - Create a new session\n  - Retrieve session details by ID\n  - List all sessions (with filtering by user, date, status)\n  - Update session status (e.g., running, completed, failed)\n- **Metrics**\n  - Log new metrics for a session\n  - Retrieve all metrics for a session\n  - Query metrics across sessions (e.g., best accuracy)\n- **Configs**\n  - Attach a config to a session\n  - Retrieve config for a session\n  - List configs used in past sessions\n- **Artifacts**\n  - Upload artifact to a session\n  - Download artifact by session and artifact name\n  - List artifacts for a session\n\n---\n\n(3) Common Usage Patterns\n\n- **Experiment Tracking**\n  - Start a session, attach config, log metrics as the experiment progresses, upload artifacts, and mark session as completed.\n- **Comparative Analysis**\n  - Query sessions filtered by model type or date, retrieve associated metrics, and compare performance.\n- **Reproducibility**\n  - Retrieve config and artifacts for a past session to rerun or audit the experiment.\n- **Automated Reporting**\n  - Aggregate metrics across sessions to generate summaries or leaderboards for teams or projects.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false
+      },
+      "flags": []
+    }
+  ]
+}

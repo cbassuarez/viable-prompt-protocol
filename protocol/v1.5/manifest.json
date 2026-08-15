@@ -1,0 +1,57 @@
+{
+  "$schema": "./manifest.schema.json",
+  "name": "Viable Prompt Protocol",
+  "short_name": "VPP",
+  "version": "v1.5",
+  "assistant_tags": ["g", "q", "o", "c", "o_f"],
+  "user_tags": ["g", "q", "o", "c", "o_f", "e", "e_o"],
+  "modifiers": {
+    "correctness": ["correct", "incorrect"],
+    "severity": ["minor", "major"],
+    "pipeline_destinations": ["g", "q", "o", "c", "o_f"]
+  },
+  "grammar": {
+    "form": "!<tag> [--modifier ...]",
+    "first_line_only": true,
+    "case_sensitive": true,
+    "pipeline_requires_angle_brackets": true,
+    "duplicate_modifiers_are_errors": true
+  },
+  "transitions": {
+    "mirror_default": true,
+    "escape_requires_pipeline": true,
+    "immediate_output_tag": "o",
+    "pipeline_form": "!<o> --correct --<tag>",
+    "assistant_error_tag": "c"
+  },
+  "state": {
+    "default_locus": "default",
+    "cycle_initial": 1,
+    "cycle_max": 3,
+    "cycle_advances_on_user_tag": "c",
+    "tag_counts_scope": "conversation",
+    "cycle_resets": [
+      "new-locus-escape",
+      "immediate-output-escape",
+      "explicit-pipeline",
+      "new-command-after-final"
+    ],
+    "escape_hint_at_cycle_max": true
+  },
+  "contracts": {
+    "g": "Stay conceptual. Snippets are allowed; do not emit full files or modules.",
+    "q": "Ask broad, uncertainty-reducing questions or provide diagnostic framing.",
+    "o": "Produce a realized deliverable and include assumptions, citations, and tests when relevant.",
+    "c": "Critique or clarify at fine context, targeting concrete deltas and asking no more than 25 questions.",
+    "o_f": "Produce the publishable final result with a brief rationale and acceptance checklist."
+  },
+  "footer": {
+    "format": "[Version=v1.5 | Tag=<tag>_<index> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name>]",
+    "sources": ["none", "web"],
+    "locus_max_length": 64
+  },
+  "limits": {
+    "critique_questions": 25,
+    "message_bytes": 262144
+  }
+}

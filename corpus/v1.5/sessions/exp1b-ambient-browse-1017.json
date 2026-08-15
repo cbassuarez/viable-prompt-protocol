@@ -1,0 +1,88 @@
+{
+  "id": "exp1b-ambient-browse-1017",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-5.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_browse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2026-06-01T04:57:17.463Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 3010
+  },
+  "label": "bad",
+  "failure_modes": [
+    "missing_header",
+    "missing_footer",
+    "tag_mismatch"
+  ],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "You used the tag `!<q>` before your message. I’m interpreting that as a marker (perhaps “quote” or “question”) rather than something that changes how I should respond.",
+      "tag": null,
+      "modifiers": [],
+      "body": "Your content is:\n\n> test\n\nI’m here and working. If you were just checking that, it succeeded.",
+      "footer": "If `!<q>` is meant to trigger a specific behavior, tell me what it should do and I’ll adapt.",
+      "parsed_footer": {
+        "raw": "If `!<q>` is meant to trigger a specific behavior, tell me what it should do and I’ll adapt."
+      },
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": [
+        "missing_header",
+        "missing_footer",
+        "tag_mismatch"
+      ]
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "You used `!<o>` this time. I’ll treat it like another marker (maybe “output” or “option”) unless you define it otherwise.",
+      "tag": null,
+      "modifiers": [],
+      "body": "Your content is:\n\n> second test\n\nI’m receiving your messages correctly.",
+      "footer": "If `!<o>` is supposed to change how I respond (format, style, etc.), tell me the rules and I’ll follow them.",
+      "parsed_footer": {
+        "raw": "If `!<o>` is supposed to change how I respond (format, style, etc.), tell me the rules and I’ll follow them."
+      },
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": [
+        "missing_header",
+        "missing_footer",
+        "tag_mismatch"
+      ]
+    }
+  ]
+}

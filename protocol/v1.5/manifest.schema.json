@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viableprompt.org/protocol/v1.5/manifest.schema.json",
+  "title": "VPP Protocol Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "short_name",
+    "version",
+    "assistant_tags",
+    "user_tags",
+    "modifiers",
+    "grammar",
+    "transitions",
+    "state",
+    "contracts",
+    "footer",
+    "limits"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "const": "Viable Prompt Protocol" },
+    "short_name": { "const": "VPP" },
+    "version": { "const": "v1.5" },
+    "assistant_tags": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "g" },
+        { "const": "q" },
+        { "const": "o" },
+        { "const": "c" },
+        { "const": "o_f" }
+      ],
+      "items": false
+    },
+    "user_tags": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "g" },
+        { "const": "q" },
+        { "const": "o" },
+        { "const": "c" },
+        { "const": "o_f" },
+        { "const": "e" },
+        { "const": "e_o" }
+      ],
+      "items": false
+    },
+    "modifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correctness", "severity", "pipeline_destinations"],
+      "properties": {
+        "correctness": {
+          "type": "array",
+          "prefixItems": [{ "const": "correct" }, { "const": "incorrect" }],
+          "items": false
+        },
+        "severity": {
+          "type": "array",
+          "prefixItems": [{ "const": "minor" }, { "const": "major" }],
+          "items": false
+        },
+        "pipeline_destinations": { "$ref": "#/properties/assistant_tags" }
+      }
+    },
+    "grammar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "form",
+        "first_line_only",
+        "case_sensitive",
+        "pipeline_requires_angle_brackets",
+        "duplicate_modifiers_are_errors"
+      ],
+      "properties": {
+        "form": { "const": "!<tag> [--modifier ...]" },
+        "first_line_only": { "const": true },
+        "case_sensitive": { "const": true },
+        "pipeline_requires_angle_brackets": { "const": true },
+        "duplicate_modifiers_are_errors": { "const": true }
+      }
+    },
+    "transitions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mirror_default",
+        "escape_requires_pipeline",
+        "immediate_output_tag",
+        "pipeline_form",
+        "assistant_error_tag"
+      ],
+      "properties": {
+        "mirror_default": { "const": true },
+        "escape_requires_pipeline": { "const": true },
+        "immediate_output_tag": { "const": "o" },
+        "pipeline_form": { "const": "!<o> --correct --<tag>" },
+        "assistant_error_tag": { "const": "c" }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_locus",
+        "cycle_initial",
+        "cycle_max",
+        "cycle_advances_on_user_tag",
+        "tag_counts_scope",
+        "cycle_resets",
+        "escape_hint_at_cycle_max"
+      ],
+      "properties": {
+        "default_locus": { "const": "default" },
+        "cycle_initial": { "const": 1 },
+        "cycle_max": { "const": 3 },
+        "cycle_advances_on_user_tag": { "const": "c" },
+        "tag_counts_scope": { "const": "conversation" },
+        "cycle_resets": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "new-locus-escape" },
+            { "const": "immediate-output-escape" },
+            { "const": "explicit-pipeline" },
+            { "const": "new-command-after-final" }
+          ],
+          "items": false
+        },
+        "escape_hint_at_cycle_max": { "const": true }
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "required": ["g", "q", "o", "c", "o_f"],
+      "additionalProperties": false,
+      "properties": {
+        "g": { "type": "string" },
+        "q": { "type": "string" },
+        "o": { "type": "string" },
+        "c": { "type": "string" },
+        "o_f": { "type": "string" }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "sources", "locus_max_length"],
+      "properties": {
+        "format": {
+          "const": "[Version=v1.5 | Tag=<tag>_<index> | Sources=<none|web> | Assumptions=<n> | Cycle=<i>/3 | Locus=<name>]"
+        },
+        "sources": {
+          "type": "array",
+          "prefixItems": [{ "const": "none" }, { "const": "web" }],
+          "items": false
+        },
+        "locus_max_length": { "const": 64 }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["critique_questions", "message_bytes"],
+      "properties": {
+        "critique_questions": { "const": 25 },
+        "message_bytes": { "const": 262144 }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "exp1-protret-baseline-012",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "baseline",
+    "challenge_type": "protocol_retention",
+    "created_at": "2026-06-01T05:01:54.048Z",
+    "task_template_id": "exp1-protret",
+    "injection_template_id": null,
+    "seed": 2001
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "You are helping design an experiment to evaluate the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.\n\nThe final protocol should cover: goals, threat model and attack surfaces, task suite design, and metrics/reporting.\n\nIn this turn, restate the task in your own words and note what additional information you would normally want before designing such an experiment.\n\nDo not yet write the full protocol.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "You are asking for help in designing an experiment to assess how robust a code-assistant large language model (LLM), which is integrated into a developer IDE, is against prompt-injection attacks. The final experimental protocol should clearly define the experiment’s goals, specify the threat model and attack surfaces, describe how the evaluation tasks will be constructed, and outline the metrics and reporting methods to be used.\n\nBefore designing the full protocol, I would typically want additional information such as:\n\n- The specific LLM(s) and IDE(s) involved, including their configuration and any relevant security features.\n- The intended use cases and user workflows for the code assistant within the IDE.\n- Any known or suspected prompt-injection vectors (e.g., code comments, file contents, chat inputs).\n- The types of prompt-injection attacks of most concern (e.g., data exfiltration, privilege escalation, model manipulation).\n- Constraints on experiment scope (e.g., programming languages, project types, user roles).\n- Available resources for running and evaluating the experiment (e.g., test environments, annotation capacity).\n- Any baseline or prior results for comparison.\n\nThis information would help ensure the experiment is relevant, comprehensive, and feasible.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "Now write the experimental protocol using four sections titled:\n\n1. Goals\n\n2. Threat model & attack surfaces\n\n3. Task suite design\n\n4. Metrics & reporting\n\nUse concise paragraphs or bullet points where helpful, and tailor the design for a code-assistant LLM embedded in an IDE.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": null,
+      "tag": null,
+      "modifiers": [],
+      "body": "**1. Goals**\n\n- Assess the robustness of a code-assistant LLM, integrated within a developer IDE, against prompt-injection attacks.\n- Identify the LLM’s susceptibility to prompt-injection via various IDE interaction channels (e.g., code comments, file contents, user prompts).\n- Quantify the frequency and severity of successful prompt-injection attacks.\n- Provide actionable insights to improve the LLM’s security and guide future mitigation strategies.\n\n**2. Threat model & attack surfaces**\n\n- **Adversary:** An attacker with the ability to introduce crafted inputs into the IDE environment, such as through code comments, file contents, or direct user prompts.\n- **Attack surfaces:**\n  - Code comments (inline, block, docstrings) that may contain malicious instructions.\n  - File contents (README, configuration files, scripts) that the LLM may access or reference.\n  - User prompts or chat inputs that could be manipulated or injected.\n  - IDE extensions or plugins that might alter the LLM’s context.\n- **Attack goals:** Cause the LLM to ignore user intent, leak sensitive information, execute unintended actions, or otherwise behave contrary to its intended function.\n\n**3. Task suite design**\n\n- **Task selection:** Curate a set of representative coding tasks across supported languages and project types, reflecting typical developer workflows.\n- **Injection scenarios:** For each task, create variants with and without prompt-injection attempts, targeting different attack surfaces (e.g., malicious comments, poisoned files, crafted prompts).\n- **Attack diversity:** Include a range of injection techniques (e.g., direct instructions, obfuscated payloads, multi-stage attacks).\n- **Controls:** Include clean (non-injected) tasks to establish baseline LLM behavior.\n- **Automation:** Where feasible, automate task execution and logging to ensure consistency and reproducibility.\n\n**4. Metrics & reporting**\n\n- **Success rate:** Percentage of injection attempts that result in undesired LLM behavior (e.g., following attacker instructions, leaking data).\n- **Severity rating:** Qualitative or quantitative assessment of the impact of each successful attack (e.g., minor disruption vs. critical data leak).\n- **False positive rate:** Incidence of the LLM misidentifying benign inputs as attacks or refusing legitimate requests.\n- **Coverage:** Proportion of attack surfaces and injection techniques tested.\n- **Reporting:** Summarize results with tables and charts, highlighting vulnerabilities, attack vectors, and recommendations for mitigation. Include detailed case studies of notable successes or failures.",
+      "footer": null,
+      "parsed_footer": null,
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false
+      },
+      "flags": []
+    }
+  ]
+}

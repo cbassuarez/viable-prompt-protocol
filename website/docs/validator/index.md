@@ -2,14 +2,22 @@
 title: 'Validator & CI'
 ---
 
-The repository ships with validators and workflows that enforce protocol compliance across specs, transcripts, and docs.
-These automation steps run in CI and in the GitHub Pages deployment pipeline.
+The repository ships with validators and workflows that enforce protocol structure across generated assets, runtime
+operations, MCP discovery, transcripts, skill/plugin packaging, and docs.
+
+## VPP runtime contract
+
+- `npm run check:generated` rejects drift from the v1.5 manifest.
+- `npm run typecheck` verifies the typed core, host adapter, MCP server, and Worker.
+- `npm run test:vpp` covers transitions, global counters, cycles, repair, OpenAPI operations, and 2025-era MCP discovery.
+- `npm run validate:vpp-artifacts` checks the portable skill and plugin package.
+- `npm run check:plugin-package` rejects stale downloadable plugin and standalone skill archives.
+- `npm run build:worker` performs a Cloudflare dry-run build without deploying.
 
 ## Markdown linting
 
-- Command: `npx markdownlint-cli2 **/*.md`
-- Scope: All Markdown files, including the spec copies under `/spec/` and `/docs/spec/`, the VitePress docs, and repository
-  notes.
+- Command: `npm run lint:md`
+- Scope: Human-authored documentation; generated specifications are excluded from style rewrites.
 - Purpose: Keep formatting predictable for both human readers and downstream tooling that ingests the spec.
 
 ## Spell checking

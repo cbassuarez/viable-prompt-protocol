@@ -1,0 +1,35 @@
+{
+  "name": "viable-prompt-protocol",
+  "version": "1.0.0",
+  "description": "Structure, format, and validate VPP v1.5 conversations with a portable skill and deterministic runtime.",
+  "author": {
+    "name": "Seb Suarez",
+    "email": "contact@cbassuarez.com",
+    "url": "https://viableprompt.org/"
+  },
+  "homepage": "https://viableprompt.org/",
+  "repository": "https://github.com/cbassuarez/viable-prompt-protocol",
+  "license": "MIT",
+  "keywords": ["agent-skills", "conversation", "mcp", "prompting", "vpp"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Viable Prompt Protocol",
+    "shortDescription": "Structure and validate VPP conversations.",
+    "longDescription": "Run VPP v1.5 reliably across ChatGPT, Codex, and other agent hosts. The portable skill uses a stateless runtime to prepare turns, maintain conversation-global tag counters in client-carried state, format responses, validate exchanges, and repair structural errors.",
+    "developerName": "Seb Suarez",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read"],
+    "websiteURL": "https://viableprompt.org/",
+    "privacyPolicyURL": "https://viableprompt.org/privacy/",
+    "termsOfServiceURL": "https://viableprompt.org/terms/",
+    "defaultPrompt": [
+      "Use VPP to structure this conversation.",
+      "Validate and repair this VPP transcript.",
+      "Start a VPP planning loop for a resilient launch plan."
+    ],
+    "brandColor": "#3B82F6",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  },
+  "mcpServers": "./.mcp.json"
+}

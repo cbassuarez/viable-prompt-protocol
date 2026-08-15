@@ -1,0 +1,198 @@
+{
+  "id": "exp6-long1-vpp-grounded",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "vpp_longdialog_grounded",
+    "challenge_type": "long_dialog",
+    "created_at": "2026-06-01T05:22:50.096Z",
+    "task_template_id": null,
+    "injection_template_id": null,
+    "seed": 10101
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "We will follow the Viable Prompt Protocol with minimal reminders.\n\nConfirm you understand the tags (`<g>`, `<q>`, `<o>`, `<c>`, `<o_f>`), mirroring, and footer requirements before proceeding.\n\nWe will iterate through grounding, exploration, constraint changes, and a final write-up.\n\nDo not solve the whole task in this turn; acknowledge and ask any clarifying questions.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "Acknowledged. I understand the Viable Prompt Protocol tags (`<g>`, `<q>`, `<o>`, `<c>`, `<o_f>`), the requirement to mirror the user's tag on line 1, and to include the compliance footer on every reply. I will not solve the whole task in this turn.\n\nTo clarify before proceeding:\n- What is the specific topic or problem we will be iterating on?\n- Are there any initial constraints or context I should be aware of before we begin grounding?",
+      "footer": "[Version=v1.4 | Tag=g_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=init]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "g_1",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "init",
+        "raw": "[Version=v1.4 | Tag=g_1 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=init]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "We are mapping a multi-stage workflow for evaluating an IDE-integrated LLM assistant.\n\nList three crisp experiment goals we should prioritize next.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "Understood. Here are three crisp experiment goals to prioritize for evaluating an IDE-integrated LLM assistant:\n\n1. Measure the impact of the LLM assistant on developer productivity (e.g., task completion time, code quality).\n2. Assess the accuracy and relevance of code suggestions and explanations provided by the assistant.\n3. Evaluate user satisfaction and trust in the assistant’s recommendations during real-world coding tasks.\n\nWould you like to refine these goals further or proceed to define metrics and experimental stages for each?",
+      "footer": "[Version=v1.4 | Tag=q_2 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=experiment-goals]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "q_2",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "experiment-goals",
+        "raw": "[Version=v1.4 | Tag=q_2 | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=experiment-goals]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 4,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Draft a structured protocol covering setup, scenarios, guardrails, and metrics.\n\nKeep it concise and clearly labeled.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 5,
+      "role": "assistant",
+      "raw_header": "<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "**Structured Protocol for Evaluating IDE-Integrated LLM Assistant**\n\n**1. Setup**\n- Participants: Recruit developers with varying experience levels.\n- Environment: Standardized IDE with LLM assistant enabled; control group uses IDE without assistant.\n- Tasks: Predefined coding tasks (e.g., bug fixing, feature implementation).\n\n**2. Scenarios**\n- Scenario A: Code completion and suggestion usage.\n- Scenario B: Code explanation and documentation generation.\n- Scenario C: Debugging with assistant guidance.\n\n**3. Guardrails**\n- Data Privacy: No sharing of proprietary or sensitive code.\n- Intervention Limits: Assistant suggestions only; no direct code execution by the LLM.\n- User Autonomy: Participants can accept, modify, or reject suggestions.\n\n**4. Metrics**\n- Productivity: Task completion time, number of tasks completed.\n- Quality: Code correctness (automated tests), adherence to style guidelines.\n- Assistant Performance: Suggestion acceptance rate, relevance/accuracy ratings.\n- User Experience: Post-task surveys on satisfaction and trust.",
+      "footer": "[Version=v1.4 | Tag=o_3 | Sources=none | Assumptions=2 | Cycle=2/3 | Locus=protocol-draft]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "o_3",
+        "sources": "none",
+        "assumptions": 2,
+        "cycle": 2,
+        "cycle_max": 3,
+        "locus": "protocol-draft",
+        "raw": "[Version=v1.4 | Tag=o_3 | Sources=none | Assumptions=2 | Cycle=2/3 | Locus=protocol-draft]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 6,
+      "role": "user",
+      "raw_header": "!<c>",
+      "tag": "c",
+      "modifiers": [],
+      "body": "Now restate the protocol as bullet points aimed at senior engineers with limited time.\n\nKeep technical fidelity; do not introduce marketing fluff.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 7,
+      "role": "assistant",
+      "raw_header": "<c>",
+      "tag": "c",
+      "modifiers": [],
+      "body": "- **Setup**\n- Use a standardized IDE with/without LLM assistant for A/B comparison.\n- Recruit developers across experience levels.\n- Assign predefined coding tasks (bug fix, feature add).\n\n- **Scenarios**\n- Code completion/suggestion.\n- Code explanation/documentation.\n- Debugging with assistant input.\n\n- **Guardrails**\n- No proprietary/sensitive code.\n- LLM provides suggestions only—no code execution.\n- Developers retain full control over code changes.\n\n- **Metrics**\n- Task completion time and throughput.\n- Code correctness (via automated tests) and style compliance.\n- Suggestion acceptance rate and relevance/accuracy (developer-rated).\n- Post-task survey: satisfaction and trust.\n\nIs there a specific scenario or metric you want to emphasize or adjust before finalizing?",
+      "footer": "[Version=v1.4 | Tag=c_4 | Sources=none | Assumptions=1 | Cycle=2/3 | Locus=protocol-summary]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "c_4",
+        "sources": "none",
+        "assumptions": 1,
+        "cycle": 2,
+        "cycle_max": 3,
+        "locus": "protocol-summary",
+        "raw": "[Version=v1.4 | Tag=c_4 | Sources=none | Assumptions=1 | Cycle=2/3 | Locus=protocol-summary]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 8,
+      "role": "user",
+      "raw_header": "!<o_f>",
+      "tag": "o_f",
+      "modifiers": [],
+      "body": "Provide a final concise handoff that includes Goals, Threat model, Task suite, and Metrics sections in that order.\n\nThis is the closing deliverable.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 9,
+      "role": "assistant",
+      "raw_header": "<o_f>",
+      "tag": "o_f",
+      "modifiers": [],
+      "body": "**Goals**\n- Quantify the impact of an IDE-integrated LLM assistant on developer productivity, code quality, and user trust.\n- Evaluate the accuracy and relevance of assistant-generated code suggestions and explanations.\n- Assess user satisfaction and adoption likelihood in real-world coding scenarios.\n\n**Threat Model**\n- No proprietary or sensitive code is exposed to the LLM.\n- The assistant operates in a suggestion-only mode; it cannot execute or commit code.\n- Developers retain full autonomy over code changes and can reject or modify any assistant output.\n\n**Task Suite**\n- Predefined coding tasks: bug fixes, feature implementations, and refactoring.\n- Scenarios include code completion, code explanation/documentation, and debugging with assistant input.\n- Tasks are standardized for both control (no assistant) and experimental (assistant-enabled) groups.\n\n**Metrics**\n- Productivity: Task completion time, number of tasks completed.\n- Code Quality: Automated test pass rate, adherence to style guidelines.\n- Assistant Performance: Suggestion acceptance rate, developer-rated relevance/accuracy.\n- User Experience: Post-task survey on satisfaction and trust.",
+      "footer": "[Version=v1.4 | Tag=o_f_5 | Sources=none | Assumptions=2 | Cycle=3/3 | Locus=handoff]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "o_f_5",
+        "sources": "none",
+        "assumptions": 2,
+        "cycle": 3,
+        "cycle_max": 3,
+        "locus": "handoff",
+        "raw": "[Version=v1.4 | Tag=o_f_5 | Sources=none | Assumptions=2 | Cycle=3/3 | Locus=handoff]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    }
+  ]
+}

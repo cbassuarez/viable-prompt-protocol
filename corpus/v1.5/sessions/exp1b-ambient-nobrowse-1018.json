@@ -1,0 +1,88 @@
+{
+  "id": "exp1b-ambient-nobrowse-1018",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-5.1",
+    "provider": "openai",
+    "condition": "user_only_vpp_ambient_nobrowse",
+    "challenge_type": "user_only_protocol",
+    "created_at": "2026-06-01T04:56:17.620Z",
+    "task_template_id": "exp1b-user-only",
+    "injection_template_id": null,
+    "seed": 2010
+  },
+  "label": "bad",
+  "failure_modes": [
+    "missing_header",
+    "missing_footer",
+    "tag_mismatch"
+  ],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<q>",
+      "tag": "q",
+      "modifiers": [],
+      "body": "test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "It looks like you sent `!<q>` followed by `test`.",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "If you’re testing something specific (like a quote format, a command syntax, or how I handle special prefixes), tell me what behavior you expect, and I can help you refine or debug it.",
+      "parsed_footer": {
+        "raw": "If you’re testing something specific (like a quote format, a command syntax, or how I handle special prefixes), tell me what behavior you expect, and I can help you refine or debug it."
+      },
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": [
+        "missing_header",
+        "missing_footer",
+        "tag_mismatch"
+      ]
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "second test",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "Got it: `second test` received after the `!<o>` marker.",
+      "tag": null,
+      "modifiers": [],
+      "body": "",
+      "footer": "If `!<o>` is meant to signal a particular mode or output format, tell me what it should do (e.g., “treat everything after this as a title,” “respond in JSON,” etc.), and I’ll follow that convention.",
+      "parsed_footer": {
+        "raw": "If `!<o>` is meant to signal a particular mode or output format, tell me what it should do (e.g., “treat everything after this as a title,” “respond in JSON,” etc.), and I’ll follow that convention."
+      },
+      "scores": {
+        "vpp_header_present": false,
+        "vpp_footer_v14": false,
+        "footer_well_formed": false,
+        "tag_mirrors_user": false
+      },
+      "flags": [
+        "missing_header",
+        "missing_footer",
+        "tag_mismatch"
+      ]
+    }
+  ]
+}

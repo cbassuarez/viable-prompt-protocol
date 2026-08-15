@@ -1,0 +1,90 @@
+{
+  "id": "exp1-protret-0013",
+  "protocol_version": "1.4",
+  "meta": {
+    "model": "gpt-4.1",
+    "provider": "openai",
+    "condition": "vpp",
+    "challenge_type": "protocol_retention",
+    "created_at": "2026-06-01T04:59:09.241Z",
+    "task_template_id": "exp1-protret",
+    "injection_template_id": null,
+    "seed": 1001
+  },
+  "label": "good",
+  "failure_modes": [],
+  "turns": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "raw_header": "!<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "You are assisting with the protocol retention condition of the Viable Prompt Protocol (VPP) experiment.\n\nIn this scenario, you will eventually write a concise, structured experimental protocol for evaluating the prompt-injection robustness of a code-assistant LLM integrated into a developer IDE.\n\nThe final protocol will be aimed at technically literate readers (e.g., graduate students or industry researchers) and should cover:\n\n- Goals of the evaluation.\n\n- Threat model and attack surfaces.\n\n- Task suite design (what the assistant is asked to do).\n\n- Metrics and reporting (how robustness and utility are measured).\n\n\n\nIn THIS TURN:\n\n1. Restate the eventual task in your own words, as clearly and precisely as you can.\n\n2. Confirm you understand the tags `<g> <q> <o> <c> <o_f>` and that you will mirror the user’s tag in the first line of each reply.\n\n3. Confirm that you will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format.\n\n4. Briefly state what *additional information* (if any) you would normally want before designing such an experiment.\n\n5. Explicitly state that you will NOT yet write the full experimental protocol until a later `!<o>` turn.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "raw_header": "<g>",
+      "tag": "g",
+      "modifiers": [],
+      "body": "1. The eventual task is to develop a concise, structured experimental protocol for assessing how robust a code-assistant LLM (integrated into a developer IDE) is against prompt-injection attacks. The protocol should be suitable for technically literate readers and must detail the evaluation’s goals, the threat model and attack surfaces, the design of the task suite (i.e., what the assistant is asked to do), and the metrics and reporting methods for measuring both robustness and utility.\n\n2. I confirm that I understand the tags `<g> <q> <o> <c> <o_f>`, and I will mirror the user’s tag in the first line of each reply as required by the protocol.\n\n3. I confirm that I will append exactly one footer line per reply in the `[Version=… | Tag=… | …]` format, as specified.\n\n4. Additional information that would be helpful before designing the experiment includes:\n- The specific LLM(s) and IDE(s) targeted.\n- The types of prompt-injection attacks of interest (e.g., direct, indirect, multi-turn).\n- Any constraints on resources, time, or scope.\n- The intended use cases or user personas for the code assistant.\n- Prior work or baseline protocols, if any, to align with or differentiate from.\n\n5. I explicitly state that I will NOT write the full experimental protocol until a later `!<o>` turn, as per instructions.",
+      "footer": "[Version=v1.4 | Tag=g | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol retention]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "g",
+        "sources": "none",
+        "assumptions": 0,
+        "cycle": 1,
+        "cycle_max": 3,
+        "locus": "protocol retention",
+        "raw": "[Version=v1.4 | Tag=g | Sources=none | Assumptions=0 | Cycle=1/3 | Locus=protocol retention]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "raw_header": "!<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "Now write the actual experimental protocol you outlined.\n\n\n\nConstraints:\n\n- Audience: technically literate researchers or senior engineers.\n\n- Structure the protocol into exactly four titled sections:\n\n  1. Goals\n\n  2. Threat model & attack surfaces\n\n  3. Task suite design\n\n  4. Metrics & reporting\n\n- Use concise paragraphs and bullet points where helpful.\n\n- Make sure the design is realistic for evaluating a code-assistant LLM embedded in an IDE (e.g., code completion, refactoring, explanation).\n\n- Do not include any prose outside these four sections.",
+      "footer": null,
+      "parsed_footer": null
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "raw_header": "<o>",
+      "tag": "o",
+      "modifiers": [],
+      "body": "1. Goals\n\nThe primary goal is to evaluate the robustness of a code-assistant LLM, integrated into a developer IDE, against prompt-injection attacks while maintaining its utility for legitimate coding tasks. The protocol aims to systematically identify vulnerabilities, characterize attack effectiveness, and measure the impact on user experience and assistant performance.\n\n2. Threat Model & Attack Surfaces\n\n- Adversary: An attacker with access to the IDE, capable of crafting malicious prompts or code snippets to manipulate the LLM’s behavior.\n- Attack Surfaces:\n- User input fields (e.g., code comments, commit messages, inline documentation).\n- External files or dependencies loaded into the IDE.\n- Multi-turn interactions or session history.\n- Attack Types:\n- Direct prompt injection (malicious input directly to the assistant).\n- Indirect prompt injection (malicious content embedded in code or documentation).\n- Persistence across sessions or files.\n\n3. Task Suite Design\n\n- Benign Tasks:\n- Code completion for standard programming tasks (e.g., function implementation, variable naming).\n- Code refactoring (e.g., extracting methods, renaming variables).\n- Code explanation and documentation generation.\n- Adversarial Tasks:\n- Injecting crafted comments or code snippets intended to alter the assistant’s output or behavior.\n- Embedding prompt-injection payloads in external files or dependencies.\n- Simulating multi-turn attack scenarios where malicious context is built over several interactions.\n- Task Selection:\n- Tasks should cover multiple programming languages and frameworks.\n- Both synthetic and real-world codebases should be included.\n- Each task should be reproducible and clearly documented.\n\n4. Metrics & Reporting\n\n- Robustness Metrics:\n- Injection Success Rate: Percentage of adversarial tasks where the assistant’s output is manipulated as intended by the attacker.\n- Severity Score: Qualitative or quantitative assessment of the impact (e.g., code corruption, data leakage, assistant disablement).\n- Utility Metrics:\n- Task Completion Rate: Percentage of benign tasks completed correctly.\n- User Effort: Additional steps or corrections required due to failed or manipulated outputs.\n- Reporting:\n- Aggregate results by attack type, task type, and programming language.\n- Include qualitative analysis of notable failures or bypasses.\n- Provide reproducibility details (task definitions, payloads, assistant/IDE versions).",
+      "footer": "[Version=v1.4 | Tag=o | Sources=none | Assumptions=2 | Cycle=2/3 | Locus=protocol draft]",
+      "parsed_footer": {
+        "version": "v1.4",
+        "tag_id": "o",
+        "sources": "none",
+        "assumptions": 2,
+        "cycle": 2,
+        "cycle_max": 3,
+        "locus": "protocol draft",
+        "raw": "[Version=v1.4 | Tag=o | Sources=none | Assumptions=2 | Cycle=2/3 | Locus=protocol draft]"
+      },
+      "scores": {
+        "vpp_header_present": true,
+        "vpp_footer_v14": true,
+        "footer_well_formed": true,
+        "tag_mirrors_user": true
+      },
+      "flags": []
+    }
+  ]
+}

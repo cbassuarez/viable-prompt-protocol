@@ -1,12 +1,20 @@
 {
   "name": "Viable Prompt Protocol",
   "short": "VPP",
-  "version": "1.4.0",
-  "latest": "v1.4",
+  "version": "1.5.0",
+  "latest": "v1.5",
+  "protocol_manifest": "protocol/v1.5/manifest.json",
+  "state_schema": "protocol/v1.5/state.schema.json",
+  "services": {
+    "mcp": "https://mcp.viableprompt.org/mcp",
+    "json": "https://mcp.viableprompt.org/api/v1",
+    "openapi": "https://mcp.viableprompt.org/api/v1/openapi.json"
+  },
   "cdn": {
     "spec_latest": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/latest/spec.md",
+    "spec_v1_5": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.5/spec.md",
     "spec_v1_4": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/spec.md",
-    "header_latest": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.4/header-snippet.txt"
+    "header_latest": "https://cdn.jsdelivr.net/gh/cbassuarez/viable-prompt-protocol@main/docs/spec/v1.5/header-snippet.txt"
   },
   "license": {
     "code": "MIT",
